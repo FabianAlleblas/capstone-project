@@ -12,4 +12,9 @@ export default function PlantListPage() {
   )
 }
 
-const ItemContainer = styled.section``
+const ItemContainer = styled.section`
+  display: grid;
+  gap: 40px 20px;
+  grid-template-columns: 1fr 1fr;
+  padding: 20px;
+`

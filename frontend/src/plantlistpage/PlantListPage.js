@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import PlantCard from './PlantCard'
+import PlantCard from '../components/plantcard/PlantCard'
 
 export default function PlantListPage() {
   return (

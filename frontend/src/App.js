@@ -1,9 +1,14 @@
+import { Route, Switch } from 'react-router-dom'
 import PlantListPage from './plantlistpage/PlantListPage'
 
 function App() {
   return (
-    <div className="App">
-      <PlantListPage />
+    <div>
+      <Switch>
+        <Route exact path="/">
+          <PlantListPage />
+        </Route>
+      </Switch>
     </div>
   )
 }

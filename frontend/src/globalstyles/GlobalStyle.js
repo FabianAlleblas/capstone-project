@@ -22,7 +22,7 @@ export default createGlobalStyle`
 
 body {
     background-color: var(--primary-light);
-    font-family: 'Josefine Sans', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
     font-size: 112.5%;
 }
 `

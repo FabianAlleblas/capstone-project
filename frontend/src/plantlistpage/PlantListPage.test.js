@@ -1,8 +1,7 @@
 import { render } from '@testing-library/react'
 import 'jest-styled-components'
-import PlantCard from '../components/plantcard/PlantCard'
-import PlantListPage from './PlantListPage'
 import plants from '../data/plants.json'
+import PlantListPage from './PlantListPage'
 
 describe('PlantListPage', () => {
   it('renders correctly', () => {

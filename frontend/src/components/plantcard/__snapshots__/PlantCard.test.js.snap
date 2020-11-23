@@ -33,15 +33,15 @@ exports[`PlantCard renders correctly 1`] = `
     class="c1"
     src="3.jpg"
   />
-  <p
+  <h5
     class="c2"
   >
     Jack
-  </p>
-  <p
+  </h5>
+  <h6
     class="c3"
   >
     Monstera deliciosa
-  </p>
+  </h6>
 </div>
 `;

@@ -32,12 +32,12 @@ const ImgContainer = styled.div`
   width: 100px;
 `
 
-const PlantName = styled.p`
+const PlantName = styled.h5`
   color: var(--primary-plant-font-color);
   font-size: 1.25rem;
 `
 
-const PlantSpecies = styled.p`
+const PlantSpecies = styled.h6`
   color: var(--secondary-plant-font-color);
   font-size: 0.75rem;
 `

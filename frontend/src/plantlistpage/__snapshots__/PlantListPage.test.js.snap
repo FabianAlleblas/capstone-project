@@ -1,37 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PlantListPage renders correctly 1`] = `
-.c0 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c1 {
+.c2 {
   background: var(--primary-dark);
   padding: 20px 30px 13px 20px;
   border-radius: 0 0 50px 0;
 }
 
-.c2 {
+.c3 {
   color: var(--primary-light);
   font-size: 1.75rem;
   font-weight: 700;
   line-height: 1;
 }
 
-<header
+.c0 {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+<div
   class="c0"
 >
-  <div
+  <header
     class="c1"
   >
-    <h1
+    <div
       class="c2"
     >
-      My Plants
-    </h1>
-  </div>
-</header>
+      <h1
+        class="c3"
+      >
+        My Plants
+      </h1>
+    </div>
+  </header>
+</div>
 `;

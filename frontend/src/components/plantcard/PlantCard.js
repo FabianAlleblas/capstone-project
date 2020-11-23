@@ -1,6 +1,5 @@
-//import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import monsteraimage from '../../assets/plant-images/3.jpg'
 
 export default function PlantCard({ plantname, plantspecies }) {

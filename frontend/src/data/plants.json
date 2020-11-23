@@ -28,5 +28,25 @@
     "id": 6,
     "name": "Greg",
     "species": "Scindapsus pictus"
+  },
+  {
+    "id": 7,
+    "name": "Samuel",
+    "species": "Alocasia zebrina"
+  },
+  {
+    "id": 8,
+    "name": "Samuel",
+    "species": "Alocasia zebrina"
+  },
+  {
+    "id": 9,
+    "name": "Samuel",
+    "species": "Alocasia zebrina"
+  },
+  {
+    "id": 10,
+    "name": "Samuel",
+    "species": "Alocasia zebrina"
   }
 ]

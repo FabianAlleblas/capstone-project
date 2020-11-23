@@ -29,6 +29,7 @@ const ImgContainer = styled.div`
   background-size: cover, contain;
   border-radius: 50%;
   height: 100px;
+  margin-bottom: 10px;
   width: 100px;
 `
 

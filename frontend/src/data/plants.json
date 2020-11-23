@@ -2,37 +2,31 @@
   {
     "id": 1,
     "name": "Carl",
-    "species": "Monstera deliciosa",
-    "url": "../assets/plant-images/1.jpg"
+    "species": "Monstera deliciosa"
   },
   {
     "id": 2,
     "name": "Birgitt",
-    "species": "Monstera adansonii",
-    "url": "../assets/plant-images/2.jpg"
+    "species": "Monstera adansonii"
   },
   {
     "id": 3,
     "name": "Karen",
-    "species": "Philodendron gloriosum",
-    "url": "../assets/plant-images/3.jpg"
+    "species": "Philodendron gloriosum"
   },
   {
     "id": 4,
     "name": "Jim Jones",
-    "species": "Rhaphidophora tetrasperma",
-    "url": "../assets/plant-images/4.jpg"
+    "species": "Rhaphidophora tetrasperma"
   },
   {
     "id": 5,
     "name": "Samuel",
-    "species": "Alocasia zebrina",
-    "url": "../assets/plant-images/3.jpg"
+    "species": "Alocasia zebrina"
   },
   {
     "id": 6,
     "name": "Greg",
-    "species": "Scindapsus pictus",
-    "url": "../assets/plant-images/2.jpg"
+    "species": "Scindapsus pictus"
   }
 ]

@@ -9,7 +9,7 @@ export default function PlantListPage() {
       <Header />
       <ItemContainer>
         {plants.map(({ id, name, species }) => (
-          <PlantCard key={id} plantname={name} plantspecies={species} />
+          <PlantCard key={id} name={name} species={species} />
         ))}
       </ItemContainer>
     </>

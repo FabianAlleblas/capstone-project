@@ -1,3 +1,3 @@
 ```js
-<PlantCard plantname={'Jack'} plantspecies={'Monstera deliciosa'} />
+<PlantCard name={'Jack'} species={'Monstera deliciosa'} />
 ```

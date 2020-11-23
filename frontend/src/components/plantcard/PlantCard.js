@@ -1,18 +1,18 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
-import monsteraimage from '../../assets/plant-images/3.jpg'
+import monsteraImage from '../../assets/plant-images/3.jpg'
 
-export default function PlantCard({ plantname, plantspecies }) {
+export default function PlantCard({ name, species }) {
   PlantCard.propTypes = {
-    plantname: PropTypes.string.isRequired,
-    plantspecies: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    species: PropTypes.string.isRequired,
   }
 
   return (
     <CardWrapper>
-      <ImgContainer src={monsteraimage} />
-      <PlantName>{plantname}</PlantName>
-      <PlantSpecies>{plantspecies}</PlantSpecies>
+      <ImgContainer src={monsteraImage} />
+      <PlantName>{name}</PlantName>
+      <PlantSpecies>{species}</PlantSpecies>
     </CardWrapper>
   )
 }

@@ -5,7 +5,7 @@ import PlantCard from './PlantCard'
 describe('PlantCard', () => {
   it('renders correctly', () => {
     const { container, getByText } = render(
-      <PlantCard plantname={'Jack'} plantspecies={'Monstera deliciosa'} />
+      <PlantCard name={'Jack'} species={'Monstera deliciosa'} />
     )
 
     expect(container.firstChild).toMatchSnapshot()

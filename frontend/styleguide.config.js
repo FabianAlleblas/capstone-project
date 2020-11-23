@@ -5,6 +5,7 @@ module.exports = {
   defaultExample: false,
   exampleMode: 'expand',
   usageMode: 'expand',
+  components: ['src/components/**/[A-Z]*.js', 'src/plantlistpage/**/[A-Z]*.js'],
   styleguideComponents: {
     Wrapper: path.join(__dirname, 'src/globalstyles/StyleWrapper'),
   },

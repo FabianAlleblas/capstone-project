@@ -1,5 +1,11 @@
+const { default: PlantListPage } = require('./plantlistpage/PlantListPage')
+
 function App() {
-  return <div className="App"></div>
+  return (
+    <div className="App">
+      <PlantListPage />
+    </div>
+  )
 }
 
 export default App

@@ -6,6 +6,6 @@ module.exports = {
   exampleMode: 'expand',
   usageMode: 'expand',
   styleguideComponents: {
-    Wrapper: path.join(__dirname, 'src/styles/StyleWrapper'),
+    Wrapper: path.join(__dirname, 'src/globalstyles/StyleWrapper'),
   },
 }

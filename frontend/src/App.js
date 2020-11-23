@@ -1,4 +1,4 @@
-const { default: PlantListPage } = require('./plantlistpage/PlantListPage')
+import PlantListPage from './plantlistpage/PlantListPage'
 
 function App() {
   return (

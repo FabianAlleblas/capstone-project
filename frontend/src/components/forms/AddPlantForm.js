@@ -12,10 +12,10 @@ export default function AddPlantForm() {
         The species of your plant:
         <Input type="text" placeholder="Monstera deliciosa" />
       </Label>
-      <div>
+      <ButtonWrapper>
         <FormButton>Add Plant</FormButton>
         <FormButton secondary={true}>Cancel</FormButton>
-      </div>
+      </ButtonWrapper>
     </Form>
   )
 }
@@ -50,4 +50,9 @@ const Input = styled.input`
     box-shadow: 0 0 4px var(--shadow) inset;
     outline: none;
   }
+`
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 20px;
 `

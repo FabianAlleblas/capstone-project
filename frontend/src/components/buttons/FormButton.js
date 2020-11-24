@@ -24,6 +24,7 @@ const PrimaryButton = styled.button`
   font-size: 1.25rem;
   font-weight: 700;
   padding: 12px 16px 8px;
+  width: 100%;
 `
 
 const SecondaryButton = styled.button`
@@ -36,4 +37,5 @@ const SecondaryButton = styled.button`
   font-size: 1.25rem;
   font-weight: 700;
   padding: 8px 12px 4px;
+  width: 100%;
 `

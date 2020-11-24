@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import FormButton from '../buttons/FormButton'
 import plants from '../../data/plants.json'
+import { saveToLocal } from '../../lib/localStorage'
 
 export default function AddPlantForm() {
   const history = useHistory()
@@ -13,6 +14,9 @@ export default function AddPlantForm() {
   })
 
   const [plantList, setPlantList] = useState([...plants])
+  useEffect(() => {
+    saveToLocal('PlantList', plantList)
+  }, [plantList])
 
   function handleInputChange(e) {
     const fieldName = e.target.name

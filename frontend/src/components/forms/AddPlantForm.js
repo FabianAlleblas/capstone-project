@@ -1,26 +1,32 @@
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import FormButton from '../buttons/FormButton'
+import plants from '../../data/plants.json'
 
 export default function AddPlantForm() {
+  const history = useHistory()
   const [plant, setPlant] = useState({
+    id: 20,
     name: '',
     species: '',
   })
 
-  function handleInputChange(event) {
-    const fieldName = event.target.name
-    const fieldValue = event.target.value
+  const [plantList, setPlantList] = useState([...plants])
+
+  function handleInputChange(e) {
+    const fieldName = e.target.name
+    const fieldValue = e.target.value
     setPlant({ ...plant, [fieldName]: fieldValue })
   }
 
   function addPlant(e) {
     e.preventDefault()
-    console.log(plant)
+    setPlantList([...plantList, plant])
   }
 
   function handleCancel() {
-    console.log('lol')
+    history.push('/')
   }
 
   return (

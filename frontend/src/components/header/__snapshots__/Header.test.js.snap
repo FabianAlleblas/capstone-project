@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  background: var(--primary-dark);
+  padding: 20px 30px 13px 20px;
+  border-radius: 0 0 50px 0;
+}
+
+.c2 {
+  color: var(--primary-light);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+<header
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <h1
+      class="c2"
+    >
+      My Plants
+    </h1>
+  </div>
+</header>
+`;

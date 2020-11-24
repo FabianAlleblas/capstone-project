@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Carl",
+    "species": "Monstera deliciosa"
+  },
+  {
+    "id": 2,
+    "name": "Birgitt",
+    "species": "Monstera adansonii"
+  },
+  {
+    "id": 3,
+    "name": "Karen",
+    "species": "Philodendron gloriosum"
+  },
+  {
+    "id": 4,
+    "name": "Jim Jones",
+    "species": "Rhaphidophora tetrasperma"
+  },
+  {
+    "id": 5,
+    "name": "Samuel",
+    "species": "Alocasia zebrina"
+  },
+  {
+    "id": 6,
+    "name": "Greg",
+    "species": "Scindapsus pictus"
+  }
+]

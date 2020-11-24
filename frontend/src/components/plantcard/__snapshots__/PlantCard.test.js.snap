@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlantCard renders correctly 1`] = `
+.c0 {
+  display: grid;
+  justify-items: center;
+}
+
+.c1 {
+  background-image: url(3.jpg);
+  background-position: center;
+  background-size: cover,contain;
+  border-radius: 50%;
+  height: 100px;
+  margin-bottom: 10px;
+  width: 100px;
+}
+
+.c2 {
+  color: var(--primary-plant-font-color);
+  font-size: 1.25rem;
+}
+
+.c3 {
+  color: var(--secondary-plant-font-color);
+  font-size: 0.75rem;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+    src="3.jpg"
+  />
+  <h5
+    class="c2"
+  >
+    Jack
+  </h5>
+  <h6
+    class="c3"
+  >
+    Monstera deliciosa
+  </h6>
+</div>
+`;

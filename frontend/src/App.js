@@ -8,6 +8,9 @@ function App() {
       <Route exact path="/">
         <PlantListPage />
       </Route>
+      <Route path="/form">
+        <AddPlantForm />
+      </Route>
     </Switch>
   )
 }

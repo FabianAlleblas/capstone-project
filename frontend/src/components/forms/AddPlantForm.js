@@ -31,7 +31,9 @@ export default function AddPlantForm() {
           name="name"
           type="text"
           placeholder="Samantha"
+          maxLength="28"
           onChange={handleInputChange}
+          required
         />
       </Label>
       <Label>
@@ -40,7 +42,9 @@ export default function AddPlantForm() {
           name="species"
           type="text"
           placeholder="Monstera deliciosa"
+          maxLength="28"
           onChange={handleInputChange}
+          required
         />
       </Label>
       <ButtonWrapper>

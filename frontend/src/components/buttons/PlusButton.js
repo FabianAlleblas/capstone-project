@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plusicon.svg'
 
-export default function AddButton() {
+export default function PlusButton() {
   return (
     <Button>
       <PlusIcon />

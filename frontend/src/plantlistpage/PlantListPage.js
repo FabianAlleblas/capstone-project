@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
 import Header from '../components/header/Header'
 import PlantCard from '../components/plantcard/PlantCard'
-import AddButton from '../components/buttons/AddButton'
+import PlusButton from '../components/buttons/PlusButton'
 import plants from '../data/plants.json'
 
 export default function PlantListPage() {
@@ -16,7 +16,7 @@ export default function PlantListPage() {
         ))}
       </ItemContainer>
       <PositionButton>
-        <AddButton />
+        <PlusButton />
       </PositionButton>
     </>
   )

@@ -1,20 +1,53 @@
+import { useState } from 'react'
 import styled from 'styled-components/macro'
 import FormButton from '../buttons/FormButton'
 
 export default function AddPlantForm() {
+  const [plant, setPlant] = useState({
+    name: '',
+    species: '',
+  })
+
+  function handleInputChange(event) {
+    const fieldName = event.target.name
+    const fieldValue = event.target.value
+    setPlant({ ...plant, [fieldName]: fieldValue })
+  }
+
+  function addPlant(e) {
+    e.preventDefault()
+    console.log(plant)
+  }
+
+  function handleCancel() {
+    console.log('lol')
+  }
+
   return (
-    <Form>
+    <Form onSubmit={addPlant}>
       <Label>
         Your plants name:
-        <Input type="text" placeholder="Samantha" />
+        <Input
+          name="name"
+          type="text"
+          placeholder="Samantha"
+          onChange={handleInputChange}
+        />
       </Label>
       <Label>
         The species of your plant:
-        <Input type="text" placeholder="Monstera deliciosa" />
+        <Input
+          name="species"
+          type="text"
+          placeholder="Monstera deliciosa"
+          onChange={handleInputChange}
+        />
       </Label>
       <ButtonWrapper>
         <FormButton>Add Plant</FormButton>
-        <FormButton secondary={true}>Cancel</FormButton>
+        <FormButton secondary={true} onClick={handleCancel}>
+          Cancel
+        </FormButton>
       </ButtonWrapper>
     </Form>
   )

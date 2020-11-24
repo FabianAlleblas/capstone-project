@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
+import { loadFromLocal, saveToLocal } from '../../lib/localStorage'
 import FormButton from '../buttons/FormButton'
-import plants from '../../data/plants.json'
-import { saveToLocal } from '../../lib/localStorage'
 
 export default function AddPlantForm() {
   const history = useHistory()
@@ -13,7 +12,10 @@ export default function AddPlantForm() {
     species: '',
   })
 
-  const [plantList, setPlantList] = useState([...plants])
+  const [plantList, setPlantList] = useState([])
+  useEffect(() => {
+    setPlantList(loadFromLocal('PlantList') ?? [])
+  }, [])
   useEffect(() => {
     saveToLocal('PlantList', plantList)
   }, [plantList])
@@ -26,7 +28,9 @@ export default function AddPlantForm() {
 
   function addPlant(e) {
     e.preventDefault()
+    const formEl = e.target
     setPlantList([...plantList, plant])
+    formEl.reset()
   }
 
   function handleCancel() {

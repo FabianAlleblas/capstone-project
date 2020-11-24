@@ -35,7 +35,7 @@ const ItemContainer = styled.section`
   padding: 100px 20px 20px;
 `
 const PositionButton = styled.div`
-  position: fixed;
   bottom: 20px;
+  position: fixed;
   right: 20px;
 `

@@ -11,8 +11,8 @@ export default function AddButton() {
 
 const Button = styled.button`
   background-color: var(--primary-dark);
-  border: none;
   border-radius: 50%;
-  padding: 13px 14px;
+  border: none;
   box-shadow: 0 0 4px var(--shadow);
+  padding: 13px 14px;
 `

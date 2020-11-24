@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro'
+import FormButton from '../buttons/FormButton'
 
 export default function AddPlantForm() {
   return (
@@ -12,27 +13,27 @@ export default function AddPlantForm() {
         <Input type="text" placeholder="Monstera deliciosa" />
       </Label>
       <div>
-        <button>Add Plant</button>
-        <button>Cancel</button>
+        <FormButton>Add Plant</FormButton>
+        <FormButton secondary={true}>Cancel</FormButton>
       </div>
     </Form>
   )
 }
 
 const Form = styled.form`
+  align-items: stretch;
   background-color: var(--primary-dark);
   display: grid;
   gap: 24px;
-  align-items: stretch;
   padding: 0 40px;
 `
 
 const Label = styled.label`
   color: var(--form-font-color);
-  font-size: 1.25rem;
-  gap: 8px;
   display: flex;
   flex-wrap: wrap;
+  font-size: 1.25rem;
+  gap: 8px;
 `
 
 const Input = styled.input`

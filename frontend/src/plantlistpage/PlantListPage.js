@@ -1,10 +1,13 @@
 import styled from 'styled-components/macro'
+import PlusButton from '../components/buttons/PlusButton'
 import Header from '../components/header/Header'
 import PlantCard from '../components/plantcard/PlantCard'
-import PlusButton from '../components/buttons/PlusButton'
 import plants from '../data/plants.json'
+import { useHistory } from 'react-router-dom'
 
 export default function PlantListPage() {
+  const history = useHistory()
+
   return (
     <>
       <PositionHeader>
@@ -16,10 +19,14 @@ export default function PlantListPage() {
         ))}
       </ItemContainer>
       <PositionButton>
-        <PlusButton />
+        <PlusButton onClick={handleClick} />
       </PositionButton>
     </>
   )
+
+  function handleClick() {
+    history.push('/form')
+  }
 }
 
 const PositionHeader = styled.div`

@@ -1,9 +1,14 @@
+import PropTypes from 'prop-types'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import useForm from '../../hooks/useForm'
 import FormButton from '../buttons/FormButton'
-import { useHistory } from 'react-router-dom'
 
 export default function AddPlantForm({ savePlantData }) {
+  AddPlantForm.propTypes = {
+    savePlantData: PropTypes.func,
+  }
+
   const history = useHistory()
   const initialInput = {
     id: '',

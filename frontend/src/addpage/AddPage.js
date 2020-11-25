@@ -21,5 +21,5 @@ const PageWrapper = styled.div`
   background-color: var(--primary-dark);
   display: flex;
   height: 100vh;
-  place-content: center;
+  place-items: center;
 `

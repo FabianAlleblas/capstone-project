@@ -8,9 +8,9 @@ export default function usePlantList() {
     saveToLocal('PlantList', plantList)
   }, [plantList])
 
-  return { plantList, saveEntry }
+  return { plantList, savePlantData }
 
-  function saveEntry(entry) {
+  function savePlantData(entry) {
     setPlantList([...plantList, entry])
   }
 }

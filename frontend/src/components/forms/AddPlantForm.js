@@ -1,21 +1,19 @@
 import styled from 'styled-components/macro'
 import useForm from '../../hooks/useForm'
-import usePlantList from '../../hooks/usePlantList'
 import FormButton from '../buttons/FormButton'
 
-export default function AddPlantForm() {
+export default function AddPlantForm({ savePlantData }) {
   const initialInput = {
-    id: 20,
+    id: '',
     name: '',
     species: '',
   }
 
-  const { saveEntry } = usePlantList()
   const { handleInputChange, handleCancel, formData } = useForm(initialInput)
 
   function handleSubmit(e) {
     e.preventDefault()
-    saveEntry(formData)
+    savePlantData(formData)
     e.target.reset()
   }
 
@@ -29,6 +27,7 @@ export default function AddPlantForm() {
           placeholder="Bob"
           maxLength="28"
           onChange={handleInputChange}
+          required
         />
       </Label>
       <Label>
@@ -39,6 +38,7 @@ export default function AddPlantForm() {
           placeholder="Monstera deliciosa"
           maxLength="28"
           onChange={handleInputChange}
+          required
         />
       </Label>
       <ButtonWrapper>

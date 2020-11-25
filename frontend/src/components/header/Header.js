@@ -1,6 +1,11 @@
+import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
 export default function Header({ className }) {
+  Header.propType = {
+    className: PropTypes.string,
+  }
+
   return (
     <HeaderStyled className={className}>
       <HeadingContainer>

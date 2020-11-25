@@ -1,14 +1,11 @@
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import PlusButton from '../components/buttons/PlusButton'
 import Header from '../components/header/Header'
 import PlantCard from '../components/plantcard/PlantCard'
-import plants from '../data/plants.json'
-import { useHistory } from 'react-router-dom'
-import usePlantList from '../hooks/usePlantList'
 
-export default function PlantListPage() {
+export default function PlantListPage({ plantList }) {
   const history = useHistory()
-  const { plantList } = usePlantList()
 
   return (
     <>
@@ -28,9 +25,9 @@ export default function PlantListPage() {
 }
 
 const FixedHeader = styled(Header)`
+  left: 0;
   position: fixed;
   top: 0;
-  left: 0;
 `
 
 const ItemContainer = styled.section`

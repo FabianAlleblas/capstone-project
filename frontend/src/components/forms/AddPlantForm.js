@@ -1,53 +1,34 @@
-import { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import { loadFromLocal, saveToLocal } from '../../lib/localStorage'
+import useForm from '../../hooks/useForm'
+import usePlantList from '../../hooks/usePlantList'
 import FormButton from '../buttons/FormButton'
 
 export default function AddPlantForm() {
-  const history = useHistory()
-  const [plant, setPlant] = useState({
+  const initialInput = {
     id: 20,
     name: '',
     species: '',
-  })
-
-  const [plantList, setPlantList] = useState([])
-  useEffect(() => {
-    setPlantList(loadFromLocal('PlantList') ?? [])
-  }, [])
-  useEffect(() => {
-    saveToLocal('PlantList', plantList)
-  }, [plantList])
-
-  function handleInputChange(e) {
-    const fieldName = e.target.name
-    const fieldValue = e.target.value
-    setPlant({ ...plant, [fieldName]: fieldValue })
   }
 
-  function addPlant(e) {
+  const { saveEntry } = usePlantList()
+  const { handleInputChange, handleCancel, formData } = useForm(initialInput)
+
+  function handleSubmit(e) {
     e.preventDefault()
-    const formEl = e.target
-    setPlantList([...plantList, plant])
-    formEl.reset()
-  }
-
-  function handleCancel() {
-    history.push('/')
+    saveEntry(formData)
+    e.target.reset()
   }
 
   return (
-    <Form onSubmit={addPlant}>
+    <Form onSubmit={handleSubmit}>
       <Label>
         Your plants name:
         <Input
           name="name"
           type="text"
-          placeholder="Samantha"
+          placeholder="Bob"
           maxLength="28"
           onChange={handleInputChange}
-          required
         />
       </Label>
       <Label>
@@ -58,12 +39,11 @@ export default function AddPlantForm() {
           placeholder="Monstera deliciosa"
           maxLength="28"
           onChange={handleInputChange}
-          required
         />
       </Label>
       <ButtonWrapper>
         <FormButton>Add Plant</FormButton>
-        <FormButton secondary={true} onClick={handleCancel}>
+        <FormButton secondary onClick={handleCancel}>
           Cancel
         </FormButton>
       </ButtonWrapper>

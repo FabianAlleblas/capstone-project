@@ -2,13 +2,13 @@ import styled from 'styled-components/macro'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plusicon.svg'
 import PropTypes from 'prop-types'
 
-export default function PlusButton({ onClick }) {
+export default function PlusButton({ onClick, className }) {
   PlusButton.propTypes = {
     onClick: PropTypes.func,
   }
 
   return (
-    <Button onClick={onClick}>
+    <Button onClick={onClick} className={className}>
       <PlusIcon />
     </Button>
   )

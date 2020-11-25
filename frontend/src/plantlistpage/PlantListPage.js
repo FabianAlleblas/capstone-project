@@ -4,23 +4,21 @@ import Header from '../components/header/Header'
 import PlantCard from '../components/plantcard/PlantCard'
 import plants from '../data/plants.json'
 import { useHistory } from 'react-router-dom'
+import usePlantList from '../hooks/usePlantList'
 
 export default function PlantListPage() {
   const history = useHistory()
+  const { plantList } = usePlantList()
 
   return (
     <>
-      <PositionHeader>
-        <Header />
-      </PositionHeader>
+      <FixedHeader />
       <ItemContainer>
-        {plants.map(({ id, name, species }) => (
+        {plantList.map(({ id, name, species }) => (
           <PlantCard key={id} name={name} species={species} />
         ))}
       </ItemContainer>
-      <PositionButton>
-        <PlusButton onClick={handleClick} />
-      </PositionButton>
+      <FixedPlusButton onClick={handleClick} />
     </>
   )
 
@@ -29,7 +27,7 @@ export default function PlantListPage() {
   }
 }
 
-const PositionHeader = styled.div`
+const FixedHeader = styled(Header)`
   position: fixed;
   top: 0;
   left: 0;
@@ -41,7 +39,7 @@ const ItemContainer = styled.section`
   grid-template-columns: 1fr 1fr;
   padding: 100px 20px 20px;
 `
-const PositionButton = styled.div`
+const FixedPlusButton = styled(PlusButton)`
   bottom: 20px;
   position: fixed;
   right: 20px;

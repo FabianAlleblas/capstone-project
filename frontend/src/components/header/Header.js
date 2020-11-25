@@ -1,8 +1,8 @@
 import styled from 'styled-components/macro'
 
-export default function Header() {
+export default function Header({ className }) {
   return (
-    <HeaderStyled>
+    <HeaderStyled className={className}>
       <HeadingContainer>
         <Heading>My Plants</Heading>
       </HeadingContainer>

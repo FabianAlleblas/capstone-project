@@ -5,13 +5,13 @@ import PlantListPage from './PlantListPage'
 
 describe('PlantListPage', () => {
   it('renders correctly', () => {
-    const { container } = render(<PlantListPage />)
+    const { container } = render(<PlantListPage plantList={plants} />)
 
     expect(container.firstChild).toMatchSnapshot()
   })
 
   it('displays the plant names and species', () => {
-    const { getByText } = render(<PlantListPage />)
+    const { getByText } = render(<PlantListPage plantList={plants} />)
 
     plants.forEach(({ name }) => expect(getByText(name)).toBeInTheDocument())
     plants.forEach(({ species }) =>

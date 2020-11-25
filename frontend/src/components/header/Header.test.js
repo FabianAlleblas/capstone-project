@@ -4,7 +4,7 @@ import Header from './Header'
 
 describe('Header', () => {
   it('renders correctly', () => {
-    const { container, getByText } = render(<Header />)
+    const { container, getByText } = render(<Header text="My Plants" />)
 
     expect(container.firstChild).toMatchSnapshot()
     expect(getByText(/My Plants/i)).toBeInTheDocument()

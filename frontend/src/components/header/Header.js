@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
-export default function Header({ className, text }) {
+export default function Header({ className, text, secondary }) {
   Header.propType = {
     className: PropTypes.string,
     text: PropTypes.string.isRequired,
+    secondary: PropTypes.bool,
   }
 
   return (
     <HeaderStyled className={className}>
-      <HeadingContainer>
-        <Heading>{text}</Heading>
+      <HeadingContainer secondary={secondary}>
+        <Heading secondary={secondary}>{text}</Heading>
       </HeadingContainer>
     </HeaderStyled>
   )
@@ -21,14 +22,16 @@ const HeaderStyled = styled.header`
 `
 
 const HeadingContainer = styled.div`
-  background: var(--primary-dark);
-  padding: 20px 30px 13px 20px;
+  background: ${(props) =>
+    props.secondary ? 'var(--primary-light)' : 'var(--primary-dark)'};
   border-radius: 0 0 50px 0;
   box-shadow: 0 0 4px var(--shadow);
+  padding: 20px 30px 13px 20px;
 `
 
 const Heading = styled.h1`
-  color: var(--primary-light);
+  color: ${(props) =>
+    props.secondary ? 'var(--primary-dark)' : 'var(--primary-light)'};
   font-size: 1.75rem;
   font-weight: 700;
   line-height: 1;

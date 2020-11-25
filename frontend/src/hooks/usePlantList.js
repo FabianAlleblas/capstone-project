@@ -10,7 +10,7 @@ export default function usePlantList() {
 
   return { plantList, savePlantData }
 
-  function savePlantData(entry) {
-    setPlantList([...plantList, entry])
+  function savePlantData(formData) {
+    setPlantList([...plantList, formData])
   }
 }

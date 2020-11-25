@@ -1,3 +1,3 @@
 ```js
-<Header />
+<Header text={'My Plants'} />
 ```

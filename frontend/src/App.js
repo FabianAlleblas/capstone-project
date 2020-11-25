@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom'
 import PlantListPage from './plantlistpage/PlantListPage'
-import AddPlantForm from './components/forms/AddPlantForm'
+import AddPage from './addpage/AddPage'
 import usePlantList from './hooks/usePlantList'
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
         <PlantListPage plantList={plantList} />
       </Route>
       <Route path="/form">
-        <AddPlantForm savePlantData={savePlantData} />
+        <AddPage savePlantData={savePlantData} />
       </Route>
     </Switch>
   )

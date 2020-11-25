@@ -1,15 +1,16 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
-export default function Header({ className }) {
+export default function Header({ className, text }) {
   Header.propType = {
     className: PropTypes.string,
+    text: PropTypes.string.isRequired,
   }
 
   return (
     <HeaderStyled className={className}>
       <HeadingContainer>
-        <Heading>My Plants</Heading>
+        <Heading>{text}</Heading>
       </HeadingContainer>
     </HeaderStyled>
   )

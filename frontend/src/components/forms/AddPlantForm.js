@@ -1,21 +1,17 @@
 import styled from 'styled-components/macro'
 import useForm from '../../hooks/useForm'
 import FormButton from '../buttons/FormButton'
+import { useHistory } from 'react-router-dom'
 
 export default function AddPlantForm({ savePlantData }) {
+  const history = useHistory()
   const initialInput = {
     id: '',
     name: '',
     species: '',
   }
 
-  const { handleInputChange, handleCancel, formData } = useForm(initialInput)
-
-  function handleSubmit(e) {
-    e.preventDefault()
-    savePlantData(formData)
-    e.target.reset()
-  }
+  const { handleInputChange, formData } = useForm(initialInput)
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -49,6 +45,17 @@ export default function AddPlantForm({ savePlantData }) {
       </ButtonWrapper>
     </Form>
   )
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    savePlantData(formData)
+    e.target.reset()
+    history.push('/')
+  }
+
+  function handleCancel() {
+    history.push('/')
+  }
 }
 
 const Form = styled.form`

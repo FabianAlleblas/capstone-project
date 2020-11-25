@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
-export default function FormButton({ secondary, children, onClick }) {
+export default function FormButton({ isSecondary, children, onClick }) {
   FormButton.propTypes = {
-    secondary: PropTypes.bool,
+    isSecondary: PropTypes.bool,
     children: PropTypes.string,
     onClick: PropTypes.func,
   }
 
-  return secondary ? (
+  return isSecondary ? (
     <SecondaryButton type="button" onClick={onClick}>
       {children}
     </SecondaryButton>

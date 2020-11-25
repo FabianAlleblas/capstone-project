@@ -64,7 +64,6 @@ export default function AddPlantForm({ savePlantData }) {
 }
 
 const Form = styled.form`
-  align-items: stretch;
   background-color: var(--primary-dark);
   display: grid;
   gap: 24px;

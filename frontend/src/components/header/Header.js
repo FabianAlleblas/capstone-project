@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
 export default function Header({ className, text, secondary }) {
-  Header.propType = {
+  Header.propTypes = {
     className: PropTypes.string,
     text: PropTypes.string.isRequired,
     secondary: PropTypes.bool,

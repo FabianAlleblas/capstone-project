@@ -13,9 +13,11 @@ describe('PlantListPage', () => {
   it('displays the plant names and species', () => {
     const { getByText } = render(<PlantListPage plantList={plants} />)
 
-    plants.forEach(({ name }) => expect(getByText(name)).toBeInTheDocument())
-    plants.forEach(({ species }) =>
-      expect(getByText(species)).toBeInTheDocument()
+    plants.forEach(({ plantname }) =>
+      expect(getByText(plantname)).toBeInTheDocument()
+    )
+    plants.forEach(({ plantspecies }) =>
+      expect(getByText(plantspecies)).toBeInTheDocument()
     )
   })
 })

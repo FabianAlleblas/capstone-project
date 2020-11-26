@@ -19,7 +19,8 @@ DELETE {{baseUrl}}/plant/12
 PUT {{baseUrl}}/plant/5
 
   {
-    "price": 26900
+    "plantname": "Hello and thx for reviewing this important part of my capstone project :D",
+    "plantspecies": "Let me tell you a story, how I lost 1 hour of my time, just because I had an , on the wrong place of my test-json down below."
   }
 
 ###

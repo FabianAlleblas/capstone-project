@@ -11,8 +11,8 @@ export default function PlantListPage({ plantList }) {
     <>
       <FixedHeader>My Plants</FixedHeader>
       <ItemContainer>
-        {plantList.map(({ id, name, species }) => (
-          <PlantCard key={id} name={name} species={species} />
+        {plantList.map(({ id, plantname, plantspecies }) => (
+          <PlantCard key={id} name={plantname} species={plantspecies} />
         ))}
       </ItemContainer>
       <FixedPlusButton onClick={handleClick} />
@@ -32,9 +32,9 @@ const FixedHeader = styled(Header)`
 
 const ItemContainer = styled.section`
   display: grid;
-  gap: 40px 20px;
+  gap: 40px 0;
   grid-template-columns: 1fr 1fr;
-  padding: 100px 20px 20px;
+  padding: 100px 15px 90px;
 `
 const FixedPlusButton = styled(PlusButton)`
   bottom: 20px;

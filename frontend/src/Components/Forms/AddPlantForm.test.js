@@ -24,9 +24,8 @@ describe('AddPlantForm', () => {
     user.click(getByText('Add Plant'))
 
     expect(onSubmitMock).toHaveBeenCalledWith({
-      id: '',
-      name: 'Bob',
-      species: 'Monstera',
+      plantname: 'Bob',
+      plantspecies: 'Monstera',
     })
 
     expect(mockHistoryPush).toHaveBeenCalled()

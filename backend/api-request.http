@@ -1,0 +1,33 @@
+# vscode extension "Humao Rest Client"
+
+@baseUrl = http://urbanplants.local
+
+###
+
+GET {{baseUrl}}/plant
+
+###
+
+GET {{baseUrl}}/plant/1
+
+###
+
+DELETE {{baseUrl}}/plant/12
+
+###
+
+PUT {{baseUrl}}/plant/5
+
+  {
+    "price": 26900
+  }
+
+###
+
+POST {{baseUrl}}/plant HTTP/1.1
+Content-Type: application/json
+
+  {
+    "plantname": "B",
+    "plantspecies": "M"
+  }

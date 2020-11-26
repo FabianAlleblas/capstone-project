@@ -2,25 +2,32 @@
 
 namespace App\Repository;
 
-use App\Entity\Plants;
+use App\Entity\Plant;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Plants|null find($id, $lockMode = null, $lockVersion = null)
- * @method Plants|null findOneBy(array $criteria, array $orderBy = null)
- * @method Plants[]    findAll()
- * @method Plants[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Plant|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Plant|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Plant[]    findAll()
+ * @method Plant[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PlantsRepository extends ServiceEntityRepository
+class PlantRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Plants::class);
+        parent::__construct($registry, Plant::class);
     }
 
+    public function savePlant(Plant $plant): Plant {
+
+        $this->_em->persist($plant);
+        $this->_em->flush();
+
+        return $plant;
+    }
     // /**
-    //  * @return Plants[] Returns an array of Plants objects
+    //  * @return Plant[] Returns an array of Plant objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +44,7 @@ class PlantsRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Plants
+    public function findOneBySomeField($value): ?Plant
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')

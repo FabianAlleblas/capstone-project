@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\PlantsRepository;
+use App\Repository\PlantRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=PlantsRepository::class)
+ * @ORM\Entity(repositoryClass=PlantRepository::class)
  */
-class Plants
+class Plant
 {
     /**
      * @ORM\Id
@@ -18,12 +18,12 @@ class Plants
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=255)
      */
     private $plantname;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=255)
      */
     private $plantspecies;
 

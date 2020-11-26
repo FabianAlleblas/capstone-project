@@ -75,7 +75,6 @@ const Label = styled.label`
   display: flex;
   flex-wrap: wrap;
   font-size: 1.25rem;
-  gap: 8px;
 `
 
 const Input = styled.input`
@@ -85,6 +84,7 @@ const Input = styled.input`
   display: block;
   font-family: 'Josefin sans', sans-serif;
   font-size: 1rem;
+  margin-top: 8px;
   padding: 14px 20px 10px;
   width: 100%;
 
@@ -95,6 +95,7 @@ const Input = styled.input`
 `
 
 const ButtonWrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
 `

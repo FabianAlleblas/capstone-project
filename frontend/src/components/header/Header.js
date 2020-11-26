@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
-export default function Header({ className, text, secondaryStyle }) {
+export default function Header({ className, children, secondaryStyle }) {
   Header.propTypes = {
     className: PropTypes.string,
-    text: PropTypes.string.isRequired,
+    children: PropTypes.string.isRequired,
     secondaryStyle: PropTypes.bool,
   }
 
   return (
     <HeaderStyled className={className}>
       <HeadingContainer secondaryStyle={secondaryStyle}>
-        <Heading secondaryStyle={secondaryStyle}>{text}</Heading>
+        <Heading secondaryStyle={secondaryStyle}>{children}</Heading>
       </HeadingContainer>
     </HeaderStyled>
   )

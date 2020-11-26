@@ -9,7 +9,7 @@ export default function PlantListPage({ plantList }) {
 
   return (
     <>
-      <FixedHeader text="My Plants" />
+      <FixedHeader>My Plants</FixedHeader>
       <ItemContainer>
         {plantList.map(({ id, name, species }) => (
           <PlantCard key={id} name={name} species={species} />

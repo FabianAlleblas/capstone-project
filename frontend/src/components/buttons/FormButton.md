@@ -1,11 +1,13 @@
 FormButton: Primary
 
 ```js
-<FormButton children={'Add Plant'} />
+<FormButton onClick={() => {}}>Add Plant</FormButton>
 ```
 
 FormButton: Secondary
 
 ```js
-<FormButton children={'Cancel'} secondaryStyle />
+<FormButton secondaryStyle onClick={() => {}}>
+  Chancel
+</FormButton>
 ```

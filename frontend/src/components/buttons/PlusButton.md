@@ -1,3 +1,3 @@
 ```js
-<PlusButton />
+<PlusButton onClick={() => {}} />
 ```

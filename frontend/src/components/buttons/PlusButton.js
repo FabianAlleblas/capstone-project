@@ -4,7 +4,7 @@ import { ReactComponent as PlusIcon } from '../../assets/icons/plusicon.svg'
 
 export default function PlusButton({ onClick, className }) {
   PlusButton.propTypes = {
-    onClick: PropTypes.func,
+    onClick: PropTypes.func.isRequired,
     className: PropTypes.string,
   }
 

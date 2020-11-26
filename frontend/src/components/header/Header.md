@@ -1,11 +1,11 @@
 Header: Primary
 
 ```js
-<Header text={'My Plants'} />
+<Header>My Plants</Header>
 ```
 
 Header: Secondary
 
 ```js
-<Header text={'Add Plant'} secondaryStyle />
+<Header secondaryStyle>Add Plant</Header>
 ```

@@ -4,8 +4,8 @@ import styled from 'styled-components/macro'
 export default function FormButton({ secondaryStyle, children, onClick }) {
   FormButton.propTypes = {
     secondaryStyle: PropTypes.bool,
-    children: PropTypes.string,
-    onClick: PropTypes.func,
+    children: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
   }
 
   return secondaryStyle ? (
@@ -13,7 +13,7 @@ export default function FormButton({ secondaryStyle, children, onClick }) {
       {children}
     </SecondaryButton>
   ) : (
-    <PrimaryButton>{children}</PrimaryButton>
+    <PrimaryButton onClick={onClick}>{children}</PrimaryButton>
   )
 }
 

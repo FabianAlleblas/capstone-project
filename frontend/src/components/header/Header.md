@@ -1,5 +1,11 @@
+Header: Primary
+
 ```js
 <Header text={'My Plants'} />
-<br/><br/>
-<Header text={'Add Plant'} secondaryStyle/>
+```
+
+Header: Secondary
+
+```js
+<Header text={'Add Plant'} secondaryStyle />
 ```

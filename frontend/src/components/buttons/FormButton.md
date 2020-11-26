@@ -1,5 +1,11 @@
+FormButton: Primary
+
 ```js
 <FormButton children={'Add Plant'} />
-<br/><br/>
+```
+
+FormButton: Secondary
+
+```js
 <FormButton children={'Cancel'} secondaryStyle />
 ```

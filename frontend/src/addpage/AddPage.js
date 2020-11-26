@@ -5,7 +5,7 @@ import Header from '../Components/Header/Header'
 export default function AddPage({ savePlantData }) {
   return (
     <PageWrapper>
-      <FixedHeader text={'Add Plant'} isSecondary />
+      <FixedHeader text={'Add Plant'} secondaryStyle />
       <AddPlantForm savePlantData={savePlantData} />
     </PageWrapper>
   )

@@ -44,7 +44,7 @@ export default function AddPlantForm({ savePlantData }) {
       </Label>
       <ButtonWrapper>
         <FormButton>Add Plant</FormButton>
-        <FormButton isSecondary onClick={handleCancel}>
+        <FormButton onClick={handleCancel} secondaryStyle>
           Cancel
         </FormButton>
       </ButtonWrapper>

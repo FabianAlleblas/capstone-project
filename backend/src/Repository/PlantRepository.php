@@ -20,12 +20,11 @@ class PlantRepository extends ServiceEntityRepository
     }
 
     public function savePlant(Plant $plant): Plant {
-
         $this->_em->persist($plant);
         $this->_em->flush();
-
         return $plant;
     }
+
     // /**
     //  * @return Plant[] Returns an array of Plant objects
     //  */

@@ -12,7 +12,7 @@ jest.mock('react-router-dom', () => ({
 }))
 
 describe('AddPlantForm', () => {
-  it('calls onSubmit with correct data and resets form', () => {
+  it('Calls onSubmit with correct data and resets form', () => {
     const onSubmitMock = jest.fn()
     const { getByLabelText, getByText } = render(
       <AddPlantForm savePlantData={onSubmitMock} />
@@ -29,7 +29,16 @@ describe('AddPlantForm', () => {
       species: 'Monstera',
     })
 
+    expect(mockHistoryPush).toHaveBeenCalled()
+
     expect(getByLabelText('Your plants name:')).toHaveValue('')
     expect(getByLabelText('The species of your plant:')).toHaveValue('')
+  })
+  it('Calls history.push by clicking the cancel button', () => {
+    const { getByText } = render(<AddPlantForm />)
+
+    user.click(getByText('Cancel'))
+
+    expect(mockHistoryPush).toHaveBeenCalled()
   })
 })

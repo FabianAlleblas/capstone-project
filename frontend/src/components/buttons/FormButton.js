@@ -5,7 +5,7 @@ export default function FormButton({ secondaryStyle, children, onClick }) {
   FormButton.propTypes = {
     secondaryStyle: PropTypes.bool,
     children: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
   }
 
   return secondaryStyle ? (

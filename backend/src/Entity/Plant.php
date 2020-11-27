@@ -21,12 +21,14 @@ class Plant
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
+     * @Assert\Length(max=28)
      */
     private $plantname;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
+     * @Assert\Length(max=28)
      */
     private $plantspecies;
 

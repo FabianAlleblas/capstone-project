@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
-import AddPlantForm from '../Components/Forms/AddPlantForm'
-import Header from '../Components/Header/Header'
+import AddPlantForm from '../../Components/Forms/AddPlantForm'
+import Header from '../../Components/Header/Header'
 
 export default function AddPage({ savePlantData }) {
   return (

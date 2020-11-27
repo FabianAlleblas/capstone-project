@@ -1,8 +1,8 @@
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import PlusButton from '../Components/Buttons/PlusButton'
-import Header from '../Components/Header/Header'
-import PlantCard from '../Components/Plantcard/PlantCard'
+import PlusButton from '../../Components/Buttons/PlusButton'
+import Header from '../../Components/Header/Header'
+import PlantCard from '../../Components/Plantcard/PlantCard'
 
 export default function PlantListPage({ plantList }) {
   const history = useHistory()

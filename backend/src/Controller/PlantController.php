@@ -17,36 +17,32 @@ class PlantController extends AbstractController {
      */
     public function getPlant(SerializerInterface $serializer, PlantRepository $plantRepository): JsonResponse {
         $plants = $plantRepository->findAll();
-
         return new JsonResponse(
-                $serializer->serialize($plants, 'json'),
-                JsonResponse::HTTP_OK,
-                [],
-                true);
+            $serializer->serialize($plants, 'json'),
+            JsonResponse::HTTP_OK,
+            [],
+            true
+        );
     }
 
     /**
      * @Route("/plant", methods={"POST"})
      */
     public function createPlant(Request $request, PlantRepository $plantRepository, SerializerInterface $serializer, ValidatorInterface $validator): JsonResponse {
-
         $plant = $serializer->deserialize($request->getContent(), Plant::class, 'json');
-
         $validationResult = $validator->validate($plant);
-
         if ($validationResult->count() !== 0) {
             return new JsonResponse(
                 ["error" => "Plant data invalid."],
                 JsonResponse::HTTP_BAD_REQUEST
             );
         }
-
         $plantRepository->savePlant($plant);
-
         return new JsonResponse(
-        $serializer->serialize($plant, 'json'),
-        JsonResponse::HTTP_OK,
-        [],
-        true);
+            $serializer->serialize($plant, 'json'),
+            JsonResponse::HTTP_OK,
+            [],
+            true
+        );
     }
 }

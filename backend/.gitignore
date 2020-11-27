@@ -9,4 +9,5 @@
 /vendor/
 .DS_Store
 .env
+*.http
 ###< symfony/framework-bundle ###

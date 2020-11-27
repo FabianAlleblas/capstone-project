@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PlantRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PlantRepository::class)
@@ -19,11 +20,13 @@ class Plant
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $plantname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $plantspecies;
 

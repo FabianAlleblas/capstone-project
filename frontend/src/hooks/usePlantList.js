@@ -6,16 +6,18 @@ export default function usePlantList() {
   const [plantList, setPlantList] = useState([])
 
   useEffect(() => {
-    getData()
-      .then((data) => setPlantList(data))
-      .catch((error) => console.log(error))
+    getData().then((data) =>
+      data.error ? alert(data.error) : setPlantList(data)
+    )
   }, [])
 
   return { plantList, savePlantData }
 
   function savePlantData(formData) {
-    postData(formData)
-      .then((responseData) => setPlantList([...plantList, responseData]))
-      .catch((error) => console.log(error))
+    postData(formData).then((responseData) =>
+      responseData.error
+        ? alert(responseData.error)
+        : setPlantList(...plantList, responseData)
+    )
   }
 }

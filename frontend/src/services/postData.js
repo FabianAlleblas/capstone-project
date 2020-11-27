@@ -6,15 +6,17 @@ export default async function postData(data) {
   const copy = Object.assign({}, data)
 
   const raw = JSON.stringify(copy)
-
   const requestOptions = {
     method: 'POST',
     headers: myHeaders,
     body: raw,
     redirect: 'follow',
   }
-
-  const respone = await fetch(baseUrl, requestOptions)
-  const responseData = respone.json()
-  return responseData
+  try {
+    const response = await fetch(baseUrl, requestOptions)
+    const responseData = response.json()
+    return responseData
+  } catch (error) {
+    return { error: 'The server is down! :(' }
+  }
 }

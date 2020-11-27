@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
-import AddPlantForm from '../Components/Forms/AddPlantForm'
-import Header from '../Components/Header/Header'
+import AddPlantForm from '../../Components/Forms/AddPlantForm'
+import Header from '../../Components/Header/Header'
 
 export default function AddPage({ savePlantData }) {
   return (
@@ -21,5 +21,6 @@ const PageWrapper = styled.div`
   background-color: var(--primary-dark);
   display: flex;
   height: 100vh;
-  place-items: center;
+  place-content: center;
+  align-items: center;
 `

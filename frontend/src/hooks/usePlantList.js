@@ -1,16 +1,23 @@
 import { useEffect, useState } from 'react'
-import { loadFromLocal, saveToLocal } from '../lib/localStorage'
+import getData from '../services/getData'
+import postData from '../services/postData'
 
 export default function usePlantList() {
-  const [plantList, setPlantList] = useState(loadFromLocal('PlantList') ?? [])
+  const [plantList, setPlantList] = useState([])
 
   useEffect(() => {
-    saveToLocal('PlantList', plantList)
-  }, [plantList])
+    getData().then((data) =>
+      data.error ? alert(data.error) : setPlantList(data)
+    )
+  }, [])
 
   return { plantList, savePlantData }
 
   function savePlantData(formData) {
-    setPlantList([...plantList, formData])
+    postData(formData).then((responseData) =>
+      responseData.error
+        ? alert(responseData.error)
+        : setPlantList([...plantList, responseData])
+    )
   }
 }

@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom'
-import PlantListPage from './Plantlistpage/PlantListPage'
-import AddPage from './Addpage/AddPage'
+import PlantListPage from './Pages/Plantlistpage/PlantListPage'
+import AddPage from './Pages/Addpage/AddPage'
 import usePlantList from './hooks/usePlantList'
 
 function App() {

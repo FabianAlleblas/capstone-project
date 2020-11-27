@@ -10,20 +10,19 @@ export default function AddPlantForm({ savePlantData }) {
   }
 
   const history = useHistory()
-  const initialInput = {
-    id: '',
-    name: '',
-    species: '',
+  const initialPlant = {
+    plantname: '',
+    plantspecies: '',
   }
 
-  const { handleInputChange, formData } = useForm(initialInput)
+  const { handleInputChange, formData } = useForm(initialPlant)
 
   return (
     <Form onSubmit={handleSubmit}>
       <Label>
         Your plants name:
         <Input
-          name="name"
+          name="plantname"
           type="text"
           placeholder="Bob"
           maxLength="28"
@@ -34,7 +33,7 @@ export default function AddPlantForm({ savePlantData }) {
       <Label>
         The species of your plant:
         <Input
-          name="species"
+          name="plantspecies"
           type="text"
           placeholder="Monstera deliciosa"
           maxLength="28"
@@ -75,7 +74,6 @@ const Label = styled.label`
   display: flex;
   flex-wrap: wrap;
   font-size: 1.25rem;
-  gap: 8px;
 `
 
 const Input = styled.input`
@@ -85,6 +83,7 @@ const Input = styled.input`
   display: block;
   font-family: 'Josefin sans', sans-serif;
   font-size: 1rem;
+  margin-top: 8px;
   padding: 14px 20px 10px;
   width: 100%;
 
@@ -95,6 +94,7 @@ const Input = styled.input`
 `
 
 const ButtonWrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
 `

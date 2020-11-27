@@ -17,7 +17,7 @@ export default function usePlantList() {
     postData(formData).then((responseData) =>
       responseData.error
         ? alert(responseData.error)
-        : setPlantList(...plantList, responseData)
+        : setPlantList([...plantList, responseData])
     )
   }
 }

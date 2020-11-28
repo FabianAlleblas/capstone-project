@@ -20,16 +20,21 @@ class Plant
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(max=28)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255)     
+     * @Assert\NotBlank
+     * @Assert\Length(max=28)
      */
     private $species;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(max=28)
      */
     private $info;
 

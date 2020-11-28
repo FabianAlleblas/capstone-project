@@ -10,7 +10,7 @@ export default function PlantListPage({ plantList }) {
   return (
     <>
       <FixedHeader>My Plants</FixedHeader>
-      <ItemContainer>
+      <ListContainer>
         {plantList.map(({ id, plantname, plantspecies }) => (
           <PlantListCard
             key={id}
@@ -19,7 +19,7 @@ export default function PlantListPage({ plantList }) {
             onClick={() => openDetail({ id })}
           />
         ))}
-      </ItemContainer>
+      </ListContainer>
       <FixedPlusButton onClick={openAddForm} />
     </>
   )
@@ -38,7 +38,7 @@ const FixedHeader = styled(Header)`
   top: 0;
 `
 
-const ItemContainer = styled.section`
+const ListContainer = styled.main`
   display: grid;
   gap: 40px 0;
   grid-template-columns: 1fr 1fr;

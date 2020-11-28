@@ -1,19 +1,25 @@
-import { useLocation } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
+import styled from 'styled-components/macro'
 import Header from '../../Components/Header/Header'
-import { useHistory } from 'react-router-dom'
+import PlantDetailCard from '../../Components/Plantdetailcard/PlantDetailCard'
 
 export default function DetailPage({ plantList }) {
   const history = useHistory()
+
   const query = useQuery()
   const plantId = parseInt(query.get('id'))
+
   const plant = plantList.find((plant) => plant.id === plantId)
   console.log(plantId)
+
   return (
     <>
-      <Header hasArrow onClick={() => history.push('/')}>
+      <FixedHeader hasArrow onClick={() => history.push('/')}>
         {plant?.plantname}
-      </Header>
-      <p>{plant?.plantspecies}</p>
+      </FixedHeader>
+      <CardContainer>
+        <PlantDetailCard species={plant?.plantspecies} info={'placeholder'} />
+      </CardContainer>
     </>
   )
 
@@ -21,3 +27,13 @@ export default function DetailPage({ plantList }) {
     return new URLSearchParams(useLocation().search)
   }
 }
+
+const FixedHeader = styled(Header)`
+  left: 0;
+  position: fixed;
+  top: 0;
+`
+
+const CardContainer = styled.main`
+  padding: 100px 20px 0;
+`

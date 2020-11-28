@@ -2,13 +2,14 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import monsteraImage from '../../assets/plant-images/3.jpg'
 
-export default function PlantDetailCard({ species, info }) {
+export default function PlantDetailCard({ species, info, className }) {
   PlantDetailCard.propTypes = {
     species: PropTypes.string.isRequired,
     info: PropTypes.string.isRequired,
+    className: PropTypes.string,
   }
   return (
-    <CardWrapper>
+    <CardWrapper className={className}>
       <ImageContainer src={monsteraImage}></ImageContainer>
       <TextContainer>
         <PlantName>{species}</PlantName>
@@ -37,12 +38,12 @@ const TextContainer = styled.div`
 `
 const PlantName = styled.h2`
   color: var(--primary-plant-font-color);
-  font-size: 1.75rem;
-  font-weight: 400;
+  font-size: 1.5rem;
+  font-weight: 700;
 `
 
 const PlantInfo = styled.h3`
   color: var(--secondary-plant-font-color);
   font-size: 1.5rem;
-  font-weight: 300;
+  font-weight: 400;
 `

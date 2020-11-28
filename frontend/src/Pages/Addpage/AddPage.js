@@ -4,10 +4,12 @@ import Header from '../../Components/Header/Header'
 
 export default function AddPage({ savePlantData }) {
   return (
-    <PageWrapper>
+    <>
       <FixedHeader secondaryStyle>Add Plant</FixedHeader>
-      <AddPlantForm savePlantData={savePlantData} />
-    </PageWrapper>
+      <FormContainer>
+        <AddPlantForm savePlantData={savePlantData} />
+      </FormContainer>
+    </>
   )
 }
 
@@ -17,7 +19,7 @@ const FixedHeader = styled(Header)`
   top: 0;
 `
 
-const PageWrapper = styled.div`
+const FormContainer = styled.main`
   background-color: var(--primary-dark);
   display: flex;
   height: 100vh;

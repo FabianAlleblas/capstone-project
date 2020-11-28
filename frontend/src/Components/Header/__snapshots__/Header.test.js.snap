@@ -2,20 +2,25 @@
 
 exports[`Header renders correctly 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c1 {
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
   background: var(--primary-dark);
   border-radius: 0 0 50px 0;
   box-shadow: 0 0 4px var(--shadow);
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   padding: 20px 30px 13px 20px;
 }
 
-.c2 {
+.c0 svg {
+  margin-right: 12px;
+}
+
+.c1 {
   color: var(--primary-light);
   font-size: 1.75rem;
   font-weight: 700;
@@ -23,13 +28,13 @@ exports[`Header renders correctly 1`] = `
 }
 
 <header
-  class="c0"
+  class="Header__HeaderStyled-sc-1kdjcf7-0"
 >
   <div
-    class="c1"
+    class="c0"
   >
     <h1
-      class="c2"
+      class="c1"
     >
       My Plants
     </h1>

@@ -1,32 +1,38 @@
 [
   {
     "id": 1,
-    "plantname": "Carl",
-    "plantspecies": "Monstera deliciosa"
+    "name": "Carl",
+    "species": "Monstera deliciosa",
+    "info": "variegated"
   },
   {
     "id": 2,
-    "plantname": "Birgitt",
-    "plantspecies": "Monstera adansonii"
+    "name": "Birgitt",
+    "species": "Monstera adansonii",
+    "info": "variegated"
   },
   {
     "id": 3,
-    "plantname": "Karen",
-    "plantspecies": "Philodendron gloriosum"
+    "name": "Karen",
+    "species": "Philodendron gloriosum",
+    "info": "variegated"
   },
   {
     "id": 4,
-    "plantname": "Jim Jones",
-    "plantspecies": "Rhaphidophora tetrasperma"
+    "name": "Jim Jones",
+    "species": "Rhaphidophora tetrasperma",
+    "info": "variegated"
   },
   {
     "id": 5,
-    "plantname": "Samuel",
-    "plantspecies": "Alocasia zebrina"
+    "name": "Samuel",
+    "species": "Alocasia zebrina",
+    "info": "variegated"
   },
   {
     "id": 6,
-    "plantname": "Greg",
-    "plantspecies": "Scindapsus pictus"
+    "name": "Greg",
+    "species": "Scindapsus pictus",
+    "info": "variegated"
   }
 ]

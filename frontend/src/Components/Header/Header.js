@@ -14,7 +14,7 @@ export default function Header({
     children: PropTypes.string.isRequired,
     secondaryStyle: PropTypes.bool,
     hasArrow: PropTypes.bool,
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
   }
 
   return (

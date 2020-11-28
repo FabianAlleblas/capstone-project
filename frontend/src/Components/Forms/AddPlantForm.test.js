@@ -20,18 +20,21 @@ describe('AddPlantForm', () => {
 
     user.type(getByLabelText('Your plants name:'), 'Bob')
     user.type(getByLabelText('The species of your plant:'), 'Monstera')
+    user.type(getByLabelText('Special infos:'), 'variegated')
 
     user.click(getByText('Add Plant'))
 
     expect(onSubmitMock).toHaveBeenCalledWith({
-      plantname: 'Bob',
-      plantspecies: 'Monstera',
+      name: 'Bob',
+      species: 'Monstera',
+      info: 'variegated',
     })
 
     expect(mockHistoryPush).toHaveBeenCalled()
 
     expect(getByLabelText('Your plants name:')).toHaveValue('')
     expect(getByLabelText('The species of your plant:')).toHaveValue('')
+    expect(getByLabelText('Special infos:')).toHaveValue('')
   })
   it('Calls history.push by clicking the cancel button', () => {
     const { getByText } = render(<AddPlantForm />)

@@ -77,7 +77,7 @@ export default function AddPlantForm({ savePlantData }) {
 const Form = styled.form`
   background-color: var(--primary-dark);
   display: grid;
-  gap: 24px;
+  gap: 20px;
   padding: 0 40px;
 `
 
@@ -109,6 +109,7 @@ const ButtonWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  padding: 40px 0 0;
 
   p {
     font-size: 0.75rem;

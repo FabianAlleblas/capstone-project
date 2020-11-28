@@ -15,10 +15,10 @@ export default function DetailPage({ plantList }) {
   return (
     <>
       <FixedHeader hasArrow onClick={() => history.push('/')}>
-        {plant?.plantname}
+        {plant?.name}
       </FixedHeader>
       <CardContainer>
-        <PlantDetailCard species={plant?.plantspecies} info={'placeholder'} />
+        <PlantDetailCard species={plant?.species} info={plant?.info} />
       </CardContainer>
     </>
   )

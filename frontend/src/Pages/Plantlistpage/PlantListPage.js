@@ -11,11 +11,11 @@ export default function PlantListPage({ plantList }) {
     <>
       <FixedHeader>My Plants</FixedHeader>
       <ListContainer>
-        {plantList.map(({ id, plantname, plantspecies }) => (
+        {plantList.map(({ id, name, species }) => (
           <PlantListCard
             key={id}
-            name={plantname}
-            species={plantspecies}
+            name={name}
+            species={species}
             onClick={() => openDetail({ id })}
           />
         ))}

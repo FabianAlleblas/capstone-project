@@ -11,6 +11,7 @@ export default function AddPlantForm({ savePlantData }) {
 
   const history = useHistory()
   const { handleInputChange, formData } = useForm()
+  console.log(formData)
 
   return (
     <Form onSubmit={handleSubmit}>

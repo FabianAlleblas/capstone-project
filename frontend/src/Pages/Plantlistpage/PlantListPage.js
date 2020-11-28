@@ -12,15 +12,23 @@ export default function PlantListPage({ plantList }) {
       <FixedHeader>My Plants</FixedHeader>
       <ItemContainer>
         {plantList.map(({ id, plantname, plantspecies }) => (
-          <PlantCard key={id} name={plantname} species={plantspecies} />
+          <PlantCard
+            key={id}
+            name={plantname}
+            species={plantspecies}
+            onClick={() => openDetail({ id })}
+          />
         ))}
       </ItemContainer>
-      <FixedPlusButton onClick={handleClick} />
+      <FixedPlusButton onClick={openAddForm} />
     </>
   )
 
-  function handleClick() {
-    history.push('/form')
+  function openAddForm() {
+    history.push('/addplant')
+  }
+  function openDetail({ id }) {
+    history.push(`/plant?id=${id}`)
   }
 }
 

@@ -112,6 +112,7 @@ const ButtonWrapper = styled.div`
   padding: 40px 0 0;
 
   p {
+    color: var(--form-font-color);
     font-size: 0.75rem;
     font-weight: 400;
   }

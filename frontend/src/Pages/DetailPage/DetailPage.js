@@ -5,10 +5,8 @@ import PlantDetailCard from '../../Components/Plantdetailcard/PlantDetailCard'
 
 export default function DetailPage({ plantList }) {
   const history = useHistory()
-
   const query = useQuery()
   const plantId = parseInt(query.get('id'))
-
   const plant = plantList.find((plant) => plant.id === plantId)
 
   return (

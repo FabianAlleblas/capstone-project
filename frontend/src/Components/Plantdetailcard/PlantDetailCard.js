@@ -10,7 +10,7 @@ export default function PlantDetailCard({ species, info, className }) {
   }
   return (
     <CardWrapper className={className}>
-      <ImageContainer src={monsteraImage}></ImageContainer>
+      <ImageFrame src={monsteraImage} />
       <TextContainer>
         <PlantName>{species}</PlantName>
         <PlantInfo>{info}</PlantInfo>
@@ -25,7 +25,7 @@ const CardWrapper = styled.section`
   place-items: center;
 `
 
-const ImageContainer = styled.div`
+const ImageFrame = styled.div`
   background-image: url(${(props) => props.src});
   background-position: center;
   background-size: cover, contain;
@@ -33,9 +33,11 @@ const ImageContainer = styled.div`
   height: 200px;
   width: 200px;
 `
+
 const TextContainer = styled.div`
   text-align: center;
 `
+
 const PlantName = styled.h2`
   color: var(--primary-plant-font-color);
   font-size: 1.5rem;

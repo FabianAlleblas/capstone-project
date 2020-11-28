@@ -14,7 +14,7 @@ export default function DetailPage({ plantList }) {
 
   return (
     <>
-      <FixedHeader hasArrow onClick={() => history.push('/')}>
+      <FixedHeader hasArrow onClick={openPlantList}>
         {plant?.name}
       </FixedHeader>
       <CardContainer>
@@ -25,6 +25,10 @@ export default function DetailPage({ plantList }) {
 
   function useQuery() {
     return new URLSearchParams(useLocation().search)
+  }
+
+  function openPlantList() {
+    history.push('/')
   }
 }
 

@@ -16,7 +16,7 @@ export default function PlantListPage({ plantList }) {
             key={id}
             name={name}
             species={species}
-            onClick={() => openDetail({ id })}
+            onClick={() => openDetailPage({ id })}
           />
         ))}
       </ListContainer>
@@ -27,7 +27,7 @@ export default function PlantListPage({ plantList }) {
   function openAddForm() {
     history.push('/addplant')
   }
-  function openDetail({ id }) {
+  function openDetailPage({ id }) {
     history.push(`/plant?id=${id}`)
   }
 }

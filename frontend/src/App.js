@@ -1,8 +1,8 @@
 import { Route, Switch } from 'react-router-dom'
-import PlantListPage from './Pages/Plantlistpage/PlantListPage'
+import usePlantList from './hooks/usePlantList'
 import AddPage from './Pages/Addpage/AddPage'
 import DetailPage from './Pages/DetailPage/DetailPage'
-import usePlantList from './hooks/usePlantList'
+import PlantListPage from './Pages/Plantlistpage/PlantListPage'
 
 function App() {
   const { plantList, savePlantData } = usePlantList()

@@ -2,7 +2,7 @@ import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import PlusButton from '../../Components/Buttons/PlusButton'
 import Header from '../../Components/Header/Header'
-import PlantCard from '../../Components/Plantcard/PlantCard'
+import PlantListCard from '../../Components/Plantlistcard/PlantListCard'
 
 export default function PlantListPage({ plantList }) {
   const history = useHistory()
@@ -12,7 +12,7 @@ export default function PlantListPage({ plantList }) {
       <FixedHeader>My Plants</FixedHeader>
       <ItemContainer>
         {plantList.map(({ id, plantname, plantspecies }) => (
-          <PlantCard
+          <PlantListCard
             key={id}
             name={plantname}
             species={plantspecies}

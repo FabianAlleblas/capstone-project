@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import usePlantList from './hooks/usePlantList'
 import AddPage from './Pages/Addpage/AddPage'
 import DetailPage from './Pages/DetailPage/DetailPage'
@@ -8,7 +8,7 @@ function App() {
   const { plantList, savePlantData } = usePlantList()
 
   return (
-    <>
+    <Switch>
       <Route exact path="/">
         <PlantListPage plantList={plantList} />
       </Route>
@@ -18,7 +18,7 @@ function App() {
       <Route path="/addplant">
         <AddPage savePlantData={savePlantData} />
       </Route>
-    </>
+    </Switch>
   )
 }
 

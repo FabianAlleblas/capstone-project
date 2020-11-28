@@ -5,7 +5,7 @@ import monsteraImage from '../../assets/plant-images/3.jpg'
 export default function PlantDetailCard({ species, info, className }) {
   PlantDetailCard.propTypes = {
     species: PropTypes.string.isRequired,
-    info: PropTypes.string.isRequired,
+    info: PropTypes.string,
     className: PropTypes.string,
   }
   return (

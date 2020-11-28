@@ -11,7 +11,11 @@ export default function DetailPage({ plantList }) {
 
   return (
     <>
-      <FixedHeader hasArrow onClick={openPlantList}>
+      <FixedHeader
+        isDetailPage
+        onClickArrow={openPlantList}
+        onClickEdit={openEditPage}
+      >
         {plant?.name}
       </FixedHeader>
       <CardContainer>
@@ -26,6 +30,10 @@ export default function DetailPage({ plantList }) {
 
   function openPlantList() {
     history.push('/')
+  }
+
+  function openEditPage() {
+    history.push(`/edit?id=${plant.id}`)
   }
 }
 

@@ -9,3 +9,11 @@ Header: Secondary
 ```js
 <Header secondaryStyle>Add Plant</Header>
 ```
+
+Header: hasArrow
+
+```js
+<Header hasArrow onClick={() => {}}>
+  Helga
+</Header>
+```

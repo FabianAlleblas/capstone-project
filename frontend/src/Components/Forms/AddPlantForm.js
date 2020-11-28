@@ -21,7 +21,7 @@ export default function AddPlantForm({ savePlantData }) {
   return (
     <Form onSubmit={handleSubmit}>
       <Label>
-        Your plants name:
+        Your plants name*:
         <Input
           name="name"
           type="text"
@@ -32,7 +32,7 @@ export default function AddPlantForm({ savePlantData }) {
         />
       </Label>
       <Label>
-        The species of your plant:
+        The species of your plant*:
         <Input
           name="species"
           type="text"
@@ -50,7 +50,6 @@ export default function AddPlantForm({ savePlantData }) {
           placeholder="variegated"
           maxLength="28"
           onChange={handleInputChange}
-          required
         />
       </Label>
       <ButtonWrapper>
@@ -58,6 +57,7 @@ export default function AddPlantForm({ savePlantData }) {
         <FormButton onClick={handleCancel} secondaryStyle>
           Cancel
         </FormButton>
+        <p>* required</p>
       </ButtonWrapper>
     </Form>
   )
@@ -109,4 +109,9 @@ const ButtonWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+
+  p {
+    font-size: 0.75rem;
+    font-weight: 400;
+  }
 `

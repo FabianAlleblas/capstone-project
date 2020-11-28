@@ -36,9 +36,11 @@ const ImgContainer = styled.div`
 const PlantName = styled.h5`
   color: var(--primary-plant-font-color);
   font-size: 1.25rem;
+  font-weight: 400;
 `
 
 const PlantSpecies = styled.h6`
   color: var(--secondary-plant-font-color);
   font-size: 0.75rem;
+  font-weight: 400;
 `

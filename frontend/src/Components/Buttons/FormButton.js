@@ -18,11 +18,11 @@ export default function FormButton({ secondaryStyle, children, onClick }) {
 }
 
 const PrimaryButton = styled.button`
-  background-color: var(--primary-dark);
+  background-color: var(--primary-light);
   border-radius: 22px;
   border: none;
   box-shadow: 0 0 4px var(--shadow);
-  color: var(--primary-light);
+  color: var(--primary-dark);
   font-family: 'Josefin sans';
   font-size: 1.25rem;
   font-weight: 700;
@@ -31,11 +31,11 @@ const PrimaryButton = styled.button`
 `
 
 const SecondaryButton = styled.button`
-  background-color: var(--primary-light);
+  background-color: var(--primary-dark);
   border-radius: 22px;
-  border: 4px solid var(--primary-dark);
+  border: 4px solid var(--primary-light);
   box-shadow: 0 0 4px var(--shadow);
-  color: var(--primary-dark);
+  color: var(--primary-light);
   font-family: 'Josefin sans';
   font-size: 1.25rem;
   font-weight: 700;

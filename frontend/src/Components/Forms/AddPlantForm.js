@@ -10,19 +10,14 @@ export default function AddPlantForm({ savePlantData }) {
   }
 
   const history = useHistory()
-  const initialPlant = {
-    plantname: '',
-    plantspecies: '',
-  }
-
-  const { handleInputChange, formData } = useForm(initialPlant)
+  const { handleInputChange, formData } = useForm()
 
   return (
     <Form onSubmit={handleSubmit}>
       <Label>
-        Your plants name:
+        Your plants name*:
         <Input
-          name="plantname"
+          name="name"
           type="text"
           placeholder="Bob"
           maxLength="28"
@@ -31,9 +26,9 @@ export default function AddPlantForm({ savePlantData }) {
         />
       </Label>
       <Label>
-        The species of your plant:
+        The species of your plant*:
         <Input
-          name="plantspecies"
+          name="species"
           type="text"
           placeholder="Monstera deliciosa"
           maxLength="28"
@@ -41,11 +36,22 @@ export default function AddPlantForm({ savePlantData }) {
           required
         />
       </Label>
+      <Label>
+        Special infos:
+        <Input
+          name="info"
+          type="text"
+          placeholder="variegated"
+          maxLength="28"
+          onChange={handleInputChange}
+        />
+      </Label>
       <ButtonWrapper>
         <FormButton>Add Plant</FormButton>
         <FormButton onClick={handleCancel} secondaryStyle>
           Cancel
         </FormButton>
+        <p>* required</p>
       </ButtonWrapper>
     </Form>
   )
@@ -65,7 +71,7 @@ export default function AddPlantForm({ savePlantData }) {
 const Form = styled.form`
   background-color: var(--primary-dark);
   display: grid;
-  gap: 24px;
+  gap: 20px;
   padding: 0 40px;
 `
 
@@ -97,4 +103,11 @@ const ButtonWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  padding: 40px 0 0;
+
+  p {
+    color: var(--form-font-color);
+    font-size: 0.75rem;
+    font-weight: 400;
+  }
 `

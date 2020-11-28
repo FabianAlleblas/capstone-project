@@ -1,7 +1,8 @@
 import { Route, Switch } from 'react-router-dom'
-import PlantListPage from './Pages/Plantlistpage/PlantListPage'
-import AddPage from './Pages/Addpage/AddPage'
 import usePlantList from './hooks/usePlantList'
+import AddPage from './Pages/Addpage/AddPage'
+import DetailPage from './Pages/DetailPage/DetailPage'
+import PlantListPage from './Pages/Plantlistpage/PlantListPage'
 
 function App() {
   const { plantList, savePlantData } = usePlantList()
@@ -11,7 +12,10 @@ function App() {
       <Route exact path="/">
         <PlantListPage plantList={plantList} />
       </Route>
-      <Route path="/form">
+      <Route path="/plant">
+        <DetailPage plantList={plantList} />
+      </Route>
+      <Route path="/addplant">
         <AddPage savePlantData={savePlantData} />
       </Route>
     </Switch>

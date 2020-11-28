@@ -1,11 +1,11 @@
 import { render } from '@testing-library/react'
 import 'jest-styled-components'
-import PlantCard from './PlantCard'
+import PlantListCard from './PlantListCard'
 
 describe('PlantCard', () => {
   it('renders correctly', () => {
     const { container, getByText } = render(
-      <PlantCard name={'Jack'} species={'Monstera deliciosa'} />
+      <PlantListCard name={'Jack'} species={'Monstera deliciosa'} />
     )
 
     expect(container.firstChild).toMatchSnapshot()

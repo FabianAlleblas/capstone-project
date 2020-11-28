@@ -2,14 +2,15 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import monsteraImage from '../../assets/plant-images/3.jpg'
 
-export default function PlantCard({ name, species }) {
-  PlantCard.propTypes = {
+export default function PlantListCard({ name, species, onClick }) {
+  PlantListCard.propTypes = {
     name: PropTypes.string.isRequired,
     species: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
   }
 
   return (
-    <CardWrapper>
+    <CardWrapper onClick={onClick}>
       <ImgContainer src={monsteraImage} />
       <PlantName>{name}</PlantName>
       <PlantSpecies>{species}</PlantSpecies>
@@ -35,9 +36,11 @@ const ImgContainer = styled.div`
 const PlantName = styled.h5`
   color: var(--primary-plant-font-color);
   font-size: 1.25rem;
+  font-weight: 400;
 `
 
 const PlantSpecies = styled.h6`
   color: var(--secondary-plant-font-color);
   font-size: 0.75rem;
+  font-weight: 400;
 `

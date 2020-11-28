@@ -19,11 +19,13 @@ exports[`PlantCard renders correctly 1`] = `
 .c2 {
   color: var(--primary-plant-font-color);
   font-size: 1.25rem;
+  font-weight: 400;
 }
 
 .c3 {
   color: var(--secondary-plant-font-color);
   font-size: 0.75rem;
+  font-weight: 400;
 }
 
 <div

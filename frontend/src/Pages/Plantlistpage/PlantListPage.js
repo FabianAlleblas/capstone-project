@@ -2,7 +2,7 @@ import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import PlusButton from '../../Components/Buttons/PlusButton'
 import Header from '../../Components/Header/Header'
-import PlantCard from '../../Components/Plantcard/PlantCard'
+import PlantListCard from '../../Components/Plantlistcard/PlantListCard'
 
 export default function PlantListPage({ plantList }) {
   const history = useHistory()
@@ -10,17 +10,25 @@ export default function PlantListPage({ plantList }) {
   return (
     <>
       <FixedHeader>My Plants</FixedHeader>
-      <ItemContainer>
-        {plantList.map(({ id, plantname, plantspecies }) => (
-          <PlantCard key={id} name={plantname} species={plantspecies} />
+      <ListContainer>
+        {plantList.map(({ id, name, species }) => (
+          <PlantListCard
+            key={id}
+            name={name}
+            species={species}
+            onClick={() => openDetailPage({ id })}
+          />
         ))}
-      </ItemContainer>
-      <FixedPlusButton onClick={handleClick} />
+      </ListContainer>
+      <FixedPlusButton onClick={openAddForm} />
     </>
   )
 
-  function handleClick() {
-    history.push('/form')
+  function openAddForm() {
+    history.push('/addplant')
+  }
+  function openDetailPage({ id }) {
+    history.push(`/plant?id=${id}`)
   }
 }
 
@@ -30,7 +38,7 @@ const FixedHeader = styled(Header)`
   top: 0;
 `
 
-const ItemContainer = styled.section`
+const ListContainer = styled.main`
   display: grid;
   gap: 40px 0;
   grid-template-columns: 1fr 1fr;

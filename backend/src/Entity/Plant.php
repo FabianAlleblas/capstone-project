@@ -23,41 +23,61 @@ class Plant
      * @Assert\NotBlank
      * @Assert\Length(max=28)
      */
-    private $plantname;
+    private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255)     
      * @Assert\NotBlank
      * @Assert\Length(max=28)
      */
-    private $plantspecies;
+    private $species;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max=28)
+     */
+    private $info;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getPlantname(): ?string
+    public function getName(): ?string
     {
-        return $this->plantname;
+        return $this->name;
     }
 
-    public function setPlantname(string $plantname): self
+    public function setName(string $name): self
     {
-        $this->plantname = $plantname;
+        $this->name = $name;
 
         return $this;
     }
 
-    public function getPlantspecies(): ?string
+    public function getSpecies(): ?string
     {
-        return $this->plantspecies;
+        return $this->species;
     }
 
-    public function setPlantspecies(string $plantspecies): self
+    public function setSpecies(string $species): self
     {
-        $this->plantspecies = $plantspecies;
+        $this->species = $species;
 
         return $this;
     }
+
+    public function getInfo(): ?string
+    {
+        return $this->info;
+    }
+
+    public function setInfo(string $info): self
+    {
+        $this->info = $info;
+
+        return $this;
+    }
+
+
 }

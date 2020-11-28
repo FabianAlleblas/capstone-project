@@ -10,7 +10,6 @@ export default function DetailPage({ plantList }) {
   const plantId = parseInt(query.get('id'))
 
   const plant = plantList.find((plant) => plant.id === plantId)
-  console.log(plantId)
 
   return (
     <>

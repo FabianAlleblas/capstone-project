@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-export default function useForm(plant) {
-  const [formData, setFormData] = useState(plant)
+export default function useForm(initialData) {
+  const [formData, setFormData] = useState(initialData ?? {})
 
   return { handleInputChange, formData, setFormData }
 

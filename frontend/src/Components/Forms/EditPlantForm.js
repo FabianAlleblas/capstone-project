@@ -3,7 +3,6 @@ import { useHistory, useLocation } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import useForm from '../../hooks/useForm'
 import FormButton from '../Buttons/FormButton'
-import { useEffect } from 'react'
 
 export default function EditPlantForm({ savePlantData, plantList }) {
   EditPlantForm.propTypes = {
@@ -12,11 +11,13 @@ export default function EditPlantForm({ savePlantData, plantList }) {
 
   const query = useQuery()
   const history = useHistory()
-
   const plantId = parseInt(query.get('id'))
   const plant = plantList.find((plant) => plant.id === plantId)
+
   const { handleInputChange, formData } = useForm(plant)
+
   console.log(formData)
+
   return (
     <Form onSubmit={handleSubmit}>
       <Label>
@@ -70,11 +71,11 @@ export default function EditPlantForm({ savePlantData, plantList }) {
     e.preventDefault()
     savePlantData(formData)
     e.target.reset()
-    history.push(`/plant?id=${plant.id}`)
+    history.push(`/plant?id=${plantId}`)
   }
 
   function handleCancel() {
-    history.push(`/plant?id=${plant.id}`)
+    history.push(`/plant?id=${plantId}`)
   }
 }
 

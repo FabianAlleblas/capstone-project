@@ -33,7 +33,7 @@ class Plant
     private $species;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(max=28)
      */
     private $info;

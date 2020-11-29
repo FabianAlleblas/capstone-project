@@ -7,7 +7,11 @@ export default function DetailPage({ plantList }) {
   const history = useHistory()
   const query = useQuery()
   const plantId = parseInt(query.get('id'))
-  const plant = plantList.find((plant) => plant.id === plantId)
+  const plant = plantList.find((plant) => plant.id === plantId ?? false)
+
+  if (!plant) {
+    return <div>Plant not found!</div>
+  }
 
   return (
     <>

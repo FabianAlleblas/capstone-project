@@ -8,6 +8,10 @@ import PlantListPage from './Pages/Plantlistpage/PlantListPage'
 function App() {
   const { plantList, savePlantData } = usePlantList()
 
+  if (!plantList) {
+    return <div>loading...</div>
+  }
+
   return (
     <Switch>
       <Route exact path="/">

@@ -3,7 +3,7 @@ import getData from '../services/getData'
 import postData from '../services/postData'
 
 export default function usePlantList() {
-  const [plantList, setPlantList] = useState([])
+  const [plantList, setPlantList] = useState(false)
 
   useEffect(() => {
     getData().then((data) =>

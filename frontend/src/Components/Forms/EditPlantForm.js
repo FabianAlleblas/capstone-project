@@ -12,11 +12,13 @@ export default function EditPlantForm({ savePlantData, plantList }) {
   const query = useQuery()
   const history = useHistory()
   const plantId = parseInt(query.get('id'))
-  const plant = plantList.find((plant) => plant.id === plantId)
+  const plant = plantList.find((plant) => plant.id === plantId ?? false)
 
   const { handleInputChange, formData } = useForm(plant)
 
-  console.log(formData)
+  if (!plant) {
+    return <div>Plant not found!</div>
+  }
 
   return (
     <Form onSubmit={handleSubmit}>

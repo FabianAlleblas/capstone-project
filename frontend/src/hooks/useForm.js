@@ -3,7 +3,7 @@ import { useState } from 'react'
 export default function useForm(initialData) {
   const [formData, setFormData] = useState(initialData ?? {})
 
-  return { handleInputChange, formData, setFormData }
+  return { handleInputChange, formData }
 
   function handleInputChange(e) {
     const fieldName = e.target.name

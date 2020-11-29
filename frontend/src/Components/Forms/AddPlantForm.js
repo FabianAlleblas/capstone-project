@@ -6,7 +6,7 @@ import FormButton from '../Buttons/FormButton'
 
 export default function AddPlantForm({ savePlantData }) {
   AddPlantForm.propTypes = {
-    savePlantData: PropTypes.func,
+    savePlantData: PropTypes.func.isRequired,
   }
 
   const history = useHistory()

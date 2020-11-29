@@ -6,7 +6,8 @@ import FormButton from '../Buttons/FormButton'
 
 export default function EditPlantForm({ updatePlantData, plantList }) {
   EditPlantForm.propTypes = {
-    updatePlantData: PropTypes.func,
+    updatePlantData: PropTypes.func.isRequired,
+    plantList: PropTypes.array.isRequired,
   }
 
   const query = useQuery()
@@ -51,8 +52,7 @@ export default function EditPlantForm({ updatePlantData, plantList }) {
           type="text"
           maxLength="28"
           onChange={handleInputChange}
-          placeholder="variegated"
-          value={formData?.info ?? ''}
+          value={formData?.info}
         />
       </Label>
       <ButtonWrapper>

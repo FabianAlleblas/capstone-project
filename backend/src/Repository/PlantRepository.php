@@ -27,9 +27,9 @@ class PlantRepository extends ServiceEntityRepository
 
     public function updatePlant(Plant $plant, $newData): Plant{
 
-        $plant->setName($newData['name']);
-        $plant->setSpecies($newData['species']);
-        $plant->setInfo($newData['info']);
+        empty($newData['name']) ? true : $plant->setName($newData['name']);
+        empty($newData['species']) ? true : $plant->setSpecies($newData['species']);
+        empty($newData['info']) ? true : $plant->setInfo($newData['info']);
 
         $this->_em->persist($plant);
         $this->_em->flush();

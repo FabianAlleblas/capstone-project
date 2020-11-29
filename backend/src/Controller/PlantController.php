@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
 use App\Entity\Plant;
 use App\Repository\PlantRepository;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -18,7 +19,7 @@ class PlantController extends AbstractController {
     public function getPlant(SerializerInterface $serializer, PlantRepository $plantRepository): JsonResponse {
         $plants = $plantRepository->findAll();
         return new JsonResponse(
-            $serializer->serialize($plants, 'json'),
+            $serializer->serialize($plants, 'json', [AbstractObjectNormalizer::SKIP_NULL_VALUES => true]),
             JsonResponse::HTTP_OK,
             [],
             true
@@ -39,7 +40,7 @@ class PlantController extends AbstractController {
         }
         $plantRepository->savePlant($plant);
         return new JsonResponse(
-            $serializer->serialize($plant, 'json'),
+            $serializer->serialize($plant, 'json', [AbstractObjectNormalizer::SKIP_NULL_VALUES => true]),
             JsonResponse::HTTP_OK,
             [],
             true
@@ -51,7 +52,7 @@ class PlantController extends AbstractController {
      */
     public function updatePlant($id, SerializerInterface $serializer, PlantRepository $plantRepository, Request $request, ValidatorInterface $validator): JsonResponse {
         $plant = $plantRepository->findOneBy(array('id' => $id));
-        $newData = $serializer->deserialize($request->getContent(), Plant::class, 'json');
+        $newData = $serializer->deserialize($request->getContent(), Plant::class, 'json',[AbstractObjectNormalizer::SKIP_NULL_VALUES => true]);
         $validationResult = $validator->validate($newData);
         if ($validationResult->count() !== 0) {
             return new JsonResponse(
@@ -59,10 +60,12 @@ class PlantController extends AbstractController {
                 JsonResponse::HTTP_BAD_REQUEST
             );
         }
+
         $validatedData = json_decode($serializer->serialize($newData, 'json'), true);
+        
         $plantRepository->updatePlant($plant, $validatedData);
         return new JsonResponse(
-            $serializer->serialize($plant, 'json'),
+            $serializer->serialize($plant, 'json', [AbstractObjectNormalizer::SKIP_NULL_VALUES => true]),
             JsonResponse::HTTP_OK,
             [],
             true);

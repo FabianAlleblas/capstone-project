@@ -25,6 +25,18 @@ class PlantRepository extends ServiceEntityRepository
         return $plant;
     }
 
+    public function updatePlant(Plant $plant, $newData): Plant{
+
+        $plant->setName($newData['name']);
+        $plant->setSpecies($newData['species']);
+        $plant->setInfo($newData['info']);
+
+        $this->_em->persist($plant);
+        $this->_em->flush();
+
+        return $plant;
+    }
+
     // /**
     //  * @return Plant[] Returns an array of Plant objects
     //  */

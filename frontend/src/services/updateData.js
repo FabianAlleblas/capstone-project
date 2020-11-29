@@ -1,6 +1,6 @@
 const baseUrl = 'http://urbanplants.local/plant'
 
-export default async function postData({ data, id }) {
+export default async function postData(data, id) {
   const myHeaders = new Headers()
   myHeaders.append('Content-Type', 'application/json')
   const copy = Object.assign({}, data)

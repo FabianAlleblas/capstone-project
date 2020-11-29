@@ -6,7 +6,7 @@ import DetailPage from './Pages/DetailPage/DetailPage'
 import PlantListPage from './Pages/Plantlistpage/PlantListPage'
 
 function App() {
-  const { plantList, savePlantData } = usePlantList()
+  const { plantList, savePlantData, updatePlantData } = usePlantList()
 
   if (!plantList) {
     return <div>loading...</div>
@@ -24,7 +24,7 @@ function App() {
         <AddPage savePlantData={savePlantData} />
       </Route>
       <Route path="/edit">
-        <EditPage savePlantData={savePlantData} plantList={plantList} />
+        <EditPage updatePlantData={updatePlantData} plantList={plantList} />
       </Route>
     </Switch>
   )

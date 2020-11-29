@@ -2,12 +2,15 @@ import styled from 'styled-components/macro'
 import EditPlantForm from '../../Components/Forms/EditPlantForm'
 import Header from '../../Components/Header/Header'
 
-export default function EditPage({ savePlantData, plantList }) {
+export default function EditPage({ updatePlantData, plantList }) {
   return (
     <>
       <FixedHeader secondaryStyle>Edit Your Plant</FixedHeader>
       <FormContainer>
-        <EditPlantForm savePlantData={savePlantData} plantList={plantList} />
+        <EditPlantForm
+          updatePlantData={updatePlantData}
+          plantList={plantList}
+        />
       </FormContainer>
     </>
   )

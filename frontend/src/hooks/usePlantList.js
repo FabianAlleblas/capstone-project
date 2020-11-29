@@ -22,11 +22,16 @@ export default function usePlantList() {
     )
   }
 
-  function updatePlantData({ formData, plantId }) {
-    updateData({ formData, plantId }).then((responseData) =>
+  function updatePlantData(formData, plantId) {
+    const index = plantList.findIndex((plant) => plant.id === plantId)
+    updateData(formData, plantId).then((responseData) =>
       responseData.error
         ? alert(responseData.error)
-        : setPlantList([...plantList, responseData])
+        : setPlantList([
+            ...plantList.slice(0, index),
+            responseData,
+            ...plantList.slice(index + 1),
+          ])
     )
   }
 }

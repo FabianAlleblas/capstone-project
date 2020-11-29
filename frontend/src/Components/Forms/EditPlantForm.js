@@ -4,9 +4,9 @@ import styled from 'styled-components/macro'
 import useForm from '../../hooks/useForm'
 import FormButton from '../Buttons/FormButton'
 
-export default function EditPlantForm({ savePlantData, plantList }) {
+export default function EditPlantForm({ updatePlantData, plantList }) {
   EditPlantForm.propTypes = {
-    savePlantData: PropTypes.func,
+    updatePlantData: PropTypes.func,
   }
 
   const query = useQuery()
@@ -71,7 +71,7 @@ export default function EditPlantForm({ savePlantData, plantList }) {
 
   function handleSubmit(e) {
     e.preventDefault()
-    savePlantData(formData)
+    updatePlantData(formData, plantId)
     e.target.reset()
     history.push(`/plant?id=${plantId}`)
   }

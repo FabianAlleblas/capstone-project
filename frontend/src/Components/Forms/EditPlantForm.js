@@ -1,25 +1,17 @@
 import PropTypes from 'prop-types'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import useForm from '../../hooks/useForm'
 import FormButton from '../Buttons/FormButton'
 
-export default function EditPlantForm({ updatePlantData, plantList }) {
+export default function EditPlantForm({ updatePlantData, plant }) {
   EditPlantForm.propTypes = {
     updatePlantData: PropTypes.func.isRequired,
-    plantList: PropTypes.array.isRequired,
+    plant: PropTypes.object.isRequired,
   }
 
-  const query = useQuery()
   const history = useHistory()
-  const plantId = parseInt(query.get('id'))
-  const plant = plantList.find((plant) => plant.id === plantId ?? false)
-
   const { handleInputChange, formData } = useForm(plant)
-
-  if (!plant) {
-    return <div>Plant not found!</div>
-  }
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -65,19 +57,15 @@ export default function EditPlantForm({ updatePlantData, plantList }) {
     </Form>
   )
 
-  function useQuery() {
-    return new URLSearchParams(useLocation().search)
-  }
-
   function handleSubmit(e) {
     e.preventDefault()
-    updatePlantData(formData, plantId)
+    updatePlantData(formData, plant.id)
     e.target.reset()
-    history.push(`/plant?id=${plantId}`)
+    history.push(`/plant?id=${plant.id}`)
   }
 
   function handleCancel() {
-    history.push(`/plant?id=${plantId}`)
+    history.push(`/plant?id=${plant.id}`)
   }
 }
 

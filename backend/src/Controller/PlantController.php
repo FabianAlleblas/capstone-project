@@ -51,9 +51,7 @@ class PlantController extends AbstractController {
      */
     public function updatePlant($id, SerializerInterface $serializer, PlantRepository $plantRepository, Request $request, ValidatorInterface $validator): JsonResponse {
         $plant = $plantRepository->findOneBy(array('id' => $id));
-        
         $newData = $serializer->deserialize($request->getContent(), Plant::class, 'json');
-
         $validationResult = $validator->validate($newData);
         if ($validationResult->count() !== 0) {
             return new JsonResponse(
@@ -61,10 +59,8 @@ class PlantController extends AbstractController {
                 JsonResponse::HTTP_BAD_REQUEST
             );
         }
-
         $validatedData = json_decode($serializer->serialize($newData, 'json'), true);
         $plantRepository->updatePlant($plant, $validatedData);
-
         return new JsonResponse(
             $serializer->serialize($plant, 'json'),
             JsonResponse::HTTP_OK,

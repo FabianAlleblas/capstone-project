@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import { render } from 'react-dom'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import useForm from '../../hooks/useForm'

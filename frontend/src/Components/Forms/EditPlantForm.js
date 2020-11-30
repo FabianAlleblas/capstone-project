@@ -48,11 +48,11 @@ export default function EditPlantForm({ updatePlantData, plant }) {
         />
       </Label>
       <ButtonWrapper>
-        <FormButton>Update</FormButton>
+        <FormButtonStyled>Update Plant</FormButtonStyled>
         <FormButton onClick={handleCancel} secondaryStyle>
           Cancel
         </FormButton>
-        <p>* required</p>
+        <FormButton secondaryStyle>Delete</FormButton>
       </ButtonWrapper>
     </Form>
   )
@@ -111,4 +111,8 @@ const ButtonWrapper = styled.div`
     font-size: 0.75rem;
     font-weight: 400;
   }
+`
+
+const FormButtonStyled = styled(FormButton)`
+  grid-column: 1/3;
 `

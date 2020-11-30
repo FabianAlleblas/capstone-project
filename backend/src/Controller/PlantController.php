@@ -29,7 +29,7 @@ class PlantController extends AbstractController {
     public function createPlant(Request $request, PlantRepository $plantRepository, SerializerInterface $serializer, ValidatorInterface $validator): JsonResponse {
         $plant = $serializer->deserialize($request->getContent(), Plant::class, 'json');
         $validationResult = $validator->validate($plant);
-        
+
         if ($validationResult->count() !== 0) {
             return new JsonResponse(
                 ["error" => "Plant data invalid."],
@@ -51,7 +51,7 @@ class PlantController extends AbstractController {
         
         if ($plant === null) {
             return new JsonResponse(
-                ["error" => "Plant Id not found."],
+                ["error" => "Plant ID not found."],
                 JsonResponse::HTTP_BAD_REQUEST
             );
         }
@@ -76,13 +76,16 @@ class PlantController extends AbstractController {
 
         if ($plant === null) {
             return new JsonResponse(
-                ["error" => "Plant Id not found."],
+                ["error" => "Plant ID not found."],
                 JsonResponse::HTTP_BAD_REQUEST
             );
         }
 
         $plantRepository->deletePlant($plant);
-        return new JsonResponse(["Status" => "Item deleted"]);
+            return new JsonResponse(
+                ["Status" => "Item deleted"],
+                JsonResponse::HTTP_OK
+        );
     }
 
     private function jsonResponse($data, $serializer): JsonResponse {

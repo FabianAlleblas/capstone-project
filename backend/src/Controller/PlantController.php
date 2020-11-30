@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use App\Entity\Plant;
 use App\Repository\PlantRepository;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -42,9 +43,13 @@ class PlantController extends AbstractController {
      * @Route("/plant/{id}", methods={"PUT"})
      */
     public function updatePlant($id, SerializerInterface $serializer, PlantRepository $plantRepository, Request $request, ValidatorInterface $validator): JsonResponse {
+        
         $plant = $plantRepository->findOneBy(array('id' => $id));
-        $newData = $serializer->deserialize($request->getContent(), Plant::class, 'json');
-        $validationResult = $validator->validate($newData);
+        $newPlantData = $request->getContent();
+        
+        $serializer->deserialize($newPlantData, Plant::class, 'json', [AbstractNormalizer::OBJECT_TO_POPULATE => $plant]);
+        
+        $validationResult = $validator->validate($plant);
         if ($validationResult->count() !== 0) {
             return new JsonResponse(
                 ["error" => "Plant data invalid."],
@@ -52,9 +57,7 @@ class PlantController extends AbstractController {
             );
         }
 
-        $validatedData = json_decode($serializer->serialize($newData, 'json'), true);
-        
-        $plantRepository->updatePlant($plant, $validatedData);
+        $plantRepository->savePlant($plant);
         return $this->jsonResponse($plant, $serializer);
     }
 

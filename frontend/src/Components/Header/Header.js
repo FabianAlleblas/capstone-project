@@ -1,33 +1,41 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import { ReactComponent as ArrowIcon } from '../../assets/icons/arrowicon.svg'
+import { ReactComponent as EditIcon } from '../../assets/icons/editicon.svg'
 
 export default function Header({
   className,
   children,
   secondaryStyle,
-  hasArrow,
-  onClick,
+  isDetailPage,
+  onClickArrow,
+  onClickEdit,
 }) {
   Header.propTypes = {
     className: PropTypes.string,
     children: PropTypes.string.isRequired,
     secondaryStyle: PropTypes.bool,
-    hasArrow: PropTypes.bool,
-    onClick: PropTypes.func,
+    isDetailPage: PropTypes.bool,
+    onClickArrow: PropTypes.func,
+    onClickEdit: PropTypes.func,
   }
 
   return (
     <HeaderStyled className={className}>
       <HeadingContainer secondaryStyle={secondaryStyle}>
-        {hasArrow && <ArrowIcon onClick={onClick} />}
+        {isDetailPage && <ArrowIcon onClick={onClickArrow} />}
         <Heading>{children}</Heading>
       </HeadingContainer>
+      {isDetailPage && <EditIconStyled onClick={onClickEdit} />}
     </HeaderStyled>
   )
 }
 
-const HeaderStyled = styled.header``
+const HeaderStyled = styled.header`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+`
 
 const HeadingContainer = styled.div`
   align-items: baseline;
@@ -48,4 +56,7 @@ const Heading = styled.h1`
   font-size: 1.75rem;
   font-weight: 700;
   line-height: 1;
+`
+const EditIconStyled = styled(EditIcon)`
+  margin: 14px 14px 0 0;
 `

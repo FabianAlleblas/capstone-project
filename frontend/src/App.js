@@ -1,11 +1,16 @@
 import { Route, Switch } from 'react-router-dom'
 import usePlantList from './hooks/usePlantList'
 import AddPage from './Pages/Addpage/AddPage'
+import EditPage from './Pages/Editpage/EditPage'
 import DetailPage from './Pages/DetailPage/DetailPage'
 import PlantListPage from './Pages/Plantlistpage/PlantListPage'
 
 function App() {
-  const { plantList, savePlantData } = usePlantList()
+  const { plantList, savePlantData, updatePlantData } = usePlantList()
+
+  if (!plantList) {
+    return <div>loading...</div>
+  }
 
   return (
     <Switch>
@@ -17,6 +22,9 @@ function App() {
       </Route>
       <Route path="/addplant">
         <AddPage savePlantData={savePlantData} />
+      </Route>
+      <Route path="/edit">
+        <EditPage updatePlantData={updatePlantData} plantList={plantList} />
       </Route>
     </Switch>
   )

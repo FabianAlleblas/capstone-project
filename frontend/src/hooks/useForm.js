@@ -1,13 +1,13 @@
 import { useState } from 'react'
 
-export default function useForm() {
-  const [formData, setFormData] = useState()
+export default function useForm(initialData) {
+  const [formData, setFormData] = useState(initialData ?? {})
 
   return { handleInputChange, formData }
 
-  function handleInputChange(e) {
-    const fieldName = e.target.name
-    const fieldValue = e.target.value
+  function handleInputChange(event) {
+    const fieldName = event.target.name
+    const fieldValue = event.target.value
     setFormData({ ...formData, [fieldName]: fieldValue })
   }
 }

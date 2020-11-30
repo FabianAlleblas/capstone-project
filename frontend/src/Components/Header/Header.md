@@ -10,10 +10,10 @@ Header: Secondary
 <Header secondaryStyle>Add Plant</Header>
 ```
 
-Header: hasArrow
+Header: isDetailPage
 
 ```js
-<Header hasArrow onClick={() => {}}>
+<Header isDetailPage onClickArrow={() => {}} onClickEdit={() => {}}>
   Helga
 </Header>
 ```

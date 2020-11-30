@@ -1,7 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PlantListPage renders correctly 1`] = `
-.c1 {
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c2 {
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
@@ -16,31 +28,31 @@ exports[`PlantListPage renders correctly 1`] = `
   padding: 20px 30px 13px 20px;
 }
 
-.c1 svg {
+.c2 svg {
   margin-right: 12px;
 }
 
-.c2 {
+.c3 {
   color: var(--primary-light);
   font-size: 1.75rem;
   font-weight: 700;
   line-height: 1;
 }
 
-.c0 {
+.c1 {
   left: 0;
   position: fixed;
   top: 0;
 }
 
 <header
-  class="Header__HeaderStyled-sc-1kdjcf7-0 c0"
+  class="c0 c1"
 >
   <div
-    class="c1"
+    class="c2"
   >
     <h1
-      class="c2"
+      class="c3"
     >
       My Plants
     </h1>

@@ -1,10 +1,10 @@
 const baseUrl = 'http://urbanplants.local/plant'
 
-export default async function getData() {
+export default async function getPlants() {
   try {
     const response = await fetch(baseUrl)
-    const data = response.json()
-    return data
+    const data = await response.json()
+    return await data
   } catch (error) {
     return { error: 'The server is down! :(' }
   }

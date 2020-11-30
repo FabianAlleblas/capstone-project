@@ -7,11 +7,19 @@ export default function DetailPage({ plantList }) {
   const history = useHistory()
   const query = useQuery()
   const plantId = parseInt(query.get('id'))
-  const plant = plantList.find((plant) => plant.id === plantId)
+  const plant = plantList.find((plant) => plant.id === plantId ?? false)
+
+  if (!plant) {
+    return <div>Plant not found!</div>
+  }
 
   return (
     <>
-      <FixedHeader hasArrow onClick={openPlantList}>
+      <FixedHeader
+        isDetailPage
+        onClickArrow={openPlantList}
+        onClickEdit={openEditPage}
+      >
         {plant?.name}
       </FixedHeader>
       <CardContainer>
@@ -26,6 +34,10 @@ export default function DetailPage({ plantList }) {
 
   function openPlantList() {
     history.push('/')
+  }
+
+  function openEditPage() {
+    history.push(`/edit?id=${plant.id}`)
   }
 }
 

@@ -4,13 +4,14 @@ import styled from 'styled-components/macro'
 import useForm from '../../hooks/useForm'
 import FormButton from '../Buttons/FormButton'
 
-export default function AddPlantForm({ savePlantData }) {
-  AddPlantForm.propTypes = {
-    savePlantData: PropTypes.func.isRequired,
+export default function EditPlantForm({ updatePlantData, plant }) {
+  EditPlantForm.propTypes = {
+    updatePlantData: PropTypes.func.isRequired,
+    plant: PropTypes.object.isRequired,
   }
 
   const history = useHistory()
-  const { handleInputChange, formData } = useForm()
+  const { handleInputChange, formData } = useForm(plant)
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -19,10 +20,10 @@ export default function AddPlantForm({ savePlantData }) {
         <Input
           name="name"
           type="text"
-          placeholder="Bob"
           maxLength="28"
           onChange={handleInputChange}
           required
+          value={formData?.name}
         />
       </Label>
       <Label>
@@ -30,10 +31,10 @@ export default function AddPlantForm({ savePlantData }) {
         <Input
           name="species"
           type="text"
-          placeholder="Monstera deliciosa"
           maxLength="28"
           onChange={handleInputChange}
           required
+          value={formData?.species}
         />
       </Label>
       <Label>
@@ -41,13 +42,13 @@ export default function AddPlantForm({ savePlantData }) {
         <Input
           name="info"
           type="text"
-          placeholder="variegated"
           maxLength="28"
           onChange={handleInputChange}
+          value={formData?.info}
         />
       </Label>
       <ButtonWrapper>
-        <FormButton>Add Plant</FormButton>
+        <FormButton>Update</FormButton>
         <FormButton onClick={handleCancel} secondaryStyle>
           Cancel
         </FormButton>
@@ -58,13 +59,13 @@ export default function AddPlantForm({ savePlantData }) {
 
   function handleSubmit(event) {
     event.preventDefault()
-    savePlantData(formData)
+    updatePlantData(formData, plant.id)
     event.target.reset()
-    history.push('/')
+    history.push(`/plant?id=${plant.id}`)
   }
 
   function handleCancel() {
-    history.push('/')
+    history.push(`/plant?id=${plant.id}`)
   }
 }
 

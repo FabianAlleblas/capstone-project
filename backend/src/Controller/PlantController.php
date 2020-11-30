@@ -13,17 +13,13 @@ use App\Repository\PlantRepository;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class PlantController extends AbstractController {
+
     /**
      * @Route("/plant", methods={"GET"})
      */
     public function getPlant(SerializerInterface $serializer, PlantRepository $plantRepository): JsonResponse {
         $plants = $plantRepository->findAll();
-        return new JsonResponse(
-            $serializer->serialize($plants, 'json', [AbstractObjectNormalizer::SKIP_NULL_VALUES => true]),
-            JsonResponse::HTTP_OK,
-            [],
-            true
-        );
+        return $this->jsonResponse($plants, $serializer);
     }
 
     /**
@@ -39,12 +35,7 @@ class PlantController extends AbstractController {
             );
         }
         $plantRepository->savePlant($plant);
-        return new JsonResponse(
-            $serializer->serialize($plant, 'json', [AbstractObjectNormalizer::SKIP_NULL_VALUES => true]),
-            JsonResponse::HTTP_OK,
-            [],
-            true
-        );
+        return $this->jsonResponse($plant, $serializer);
     }
 
     /**
@@ -52,7 +43,7 @@ class PlantController extends AbstractController {
      */
     public function updatePlant($id, SerializerInterface $serializer, PlantRepository $plantRepository, Request $request, ValidatorInterface $validator): JsonResponse {
         $plant = $plantRepository->findOneBy(array('id' => $id));
-        $newData = $serializer->deserialize($request->getContent(), Plant::class, 'json',[AbstractObjectNormalizer::SKIP_NULL_VALUES => true]);
+        $newData = $serializer->deserialize($request->getContent(), Plant::class, 'json');
         $validationResult = $validator->validate($newData);
         if ($validationResult->count() !== 0) {
             return new JsonResponse(
@@ -64,10 +55,15 @@ class PlantController extends AbstractController {
         $validatedData = json_decode($serializer->serialize($newData, 'json'), true);
         
         $plantRepository->updatePlant($plant, $validatedData);
+        return $this->jsonResponse($plant, $serializer);
+     }
+
+    private function jsonResponse($data, $serializer): JsonResponse {
         return new JsonResponse(
-            $serializer->serialize($plant, 'json', [AbstractObjectNormalizer::SKIP_NULL_VALUES => true]),
+            $serializer->serialize($data, 'json', [AbstractObjectNormalizer::SKIP_NULL_VALUES => true]),
             JsonResponse::HTTP_OK,
             [],
-            true);
-     }
+            true
+        );
+    }
 }

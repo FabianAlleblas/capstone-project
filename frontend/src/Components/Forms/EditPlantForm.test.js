@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import AddPlantForm from './AddPlantForm'
+import plants from '../../data/plants.json'
+import EditPlantForm from './EditPlantForm'
 
 const mockHistoryPush = jest.fn()
 
@@ -10,34 +11,28 @@ jest.mock('react-router-dom', () => ({
     push: mockHistoryPush,
   }),
 }))
+
 const onSubmitMock = jest.fn()
 
+const plant = plants[0]
+
 describe('AddPlantForm', () => {
-  it('Calls onSubmit with correct data and resets form', () => {
-    const { getByLabelText, getByText } = render(
-      <AddPlantForm savePlantData={onSubmitMock} />
+  it('Is renders with the correct input values', () => {
+    const { getByLabelText } = render(
+      <EditPlantForm updatePlantData={onSubmitMock} plant={plant} />
     )
 
-    user.type(getByLabelText('Your plants name*:'), 'Bob')
-    user.type(getByLabelText('The species of your plant*:'), 'Monstera')
-    user.type(getByLabelText('Special infos:'), 'variegated')
-
-    user.click(getByText('Add Plant'))
-
-    expect(onSubmitMock).toHaveBeenCalledWith({
-      name: 'Bob',
-      species: 'Monstera',
-      info: 'variegated',
-    })
-
-    expect(mockHistoryPush).toHaveBeenCalled()
-
-    expect(getByLabelText('Your plants name*:')).toHaveValue('')
-    expect(getByLabelText('The species of your plant*:')).toHaveValue('')
-    expect(getByLabelText('Special infos:')).toHaveValue('')
+    expect(getByLabelText('Your plants name*:')).toHaveValue(plant.name)
+    expect(getByLabelText('The species of your plant*:')).toHaveValue(
+      plant.species
+    )
+    expect(getByLabelText('Special infos:')).toHaveValue(plant.info)
   })
+
   it('Calls history.push by clicking the cancel button', () => {
-    const { getByText } = render(<AddPlantForm savePlantData={onSubmitMock} />)
+    const { getByText } = render(
+      <EditPlantForm updatePlantData={onSubmitMock} plant={plant} />
+    )
 
     user.click(getByText('Cancel'))
 

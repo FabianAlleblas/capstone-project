@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
-import getData from '../services/getData'
-import postData from '../services/postData'
-import updateData from '../services/updateData'
+import getPlants from '../services/getPlants'
+import postPlant from '../services/postPlant'
+import updatePlant from '../services/updatePlant'
 
 export default function usePlantList() {
   const [plantList, setPlantList] = useState(false)
 
   useEffect(() => {
-    getData().then((data) =>
+    getPlants().then((data) =>
       data.error ? alert(data.error) : setPlantList(data)
     )
   }, [])
@@ -15,7 +15,7 @@ export default function usePlantList() {
   return { plantList, savePlantData, updatePlantData }
 
   function savePlantData(formData) {
-    postData(formData).then((responseData) =>
+    postPlant(formData).then((responseData) =>
       responseData.error
         ? alert(responseData.error)
         : setPlantList([...plantList, responseData])
@@ -24,7 +24,7 @@ export default function usePlantList() {
 
   function updatePlantData(formData, plantId) {
     const index = plantList.findIndex((plant) => plant.id === plantId)
-    updateData(formData, plantId).then((responseData) =>
+    updatePlant(formData, plantId).then((responseData) =>
       responseData.error
         ? alert(responseData.error)
         : setPlantList([

@@ -1,6 +1,6 @@
 const baseUrl = 'http://urbanplants.local/plant'
 
-export default async function getData() {
+export default async function getPlants() {
   try {
     const response = await fetch(baseUrl)
     const data = await response.json()

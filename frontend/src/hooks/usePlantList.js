@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import getPlants from '../services/getPlants'
 import postPlant from '../services/postPlant'
 import updatePlant from '../services/updatePlant'
+import deletePlant from '../services/deletePlant'
 
 export default function usePlantList() {
   const [plantList, setPlantList] = useState(false)
@@ -12,7 +13,7 @@ export default function usePlantList() {
     )
   }, [])
 
-  return { plantList, savePlantData, updatePlantData }
+  return { plantList, savePlantData, updatePlantData, deletePlantData }
 
   function savePlantData(formData) {
     postPlant(formData).then((responseData) =>
@@ -32,6 +33,14 @@ export default function usePlantList() {
             responseData,
             ...plantList.slice(index + 1),
           ])
+    )
+  }
+
+  function deletePlantData(plantId) {
+    deletePlant(plantId).then((responseData) =>
+      responseData.error
+        ? alert(responseData.error)
+        : setPlantList([...plantList.filter((plant) => plant.id !== plantId)])
     )
   }
 }

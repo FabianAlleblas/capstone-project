@@ -1,12 +1,18 @@
 import PropTypes from 'prop-types'
+import { render } from 'react-dom'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import useForm from '../../hooks/useForm'
 import FormButton from '../Buttons/FormButton'
 
-export default function EditPlantForm({ updatePlantData, plant }) {
+export default function EditPlantForm({
+  updatePlantData,
+  deletePlantData,
+  plant,
+}) {
   EditPlantForm.propTypes = {
     updatePlantData: PropTypes.func.isRequired,
+    deletePlantData: PropTypes.func.isRequired,
     plant: PropTypes.object.isRequired,
   }
 
@@ -52,7 +58,9 @@ export default function EditPlantForm({ updatePlantData, plant }) {
         <FormButton onClick={handleCancel} secondaryStyle>
           Cancel
         </FormButton>
-        <FormButton secondaryStyle>Delete</FormButton>
+        <FormButton onClick={handleDelete} secondaryStyle>
+          Delete
+        </FormButton>
       </ButtonWrapper>
     </Form>
   )
@@ -66,6 +74,11 @@ export default function EditPlantForm({ updatePlantData, plant }) {
 
   function handleCancel() {
     history.push(`/plant?id=${plant.id}`)
+  }
+
+  function handleDelete() {
+    deletePlantData(plant.id)
+    history.push('/')
   }
 }
 

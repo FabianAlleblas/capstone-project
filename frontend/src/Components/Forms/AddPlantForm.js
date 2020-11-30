@@ -56,10 +56,10 @@ export default function AddPlantForm({ savePlantData }) {
     </Form>
   )
 
-  function handleSubmit(e) {
-    e.preventDefault()
+  function handleSubmit(event) {
+    event.preventDefault()
     savePlantData(formData)
-    e.target.reset()
+    event.target.reset()
     history.push('/')
   }
 

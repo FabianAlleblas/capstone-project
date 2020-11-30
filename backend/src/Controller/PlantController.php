@@ -56,7 +56,7 @@ class PlantController extends AbstractController {
         
         $plantRepository->updatePlant($plant, $validatedData);
         return $this->jsonResponse($plant, $serializer);
-     }
+    }
 
     private function jsonResponse($data, $serializer): JsonResponse {
         return new JsonResponse(

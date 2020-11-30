@@ -57,10 +57,10 @@ export default function EditPlantForm({ updatePlantData, plant }) {
     </Form>
   )
 
-  function handleSubmit(e) {
-    e.preventDefault()
+  function handleSubmit(event) {
+    event.preventDefault()
     updatePlantData(formData, plant.id)
-    e.target.reset()
+    event.target.reset()
     history.push(`/plant?id=${plant.id}`)
   }
 

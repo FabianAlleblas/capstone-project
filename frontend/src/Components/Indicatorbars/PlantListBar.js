@@ -38,26 +38,24 @@ const Bar = styled.div`
   width: 100%;
 `
 
-const WaterIndicator = styled.div`
-  background-color: ${(props) =>
-    props.daysLeft < 2 ? 'var(--warning-color)' : 'var(--bar-water-color)'};
+const Indicator = styled.div`
   border-radius: 3px;
   height: 6px;
   min-width: 5px;
   position: absolute;
   top: -2px;
+`
+
+const WaterIndicator = styled(Indicator)`
+  background-color: ${(props) =>
+    props.daysLeft < 2 ? 'var(--warning-color)' : 'var(--bar-water-color)'};
   width: ${(props) => (100 / 10) * props.daysLeft}%;
 `
 
-const FertilizerIndicator = styled.div`
+const FertilizerIndicator = styled(Indicator)`
   background-color: ${(props) =>
     props.weeksLeft < 2
       ? 'var(--warning-color)'
       : 'var(--bar-fertilizer-color)'};
-  border-radius: 3px;
-  height: 6px;
-  min-width: 5px;
-  position: absolute;
-  top: -2px;
   width: ${(props) => (100 / 4) * props.weeksLeft}%;
 `

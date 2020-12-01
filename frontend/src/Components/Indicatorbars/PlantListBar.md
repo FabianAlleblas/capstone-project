@@ -1,3 +1,5 @@
+PlantDetailBar: normal
+
 ```js
 <PlantListBar waterDays={3} fertilizerWeeks={2} />
 ```

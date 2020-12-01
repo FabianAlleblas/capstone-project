@@ -35,11 +35,6 @@ const BarWrapper = styled.div`
   gap: 8px;
 `
 
-const Text = styled.p`
-  color: var(--secondary-plant-font-color);
-  font-size: 1rem;
-`
-
 const Bar = styled.div`
   background-color: var(--bar-bg-color);
   border-radius: 2px;
@@ -48,26 +43,29 @@ const Bar = styled.div`
   width: 100%;
 `
 
-const WaterIndicator = styled.div`
-  background-color: ${(props) =>
-    props.daysLeft < 2 ? 'var(--warning-color)' : 'var(--bar-water-color)'};
+const Indicator = styled.div`
   border-radius: 4px;
   height: 8px;
   min-width: 10px;
   position: absolute;
   top: -2px;
+`
+
+const WaterIndicator = styled(Indicator)`
+  background-color: ${(props) =>
+    props.daysLeft < 2 ? 'var(--warning-color)' : 'var(--bar-water-color)'};
   width: ${(props) => (100 / 10) * props.daysLeft}%;
 `
 
-const FertilizerIndicator = styled.div`
+const FertilizerIndicator = styled(Indicator)`
   background-color: ${(props) =>
     props.weeksLeft < 2
       ? 'var(--warning-color)'
       : 'var(--bar-fertilizer-color)'};
-  border-radius: 4px;
-  height: 8px;
-  min-width: 10px;
-  position: absolute;
-  top: -2px;
   width: ${(props) => (100 / 4) * props.weeksLeft}%;
+`
+
+const Text = styled.p`
+  color: var(--secondary-plant-font-color);
+  font-size: 1rem;
 `

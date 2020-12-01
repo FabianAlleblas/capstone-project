@@ -8,6 +8,6 @@ FormButton: Secondary
 
 ```js
 <FormButton secondaryStyle onClick={() => {}}>
-  Chancel
+  Cancel
 </FormButton>
 ```

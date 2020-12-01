@@ -26,7 +26,7 @@ export default function PlantListPage({ plantList }) {
   function openAddForm() {
     history.push('/addplant')
   }
-  function openDetailPage({ id }) {
+  function openDetailPage(id) {
     history.push(`/plant?id=${id}`)
   }
 }

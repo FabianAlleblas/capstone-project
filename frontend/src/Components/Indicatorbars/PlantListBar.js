@@ -29,6 +29,7 @@ const Container = styled.div`
   grid-template-columns: 15px auto;
   place-items: center;
   width: 100%;
+  padding: 10px 0 0;
 `
 
 const Bar = styled.div`

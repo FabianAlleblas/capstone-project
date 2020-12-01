@@ -26,7 +26,7 @@ class PlantController extends AbstractController {
             $plants = $plantRepository->findAll();
 
             foreach ($plants as $plant){
-            $plantRepository->convertDate($plant);
+            $plantRepository->setTimeLeft($plant);
             }
         
             return $this->jsonResponse($plants, $serializer);

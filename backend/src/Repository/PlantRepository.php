@@ -30,7 +30,7 @@ class PlantRepository extends ServiceEntityRepository
         $this->_em->flush();
     }
 
-    public function convertDate(Plant $plant): Plant {
+    public function setTimeLeft(Plant $plant): Plant {
         $today = new \Datetime();
 
         $lastWatered = $plant->getLastWatered();

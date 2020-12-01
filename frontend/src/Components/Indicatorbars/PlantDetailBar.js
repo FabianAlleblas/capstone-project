@@ -1,25 +1,25 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-export default function PlantDetailBar({ waterDays, fertilizerWeeks }) {
+export default function PlantDetailBar({ daysLeft, weeksLeft }) {
   PlantDetailBar.propTypes = {
-    waterDays: PropTypes.number.isRequired,
-    fertilizerWeeks: PropTypes.number.isRequired,
+    daysLeft: PropTypes.number.isRequired,
+    weeksLeft: PropTypes.number.isRequired,
   }
 
   return (
     <Container>
       <BarWrapper>
         <Bar>
-          <WaterIndicator daysLeft={waterDays} />
+          <WaterIndicator daysLeft={daysLeft} />
         </Bar>
-        <Text>Water {waterDays}/10 days left</Text>
+        <Text>Water {daysLeft}/10 days left</Text>
       </BarWrapper>
       <BarWrapper>
         <Bar>
-          <FertilizerIndicator weeksLeft={fertilizerWeeks} />
+          <FertilizerIndicator weeksLeft={weeksLeft} />
         </Bar>
-        <Text>Fertilizer {fertilizerWeeks}/4 weeks left</Text>
+        <Text>Fertilizer {weeksLeft}/4 weeks left</Text>
       </BarWrapper>
     </Container>
   )
@@ -28,11 +28,13 @@ export default function PlantDetailBar({ waterDays, fertilizerWeeks }) {
 const Container = styled.div`
   display: grid;
   gap: 20px;
+  width: 100%;
+  padding: 10px 0 0;
 `
 
 const BarWrapper = styled.div`
   display: grid;
-  gap: 8px;
+  gap: 10px;
 `
 
 const Text = styled.p`

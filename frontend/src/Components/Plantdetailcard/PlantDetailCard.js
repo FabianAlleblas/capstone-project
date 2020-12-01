@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import monsteraImage from '../../assets/plant-images/3.jpg'
+import PlantDetailBar from '../Indicatorbars/PlantDetailBar'
 
 export default function PlantDetailCard({ plant, className }) {
   PlantDetailCard.propTypes = {
@@ -14,13 +15,14 @@ export default function PlantDetailCard({ plant, className }) {
         <PlantName>{plant.species}</PlantName>
         <PlantInfo>{plant.info}</PlantInfo>
       </TextContainer>
+      <PlantDetailBar daysLeft={plant.daysLeft} weeksLeft={plant.weeksLeft} />
     </CardWrapper>
   )
 }
 
 const CardWrapper = styled.section`
   display: grid;
-  gap: 40px;
+  gap: 30px;
   place-items: center;
 `
 

@@ -20,6 +20,11 @@ class PlantController extends AbstractController {
      */
     public function getPlant(SerializerInterface $serializer, PlantRepository $plantRepository): JsonResponse {
         $plants = $plantRepository->findAll();
+
+        foreach ($plants as $plant){
+            $plantRepository->convertDate($plant);
+        }
+        
         return $this->jsonResponse($plants, $serializer);
     }
 
@@ -36,6 +41,9 @@ class PlantController extends AbstractController {
                 JsonResponse::HTTP_BAD_REQUEST
             );
         }
+
+        $plant->setLastWatered(new \Datetime());
+        $plant->setLastFertilized(new \Datetime());
 
         $plantRepository->savePlant($plant);
         return $this->jsonResponse($plant, $serializer);
@@ -90,7 +98,12 @@ class PlantController extends AbstractController {
 
     private function jsonResponse($data, $serializer): JsonResponse {
         return new JsonResponse(
-            $serializer->serialize($data, 'json', [AbstractObjectNormalizer::SKIP_NULL_VALUES => true]),
+            $serializer->serialize($data, 'json', 
+                [
+                    AbstractObjectNormalizer::SKIP_NULL_VALUES => true,
+                    AbstractNormalizer::IGNORED_ATTRIBUTES => ['lastWatered', 'lastFertilized']
+                ]
+            ),
             JsonResponse::HTTP_OK,
             [],
             true

@@ -23,7 +23,7 @@ export default function DetailPage({ plantList }) {
         {plant?.name}
       </FixedHeader>
       <CardContainer>
-        <PlantDetailCard species={plant?.species} info={plant?.info} />
+        <PlantDetailCard plant={plant} />
       </CardContainer>
     </>
   )

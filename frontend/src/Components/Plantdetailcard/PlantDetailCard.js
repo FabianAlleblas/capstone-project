@@ -2,18 +2,17 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import monsteraImage from '../../assets/plant-images/3.jpg'
 
-export default function PlantDetailCard({ species, info, className }) {
+export default function PlantDetailCard({ plant, className }) {
   PlantDetailCard.propTypes = {
-    species: PropTypes.string.isRequired,
-    info: PropTypes.string,
+    plant: PropTypes.object.isRequired,
     className: PropTypes.string,
   }
   return (
     <CardWrapper className={className}>
       <ImageFrame src={monsteraImage} />
       <TextContainer>
-        <PlantName>{species}</PlantName>
-        <PlantInfo>{info}</PlantInfo>
+        <PlantName>{plant.species}</PlantName>
+        <PlantInfo>{plant.info}</PlantInfo>
       </TextContainer>
     </CardWrapper>
   )

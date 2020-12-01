@@ -1,3 +1,5 @@
 ```js
-<PlantDetailCard species={'Monstera deliciosa'} info={'variegated'} />
+<PlantDetailCard
+  plant={{ species: 'Monstera deliciosa', info: 'variegated' }}
+/>
 ```

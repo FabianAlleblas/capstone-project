@@ -4,9 +4,14 @@ import styled from 'styled-components/macro'
 import useForm from '../../hooks/useForm'
 import FormButton from '../Buttons/FormButton'
 
-export default function EditPlantForm({ updatePlantData, plant }) {
+export default function EditPlantForm({
+  updatePlantData,
+  deletePlantData,
+  plant,
+}) {
   EditPlantForm.propTypes = {
     updatePlantData: PropTypes.func.isRequired,
+    deletePlantData: PropTypes.func.isRequired,
     plant: PropTypes.object.isRequired,
   }
 
@@ -48,11 +53,13 @@ export default function EditPlantForm({ updatePlantData, plant }) {
         />
       </Label>
       <ButtonWrapper>
-        <FormButton>Update</FormButton>
+        <FormButtonStyled>Update Plant</FormButtonStyled>
         <FormButton onClick={handleCancel} secondaryStyle>
           Cancel
         </FormButton>
-        <p>* required</p>
+        <FormButton onClick={handleDelete} secondaryStyle>
+          Delete
+        </FormButton>
       </ButtonWrapper>
     </Form>
   )
@@ -66,6 +73,11 @@ export default function EditPlantForm({ updatePlantData, plant }) {
 
   function handleCancel() {
     history.push(`/plant?id=${plant.id}`)
+  }
+
+  function handleDelete() {
+    deletePlantData(plant.id)
+    history.push('/')
   }
 }
 
@@ -111,4 +123,8 @@ const ButtonWrapper = styled.div`
     font-size: 0.75rem;
     font-weight: 400;
   }
+`
+
+const FormButtonStyled = styled(FormButton)`
+  grid-column: 1/3;
 `

@@ -25,6 +25,11 @@ class PlantRepository extends ServiceEntityRepository
         return $plant;
     }
 
+    public function deletePlant(Plant $plant): void {
+        $this->_em->remove($plant);
+        $this->_em->flush();
+    }
+
     // /**
     //  * @return Plant[] Returns an array of Plant objects
     //  */

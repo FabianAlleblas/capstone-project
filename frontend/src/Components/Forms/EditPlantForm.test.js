@@ -13,13 +13,18 @@ jest.mock('react-router-dom', () => ({
 }))
 
 const onSubmitMock = jest.fn()
+const onDeleteMock = jest.fn()
 
 const plant = plants[0]
 
 describe('AddPlantForm', () => {
   it('Is renders with the correct input values', () => {
     const { getByLabelText } = render(
-      <EditPlantForm updatePlantData={onSubmitMock} plant={plant} />
+      <EditPlantForm
+        updatePlantData={onSubmitMock}
+        deletePlantData={onDeleteMock}
+        plant={plant}
+      />
     )
 
     expect(getByLabelText('Your plants name*:')).toHaveValue(plant.name)
@@ -31,11 +36,30 @@ describe('AddPlantForm', () => {
 
   it('Calls history.push by clicking the cancel button', () => {
     const { getByText } = render(
-      <EditPlantForm updatePlantData={onSubmitMock} plant={plant} />
+      <EditPlantForm
+        updatePlantData={onSubmitMock}
+        deletePlantData={onDeleteMock}
+        plant={plant}
+      />
     )
 
     user.click(getByText('Cancel'))
 
+    expect(mockHistoryPush).toHaveBeenCalled()
+  })
+
+  it('Calls the right function and history.push by clicking the delete button', () => {
+    const { getByText } = render(
+      <EditPlantForm
+        updatePlantData={onSubmitMock}
+        deletePlantData={onDeleteMock}
+        plant={plant}
+      />
+    )
+
+    user.click(getByText('Delete'))
+
+    expect(onDeleteMock).toHaveBeenCalled()
     expect(mockHistoryPush).toHaveBeenCalled()
   })
 })

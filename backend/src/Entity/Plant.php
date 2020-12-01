@@ -38,6 +38,16 @@ class Plant
      */
     private $info;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $lastWatered;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $lastFertilized;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +85,30 @@ class Plant
     public function setInfo(string $info): self
     {
         $this->info = $info;
+
+        return $this;
+    }
+
+    public function getLastWatered(): ?\DateTimeInterface
+    {
+        return $this->lastWatered;
+    }
+
+    public function setLastWatered(?\DateTimeInterface $lastWatered): self
+    {
+        $this->lastWatered = $lastWatered;
+
+        return $this;
+    }
+
+    public function getLastFertilized(): ?\DateTimeInterface
+    {
+        return $this->lastFertilized;
+    }
+
+    public function setLastFertilized(?\DateTimeInterface $lastFertilized): self
+    {
+        $this->lastFertilized = $lastFertilized;
 
         return $this;
     }

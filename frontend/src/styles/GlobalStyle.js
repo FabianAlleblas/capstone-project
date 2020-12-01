@@ -11,7 +11,7 @@ export default createGlobalStyle`
     --warning-color: rgb(229,27,27);
     --bar-bg-color: rgb(229,229,229);
     --bar-water-color: rgb(27,108,229);
-    --bar-fertilizer-color: rgb(225,199,89);
+    --bar-fertilizer-color: rgb(255,199,89);
     --shadow: rgba(46,59,56, 0.5);
 }
 

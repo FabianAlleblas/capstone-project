@@ -28,8 +28,8 @@ export default function PlantDetailBar({ daysLeft, weeksLeft }) {
 const Container = styled.div`
   display: grid;
   gap: 20px;
-  width: 100%;
   padding: 10px 0 0;
+  width: 100%;
 `
 
 const BarWrapper = styled.div`

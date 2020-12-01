@@ -36,17 +36,18 @@ const ImageFrame = styled.div`
 `
 
 const TextContainer = styled.div`
+  line-height: 1.2;
   text-align: center;
 `
 
 const PlantName = styled.h2`
   color: var(--primary-plant-font-color);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
 `
 
 const PlantInfo = styled.h3`
   color: var(--secondary-plant-font-color);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 400;
 `

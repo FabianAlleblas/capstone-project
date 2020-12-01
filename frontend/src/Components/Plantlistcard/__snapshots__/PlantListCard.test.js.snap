@@ -5,9 +5,9 @@ exports[`PlantCard renders correctly 1`] = `
   display: grid;
   gap: 6px 6px;
   grid-template-columns: 15px auto;
+  padding: 10px 0 0;
   place-items: center;
   width: 100%;
-  padding: 10px 0 0;
 }
 
 .c4 {

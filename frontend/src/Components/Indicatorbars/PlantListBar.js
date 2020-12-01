@@ -10,7 +10,7 @@ export default function PlantListBar({ waterDays, fertilizerWeeks }) {
   }
 
   return (
-    <Wrapper>
+    <Container>
       <WaterIcon />
       <Bar>
         <WaterIndicator daysLeft={waterDays} />
@@ -19,11 +19,11 @@ export default function PlantListBar({ waterDays, fertilizerWeeks }) {
       <Bar>
         <FertilizerIndicator weeksLeft={fertilizerWeeks} />
       </Bar>
-    </Wrapper>
+    </Container>
   )
 }
 
-const Wrapper = styled.div`
+const Container = styled.div`
   display: grid;
   gap: 20px 6px;
   grid-template-columns: 15px auto;

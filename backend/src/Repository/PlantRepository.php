@@ -39,10 +39,11 @@ class PlantRepository extends ServiceEntityRepository
         $daysLeft = 10 - intval(date_diff($lastWatered, $today)->format('%a'));
         $weeksLeft = (28 - intval(date_diff($lastFertilized, $today)->format('%a'))) / 7;
 
-        if($daysLeft <= 0){
+        if ($daysLeft <= 0){
             $daysLeft = 0;
         }
-        if($weeksLeft <= 0){
+
+        if ($weeksLeft <= 0){
             $weeksLeft = 0;
         }
         

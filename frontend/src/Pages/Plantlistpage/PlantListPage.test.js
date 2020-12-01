@@ -10,12 +10,9 @@ describe('PlantListPage', () => {
     expect(container.firstChild).toMatchSnapshot()
   })
 
-  it('displays the plant names and species', () => {
+  it('displays the plant names', () => {
     const { getByText } = render(<PlantListPage plantList={plants} />)
 
     plants.forEach(({ name }) => expect(getByText(name)).toBeInTheDocument())
-    plants.forEach(({ species }) =>
-      expect(getByText(species)).toBeInTheDocument()
-    )
   })
 })

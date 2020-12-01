@@ -3,21 +3,21 @@ import styled from 'styled-components'
 import { ReactComponent as FertilizerIcon } from '../../assets/icons/fertilizericon.svg'
 import { ReactComponent as WaterIcon } from '../../assets/icons/watericon.svg'
 
-export default function PlantListBar({ waterDays, fertilizerWeeks }) {
+export default function PlantListBar({ daysLeft, weeksLeft }) {
   PlantListBar.propTypes = {
-    waterDays: PropTypes.string.isRequired,
-    fertilizerWeeks: PropTypes.string.isRequired,
+    daysLeft: PropTypes.number.isRequired,
+    weeksLeft: PropTypes.number.isRequired,
   }
 
   return (
     <Container>
       <WaterIcon />
       <Bar>
-        <WaterIndicator daysLeft={waterDays} />
+        <WaterIndicator daysLeft={daysLeft} />
       </Bar>
       <FertilizerIcon />
       <Bar>
-        <FertilizerIndicator weeksLeft={fertilizerWeeks} />
+        <FertilizerIndicator weeksLeft={weeksLeft} />
       </Bar>
     </Container>
   )
@@ -25,9 +25,10 @@ export default function PlantListBar({ waterDays, fertilizerWeeks }) {
 
 const Container = styled.div`
   display: grid;
-  gap: 20px 6px;
+  gap: 6px 6px;
   grid-template-columns: 15px auto;
   place-items: center;
+  width: 100%;
 `
 
 const Bar = styled.div`

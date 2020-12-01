@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 export default function PlantDetailBar({ waterDays, fertilizerWeeks }) {
   PlantDetailBar.propTypes = {
-    waterDays: PropTypes.string.isRequired,
-    fertilizerWeeks: PropTypes.string.isRequired,
+    waterDays: PropTypes.number.isRequired,
+    fertilizerWeeks: PropTypes.number.isRequired,
   }
 
   return (

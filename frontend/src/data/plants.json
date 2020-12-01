@@ -3,36 +3,48 @@
     "id": 1,
     "name": "Carl",
     "species": "Monstera deliciosa",
-    "info": "variegated"
+    "info": "variegated",
+    "daysLeft": 4,
+    "weeksLeft": 3
   },
   {
     "id": 2,
     "name": "Birgitt",
     "species": "Monstera adansonii",
-    "info": "variegated"
+    "info": "variegated",
+    "daysLeft": 4,
+    "weeksLeft": 3
   },
   {
     "id": 3,
     "name": "Karen",
     "species": "Philodendron gloriosum",
-    "info": "variegated"
+    "info": "variegated",
+    "daysLeft": 4,
+    "weeksLeft": 3
   },
   {
     "id": 4,
     "name": "Jim Jones",
     "species": "Rhaphidophora tetrasperma",
-    "info": "variegated"
+    "info": "variegated",
+    "daysLeft": 4,
+    "weeksLeft": 3
   },
   {
     "id": 5,
     "name": "Samuel",
     "species": "Alocasia zebrina",
-    "info": "variegated"
+    "info": "variegated",
+    "daysLeft": 4,
+    "weeksLeft": 3
   },
   {
     "id": 6,
     "name": "Greg",
     "species": "Scindapsus pictus",
-    "info": "variegated"
+    "info": "variegated",
+    "daysLeft": 4,
+    "weeksLeft": 3
   }
 ]

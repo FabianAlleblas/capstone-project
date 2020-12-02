@@ -38,6 +38,22 @@ class Plant
      */
     private $info;
 
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     */
+    private $lastWatered;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     */
+    private $lastFertilized;
+
+    private $daysLeft;
+
+    private $weeksLeft;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -79,5 +95,63 @@ class Plant
         return $this;
     }
 
+    /**
+     *
+     */
+    public function getLastWatered(): ?\DateTimeInterface
+    {
+        return $this->lastWatered;
+    }
 
+    /**
+     *
+     */
+    public function setLastWatered(?\DateTimeInterface $lastWatered): self
+    {
+        $this->lastWatered = $lastWatered;
+
+        return $this;
+    }
+
+    /**
+     *
+     */
+    public function getLastFertilized(): ?\DateTimeInterface
+    {
+        return $this->lastFertilized;
+    }
+    
+    /**
+     *
+     */
+    public function setLastFertilized(?\DateTimeInterface $lastFertilized): self
+    {
+        $this->lastFertilized = $lastFertilized;
+
+        return $this;
+    }
+
+    public function getDaysLeft(): ?int
+    {
+        return $this->daysLeft;
+    }
+
+    public function setDaysLeft(int $daysLeft): self
+    {
+        $this->daysLeft = $daysLeft;
+
+        return $this;
+    }
+    
+    public function getWeeksLeft(): ?int
+    {
+        return $this->weeksLeft;
+    }
+
+    public function setWeeksLeft(int $weeksLeft): self
+    {
+        $this->weeksLeft = $weeksLeft;
+
+        return $this;
+    }
 }

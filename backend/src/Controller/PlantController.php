@@ -140,8 +140,8 @@ class PlantController extends AbstractController {
             }
 
             $type === 'water' ? 
-            $plant->setLastWatered(new \Datetime('')) : 
-            $plant->setLastFertilized(new \Datetime(''));
+            $plant->setLastWatered(new \Datetime()) : 
+            $plant->setLastFertilized(new \Datetime());
 
             $plantRepository->savePlant($plant);
             $setTimeLeft->setTimeLeft($plant);

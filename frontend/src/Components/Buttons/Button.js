@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
-export default function FormButton({
+export default function Button({
   secondaryStyle,
   children,
   onClick,
   className,
 }) {
-  FormButton.propTypes = {
+  Button.propTypes = {
     secondaryStyle: PropTypes.bool,
     children: PropTypes.string.isRequired,
     onClick: PropTypes.func,

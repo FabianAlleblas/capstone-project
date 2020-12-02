@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import useForm from '../../hooks/useForm'
-import FormButton from '../Buttons/FormButton'
+import Button from '../Buttons/Button'
 
 export default function EditPlantForm({
   updatePlantData,
@@ -53,13 +53,13 @@ export default function EditPlantForm({
         />
       </Label>
       <ButtonWrapper>
-        <FormButtonStyled>Update Plant</FormButtonStyled>
-        <FormButton onClick={handleCancel} secondaryStyle>
+        <ButtonStyled>Update Plant</ButtonStyled>
+        <Button onClick={handleCancel} secondaryStyle>
           Cancel
-        </FormButton>
-        <FormButton onClick={handleDelete} secondaryStyle>
+        </Button>
+        <Button onClick={handleDelete} secondaryStyle>
           Delete
-        </FormButton>
+        </Button>
       </ButtonWrapper>
     </Form>
   )
@@ -125,6 +125,6 @@ const ButtonWrapper = styled.div`
   }
 `
 
-const FormButtonStyled = styled(FormButton)`
+const ButtonStyled = styled(Button)`
   grid-column: 1/3;
 `

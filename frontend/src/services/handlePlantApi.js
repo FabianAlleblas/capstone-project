@@ -69,3 +69,21 @@ export async function deletePlant(id) {
     return { error: 'The server is down! :(' }
   }
 }
+
+export async function resetTimer(id, type) {
+  const myHeaders = new Headers()
+  myHeaders.append('Content-Type', 'application/json')
+
+  const requestOptions = {
+    method: 'PATCH',
+    headers: myHeaders,
+    redirect: 'follow',
+  }
+  try {
+    const response = await fetch(`${baseUrl}/${id}/${type}`, requestOptions)
+    const responseData = response.json()
+    return responseData
+  } catch (error) {
+    return { error: 'The server is down! :(' }
+  }
+}

@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
-import deletePlant from '../services/deletePlant'
-import getPlants from '../services/getPlants'
-import postPlant from '../services/postPlant'
-import updatePlant from '../services/updatePlant'
+import {
+  deletePlant,
+  getPlants,
+  postPlant,
+  updatePlant,
+} from '../services/handlePlantApi'
 
 export default function usePlantList() {
   const [plantList, setPlantList] = useState(false)

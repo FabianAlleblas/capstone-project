@@ -1,9 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PlantCard renders correctly 1`] = `
+.c3 {
+  display: grid;
+  gap: 6px 6px;
+  grid-template-columns: 15px auto;
+  padding: 10px 0 0;
+  place-items: center;
+  width: 100%;
+}
+
+.c4 {
+  background-color: var(--bar-bg-color);
+  border-radius: 1px;
+  height: 2px;
+  position: relative;
+  width: 100%;
+}
+
+.c5 {
+  background-color: var(--bar-water-color);
+  border-radius: 3px;
+  height: 6px;
+  min-width: 5px;
+  position: absolute;
+  top: -2px;
+  width: 40%;
+}
+
+.c6 {
+  background-color: var(--bar-fertilizer-color);
+  border-radius: 3px;
+  height: 6px;
+  min-width: 5px;
+  position: absolute;
+  top: -2px;
+  width: 50%;
+}
+
 .c0 {
   display: grid;
-  justify-items: center;
+  place-items: center;
 }
 
 .c1 {
@@ -22,12 +59,6 @@ exports[`PlantCard renders correctly 1`] = `
   font-weight: 400;
 }
 
-.c3 {
-  color: var(--secondary-plant-font-color);
-  font-size: 0.75rem;
-  font-weight: 400;
-}
-
 <div
   class="c0"
 >
@@ -40,10 +71,29 @@ exports[`PlantCard renders correctly 1`] = `
   >
     Jack
   </h5>
-  <h6
+  <div
     class="c3"
   >
-    Monstera deliciosa
-  </h6>
+    <svg>
+      watericon.svg
+    </svg>
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      />
+    </div>
+    <svg>
+      fertilizericon.svg
+    </svg>
+    <div
+      class="c4"
+    >
+      <div
+        class="c6"
+      />
+    </div>
+  </div>
 </div>
 `;

@@ -1,7 +1,6 @@
 ```js
 <PlantListCard
-  name={'Jack'}
-  species={'Monstera deliciosa'}
+  plant={{ name: 'Jack', daysLeft: 4, weeksLeft: 2 }}
   onClick={() => {}}
 />
 ```

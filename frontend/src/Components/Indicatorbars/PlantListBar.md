@@ -1,4 +1,4 @@
-PlantDetailBar: normal
+PlantListBar: normal
 
 ```js
 <PlantListBar daysLeft={3} weeksLeft={2} />

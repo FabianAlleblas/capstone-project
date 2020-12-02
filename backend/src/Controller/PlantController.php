@@ -12,6 +12,7 @@ use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use App\Entity\Plant;
 use App\Repository\PlantRepository;
+use App\Service\SetTimeLeft;
 
 class PlantController extends AbstractController {
 
@@ -20,13 +21,14 @@ class PlantController extends AbstractController {
      */
     public function getPlant(
         SerializerInterface $serializer,
-        PlantRepository $plantRepository
+        PlantRepository $plantRepository,
+        SetTimeleft $setTimeLeft
         ): JsonResponse {
         
             $plants = $plantRepository->findAll();
 
             foreach ($plants as $plant){
-            $plantRepository->setTimeLeft($plant);
+            $setTimeLeft->setTimeLeft($plant);
             }
         
             return $this->jsonResponse($plants, $serializer);

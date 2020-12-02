@@ -1,27 +1,28 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import monsteraImage from '../../assets/plant-images/3.jpg'
+import PlantDetailBar from '../Indicatorbars/PlantDetailBar'
 
-export default function PlantDetailCard({ species, info, className }) {
+export default function PlantDetailCard({ plant, className }) {
   PlantDetailCard.propTypes = {
-    species: PropTypes.string.isRequired,
-    info: PropTypes.string,
+    plant: PropTypes.object.isRequired,
     className: PropTypes.string,
   }
   return (
     <CardWrapper className={className}>
       <ImageFrame src={monsteraImage} />
       <TextContainer>
-        <PlantName>{species}</PlantName>
-        <PlantInfo>{info}</PlantInfo>
+        <PlantName>{plant.species}</PlantName>
+        <PlantInfo>{plant.info}</PlantInfo>
       </TextContainer>
+      <PlantDetailBar daysLeft={plant.daysLeft} weeksLeft={plant.weeksLeft} />
     </CardWrapper>
   )
 }
 
 const CardWrapper = styled.section`
   display: grid;
-  gap: 40px;
+  gap: 30px;
   place-items: center;
 `
 
@@ -35,17 +36,18 @@ const ImageFrame = styled.div`
 `
 
 const TextContainer = styled.div`
+  line-height: 1.2;
   text-align: center;
 `
 
 const PlantName = styled.h2`
   color: var(--primary-plant-font-color);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
 `
 
 const PlantInfo = styled.h3`
   color: var(--secondary-plant-font-color);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 400;
 `

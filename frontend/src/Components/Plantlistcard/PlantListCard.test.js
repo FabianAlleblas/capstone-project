@@ -5,11 +5,10 @@ import PlantListCard from './PlantListCard'
 describe('PlantCard', () => {
   it('renders correctly', () => {
     const { container, getByText } = render(
-      <PlantListCard name={'Jack'} species={'Monstera deliciosa'} />
+      <PlantListCard plant={{ name: 'Jack', daysLeft: 4, weeksLeft: 2 }} />
     )
 
     expect(container.firstChild).toMatchSnapshot()
     expect(getByText(/Jack/i)).toBeInTheDocument()
-    expect(getByText(/Monstera deliciosa/i)).toBeInTheDocument()
   })
 })

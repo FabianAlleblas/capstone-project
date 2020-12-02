@@ -1,26 +1,26 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import monsteraImage from '../../assets/plant-images/3.jpg'
+import PlantListBar from '../Indicatorbars/PlantListBar'
 
-export default function PlantListCard({ name, species, onClick }) {
+export default function PlantListCard({ plant, onClick }) {
   PlantListCard.propTypes = {
-    name: PropTypes.string.isRequired,
-    species: PropTypes.string.isRequired,
+    plant: PropTypes.object.isRequired,
     onClick: PropTypes.func.isRequired,
   }
 
   return (
     <CardWrapper onClick={onClick}>
       <ImgContainer src={monsteraImage} />
-      <PlantName>{name}</PlantName>
-      <PlantSpecies>{species}</PlantSpecies>
+      <PlantName>{plant.name}</PlantName>
+      <PlantListBar daysLeft={plant.daysLeft} weeksLeft={plant.weeksLeft} />
     </CardWrapper>
   )
 }
 
 const CardWrapper = styled.div`
   display: grid;
-  justify-items: center;
+  place-items: center;
 `
 
 const ImgContainer = styled.div`
@@ -36,11 +36,5 @@ const ImgContainer = styled.div`
 const PlantName = styled.h5`
   color: var(--primary-plant-font-color);
   font-size: 1.25rem;
-  font-weight: 400;
-`
-
-const PlantSpecies = styled.h6`
-  color: var(--secondary-plant-font-color);
-  font-size: 0.75rem;
   font-weight: 400;
 `

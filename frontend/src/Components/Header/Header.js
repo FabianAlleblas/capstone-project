@@ -35,6 +35,7 @@ const HeaderStyled = styled.header`
   display: flex;
   width: 100%;
   justify-content: space-between;
+  z-index: 10;
 `
 
 const HeadingContainer = styled.div`

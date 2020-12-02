@@ -23,7 +23,7 @@ export default function DetailPage({ plantList }) {
         {plant?.name}
       </FixedHeader>
       <CardContainer>
-        <PlantDetailCard species={plant?.species} info={plant?.info} />
+        <PlantDetailCard plant={plant} />
       </CardContainer>
     </>
   )
@@ -48,5 +48,5 @@ const FixedHeader = styled(Header)`
 `
 
 const CardContainer = styled.main`
-  padding: 100px 20px 0;
+  padding: 100px 30px 0;
 `

@@ -132,7 +132,7 @@ class PlantController extends AbstractController {
         ): JsonResponse {
 
             $plant = $plantRepository->findOneBy(['id' => $id]);
-            if ($plant === null || $type !== 'water' && 'fertilizer') {
+            if ($plant === null) {
                 return new JsonResponse(
                     ["error" => "Plant ID not found."],
                     JsonResponse::HTTP_BAD_REQUEST
@@ -140,8 +140,8 @@ class PlantController extends AbstractController {
             }
 
             $type === 'water' ? 
-            $plant->setLastWatered(new \Datetime()) : 
-            $plant->setLastFertilized(new \Datetime());
+            $plant->setLastWatered(new \Datetime('')) : 
+            $plant->setLastFertilized(new \Datetime(''));
 
             $plantRepository->savePlant($plant);
             $setTimeLeft->setTimeLeft($plant);

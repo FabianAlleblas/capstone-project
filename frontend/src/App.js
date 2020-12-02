@@ -11,6 +11,7 @@ function App() {
     savePlantData,
     updatePlantData,
     deletePlantData,
+    resetCareTimer,
   } = usePlantList()
 
   if (!plantList) {
@@ -23,7 +24,7 @@ function App() {
         <PlantListPage plantList={plantList} />
       </Route>
       <Route path="/plant">
-        <DetailPage plantList={plantList} />
+        <DetailPage plantList={plantList} resetTimer={resetCareTimer} />
       </Route>
       <Route path="/addplant">
         <AddPage savePlantData={savePlantData} />

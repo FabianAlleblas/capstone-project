@@ -28,11 +28,17 @@ export default function Header({
   return (
     <HeaderStyled className={className}>
       <HeadingContainer secondaryStyle={secondaryStyle}>
-        {isDetailPage && <ArrowIcon onClick={onClickArrow} />}
+        {isDetailPage && (
+          <ArrowIcon onClick={onClickArrow} data-testid="arrow-icon" />
+        )}
         <Heading>{children}</Heading>
       </HeadingContainer>
-      {isDetailPage && <EditIconStyled onClick={onClickEdit} />}
-      {isPlantList && <LogoutIconStyled onClick={onClickLogout} />}
+      {isDetailPage && (
+        <EditIconStyled onClick={onClickEdit} data-testid="edit-icon" />
+      )}
+      {isPlantList && (
+        <LogoutIconStyled onClick={onClickLogout} data-testid="logout-icon" />
+      )}
     </HeaderStyled>
   )
 }

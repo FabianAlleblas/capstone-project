@@ -64,6 +64,7 @@ exports[`PlantListPage renders correctly 1`] = `
   </div>
   <svg
     class="c4"
+    data-testid="logout-icon"
   >
     logouticon.svg
   </svg>

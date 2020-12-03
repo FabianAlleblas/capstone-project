@@ -2,19 +2,18 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Controller\BaseController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
-use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use App\Entity\Plant;
 use App\Repository\PlantRepository;
-use App\Service\SetTimeLeft;
+use App\Service\SetTimeLeftService;
 
-class PlantController extends AbstractController {
+class PlantController extends BaseController {
 
     /**
      * @Route("/plant", methods={"GET"})
@@ -22,13 +21,13 @@ class PlantController extends AbstractController {
     public function getPlant(
         SerializerInterface $serializer,
         PlantRepository $plantRepository,
-        SetTimeleft $setTimeLeft
+        SetTimeLeftService $setTimeLeftService
         ): JsonResponse {
         
             $plants = $plantRepository->findAll();
 
             foreach ($plants as $plant){
-            $setTimeLeft->setTimeLeft($plant);
+            $setTimeLeftService->setTimeLeft($plant);
             }
         
             return $this->jsonResponse($plants, $serializer);
@@ -41,23 +40,23 @@ class PlantController extends AbstractController {
         Request $request,
         PlantRepository $plantRepository,
         SerializerInterface $serializer,
-        ValidatorInterface $validator
+        ValidatorInterface $validator,
+        SetTimeLeftService $setTimeLeftService
         ): JsonResponse {
 
             $plant = $serializer->deserialize($request->getContent(), Plant::class, 'json');
             $validationResult = $validator->validate($plant);
             
             if ($validationResult->count() !== 0) {
-                return new JsonResponse(
-                    ["error" => "Plant data invalid."],
-                    JsonResponse::HTTP_BAD_REQUEST
-                );
+                return $this->badRequestResponse();
             }
             
             $plant->setLastWatered(new \Datetime());
             $plant->setLastFertilized(new \Datetime());
             
             $plantRepository->savePlant($plant);
+            $setTimeLeftService->setTimeLeft($plant);
+
             return $this->jsonResponse($plant, $serializer);
         }
 
@@ -69,7 +68,8 @@ class PlantController extends AbstractController {
         SerializerInterface $serializer,
         PlantRepository $plantRepository,
         Request $request,
-        ValidatorInterface $validator
+        ValidatorInterface $validator,
+        SetTimeLeftService $setTimeLeftService
         ): JsonResponse {
 
             $plant = $plantRepository->findOneBy(['id' => $id]);
@@ -77,21 +77,17 @@ class PlantController extends AbstractController {
             $serializer->deserialize($newPlantData, Plant::class, 'json', [AbstractNormalizer::OBJECT_TO_POPULATE => $plant]);
             
             if ($plant === null) {
-                return new JsonResponse(
-                    ["error" => "Plant ID not found."],
-                    JsonResponse::HTTP_BAD_REQUEST
-                );
+                return $this->notFoundResponse();
             }
 
             $validationResult = $validator->validate($plant);
             if ($validationResult->count() !== 0) {
-                return new JsonResponse(
-                    ["error" => "Plant data invalid."],
-                    JsonResponse::HTTP_BAD_REQUEST
-                );
+                return $this->badRequestResponse();
             }
             
             $plantRepository->savePlant($plant);
+            $setTimeLeftService->setTimeLeft($plant);
+
             return $this->jsonResponse($plant, $serializer);
         }
 
@@ -105,10 +101,7 @@ class PlantController extends AbstractController {
             $plant = $plantRepository->findOneBy(['id' => $id]);
 
             if ($plant === null) {
-                return new JsonResponse(
-                    ["error" => "Plant ID not found."],
-                    JsonResponse::HTTP_BAD_REQUEST
-                );
+                return $this->notFoundResponse();
             }
             
             $plantRepository->deletePlant($plant);
@@ -128,15 +121,12 @@ class PlantController extends AbstractController {
         PlantRepository $plantRepository,
         Request $request,
         ValidatorInterface $validator,
-        SetTimeleft $setTimeLeft
+        SetTimeLeftService $setTimeLeftService
         ): JsonResponse {
 
             $plant = $plantRepository->findOneBy(['id' => $id]);
             if ($plant === null) {
-                return new JsonResponse(
-                    ["error" => "Plant ID not found."],
-                    JsonResponse::HTTP_BAD_REQUEST
-                );
+                return $this->notFoundResponse();
             }
 
             $type === 'water' ? 
@@ -144,22 +134,8 @@ class PlantController extends AbstractController {
             $plant->setLastFertilized(new \Datetime());
 
             $plantRepository->savePlant($plant);
-            $setTimeLeft->setTimeLeft($plant);
+            $setTimeLeftService->setTimeLeft($plant);
 
             return $this->jsonResponse($plant, $serializer);
         }
-
-    private function jsonResponse($data, $serializer): JsonResponse {
-        return new JsonResponse(
-            $serializer->serialize($data, 'json', 
-                [
-                    AbstractObjectNormalizer::SKIP_NULL_VALUES => true,
-                    AbstractNormalizer::IGNORED_ATTRIBUTES => ['lastWatered', 'lastFertilized']
-                ]
-            ),
-            JsonResponse::HTTP_OK,
-            [],
-            true
-        );
-    }
 }

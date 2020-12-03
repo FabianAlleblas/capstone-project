@@ -22,7 +22,7 @@ export default function useUser() {
     setUserData(authData)
   }
 
-  function userLogout(userData) {
+  function userLogout() {
     const authData = {
       key: false,
       email: userData.email,

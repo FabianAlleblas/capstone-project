@@ -1,5 +1,6 @@
 import { Route, Switch } from 'react-router-dom'
 import usePlantList from './hooks/usePlantList'
+import useUser from './hooks/useUser'
 import AddPage from './Pages/Addpage/AddPage'
 import EditPage from './Pages/Editpage/EditPage'
 import DetailPage from './Pages/DetailPage/DetailPage'
@@ -7,13 +8,21 @@ import PlantListPage from './Pages/Plantlistpage/PlantListPage'
 import LoginPage from './Pages/Loginpage/LoginPage'
 
 function App() {
+  const { userData, userLogin, userRegistration } = useUser()
+  console.log(userData)
   const {
     plantList,
     savePlantData,
     updatePlantData,
     deletePlantData,
     resetCareTimer,
-  } = usePlantList()
+  } = usePlantList(userData)
+
+  if (!userData?.key) {
+    return (
+      <LoginPage userRegistration={userRegistration} userLogin={userLogin} />
+    )
+  }
 
   if (!plantList) {
     return <div>loading...</div>
@@ -21,9 +30,6 @@ function App() {
 
   return (
     <Switch>
-      <Route exact path="/login">
-        <LoginPage />
-      </Route>
       <Route exact path="/">
         <PlantListPage plantList={plantList} />
       </Route>

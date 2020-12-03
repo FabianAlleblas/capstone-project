@@ -1,11 +1,11 @@
 PlantDetailBar: normal
 
 ```js
-<PlantDetailBar waterDays={3} fertilizerWeeks={2} />
+<PlantDetailBar daysLeft={3} weeksLeft={2} />
 ```
 
 PlantDetailBar: low
 
 ```js
-<PlantDetailBar waterDays={0} fertilizerWeeks={1} />
+<PlantDetailBar daysLeft={0} weeksLeft={1} />
 ```

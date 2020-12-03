@@ -118,6 +118,37 @@ class PlantController extends AbstractController {
             );
         }
 
+    /**
+     * @Route("/plant/{id}/{type}", methods={"PATCH"})
+     */
+    public function resetTimer(
+        $id,
+        $type,
+        SerializerInterface $serializer,
+        PlantRepository $plantRepository,
+        Request $request,
+        ValidatorInterface $validator,
+        SetTimeleft $setTimeLeft
+        ): JsonResponse {
+
+            $plant = $plantRepository->findOneBy(['id' => $id]);
+            if ($plant === null) {
+                return new JsonResponse(
+                    ["error" => "Plant ID not found."],
+                    JsonResponse::HTTP_BAD_REQUEST
+                );
+            }
+
+            $type === 'water' ? 
+            $plant->setLastWatered(new \Datetime()) : 
+            $plant->setLastFertilized(new \Datetime());
+
+            $plantRepository->savePlant($plant);
+            $setTimeLeft->setTimeLeft($plant);
+
+            return $this->jsonResponse($plant, $serializer);
+        }
+
     private function jsonResponse($data, $serializer): JsonResponse {
         return new JsonResponse(
             $serializer->serialize($data, 'json', 

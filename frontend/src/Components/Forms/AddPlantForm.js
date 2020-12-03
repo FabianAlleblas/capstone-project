@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import useForm from '../../hooks/useForm'
-import FormButton from '../Buttons/FormButton'
+import Button from '../Buttons/Button'
 
 export default function AddPlantForm({ savePlantData }) {
   AddPlantForm.propTypes = {
@@ -47,10 +47,10 @@ export default function AddPlantForm({ savePlantData }) {
         />
       </Label>
       <ButtonWrapper>
-        <FormButton>Add Plant</FormButton>
-        <FormButton onClick={handleCancel} secondaryStyle>
+        <Button>Add Plant</Button>
+        <Button onClick={handleCancel} secondaryStyle>
           Cancel
-        </FormButton>
+        </Button>
         <p>* required</p>
       </ButtonWrapper>
     </Form>

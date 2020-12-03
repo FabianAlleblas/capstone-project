@@ -2,20 +2,29 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import monsteraImage from '../../assets/plant-images/3.jpg'
 import PlantDetailBar from '../Indicatorbars/PlantDetailBar'
+import Button from '../Buttons/Button'
 
-export default function PlantDetailCard({ plant, className }) {
+export default function PlantDetailCard({ plant, resetTimer }) {
   PlantDetailCard.propTypes = {
     plant: PropTypes.object.isRequired,
-    className: PropTypes.string,
+    resetTimer: PropTypes.func,
   }
   return (
-    <CardWrapper className={className}>
+    <CardWrapper>
       <ImageFrame src={monsteraImage} />
       <TextContainer>
         <PlantName>{plant.species}</PlantName>
         <PlantInfo>{plant.info}</PlantInfo>
       </TextContainer>
       <PlantDetailBar daysLeft={plant.daysLeft} weeksLeft={plant.weeksLeft} />
+      <ButtonWrapper>
+        <ResetButton onClick={() => resetTimer(plant.id, 'water')}>
+          Watered
+        </ResetButton>
+        <ResetButton onClick={() => resetTimer(plant.id, 'fertilizer')}>
+          Fertilized
+        </ResetButton>
+      </ButtonWrapper>
     </CardWrapper>
   )
 }
@@ -50,4 +59,16 @@ const PlantInfo = styled.h3`
   color: var(--secondary-plant-font-color);
   font-size: 1.4rem;
   font-weight: 400;
+`
+const ButtonWrapper = styled.div`
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  padding: 20px 0 0;
+  width: 100%;
+`
+
+const ResetButton = styled(Button)`
+  background-color: var(--primary-dark);
+  color: var(--primary-light);
 `

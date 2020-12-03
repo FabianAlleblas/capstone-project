@@ -4,7 +4,7 @@ namespace App\Service;
 
 use App\Entity\Plant;
 
-class SetTimeLeft{
+class SetTimeLeftService{
 
     public function setTimeLeft(Plant $plant): Plant {
         $today = new \Datetime();

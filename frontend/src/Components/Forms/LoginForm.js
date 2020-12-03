@@ -4,9 +4,9 @@ import styled from 'styled-components/macro'
 import useForm from '../../hooks/useForm'
 import Button from '../Buttons/Button'
 
-export default function LoginForm({ savePlantData }) {
+export default function LoginForm({ userRegistration, userLogin }) {
   LoginForm.propTypes = {
-    savePlantData: PropTypes.func.isRequired,
+    userRegistration: PropTypes.func.isRequired,
   }
 
   const history = useHistory()
@@ -29,7 +29,6 @@ export default function LoginForm({ savePlantData }) {
         onChange={handleInputChange}
         required
       />
-
       <ButtonWrapper>
         <Button>Login</Button>
         <Button onClick={handleCancel} secondaryStyle>
@@ -41,13 +40,11 @@ export default function LoginForm({ savePlantData }) {
 
   function handleSubmit(event) {
     event.preventDefault()
-    savePlantData(formData)
-    event.target.reset()
-    history.push('/')
+    userLogin(formData)
   }
 
   function handleCancel() {
-    history.push('/')
+    userRegistration(formData)
   }
 }
 

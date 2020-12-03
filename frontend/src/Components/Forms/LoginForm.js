@@ -19,7 +19,6 @@ export default function LoginForm({ userRegistration, userLogin }) {
         onChange={handleInputChange}
         required
       />
-
       <Input
         name="password"
         type="password"

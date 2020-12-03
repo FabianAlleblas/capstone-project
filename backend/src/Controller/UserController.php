@@ -14,6 +14,18 @@ use App\Repository\UserRepository;
 
 class UserController extends BaseController {
 
+
+    /**
+     * @Route("/user", methods={"GET"})
+     */
+    public function getUser(
+        SerializerInterface $serializer,
+        UserRepository $userRepository
+        ): JsonResponse {
+            $users = $userRepository->findAll();        
+            return $this->jsonResponse($users, $serializer);
+        }
+
     /**
      * @Route("/user", methods={"POST"})
      */

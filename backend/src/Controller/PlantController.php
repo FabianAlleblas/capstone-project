@@ -10,7 +10,9 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use App\Entity\Plant;
+use App\Entity\User;
 use App\Repository\PlantRepository;
+use App\Repository\UserRepository;
 use App\Service\SetTimeLeftService;
 
 class PlantController extends BaseController {
@@ -22,8 +24,7 @@ class PlantController extends BaseController {
         SerializerInterface $serializer,
         PlantRepository $plantRepository,
         SetTimeLeftService $setTimeLeftService
-        ): JsonResponse {
-        
+        ): JsonResponse {       
             $plants = $plantRepository->findAll();
 
             foreach ($plants as $plant){
@@ -34,26 +35,33 @@ class PlantController extends BaseController {
         }
 
     /**
-     * @Route("/plant", methods={"POST"})
+     * @Route("/plant/{id}", methods={"POST"})
      */
     public function createPlant(
+        $id,
         Request $request,
         PlantRepository $plantRepository,
+        UserRepository $userRepository,
         SerializerInterface $serializer,
         ValidatorInterface $validator,
         SetTimeLeftService $setTimeLeftService
         ): JsonResponse {
 
+            $user = $userRepository->findOneBy(['id' => $id]);
+
             $plant = $serializer->deserialize($request->getContent(), Plant::class, 'json');
+
             $validationResult = $validator->validate($plant);
             
             if ($validationResult->count() !== 0) {
                 return $this->badRequestResponse();
             }
             
+            $plant->setUser($user);
             $plant->setLastWatered(new \Datetime());
             $plant->setLastFertilized(new \Datetime());
             
+            $userRepository->saveUser($user);
             $plantRepository->savePlant($plant);
             $setTimeLeftService->setTimeLeft($plant);
 

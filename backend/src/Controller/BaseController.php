@@ -14,7 +14,10 @@ class BaseController extends AbstractController {
             $serializer->serialize($data, 'json', 
                 [
                     AbstractObjectNormalizer::SKIP_NULL_VALUES => true,
-                    AbstractNormalizer::IGNORED_ATTRIBUTES => ['lastWatered', 'lastFertilized']
+                    AbstractNormalizer::IGNORED_ATTRIBUTES => ['lastWatered', 'lastFertilized', 'password'],
+                    AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($data, $format, $context) {
+                        return $data->getId();
+                    },
                 ]
             ),
             JsonResponse::HTTP_OK,

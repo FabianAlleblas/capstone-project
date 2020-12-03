@@ -59,10 +59,8 @@ const Input = styled.input`
   border-radius: 22px;
   border: none;
   color: var(--form-font-color);
-  display: block;
   font-family: 'Josefin sans', sans-serif;
   font-size: 1rem;
-  margin-top: 8px;
   padding: 14px 20px 10px;
   width: 100%;
 
@@ -76,5 +74,5 @@ const ButtonWrapper = styled.div`
   display: grid;
   gap: 30px;
   padding: 20px 0 0;
-  width: 50%;
+  width: 60%;
 `

@@ -6,12 +6,13 @@ import Button from '../Buttons/Button'
 export default function LoginForm({ userRegistration, userLogin }) {
   LoginForm.propTypes = {
     userRegistration: PropTypes.func.isRequired,
+    userLogin: PropTypes.func.isRequired,
   }
 
   const { handleInputChange, formData } = useForm()
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleLogin}>
       <Input
         name="email"
         type="email"
@@ -28,19 +29,20 @@ export default function LoginForm({ userRegistration, userLogin }) {
       />
       <ButtonWrapper>
         <Button>Login</Button>
-        <Button onClick={handleCancel} secondaryStyle>
+        <Button onClick={handleRegistration} secondaryStyle>
           Sign Up
         </Button>
       </ButtonWrapper>
     </Form>
   )
 
-  function handleSubmit(event) {
+  function handleLogin(event) {
     event.preventDefault()
     userLogin(formData)
+    event.target.reset()
   }
 
-  function handleCancel() {
+  function handleRegistration() {
     userRegistration(formData)
   }
 }

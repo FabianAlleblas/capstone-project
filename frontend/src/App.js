@@ -4,6 +4,7 @@ import AddPage from './Pages/Addpage/AddPage'
 import EditPage from './Pages/Editpage/EditPage'
 import DetailPage from './Pages/DetailPage/DetailPage'
 import PlantListPage from './Pages/Plantlistpage/PlantListPage'
+import LoginPage from './Pages/Loginpage/LoginPage'
 
 function App() {
   const {
@@ -20,6 +21,9 @@ function App() {
 
   return (
     <Switch>
+      <Route exact path="/login">
+        <LoginPage />
+      </Route>
       <Route exact path="/">
         <PlantListPage plantList={plantList} />
       </Route>

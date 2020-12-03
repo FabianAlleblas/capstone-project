@@ -16,7 +16,7 @@ function App() {
     updatePlantData,
     deletePlantData,
     resetCareTimer,
-  } = usePlantList(userData)
+  } = usePlantList()
 
   if (!userData?.key) {
     return (

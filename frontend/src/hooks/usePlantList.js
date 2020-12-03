@@ -7,7 +7,7 @@ import {
   resetTimer,
 } from '../services/handlePlantApi'
 
-export default function usePlantList(userData) {
+export default function usePlantList() {
   const [plantList, setPlantList] = useState(false)
 
   useEffect(() => {

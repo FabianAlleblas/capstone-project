@@ -101,17 +101,11 @@ class Plant
         return $this;
     }
 
-    /**
-     *
-     */
     public function getLastWatered(): ?\DateTimeInterface
     {
         return $this->lastWatered;
     }
 
-    /**
-     *
-     */
     public function setLastWatered(?\DateTimeInterface $lastWatered): self
     {
         $this->lastWatered = $lastWatered;
@@ -119,17 +113,11 @@ class Plant
         return $this;
     }
 
-    /**
-     *
-     */
     public function getLastFertilized(): ?\DateTimeInterface
     {
         return $this->lastFertilized;
     }
     
-    /**
-     *
-     */
     public function setLastFertilized(?\DateTimeInterface $lastFertilized): self
     {
         $this->lastFertilized = $lastFertilized;
@@ -161,10 +149,10 @@ class Plant
         return $this;
     }
 
-    public function getUser(): ?user
-    {
-        return $this->user;
-    }
+    //public function getUser(): ?user
+    //{
+    //    return $this->user;
+    //}
 
     public function setUser(?user $user): self
     {

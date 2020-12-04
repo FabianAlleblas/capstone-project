@@ -15,9 +15,9 @@ class BaseController extends AbstractController {
                 [
                     AbstractObjectNormalizer::SKIP_NULL_VALUES => true,
                     AbstractNormalizer::IGNORED_ATTRIBUTES => ['lastWatered', 'lastFertilized', 'password'],
-                    AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($data, $format, $context) {
-                        return $data->getId();
-                    },
+                    //AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($data, $format, $context) {
+                    //    return $data->getName();
+                    //},
                 ]
             ),
             JsonResponse::HTTP_OK,

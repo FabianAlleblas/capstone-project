@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use App\Entity\User;
 use App\Repository\UserRepository;
+use App\Service\SetTimeLeftService;
 
 class UserController extends BaseController {
 
@@ -18,12 +19,30 @@ class UserController extends BaseController {
     /**
      * @Route("/user", methods={"GET"})
      */
-    public function getUser(
+    public function getUser(        
         SerializerInterface $serializer,
         UserRepository $userRepository
         ): JsonResponse {
-            $users = $userRepository->findAll();        
-            return $this->jsonResponse($users, $serializer);
+            $user = $userRepository->findAll();
+            return $this->jsonResponse($user, $serializer);
+        }
+
+    /**
+     * @Route("/user/{id}/plants", methods={"GET"})
+     */
+    public function getUserPlants(  
+        $id,      
+        SerializerInterface $serializer,
+        UserRepository $userRepository,
+        SetTimeLeftService $setTimeLeftService
+        ): JsonResponse {
+            $plants = $userRepository->find($id)->getPlants();
+
+            foreach ($plants as $plant){
+                $setTimeLeftService->setTimeLeft($plant);
+                }
+
+            return $this->jsonResponse($plants, $serializer);
         }
 
     /**

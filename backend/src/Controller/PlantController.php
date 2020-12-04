@@ -48,7 +48,6 @@ class PlantController extends BaseController {
         ): JsonResponse {
 
             $user = $userRepository->findOneBy(['id' => $id]);
-
             $plant = $serializer->deserialize($request->getContent(), Plant::class, 'json');
 
             $validationResult = $validator->validate($plant);

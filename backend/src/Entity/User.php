@@ -40,7 +40,7 @@ class User
     private $loginAuthorized;
 
     /**
-     * @ORM\OneToMany(targetEntity=Token::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Token::class, mappedBy="user", cascade={"remove"})
      */
     private $tokens;
 

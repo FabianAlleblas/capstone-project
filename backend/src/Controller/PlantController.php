@@ -13,6 +13,7 @@ use App\Entity\Plant;
 use App\Repository\PlantRepository;
 use App\Repository\UserRepository;
 use App\Service\SetTimeLeftService;
+use App\Service\TokenValidationService;
 
 class PlantController extends BaseController {
 
@@ -26,14 +27,22 @@ class PlantController extends BaseController {
         UserRepository $userRepository,
         SerializerInterface $serializer,
         ValidatorInterface $validator,
-        SetTimeLeftService $setTimeLeftService
+        SetTimeLeftService $setTimeLeftService,
+        TokenValidationService $tokenValidationService
         ): JsonResponse {
 
             $user = $userRepository->findOneBy(['id' => $id]);
             $plant = $serializer->deserialize($request->getContent(), Plant::class, 'json');
+            $currentToken = json_decode($request->getContent(), true);
             
             if ($user === null) {
                 return $this->notFoundResponse('User Not Found!');
+            }
+
+            $autherized = $tokenValidationService->validateToken($user, $currentToken);
+
+            if (!$autherized){
+                return $this->unauthorizedResponse('Deine Mudda!');
             }
 
             $validationResult = $validator->validate($plant);

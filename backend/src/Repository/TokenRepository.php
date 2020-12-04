@@ -19,6 +19,27 @@ class TokenRepository extends ServiceEntityRepository
         parent::__construct($registry, Token::class);
     }
 
+    public function createToken($user): String {
+        
+        $validUntil = new \DateTime('+ 1 Day');
+
+        $token = new Token();
+        $key = uniqid('', true);
+        $token->setToken($key);
+        $token->setValidUntil($validUntil);
+        $token->setUser($user);
+
+        $this->_em->persist($token);
+        $this->_em->flush();
+
+        return $key;
+    }
+
+    public function deleteToken(Token $token): void {
+        $this->_em->remove($token);
+        $this->_em->flush();
+    }
+
     // /**
     //  * @return Token[] Returns an array of Token objects
     //  */

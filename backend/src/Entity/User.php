@@ -37,12 +37,14 @@ class User
      */
     private $plants;
 
-    private $loginAuthorized;
-
     /**
      * @ORM\OneToMany(targetEntity=Token::class, mappedBy="user", cascade={"remove"})
      */
     private $tokens;
+
+    private $loginAuthorized;
+
+    private $currentToken;
 
     public function __construct()
     {
@@ -87,6 +89,18 @@ class User
     public function setLoginAuthorized(bool $loginAuthorized): self
     {
         $this->loginAuthorized = $loginAuthorized;
+
+        return $this;
+    }
+
+    public function getCurrentToken(): ?string
+    {
+        return $this->currentToken;
+    }
+
+    public function setCurrentToken(string $currentToken): self
+    {
+        $this->currentToken = $currentToken;
 
         return $this;
     }

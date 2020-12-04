@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Service\SetTimeLeftService;
+use App\Service\TokenValidationService;
 
 class UserController extends BaseController {
 
@@ -18,15 +19,24 @@ class UserController extends BaseController {
      * @Route("/user/{id}/plants", methods={"GET"})
      */
     public function userPlants(  
-        $id,      
+        $id,
+        Request $request,
         SerializerInterface $serializer,
         UserRepository $userRepository,
-        SetTimeLeftService $setTimeLeftService
+        SetTimeLeftService $setTimeLeftService,
+        TokenValidationService $tokenValidationService
         ): JsonResponse {
             $user = $userRepository->find($id);
+            $currentToken = json_decode($request->getContent(), true);
 
             if ($user === null) {
                 return $this->notFoundResponse('User Not Found!');
+            }
+
+            $autherized = $tokenValidationService->validateToken($user, $currentToken);
+
+            if (!$autherized){
+                return $this->unauthorizedResponse('Deine Mudda!');
             }
 
             $plants = $user->getPlants();
@@ -75,14 +85,20 @@ class UserController extends BaseController {
         $id,
         Request $request,
         UserRepository $userRepository,
-        
         ValidatorInterface $validator
         ): JsonResponse {
             
             $user = $userRepository->findOneBy(['id' => $id]);
+            $currentToken = json_decode($request->getContent(), true);
 
             if ($user === null) {
                 return $this->notFoundResponse('User Not Found');
+            }
+
+            $autherized = $tokenValidationService->validateToken($user, $currentToken);
+
+            if (!$autherized){
+                return $this->unauthorizedResponse('Deine Mudda!');
             }
             
             $userRepository->deleteUser($user);                

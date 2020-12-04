@@ -31,11 +31,15 @@ class PlantController extends BaseController {
 
             $user = $userRepository->findOneBy(['id' => $id]);
             $plant = $serializer->deserialize($request->getContent(), Plant::class, 'json');
+            
+            if ($user === null) {
+                return $this->notFoundResponse('User Not Found!');
+            }
 
             $validationResult = $validator->validate($plant);
             
             if ($validationResult->count() !== 0) {
-                return $this->badRequestResponse();
+                return $this->badRequestResponse('Invalid Plant Data!');
             }
             
             $plant->setUser($user);
@@ -66,12 +70,12 @@ class PlantController extends BaseController {
             $serializer->deserialize($newPlantData, Plant::class, 'json', [AbstractNormalizer::OBJECT_TO_POPULATE => $plant]);
             
             if ($plant === null) {
-                return $this->notFoundResponse();
+                return $this->notFoundResponse('Plant Not Found!');
             }
 
             $validationResult = $validator->validate($plant);
             if ($validationResult->count() !== 0) {
-                return $this->badRequestResponse();
+                return $this->badRequestResponse('Invalid Plant Data!');
             }
             
             $plantRepository->savePlant($plant);
@@ -90,7 +94,7 @@ class PlantController extends BaseController {
             $plant = $plantRepository->findOneBy(['id' => $id]);
 
             if ($plant === null) {
-                return $this->notFoundResponse();
+                return $this->notFoundResponse('Plant Not Found');
             }
             
             $plantRepository->deletePlant($plant);
@@ -115,7 +119,7 @@ class PlantController extends BaseController {
 
             $plant = $plantRepository->findOneBy(['id' => $id]);
             if ($plant === null) {
-                return $this->notFoundResponse();
+                return $this->notFoundResponse('Plant Not Found');
             }
 
             $type === 'water' ? 

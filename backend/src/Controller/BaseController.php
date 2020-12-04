@@ -26,16 +26,16 @@ class BaseController extends AbstractController {
         );
     }
 
-    protected function notFoundResponse(): JsonResponse {
+    protected function notFoundResponse(string $message): JsonResponse {
         return new JsonResponse(
-            ["error" => "Plant ID not found."],
+            ["error" => $message],
             JsonResponse::HTTP_NOT_FOUND
         );
     }
 
-    protected function badRequestResponse(): JsonResponse {
+    protected function badRequestResponse(string $message): JsonResponse {
         return new JsonResponse(
-            ["error" => "Plant data invalid."],
+            ["error" => $message],
             JsonResponse::HTTP_BAD_REQUEST
         );
     }

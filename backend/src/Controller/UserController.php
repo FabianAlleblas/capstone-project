@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Service\SetTimeLeftService;
@@ -24,7 +23,13 @@ class UserController extends BaseController {
         UserRepository $userRepository,
         SetTimeLeftService $setTimeLeftService
         ): JsonResponse {
-            $plants = $userRepository->find($id)->getPlants();
+            $user = $userRepository->find($id);
+
+            if ($user === null) {
+                return $this->notFoundResponse('User Not Found!');
+            }
+
+            $plants = $user->getPlants();
 
             foreach ($plants as $plant){
                 $setTimeLeftService->setTimeLeft($plant);
@@ -47,7 +52,7 @@ class UserController extends BaseController {
             $validationResult = $validator->validate($user);
             
             if ($validationResult->count() !== 0) {
-                return $this->badRequestResponse();
+                return $this->badRequestResponse('Invalid User Data!');
             }
             
             $userRepository->saveUser($user);

@@ -2,31 +2,43 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import { ReactComponent as ArrowIcon } from '../../assets/icons/arrowicon.svg'
 import { ReactComponent as EditIcon } from '../../assets/icons/editicon.svg'
+import { ReactComponent as LogoutIcon } from '../../assets/icons/logouticon.svg'
 
 export default function Header({
   className,
   children,
   secondaryStyle,
   isDetailPage,
+  isPlantList,
   onClickArrow,
   onClickEdit,
+  onClickLogout,
 }) {
   Header.propTypes = {
     className: PropTypes.string,
     children: PropTypes.string.isRequired,
     secondaryStyle: PropTypes.bool,
     isDetailPage: PropTypes.bool,
+    isPlantList: PropTypes.bool,
     onClickArrow: PropTypes.func,
     onClickEdit: PropTypes.func,
+    onClickLogout: PropTypes.func,
   }
 
   return (
     <HeaderStyled className={className}>
       <HeadingContainer secondaryStyle={secondaryStyle}>
-        {isDetailPage && <ArrowIcon onClick={onClickArrow} />}
+        {isDetailPage && (
+          <ArrowIcon onClick={onClickArrow} data-testid="arrow-icon" />
+        )}
         <Heading>{children}</Heading>
       </HeadingContainer>
-      {isDetailPage && <EditIconStyled onClick={onClickEdit} />}
+      {isDetailPage && (
+        <EditIconStyled onClick={onClickEdit} data-testid="edit-icon" />
+      )}
+      {isPlantList && (
+        <LogoutIconStyled onClick={onClickLogout} data-testid="logout-icon" />
+      )}
     </HeaderStyled>
   )
 }
@@ -59,5 +71,9 @@ const Heading = styled.h1`
   line-height: 1;
 `
 const EditIconStyled = styled(EditIcon)`
+  margin: 14px 14px 0 0;
+`
+
+const LogoutIconStyled = styled(LogoutIcon)`
   margin: 14px 14px 0 0;
 `

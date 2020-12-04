@@ -40,6 +40,10 @@ exports[`PlantListPage renders correctly 1`] = `
   line-height: 1;
 }
 
+.c4 {
+  margin: 14px 14px 0 0;
+}
+
 .c1 {
   left: 0;
   position: fixed;
@@ -58,5 +62,11 @@ exports[`PlantListPage renders correctly 1`] = `
       My Plants
     </h1>
   </div>
+  <svg
+    class="c4"
+    data-testid="logout-icon"
+  >
+    logouticon.svg
+  </svg>
 </header>
 `;

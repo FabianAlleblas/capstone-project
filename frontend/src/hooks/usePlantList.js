@@ -12,11 +12,7 @@ export default function usePlantList(userData, setUserData) {
 
   useEffect(() => {
     getPlants(userData).then((data) =>
-      data?.error
-        ? alert(data?.error)
-        : !data
-        ? setUserData()
-        : setPlantList(data)
+      data?.error ? alert(data?.error) : setPlantList(data)
     )
   }, [userData])
   console.log(userData)

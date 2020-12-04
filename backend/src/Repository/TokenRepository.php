@@ -20,7 +20,6 @@ class TokenRepository extends ServiceEntityRepository
     }
 
     public function createToken($user): String {
-        
         $validUntil = new \DateTime('+ 1 Day');
 
         $token = new Token();

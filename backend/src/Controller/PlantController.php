@@ -13,7 +13,6 @@ use App\Entity\Plant;
 use App\Repository\PlantRepository;
 use App\Repository\UserRepository;
 use App\Service\SetTimeLeftService;
-use App\Service\TokenValidationService;
 
 class PlantController extends BaseController {
 
@@ -27,10 +26,8 @@ class PlantController extends BaseController {
         UserRepository $userRepository,
         SerializerInterface $serializer,
         ValidatorInterface $validator,
-        SetTimeLeftService $setTimeLeftService,
-        TokenValidationService $tokenValidationService
+        SetTimeLeftService $setTimeLeftService
         ): JsonResponse {
-
             $user = $userRepository->findOneBy(['id' => $id]);
             $plant = $serializer->deserialize($request->getContent(), Plant::class, 'json');
             $currentToken = json_decode($request->getContent(), true);
@@ -39,14 +36,7 @@ class PlantController extends BaseController {
                 return $this->notFoundResponse('User Not Found!');
             }
 
-            $autherized = $tokenValidationService->validateToken($user, $currentToken);
-
-            if (!$autherized){
-                return $this->unauthorizedResponse('Deine Mudda!');
-            }
-
             $validationResult = $validator->validate($plant);
-            
             if ($validationResult->count() !== 0) {
                 return $this->badRequestResponse('Invalid Plant Data!');
             }
@@ -59,21 +49,20 @@ class PlantController extends BaseController {
             $setTimeLeftService->setTimeLeft($plant);
 
             $ignoredAttributes  = ['user', 'lastWatered', 'lastFertilized'];
-            return $this->jsonResponse($plant, $serializer, $ignoredAttributes);
+            return $this->jsonResponse($plant, $ignoredAttributes);
         }
 
     /**
      * @Route("/plant/{id}", methods={"PUT"})
      */
     public function updatePlant(
-        $id, 
-        SerializerInterface $serializer,
-        PlantRepository $plantRepository,
+        $id,
         Request $request,
+        SerializerInterface $serializer,
         ValidatorInterface $validator,
+        PlantRepository $plantRepository,
         SetTimeLeftService $setTimeLeftService
         ): JsonResponse {
-
             $plant = $plantRepository->findOneBy(['id' => $id]);
             $newPlantData = $request->getContent();
             $serializer->deserialize($newPlantData, Plant::class, 'json', [AbstractNormalizer::OBJECT_TO_POPULATE => $plant]);
@@ -91,7 +80,7 @@ class PlantController extends BaseController {
             $setTimeLeftService->setTimeLeft($plant);
 
             $ignoredAttributes  = ['user', 'lastWatered', 'lastFertilized'];
-            return $this->jsonResponse($plant, $serializer, $ignoredAttributes);
+            return $this->jsonResponse($plant, $ignoredAttributes);
         }
 
     /**
@@ -100,7 +89,6 @@ class PlantController extends BaseController {
     public function removePlant(
         $id,
         PlantRepository $plantRepository){
-            
             $plant = $plantRepository->findOneBy(['id' => $id]);
 
             if ($plant === null) {
@@ -120,13 +108,9 @@ class PlantController extends BaseController {
     public function resetTimer(
         $id,
         $type,
-        SerializerInterface $serializer,
         PlantRepository $plantRepository,
-        Request $request,
-        ValidatorInterface $validator,
         SetTimeLeftService $setTimeLeftService
         ): JsonResponse {
-
             $plant = $plantRepository->findOneBy(['id' => $id]);
             if ($plant === null) {
                 return $this->notFoundResponse('Plant Not Found');
@@ -140,6 +124,6 @@ class PlantController extends BaseController {
             $setTimeLeftService->setTimeLeft($plant);
 
             $ignoredAttributes  = ['user', 'lastWatered', 'lastFertilized'];
-            return $this->jsonResponse($plant, $serializer, $ignoredAttributes);
+            return $this->jsonResponse($plant, $ignoredAttributes);
         }
 }

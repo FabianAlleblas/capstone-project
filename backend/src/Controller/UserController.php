@@ -21,7 +21,6 @@ class UserController extends BaseController {
     public function userPlants(  
         $id,
         Request $request,
-        SerializerInterface $serializer,
         UserRepository $userRepository,
         SetTimeLeftService $setTimeLeftService,
         TokenValidationService $tokenValidationService
@@ -33,20 +32,18 @@ class UserController extends BaseController {
                 return $this->notFoundResponse('User Not Found!');
             }
 
-            $autherized = $tokenValidationService->validateToken($user, $currentToken);
-
-            if (!$autherized){
+            $authorized = $tokenValidationService->validateToken($user, $currentToken);
+            if (!$authorized){
                 return $this->unauthorizedResponse('Deine Mudda!');
             }
 
             $plants = $user->getPlants();
-
             foreach ($plants as $plant){
                 $setTimeLeftService->setTimeLeft($plant);
-                }
+            }
 
             $ignoredAttributes  = ['user', 'lastWatered', 'lastFertilized'];
-            return $this->jsonResponse($plants, $serializer, $ignoredAttributes);
+            return $this->jsonResponse($plants, $ignoredAttributes);
         }
 
     /**
@@ -58,7 +55,6 @@ class UserController extends BaseController {
         SerializerInterface $serializer,
         ValidatorInterface $validator
         ): JsonResponse {
-
             $user = $serializer->deserialize($request->getContent(), User::class, 'json');
             $validationResult = $validator->validate($user);
             
@@ -67,7 +63,6 @@ class UserController extends BaseController {
             }
 
             $checkedEmail = $userRepository->findBy(['email' => $user->getEmail()]);
-            
             if ($checkedEmail){
                 return $this->badRequestResponse('E-Mail Already In Use!');
             }
@@ -87,7 +82,6 @@ class UserController extends BaseController {
         UserRepository $userRepository,
         ValidatorInterface $validator
         ): JsonResponse {
-            
             $user = $userRepository->findOneBy(['id' => $id]);
             $currentToken = json_decode($request->getContent(), true);
 
@@ -96,7 +90,6 @@ class UserController extends BaseController {
             }
 
             $autherized = $tokenValidationService->validateToken($user, $currentToken);
-
             if (!$autherized){
                 return $this->unauthorizedResponse('Deine Mudda!');
             }

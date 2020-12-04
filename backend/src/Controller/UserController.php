@@ -15,18 +15,6 @@ use App\Service\SetTimeLeftService;
 
 class UserController extends BaseController {
 
-
-    /**
-     * @Route("/user", methods={"GET"})
-     */
-    public function users(        
-        SerializerInterface $serializer,
-        UserRepository $userRepository
-        ): JsonResponse {
-            $user = $userRepository->findAll();
-            return $this->jsonResponse($user, $serializer);
-        }
-
     /**
      * @Route("/user/{id}/plants", methods={"GET"})
      */

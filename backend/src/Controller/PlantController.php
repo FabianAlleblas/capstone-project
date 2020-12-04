@@ -10,47 +10,11 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use App\Entity\Plant;
-use App\Entity\User;
 use App\Repository\PlantRepository;
 use App\Repository\UserRepository;
 use App\Service\SetTimeLeftService;
 
 class PlantController extends BaseController {
-
-    /**
-     * @Route("/plant", methods={"GET"})
-     */
-    public function plants(
-        SerializerInterface $serializer,
-        PlantRepository $plantRepository,
-        SetTimeLeftService $setTimeLeftService
-        ): JsonResponse {       
-            $plants = $plantRepository->findAll();
-
-            foreach ($plants as $plant){
-            $setTimeLeftService->setTimeLeft($plant);
-            }
-        
-            return $this->jsonResponse($plants, $serializer);
-        }
-
-    /**
-     * @Route("/plant/{id}", methods={"GET"})
-     */
-    public function plantById(
-        $id,
-        SerializerInterface $serializer,
-        PlantRepository $plantRepository,
-        SetTimeLeftService $setTimeLeftService
-        ): JsonResponse {       
-            $plantArray = $plantRepository->findBy(['id' => $id]);
-
-            foreach ($plantArray as $plant){
-            $setTimeLeftService->setTimeLeft($plant);
-            }
-        
-            return $this->jsonResponse($plantArray, $serializer);
-        }
 
     /**
      * @Route("/plant/{id}", methods={"POST"})

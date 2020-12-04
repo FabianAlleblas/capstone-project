@@ -38,12 +38,13 @@ class UserController extends BaseController {
             }
 
             $plants = $user->getPlants();
+            
             foreach ($plants as $plant){
                 $setTimeLeftService->setTimeLeft($plant);
             }
 
-            $ignoredAttributes  = ['user', 'lastWatered', 'lastFertilized'];
-            return $this->jsonResponse($plants, $ignoredAttributes);
+            $ignoredAttributes  = [];
+            return $this->jsonResponse($user, $ignoredAttributes);
         }
 
     /**
@@ -70,7 +71,7 @@ class UserController extends BaseController {
             $userRepository->saveUser($user);
             
             $ignoredAttributes  = ['email', 'password', 'plants'];
-            return $this->jsonResponse($user, $serializer, $ignoredAttributes);
+            return $this->jsonResponse($user, $ignoredAttributes);
         }
 
     /**
@@ -80,7 +81,8 @@ class UserController extends BaseController {
         $id,
         Request $request,
         UserRepository $userRepository,
-        ValidatorInterface $validator
+        ValidatorInterface $validator,
+        TokenValidationService $tokenValidationService
         ): JsonResponse {
             $user = $userRepository->findOneBy(['id' => $id]);
             $currentToken = json_decode($request->getContent(), true);

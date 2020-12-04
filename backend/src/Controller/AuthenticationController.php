@@ -13,7 +13,7 @@ use App\Repository\TokenRepository;
 class AuthenticationController extends BaseController {
 
     /**
-     * @Route("/login", methods={"GET"})
+     * @Route("/login", methods={"POST"})
      */
     public function userLogin(
         Request $request,

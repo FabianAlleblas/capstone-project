@@ -16,7 +16,7 @@ use App\Service\TokenValidationService;
 class UserController extends BaseController {
 
     /**
-     * @Route("/user/{id}/plants", methods={"GET"})
+     * @Route("/user/{id}/plants", methods={"POST"})
      */
     public function userPlants(  
         $id,
@@ -34,7 +34,10 @@ class UserController extends BaseController {
 
             $authorized = $tokenValidationService->validateToken($user, $currentToken);
             if (!$authorized){
-                return $this->unauthorizedResponse('Whoops! You need to Login!!');
+                return new JsonResponse(
+                    false,
+                    JsonResponse::HTTP_OK
+                );
             }
 
             $plants = $user->getPlants();
@@ -43,8 +46,8 @@ class UserController extends BaseController {
                 $setTimeLeftService->setTimeLeft($plant);
             }
 
-            $ignoredAttributes  = [];
-            return $this->jsonResponse($user, $ignoredAttributes);
+            $ignoredAttributes  = ['user', 'lastWatered', 'lastFertilized'];
+            return $this->jsonResponse($plants, $ignoredAttributes);
         }
 
     /**

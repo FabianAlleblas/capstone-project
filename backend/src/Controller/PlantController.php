@@ -50,7 +50,8 @@ class PlantController extends BaseController {
             $plantRepository->savePlant($plant);
             $setTimeLeftService->setTimeLeft($plant);
 
-            return $this->jsonResponse($plant, $serializer);
+            $ignoredAttributes  = ['user', 'lastWatered', 'lastFertilized'];
+            return $this->jsonResponse($plant, $serializer, $ignoredAttributes);
         }
 
     /**
@@ -81,7 +82,8 @@ class PlantController extends BaseController {
             $plantRepository->savePlant($plant);
             $setTimeLeftService->setTimeLeft($plant);
 
-            return $this->jsonResponse($plant, $serializer);
+            $ignoredAttributes  = ['user', 'lastWatered', 'lastFertilized'];
+            return $this->jsonResponse($plant, $serializer, $ignoredAttributes);
         }
 
     /**
@@ -129,6 +131,7 @@ class PlantController extends BaseController {
             $plantRepository->savePlant($plant);
             $setTimeLeftService->setTimeLeft($plant);
 
-            return $this->jsonResponse($plant, $serializer);
+            $ignoredAttributes  = ['user', 'lastWatered', 'lastFertilized'];
+            return $this->jsonResponse($plant, $serializer, $ignoredAttributes);
         }
 }

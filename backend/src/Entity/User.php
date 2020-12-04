@@ -37,6 +37,8 @@ class User
      */
     private $plants;
 
+    private $loginAuthorized;
+
     public function __construct()
     {
         $this->plants = new ArrayCollection();
@@ -67,6 +69,18 @@ class User
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getLoginAuthorized(): ?bool
+    {
+        return $this->loginAuthorized;
+    }
+
+    public function setLoginAuthorized(bool $loginAuthorized): self
+    {
+        $this->loginAuthorized = $loginAuthorized;
 
         return $this;
     }

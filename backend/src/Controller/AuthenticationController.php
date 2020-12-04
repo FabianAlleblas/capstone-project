@@ -24,15 +24,12 @@ class AuthenticationController extends BaseController {
         $user = $userRepository->findOneBy(['email' => $post['email'], 'password' => $post['password']]);
 
         if ($user === null){
-            return new JsonResponse(
-                ["NOT" => "GOOD"],
-                JsonResponse::HTTP_UNAUTHORIZED
-        );
+            return $this->unauthorizedResponse('Password Or E-Mail Wrong!');
         }
 
-        return new JsonResponse(
-            ["VERY" => "GOOD"],
-            JsonResponse::HTTP_OK
-    );
+        $user->setLoginAuthorized(true);
+
+        $ignoredAttributes = ['email', 'password', 'plants'];
+        return $this->jsonResponse($user, $serializer, $ignoredAttributes);
     }
 }

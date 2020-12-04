@@ -34,7 +34,7 @@ class UserController extends BaseController {
 
             $authorized = $tokenValidationService->validateToken($user, $currentToken);
             if (!$authorized){
-                return $this->unauthorizedResponse('Deine Mudda!');
+                return $this->unauthorizedResponse('Whoops! You need to Login!!');
             }
 
             $plants = $user->getPlants();
@@ -91,7 +91,7 @@ class UserController extends BaseController {
 
             $autherized = $tokenValidationService->validateToken($user, $currentToken);
             if (!$autherized){
-                return $this->unauthorizedResponse('Deine Mudda!');
+                return $this->unauthorizedResponse('Whoops! You need to Login!!');
             }
             
             $userRepository->deleteUser($user);                

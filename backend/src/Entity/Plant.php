@@ -55,7 +55,7 @@ class Plant
     private $weeksLeft;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="plants")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="plants")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
@@ -149,10 +149,10 @@ class Plant
         return $this;
     }
 
-    //public function getUser(): ?user
-    //{
-    //    return $this->user;
-    //}
+    public function getUser(): ?user
+    {
+        return $this->user;
+    }
 
     public function setUser(?user $user): self
     {

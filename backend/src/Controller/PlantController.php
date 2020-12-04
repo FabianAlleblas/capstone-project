@@ -20,7 +20,7 @@ class PlantController extends BaseController {
     /**
      * @Route("/plant", methods={"GET"})
      */
-    public function getPlant(
+    public function plants(
         SerializerInterface $serializer,
         PlantRepository $plantRepository,
         SetTimeLeftService $setTimeLeftService
@@ -32,6 +32,24 @@ class PlantController extends BaseController {
             }
         
             return $this->jsonResponse($plants, $serializer);
+        }
+
+    /**
+     * @Route("/plant/{id}", methods={"GET"})
+     */
+    public function plantById(
+        $id,
+        SerializerInterface $serializer,
+        PlantRepository $plantRepository,
+        SetTimeLeftService $setTimeLeftService
+        ): JsonResponse {       
+            $plantArray = $plantRepository->findBy(['id' => $id]);
+
+            foreach ($plantArray as $plant){
+            $setTimeLeftService->setTimeLeft($plant);
+            }
+        
+            return $this->jsonResponse($plantArray, $serializer);
         }
 
     /**

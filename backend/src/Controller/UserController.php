@@ -19,7 +19,7 @@ class UserController extends BaseController {
     /**
      * @Route("/user", methods={"GET"})
      */
-    public function getUser(        
+    public function users(        
         SerializerInterface $serializer,
         UserRepository $userRepository
         ): JsonResponse {
@@ -30,7 +30,7 @@ class UserController extends BaseController {
     /**
      * @Route("/user/{id}/plants", methods={"GET"})
      */
-    public function getUserPlants(  
+    public function userPlants(  
         $id,      
         SerializerInterface $serializer,
         UserRepository $userRepository,
@@ -56,18 +56,14 @@ class UserController extends BaseController {
         ): JsonResponse {
 
             $user = $serializer->deserialize($request->getContent(), User::class, 'json');
-            //$validationResult = $validator->validate($plant);
+            $validationResult = $validator->validate($user);
             
-            //if ($validationResult->count() !== 0) {
-            //    return $this->badRequestResponse();
-            //}
-            
-            //$plant->setLastWatered(new \Datetime());
-            //$plant->setLastFertilized(new \Datetime());
+            if ($validationResult->count() !== 0) {
+                return $this->badRequestResponse();
+            }
             
             $userRepository->saveUser($user);
-            //$setTimeLeftService->setTimeLeft($plant);
-
+            
             return $this->jsonResponse($user, $serializer);
         }
 }

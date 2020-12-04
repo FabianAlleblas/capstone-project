@@ -46,7 +46,6 @@ class PlantController extends BaseController {
             $plant->setLastWatered(new \Datetime());
             $plant->setLastFertilized(new \Datetime());
             
-            $userRepository->saveUser($user);
             $plantRepository->savePlant($plant);
             $setTimeLeftService->setTimeLeft($plant);
 

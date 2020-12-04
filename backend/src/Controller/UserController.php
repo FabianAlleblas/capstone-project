@@ -35,7 +35,8 @@ class UserController extends BaseController {
                 $setTimeLeftService->setTimeLeft($plant);
                 }
 
-            return $this->jsonResponse($plants, $serializer);
+            $ignoredAttributes  = ['user', 'lastWatered', 'lastFertilized'];
+            return $this->jsonResponse($plants, $serializer, $ignoredAttributes);
         }
 
     /**
@@ -54,9 +55,40 @@ class UserController extends BaseController {
             if ($validationResult->count() !== 0) {
                 return $this->badRequestResponse('Invalid User Data!');
             }
+
+            $checkedEmail = $userRepository->findBy(['email' => $user->getEmail()]);
             
+            if ($checkedEmail){
+                return $this->badRequestResponse('E-Mail Already In Use!');
+            }
+
             $userRepository->saveUser($user);
             
-            return $this->jsonResponse($user, $serializer);
+            $ignoredAttributes  = ['email', 'password', 'plants'];
+            return $this->jsonResponse($user, $serializer, $ignoredAttributes);
+        }
+
+    /**
+    * @Route("/user/{id}", methods={"DELETE"})
+    */
+    public function removeUser(
+        $id,
+        Request $request,
+        UserRepository $userRepository,
+        
+        ValidatorInterface $validator
+        ): JsonResponse {
+            
+            $user = $userRepository->findOneBy(['id' => $id]);
+
+            if ($user === null) {
+                return $this->notFoundResponse('User Not Found');
+            }
+            
+            $userRepository->deleteUser($user);                
+                return new JsonResponse(
+                    ["Status" => "User Deleted!"],
+                    JsonResponse::HTTP_OK
+                );
         }
 }

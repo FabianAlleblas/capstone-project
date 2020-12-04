@@ -33,7 +33,7 @@ class User
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity=Plant::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Plant::class, mappedBy="user", cascade={"remove"})
      */
     private $plants;
 

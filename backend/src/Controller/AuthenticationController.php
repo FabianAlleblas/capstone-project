@@ -20,7 +20,7 @@ class AuthenticationController extends BaseController {
         UserRepository $userRepository,
         SerializerInterface $serializer
     ): JsonResponse {
-        $loginData = $post = json_decode($request->getContent(), true);
+        $post = json_decode($request->getContent(), true);
         $user = $userRepository->findOneBy(['email' => $post['email'], 'password' => $post['password']]);
 
         if ($user === null){

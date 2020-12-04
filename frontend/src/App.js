@@ -8,7 +8,13 @@ import LoginPage from './Pages/Loginpage/LoginPage'
 import PlantListPage from './Pages/Plantlistpage/PlantListPage'
 
 function App() {
-  const { userData, userLogin, userRegistration, userLogout } = useUser()
+  const {
+    userData,
+    setUserData,
+    userLogin,
+    userRegistration,
+    userLogout,
+  } = useUser()
 
   const {
     plantList,
@@ -16,9 +22,9 @@ function App() {
     updatePlantData,
     deletePlantData,
     resetCareTimer,
-  } = usePlantList()
+  } = usePlantList(userData, setUserData)
 
-  if (!userData?.key) {
+  if (!userData) {
     return (
       <LoginPage userRegistration={userRegistration} userLogin={userLogin} />
     )

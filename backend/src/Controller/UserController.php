@@ -16,7 +16,7 @@ use App\Service\TokenValidationService;
 class UserController extends BaseController {
 
     /**
-     * @Route("/user/{id}/plants", methods={"POST"})
+     * @Route("/user/{id}/plants", methods={"GET"})
      */
     public function userPlants(  
         $id,
@@ -26,7 +26,8 @@ class UserController extends BaseController {
         TokenValidationService $tokenValidationService
         ): JsonResponse {
             $user = $userRepository->find($id);
-            $currentToken = json_decode($request->getContent(), true);
+            $authHeader = $request->headers->get('Authorization');
+            $currentToken = substr($authHeader, strpos($authHeader, ' ')+1);
 
             if ($user === null) {
                 return $this->notFoundResponse('User Not Found!');
@@ -36,7 +37,7 @@ class UserController extends BaseController {
             if (!$authorized){
                 return new JsonResponse(
                     false,
-                    JsonResponse::HTTP_OK
+                    JsonResponse::HTTP_UNAUTHORIZED
                 );
             }
 

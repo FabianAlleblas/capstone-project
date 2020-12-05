@@ -14,7 +14,7 @@ class TokenValidationService {
     }
 
     public function validateToken(User $user, $currentToken): bool {
-        if (!$currentToken['currentToken']){
+        if (!$currentToken){
             return false;
         }
         $today = new \Datetime();
@@ -24,7 +24,7 @@ class TokenValidationService {
                 $this->tokenRepository->deleteToken($token);
             }
         }
-        $foundToken = $this->tokenRepository->findOneBy(['token' => $currentToken['currentToken']]);
+        $foundToken = $this->tokenRepository->findOneBy(['token' => $currentToken]);
         return !is_null($foundToken);
     }
 }

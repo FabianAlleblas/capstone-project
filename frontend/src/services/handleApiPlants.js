@@ -1,16 +1,14 @@
 const baseUrl = 'http://urbanplants.local'
 
 export async function getPlants(userData) {
-  if (userData) {
+  if (userData?.authorized) {
     const myHeaders = new Headers()
     myHeaders.append('Content-Type', 'application/json')
-    const copy = { currentToken: userData?.currentToken }
+    myHeaders.append('Authorization', `Bearer ${userData?.currentToken}`)
 
-    const raw = JSON.stringify(copy)
     const requestOptions = {
-      method: 'POST',
+      method: 'GET',
       headers: myHeaders,
-      body: raw,
       redirect: 'follow',
     }
     try {

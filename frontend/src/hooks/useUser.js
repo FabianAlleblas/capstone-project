@@ -4,20 +4,25 @@ import { signUpUser, loginUser } from '../services/handleApiUser'
 
 export default function useUser() {
   const [userData, setUserData] = useState()
+  const notAuthorized = { authorized: false }
+  const authorized = { authorized: true }
 
   useEffect(() => {
-    setUserData(loadFromLocal('userData'))
+    setUserData(loadFromLocal('userData') ?? notAuthorized)
+    // eslint-disable-next-line
   }, [])
 
   useEffect(() => {
     saveToLocal('userData', userData)
   }, [userData])
 
-  return { userData, setUserData, userLogin, userRegistration, userLogout }
+  return { userData, userLogin, userRegistration, userLogout }
 
   function userLogin(formData) {
     loginUser(formData).then((responseData) =>
-      responseData.error ? alert(responseData.error) : setUserData(responseData)
+      responseData.error
+        ? alert(responseData.error)
+        : setUserData({ ...authorized, ...responseData })
     )
   }
 
@@ -28,7 +33,6 @@ export default function useUser() {
   }
 
   function userLogout() {
-    localStorage.removeItem('userData')
-    setUserData()
+    setUserData(notAuthorized)
   }
 }

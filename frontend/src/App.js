@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import usePlantList from './hooks/usePlantList'
 import useUser from './hooks/useUser'
@@ -8,13 +9,7 @@ import LoginPage from './Pages/Loginpage/LoginPage'
 import PlantListPage from './Pages/Plantlistpage/PlantListPage'
 
 function App() {
-  const {
-    userData,
-    setUserData,
-    userLogin,
-    userRegistration,
-    userLogout,
-  } = useUser()
+  const { userData, userLogin, userRegistration, userLogout } = useUser()
 
   const {
     plantList,
@@ -22,15 +17,17 @@ function App() {
     updatePlantData,
     deletePlantData,
     resetCareTimer,
-  } = usePlantList(userData, setUserData)
+  } = usePlantList(userData)
 
-  if (!userData) {
+  console.log(plantList)
+
+  if (!userData?.authorized || plantList === false) {
     return (
       <LoginPage userRegistration={userRegistration} userLogin={userLogin} />
     )
   }
 
-  if (!plantList) {
+  if (plantList === undefined) {
     return <div>loading...</div>
   }
 

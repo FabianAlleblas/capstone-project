@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Service\SetTimeLeftService;
+use App\Service\TokenValidationService;
 
 class UserController extends BaseController {
 
@@ -18,25 +19,32 @@ class UserController extends BaseController {
      * @Route("/user/{id}/plants", methods={"GET"})
      */
     public function userPlants(  
-        $id,      
-        SerializerInterface $serializer,
+        $id,
+        Request $request,
         UserRepository $userRepository,
-        SetTimeLeftService $setTimeLeftService
+        SetTimeLeftService $setTimeLeftService,
+        TokenValidationService $tokenValidationService
         ): JsonResponse {
             $user = $userRepository->find($id);
+            $currentToken = json_decode($request->getContent(), true);
 
             if ($user === null) {
                 return $this->notFoundResponse('User Not Found!');
             }
 
-            $plants = $user->getPlants();
+            $authorized = $tokenValidationService->validateToken($user, $currentToken);
+            if (!$authorized){
+                return $this->unauthorizedResponse('Whoops! You need to Login!!');
+            }
 
+            $plants = $user->getPlants();
+            
             foreach ($plants as $plant){
                 $setTimeLeftService->setTimeLeft($plant);
-                }
+            }
 
-            $ignoredAttributes  = ['user', 'lastWatered', 'lastFertilized'];
-            return $this->jsonResponse($plants, $serializer, $ignoredAttributes);
+            $ignoredAttributes  = [];
+            return $this->jsonResponse($user, $ignoredAttributes);
         }
 
     /**
@@ -48,7 +56,6 @@ class UserController extends BaseController {
         SerializerInterface $serializer,
         ValidatorInterface $validator
         ): JsonResponse {
-
             $user = $serializer->deserialize($request->getContent(), User::class, 'json');
             $validationResult = $validator->validate($user);
             
@@ -57,7 +64,6 @@ class UserController extends BaseController {
             }
 
             $checkedEmail = $userRepository->findBy(['email' => $user->getEmail()]);
-            
             if ($checkedEmail){
                 return $this->badRequestResponse('E-Mail Already In Use!');
             }
@@ -65,7 +71,7 @@ class UserController extends BaseController {
             $userRepository->saveUser($user);
             
             $ignoredAttributes  = ['email', 'password', 'plants'];
-            return $this->jsonResponse($user, $serializer, $ignoredAttributes);
+            return $this->jsonResponse($user, $ignoredAttributes);
         }
 
     /**
@@ -75,14 +81,19 @@ class UserController extends BaseController {
         $id,
         Request $request,
         UserRepository $userRepository,
-        
-        ValidatorInterface $validator
+        ValidatorInterface $validator,
+        TokenValidationService $tokenValidationService
         ): JsonResponse {
-            
             $user = $userRepository->findOneBy(['id' => $id]);
+            $currentToken = json_decode($request->getContent(), true);
 
             if ($user === null) {
                 return $this->notFoundResponse('User Not Found');
+            }
+
+            $autherized = $tokenValidationService->validateToken($user, $currentToken);
+            if (!$autherized){
+                return $this->unauthorizedResponse('Whoops! You need to Login!!');
             }
             
             $userRepository->deleteUser($user);                

@@ -27,7 +27,7 @@ class User
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)#
+     * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      */
     private $password;
@@ -37,11 +37,19 @@ class User
      */
     private $plants;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Token::class, mappedBy="user", cascade={"remove"})
+     */
+    private $tokens;
+
     private $loginAuthorized;
+
+    private $currentToken;
 
     public function __construct()
     {
         $this->plants = new ArrayCollection();
+        $this->tokens = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -85,6 +93,18 @@ class User
         return $this;
     }
 
+    public function getCurrentToken(): ?string
+    {
+        return $this->currentToken;
+    }
+
+    public function setCurrentToken(string $currentToken): self
+    {
+        $this->currentToken = $currentToken;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Plant[]
      */
@@ -109,6 +129,36 @@ class User
             // set the owning side to null (unless already changed)
             if ($plant->getUser() === $this) {
                 $plant->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Token[]
+     */
+    public function getTokens(): Collection
+    {
+        return $this->tokens;
+    }
+
+    public function addToken(Token $token): self
+    {
+        if (!$this->tokens->contains($token)) {
+            $this->tokens[] = $token;
+            $token->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeToken(Token $token): self
+    {
+        if ($this->tokens->removeElement($token)) {
+            // set the owning side to null (unless already changed)
+            if ($token->getUser() === $this) {
+                $token->setUser(null);
             }
         }
 

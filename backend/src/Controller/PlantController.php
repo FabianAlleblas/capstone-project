@@ -13,8 +13,45 @@ use App\Entity\Plant;
 use App\Repository\PlantRepository;
 use App\Repository\UserRepository;
 use App\Service\SetTimeLeftService;
+use App\Service\TokenValidationService;
 
 class PlantController extends BaseController {
+    
+    /**
+     * @Route("/plant/{id}", methods={"GET"})
+     */
+    public function userPlants(  
+        $id,
+        Request $request,
+        UserRepository $userRepository,
+        SetTimeLeftService $setTimeLeftService,
+        TokenValidationService $tokenValidationService
+        ): JsonResponse {
+            $user = $userRepository->find($id);
+            $authHeader = $request->headers->get('Authorization');
+            $currentToken = substr($authHeader, strpos($authHeader, ' ')+1);
+
+            if ($user === null) {
+                return $this->notFoundResponse('User Not Found!');
+            }
+
+            $authorized = $tokenValidationService->validateToken($user, $currentToken);
+            if (!$authorized){
+                return new JsonResponse(
+                    false,
+                    JsonResponse::HTTP_UNAUTHORIZED
+                );
+            }
+
+            $plants = $user->getPlants();
+            
+            foreach ($plants as $plant){
+                $setTimeLeftService->setTimeLeft($plant);
+            }
+
+            $ignoredAttributes  = ['user', 'lastWatered', 'lastFertilized'];
+            return $this->jsonResponse($plants, $ignoredAttributes);
+        }
 
     /**
      * @Route("/plant/{id}", methods={"POST"})

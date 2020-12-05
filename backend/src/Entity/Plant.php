@@ -54,6 +54,12 @@ class Plant
 
     private $weeksLeft;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="plants")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -95,17 +101,11 @@ class Plant
         return $this;
     }
 
-    /**
-     *
-     */
     public function getLastWatered(): ?\DateTimeInterface
     {
         return $this->lastWatered;
     }
 
-    /**
-     *
-     */
     public function setLastWatered(?\DateTimeInterface $lastWatered): self
     {
         $this->lastWatered = $lastWatered;
@@ -113,17 +113,11 @@ class Plant
         return $this;
     }
 
-    /**
-     *
-     */
     public function getLastFertilized(): ?\DateTimeInterface
     {
         return $this->lastFertilized;
     }
     
-    /**
-     *
-     */
     public function setLastFertilized(?\DateTimeInterface $lastFertilized): self
     {
         $this->lastFertilized = $lastFertilized;
@@ -151,6 +145,18 @@ class Plant
     public function setWeeksLeft(int $weeksLeft): self
     {
         $this->weeksLeft = $weeksLeft;
+
+        return $this;
+    }
+
+    public function getUser(): ?user
+    {
+        return $this->user;
+    }
+
+    public function setUser(?user $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

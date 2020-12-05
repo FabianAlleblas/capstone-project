@@ -9,12 +9,15 @@ use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 
 class BaseController extends AbstractController {
 
-    protected function jsonResponse($data, $serializer): JsonResponse {
+    protected function jsonResponse($data, $serializer, Array $ignoredAttributes): JsonResponse {
         return new JsonResponse(
             $serializer->serialize($data, 'json', 
                 [
                     AbstractObjectNormalizer::SKIP_NULL_VALUES => true,
-                    AbstractNormalizer::IGNORED_ATTRIBUTES => ['lastWatered', 'lastFertilized']
+                    AbstractNormalizer::IGNORED_ATTRIBUTES => $ignoredAttributes,
+                    AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($object) {
+                        return $object->getId();
+                    },
                 ]
             ),
             JsonResponse::HTTP_OK,
@@ -23,17 +26,24 @@ class BaseController extends AbstractController {
         );
     }
 
-    protected function notFoundResponse(): JsonResponse {
+    protected function notFoundResponse(string $message): JsonResponse {
         return new JsonResponse(
-            ["error" => "Plant ID not found."],
+            ["error" => $message],
             JsonResponse::HTTP_NOT_FOUND
         );
     }
 
-    protected function badRequestResponse(): JsonResponse {
+    protected function badRequestResponse(string $message): JsonResponse {
         return new JsonResponse(
-            ["error" => "Plant data invalid."],
+            ["error" => $message],
             JsonResponse::HTTP_BAD_REQUEST
+        );
+    }
+
+    protected function unauthorizedResponse(string $message): JsonResponse {
+        return new JsonResponse(
+            ["error" => $message],
+            JsonResponse::HTTP_UNAUTHORIZED
         );
     }
 }

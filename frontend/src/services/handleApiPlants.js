@@ -73,7 +73,7 @@ export async function deletePlant(id) {
     redirect: 'follow',
   }
   try {
-    const response = await fetch(`${baseUrl}/plant/${id}`, requestOptions)
+    const response = await fetch(`${baseUrl}/${id}`, requestOptions)
     const responseData = response.json()
     return responseData
   } catch (error) {

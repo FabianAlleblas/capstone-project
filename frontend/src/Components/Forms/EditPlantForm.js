@@ -49,7 +49,7 @@ export default function EditPlantForm({
           type="text"
           maxLength="28"
           onChange={handleInputChange}
-          value={formData?.info}
+          value={formData?.info ?? ''}
         />
       </Label>
       <ButtonWrapper>

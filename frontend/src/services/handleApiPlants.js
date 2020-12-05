@@ -1,4 +1,4 @@
-const baseUrl = 'http://urbanplants.local'
+const baseUrl = 'http://urbanplants.local/plant'
 
 export async function getPlants(userData) {
   if (userData?.authorized) {
@@ -12,10 +12,7 @@ export async function getPlants(userData) {
       redirect: 'follow',
     }
     try {
-      const response = await fetch(
-        `${baseUrl}/user/${userData?.id}/plants`,
-        requestOptions
-      )
+      const response = await fetch(`${baseUrl}/${userData?.id}`, requestOptions)
       const data = await response.json()
       return await data
     } catch (error) {
@@ -37,10 +34,7 @@ export async function postPlant(formData, userData) {
     redirect: 'follow',
   }
   try {
-    const response = await fetch(
-      `${baseUrl}/plant/${userData.id}`,
-      requestOptions
-    )
+    const response = await fetch(`${baseUrl}/${userData.id}`, requestOptions)
     const responseData = response.json()
     return responseData
   } catch (error) {
@@ -61,7 +55,7 @@ export async function updatePlant(data, id) {
     redirect: 'follow',
   }
   try {
-    const response = await fetch(`${baseUrl}/plant/${id}`, requestOptions)
+    const response = await fetch(`${baseUrl}/${id}`, requestOptions)
     const responseData = response.json()
     return responseData
   } catch (error) {
@@ -97,10 +91,7 @@ export async function resetTimer(id, type) {
     redirect: 'follow',
   }
   try {
-    const response = await fetch(
-      `${baseUrl}/plant/${id}/${type}`,
-      requestOptions
-    )
+    const response = await fetch(`${baseUrl}/${id}/${type}`, requestOptions)
     const responseData = response.json()
     return responseData
   } catch (error) {

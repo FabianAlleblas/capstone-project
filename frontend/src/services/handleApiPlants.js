@@ -4,7 +4,7 @@ export async function getPlants(userData) {
   if (userData?.authorized) {
     const myHeaders = new Headers()
     myHeaders.append('Content-Type', 'application/json')
-    myHeaders.append('Authorization', `Bearer ${userData?.currentToken}`)
+    myHeaders.append('Authorization', `Bearer ${userData.currentToken}`)
 
     const requestOptions = {
       method: 'GET',

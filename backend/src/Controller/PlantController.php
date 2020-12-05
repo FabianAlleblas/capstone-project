@@ -37,10 +37,7 @@ class PlantController extends BaseController {
 
             $authorized = $tokenValidationService->validateToken($user, $currentToken);
             if (!$authorized){
-                return new JsonResponse(
-                    false,
-                    JsonResponse::HTTP_UNAUTHORIZED
-                );
+                return $this->unauthorizedResponse('unauthorized', 'Not Authorized!');
             }
 
             $plants = $user->getPlants();

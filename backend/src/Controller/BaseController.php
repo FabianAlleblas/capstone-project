@@ -46,9 +46,9 @@ class BaseController extends AbstractController {
         );
     }
 
-    protected function unauthorizedResponse(string $message): JsonResponse {
+    protected function unauthorizedResponse(string $type, string $message): JsonResponse {
         return new JsonResponse(
-            ["error" => $message],
+            [$type => $message],
             JsonResponse::HTTP_UNAUTHORIZED
         );
     }

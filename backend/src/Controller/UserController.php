@@ -28,7 +28,7 @@ class UserController extends BaseController {
         $user = $userRepository->findOneBy(['email' => $post['email'], 'password' => $post['password']]);
 
         if ($user === null){
-            return $this->unauthorizedResponse('Password Or E-Mail Wrong!');
+            return $this->unauthorizedResponse('error', 'Password Or E-Mail Wrong!');
         }
 
         $token = $tokenRepository->createToken($user);
@@ -86,7 +86,7 @@ class UserController extends BaseController {
 
             $autherized = $tokenValidationService->validateToken($user, $currentToken);
             if (!$autherized){
-                return $this->unauthorizedResponse('Whoops! You need to Login!!');
+                return $this->unauthorizedResponse('error', 'Whoops! You need to Login!!');
             }
             
             $userRepository->deleteUser($user);                

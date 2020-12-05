@@ -18,7 +18,7 @@ function App() {
     resetCareTimer,
   } = usePlantList(userData)
 
-  if (!userData?.authorized || plantList === false) {
+  if (!userData?.authorized || plantList?.unauthorized) {
     return (
       <LoginPage userRegistration={userRegistration} userLogin={userLogin} />
     )

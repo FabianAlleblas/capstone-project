@@ -17,3 +17,11 @@ Header: isDetailPage
   Helga
 </Header>
 ```
+
+Header: isPlantList
+
+```js
+<Header isPlantList onClickArrow={() => {}} onClickLogout={() => {}}>
+  Helga
+</Header>
+```

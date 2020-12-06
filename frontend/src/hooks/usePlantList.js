@@ -5,16 +5,16 @@ import {
   postPlant,
   updatePlant,
   resetTimer,
-} from '../services/handlePlantApi'
+} from '../services/handleApiPlants'
 
-export default function usePlantList() {
-  const [plantList, setPlantList] = useState(false)
+export default function usePlantList(userData) {
+  const [plantList, setPlantList] = useState()
 
   useEffect(() => {
-    getPlants().then((data) =>
-      data.error ? alert(data.error) : setPlantList(data)
+    getPlants(userData).then((data) =>
+      data?.error ? alert(data?.error) : setPlantList(data)
     )
-  }, [])
+  }, [userData])
 
   return {
     plantList,
@@ -25,7 +25,7 @@ export default function usePlantList() {
   }
 
   function savePlantData(formData) {
-    postPlant(formData).then((responseData) =>
+    postPlant(formData, userData).then((responseData) =>
       responseData.error
         ? alert(responseData.error)
         : setPlantList([...plantList, responseData])
@@ -34,7 +34,7 @@ export default function usePlantList() {
 
   function updatePlantData(formData, plantId) {
     const index = plantList.findIndex((plant) => plant.id === plantId)
-    updatePlant(formData, plantId).then((responseData) =>
+    updatePlant(formData, plantId, userData).then((responseData) =>
       responseData.error
         ? alert(responseData.error)
         : setPlantList([
@@ -46,7 +46,7 @@ export default function usePlantList() {
   }
 
   function deletePlantData(plantId) {
-    deletePlant(plantId).then((responseData) =>
+    deletePlant(plantId, userData).then((responseData) =>
       responseData.error
         ? alert(responseData.error)
         : setPlantList([...plantList.filter((plant) => plant.id !== plantId)])
@@ -55,7 +55,7 @@ export default function usePlantList() {
 
   function resetCareTimer(plantId, type) {
     const index = plantList.findIndex((plant) => plant.id === plantId)
-    resetTimer(plantId, type).then((responseData) =>
+    resetTimer(plantId, type, userData).then((responseData) =>
       responseData.error
         ? alert(responseData.error)
         : setPlantList([

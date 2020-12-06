@@ -2,14 +2,16 @@ import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import PlusButton from '../../Components/Buttons/PlusButton'
 import Header from '../../Components/Header/Header'
-import PlantListCard from '../../Components/Plantlistcard/PlantListCard'
+import PlantListCard from '../../Components/PlantListCard/PlantListCard'
 
-export default function PlantListPage({ plantList }) {
+export default function PlantListPage({ plantList, userLogout }) {
   const history = useHistory()
 
   return (
     <>
-      <FixedHeader>My Plants</FixedHeader>
+      <FixedHeader isPlantList onClickLogout={userLogout}>
+        My Plants
+      </FixedHeader>
       <ListContainer>
         {plantList.map((plant) => (
           <PlantListCard

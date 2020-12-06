@@ -19,24 +19,24 @@ class Plant
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank
      * @Assert\Length(max=28)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)     
+     * @ORM\Column(type="string", length=50)     
      * @Assert\NotBlank
      * @Assert\Length(max=28)
      */
     private $species;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=50, nullable=true)
      * @Assert\Length(max=28)
      */
-    private $info;
+    private $specialInfo;
 
     /**
      * @ORM\Column(type="datetime")
@@ -49,9 +49,21 @@ class Plant
      *
      */
     private $lastFertilized;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="plants")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
 
+    /**
+     * Virtual Property(type="integer")
+     */
     private $daysLeft;
 
+    /**
+     * Virtual Property(type="integer")
+     */
     private $weeksLeft;
 
     public function getId(): ?int
@@ -59,7 +71,7 @@ class Plant
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -71,7 +83,7 @@ class Plant
         return $this;
     }
 
-    public function getSpecies(): ?string
+    public function getSpecies(): string
     {
         return $this->species;
     }
@@ -83,29 +95,23 @@ class Plant
         return $this;
     }
 
-    public function getInfo(): ?string
+    public function getSpecialInfo(): ?string
     {
-        return $this->info;
+        return $this->specialInfo;
     }
 
-    public function setInfo(string $info): self
+    public function setSpecialInfo(string $specialInfo): self
     {
-        $this->info = $info;
+        $this->specialInfo = $specialInfo;
 
         return $this;
     }
 
-    /**
-     *
-     */
     public function getLastWatered(): ?\DateTimeInterface
     {
         return $this->lastWatered;
     }
 
-    /**
-     *
-     */
     public function setLastWatered(?\DateTimeInterface $lastWatered): self
     {
         $this->lastWatered = $lastWatered;
@@ -113,20 +119,26 @@ class Plant
         return $this;
     }
 
-    /**
-     *
-     */
     public function getLastFertilized(): ?\DateTimeInterface
     {
         return $this->lastFertilized;
     }
     
-    /**
-     *
-     */
     public function setLastFertilized(?\DateTimeInterface $lastFertilized): self
     {
         $this->lastFertilized = $lastFertilized;
+
+        return $this;
+    }
+
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

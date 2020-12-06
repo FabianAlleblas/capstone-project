@@ -39,7 +39,7 @@ export default function AddPlantForm({ savePlantData }) {
       <Label>
         Special infos:
         <Input
-          name="info"
+          name="specialInfo"
           type="text"
           placeholder="variegated"
           maxLength="28"

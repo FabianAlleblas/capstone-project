@@ -18,7 +18,7 @@ const onDeleteMock = jest.fn()
 const plant = plants[0]
 
 describe('AddPlantForm', () => {
-  it('Is renders with the correct input values', () => {
+  it('renders with the correct input values', () => {
     const { getByLabelText } = render(
       <EditPlantForm
         updatePlantData={onSubmitMock}
@@ -31,10 +31,10 @@ describe('AddPlantForm', () => {
     expect(getByLabelText('The species of your plant*:')).toHaveValue(
       plant.species
     )
-    expect(getByLabelText('Special infos:')).toHaveValue(plant.info)
+    expect(getByLabelText('Special infos:')).toHaveValue(plant.specialInfo)
   })
 
-  it('Calls history.push by clicking the cancel button', () => {
+  it('calls history.push by clicking the cancel button', () => {
     const { getByText } = render(
       <EditPlantForm
         updatePlantData={onSubmitMock}
@@ -48,7 +48,7 @@ describe('AddPlantForm', () => {
     expect(mockHistoryPush).toHaveBeenCalled()
   })
 
-  it('Calls the right function and history.push by clicking the delete button', () => {
+  it('calls the right function and history.push by clicking the delete button', () => {
     const { getByText } = render(
       <EditPlantForm
         updatePlantData={onSubmitMock}

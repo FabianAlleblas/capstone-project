@@ -9,4 +9,21 @@ describe('Header', () => {
     expect(container.firstChild).toMatchSnapshot()
     expect(getByText(/My Plants/i)).toBeInTheDocument()
   })
+  it('renders the correct SVGs', () => {
+    const { getByText, getByTestId } = render(
+      <Header isDetailPage>Helga</Header>
+    )
+
+    expect(getByText(/Helga/i)).toBeInTheDocument()
+    expect(getByTestId(/arrow-icon/i)).toBeInTheDocument()
+    expect(getByTestId(/edit-icon/i)).toBeInTheDocument()
+  })
+  it('renders the correct SVG', () => {
+    const { getByText, getByTestId } = render(
+      <Header isPlantList>My Plants</Header>
+    )
+
+    expect(getByText(/My Plants/i)).toBeInTheDocument()
+    expect(getByTestId(/logout-icon/i)).toBeInTheDocument()
+  })
 })

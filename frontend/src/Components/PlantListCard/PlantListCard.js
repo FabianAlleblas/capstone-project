@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import monsteraImage from '../../assets/plant-images/3.jpg'
-import PlantListBar from '../Indicatorbars/PlantListBar'
+import PlantListBar from '../IndicatorBars/PlantListBar'
 
 export default function PlantListCard({ plant, onClick }) {
   PlantListCard.propTypes = {

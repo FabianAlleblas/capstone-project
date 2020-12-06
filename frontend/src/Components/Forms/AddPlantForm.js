@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import useForm from '../../hooks/useForm'
+import useForm from '../../Hooks/useForm'
 import Button from '../Buttons/Button'
 
 export default function AddPlantForm({ savePlantData }) {
@@ -39,7 +39,7 @@ export default function AddPlantForm({ savePlantData }) {
       <Label>
         Special infos:
         <Input
-          name="info"
+          name="specialInfo"
           type="text"
           placeholder="variegated"
           maxLength="28"

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import useForm from '../../hooks/useForm'
+import useForm from '../../Hooks/useForm'
 import Button from '../Buttons/Button'
 
 export default function EditPlantForm({
@@ -45,11 +45,11 @@ export default function EditPlantForm({
       <Label>
         Special infos:
         <Input
-          name="info"
+          name="specialInfo"
           type="text"
           maxLength="28"
           onChange={handleInputChange}
-          value={formData?.info ?? ''}
+          value={formData?.specialInfo ?? ''}
         />
       </Label>
       <ButtonWrapper>

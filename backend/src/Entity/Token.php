@@ -28,16 +28,16 @@ class Token
     private $validUntil;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="tokens")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="tokens")
      */
     private $user;
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getToken(): ?string
+    public function getToken(): string
     {
         return $this->token;
     }
@@ -49,7 +49,7 @@ class Token
         return $this;
     }
 
-    public function getValidUntil(): ?\DateTimeInterface
+    public function getValidUntil(): \DateTimeInterface
     {
         return $this->validUntil;
     }
@@ -61,12 +61,12 @@ class Token
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): self
+    public function setUser(User $user): self
     {
         $this->user = $user;
 

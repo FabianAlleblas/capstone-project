@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
-import monsteraImage from '../../assets/plant-images/3.jpg'
-import PlantDetailBar from '../Indicatorbars/PlantDetailBar'
+import monsteraImage from '../../Assets/plant-images/3.jpg'
+import PlantDetailBar from '../IndicatorBars/PlantDetailBar'
 import Button from '../Buttons/Button'
 
 export default function PlantDetailCard({ plant, resetTimer }) {
@@ -14,7 +14,7 @@ export default function PlantDetailCard({ plant, resetTimer }) {
       <ImageFrame src={monsteraImage} />
       <TextContainer>
         <PlantName>{plant.species}</PlantName>
-        <PlantInfo>{plant.info}</PlantInfo>
+        <PlantInfo>{plant.specialInfo}</PlantInfo>
       </TextContainer>
       <PlantDetailBar daysLeft={plant.daysLeft} weeksLeft={plant.weeksLeft} />
       <ButtonWrapper>

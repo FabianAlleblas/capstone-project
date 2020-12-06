@@ -12,7 +12,7 @@ export async function getPlants(userData) {
       redirect: 'follow',
     }
     try {
-      const response = await fetch(`${baseUrl}/${userData?.id}`, requestOptions)
+      const response = await fetch(baseUrl, requestOptions)
       const data = await response.json()
       return await data
     } catch (error) {
@@ -24,6 +24,7 @@ export async function getPlants(userData) {
 export async function postPlant(formData, userData) {
   const myHeaders = new Headers()
   myHeaders.append('Content-Type', 'application/json')
+  myHeaders.append('Authorization', `Bearer ${userData.currentToken}`)
   const copy = Object.assign({}, formData)
 
   const raw = JSON.stringify(copy)
@@ -34,7 +35,7 @@ export async function postPlant(formData, userData) {
     redirect: 'follow',
   }
   try {
-    const response = await fetch(`${baseUrl}/${userData.id}`, requestOptions)
+    const response = await fetch(baseUrl, requestOptions)
     const responseData = response.json()
     return responseData
   } catch (error) {
@@ -42,10 +43,11 @@ export async function postPlant(formData, userData) {
   }
 }
 
-export async function updatePlant(data, id) {
+export async function updatePlant(formData, id, userData) {
   const myHeaders = new Headers()
   myHeaders.append('Content-Type', 'application/json')
-  const copy = Object.assign({}, data)
+  myHeaders.append('Authorization', `Bearer ${userData.currentToken}`)
+  const copy = Object.assign({}, formData)
 
   const raw = JSON.stringify(copy)
   const requestOptions = {
@@ -63,9 +65,10 @@ export async function updatePlant(data, id) {
   }
 }
 
-export async function deletePlant(id) {
+export async function deletePlant(id, userData) {
   const myHeaders = new Headers()
   myHeaders.append('Content-Type', 'application/json')
+  myHeaders.append('Authorization', `Bearer ${userData.currentToken}`)
 
   const requestOptions = {
     method: 'DELETE',
@@ -81,9 +84,10 @@ export async function deletePlant(id) {
   }
 }
 
-export async function resetTimer(id, type) {
+export async function resetTimer(id, type, userData) {
   const myHeaders = new Headers()
   myHeaders.append('Content-Type', 'application/json')
+  myHeaders.append('Authorization', `Bearer ${userData.currentToken}`)
 
   const requestOptions = {
     method: 'PATCH',

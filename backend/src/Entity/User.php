@@ -23,6 +23,7 @@ class User
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
+     * @Assert\Email
      */
     private $email;
 
@@ -42,22 +43,18 @@ class User
      */
     private $tokens;
 
-    private $loginAuthorized;
-
-    private $currentToken;
-
     public function __construct()
     {
         $this->plants = new ArrayCollection();
         $this->tokens = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getEmail(): ?string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -69,7 +66,7 @@ class User
         return $this;
     }
 
-    public function getPassword(): ?string
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -77,30 +74,6 @@ class User
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
-        return $this;
-    }
-
-    public function getLoginAuthorized(): ?bool
-    {
-        return $this->loginAuthorized;
-    }
-
-    public function setLoginAuthorized(bool $loginAuthorized): self
-    {
-        $this->loginAuthorized = $loginAuthorized;
-
-        return $this;
-    }
-
-    public function getCurrentToken(): ?string
-    {
-        return $this->currentToken;
-    }
-
-    public function setCurrentToken(string $currentToken): self
-    {
-        $this->currentToken = $currentToken;
 
         return $this;
     }

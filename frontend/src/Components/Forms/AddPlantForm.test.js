@@ -27,7 +27,7 @@ describe('AddPlantForm', () => {
     expect(onSubmitMock).toHaveBeenCalledWith({
       name: 'Bob',
       species: 'Monstera',
-      info: 'variegated',
+      specialInfo: 'variegated',
     })
 
     expect(getByLabelText('Your plants name*:')).toHaveValue('')

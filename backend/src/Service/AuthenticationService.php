@@ -29,13 +29,7 @@ class AuthenticationService {
             return null;
         }
 
-        $userId = intval($request->headers->get('UserId'));
         $user = $foundToken->getUser();
-
-        if ($user->getId() !== $userId) 
-        {
-            return null;
-        }
         
         $today = new \Datetime();
 

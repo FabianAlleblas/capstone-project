@@ -106,7 +106,7 @@ class PlantController extends BaseController {
 
         $plant = $plantRepository->findOneBy(['id' => $id]);
         
-        if ($plant === null) {
+        if ($plant === null || $plant->getUser()->getId() !== $user->getId()) {
             return $this->notFoundResponse('Plant Not Found');
         }
         
@@ -137,7 +137,7 @@ class PlantController extends BaseController {
 
         $plant = $plantCareService->resetCareDate($id, $type);
 
-        if ($plant === 'Not found')
+        if ($plant === 'Not found' || $plant->getUser()->getId() !== $user->getId())
         {
             return $this->notFoundResponse('Plant Not Found');
         }

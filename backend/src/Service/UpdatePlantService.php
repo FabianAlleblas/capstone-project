@@ -29,9 +29,9 @@ class UpdatePlantService {
         $plant = $this->plantRepository->findOneBy(['id' => $id]);
         $newPlantData = $request->getContent();
         $this->serializer->deserialize($newPlantData, Plant::class, 'json', [AbstractNormalizer::OBJECT_TO_POPULATE => $plant]);
-        
+
         $validationResult = $this->validator->validate($plant);
-        if ($validationResult->count() !== 0)
+        if ($validationResult->count() !== 0 || $plant->getUser()->getId() !== $user->getId())
         {
             return 'Invalid';
         }

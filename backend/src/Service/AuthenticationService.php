@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Repository\TokenRepository;
 
 class AuthenticationService {
-    private $tokenRepository;
 
     public function __construct(TokenRepository $tokenRepository)
     {

@@ -5,12 +5,12 @@ import user from '@testing-library/user-event'
 const onSubmitMock = jest.fn()
 
 describe('PlantDetailCard', () => {
-  it('Shows the correct name and info', () => {
+  it('shows the correct name and info', () => {
     const { getByText } = render(
       <PlantDetailCard
         plant={{
           species: 'Monstera',
-          info: 'variegated',
+          specialInfo: 'variegated',
           daysLeft: 2,
           weeksLeft: 3,
         }}
@@ -20,12 +20,12 @@ describe('PlantDetailCard', () => {
     expect(getByText('Monstera')).toBeInTheDocument()
     expect(getByText('variegated')).toBeInTheDocument()
   })
-  it('Calls the onSubmitMock if the watered button is clicked', () => {
+  it('calls the onSubmitMock if the watered button is clicked', () => {
     const { getByText } = render(
       <PlantDetailCard
         plant={{
           species: 'Monstera',
-          info: 'variegated',
+          specialInfo: 'variegated',
           daysLeft: 2,
           weeksLeft: 3,
         }}
@@ -37,12 +37,12 @@ describe('PlantDetailCard', () => {
 
     expect(onSubmitMock).toHaveBeenCalled()
   })
-  it('Calls the onSubmitMock if the fertilized button is clicked', () => {
+  it('calls the onSubmitMock if the fertilized button is clicked', () => {
     const { getByText } = render(
       <PlantDetailCard
         plant={{
           species: 'Monstera',
-          info: 'variegated',
+          specialInfo: 'variegated',
           daysLeft: 2,
           weeksLeft: 3,
         }}

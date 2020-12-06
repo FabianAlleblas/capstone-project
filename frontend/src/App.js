@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom'
-import usePlantList from './Hooks/usePlantList'
-import useUserAccess from './Hooks/useUserAccess'
+import usePlantList from './hooks/usePlantList'
+import useUserAccess from './hooks/useUserAccess'
 import AddPage from './Pages/AddPage/AddPage'
 import DetailPage from './Pages/DetailPage/DetailPage'
 import EditPage from './Pages/EditPage/EditPage'

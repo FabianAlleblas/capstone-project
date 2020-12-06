@@ -29,10 +29,6 @@ exports[`PlantListPage renders correctly 1`] = `
   padding: 20px 30px 13px 20px;
 }
 
-.c2 svg {
-  margin-right: 12px;
-}
-
 .c3 {
   color: var(--primary-light);
   font-size: 1.75rem;
@@ -40,8 +36,13 @@ exports[`PlantListPage renders correctly 1`] = `
   line-height: 1;
 }
 
+.c5 {
+  margin-right: 12px;
+}
+
 .c4 {
-  margin: 14px 14px 0 0;
+  background-color: transparent;
+  border: none;
 }
 
 .c1 {
@@ -62,11 +63,15 @@ exports[`PlantListPage renders correctly 1`] = `
       My Plants
     </h1>
   </div>
-  <svg
+  <button
     class="c4"
-    data-testid="logout-icon"
   >
-    logouticon.svg
-  </svg>
+    <svg
+      class="c5"
+      data-testid="logout-icon"
+    >
+      logouticon.svg
+    </svg>
+  </button>
 </header>
 `;

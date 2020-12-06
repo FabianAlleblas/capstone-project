@@ -1,13 +1,13 @@
 const path = require('path')
 
 module.exports = {
-  ignore: ['**/App.js', '**/*.test.js', '**/Styles/GlobalStyle.js'],
+  ignore: ['**/App.js', '**/*.test.js', '**/styles/GlobalStyle.js'],
   defaultExample: false,
   exampleMode: 'expand',
   usageMode: 'expand',
   components: ['src/Components/**/[A-Z]*.js'],
   styleguideComponents: {
-    Wrapper: path.join(__dirname, 'src/Styles/StyleWrapper'),
+    Wrapper: path.join(__dirname, 'src/styles/StyleWrapper'),
   },
   template: {
     head: {

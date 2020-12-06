@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import 'jest-styled-components'
-import plants from '../../Data/plants.json'
+import plants from '../../data/plants.json'
 import PlantListPage from './PlantListPage'
 
 describe('PlantListPage', () => {

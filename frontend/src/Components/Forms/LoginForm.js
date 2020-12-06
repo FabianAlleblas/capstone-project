@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
-import useForm from '../../Hooks/useForm'
+import useForm from '../../hooks/useForm'
 import Button from '../Buttons/Button'
 
 export default function LoginForm({ userRegistration, userLogin }) {

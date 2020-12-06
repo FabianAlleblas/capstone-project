@@ -5,7 +5,7 @@ import LoginForm from './LoginForm'
 const onSubmitMock = jest.fn()
 
 describe('AddPlantForm', () => {
-  it('Calls onSubmit with correct data, resets form and calls onSubmitMock', () => {
+  it('calls onSubmit with correct data, resets form and calls onSubmitMock', () => {
     const { getByPlaceholderText, getByText } = render(
       <LoginForm userRegistration={onSubmitMock} userLogin={onSubmitMock} />
     )
@@ -25,7 +25,7 @@ describe('AddPlantForm', () => {
 
     expect(onSubmitMock).toHaveBeenCalled()
   })
-  it('Calls onSubmitMock by clicking the sign up button', () => {
+  it('calls onSubmitMock by clicking the sign up button', () => {
     const { getByText } = render(
       <LoginForm userRegistration={onSubmitMock} userLogin={onSubmitMock} />
     )

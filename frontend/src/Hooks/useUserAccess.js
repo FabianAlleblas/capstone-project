@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { loadFromLocal, saveToLocal } from '../Lib/localStorage'
-import { loginUser, signUpUser } from '../Services/handleApiUserAccess'
+import { loadFromLocal, saveToLocal } from '../lib/localStorage'
+import { loginUser, signUpUser } from '../services/handleApiUserAccess'
 
 export default function useUser() {
   const [userData, setUserData] = useState()

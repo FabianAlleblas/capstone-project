@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import useForm from '../../Hooks/useForm'
+import useForm from '../../hooks/useForm'
 import Button from '../Buttons/Button'
 
 export default function EditPlantForm({

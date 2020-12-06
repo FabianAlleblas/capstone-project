@@ -1,4 +1,4 @@
-const baseUrl = 'http://urbanplants.local/user'
+const baseUrl = 'http://urbanplants.local'
 
 export async function signUpUser(data) {
   const myHeaders = new Headers()
@@ -13,7 +13,7 @@ export async function signUpUser(data) {
     redirect: 'follow',
   }
   try {
-    const response = await fetch(`${baseUrl}`, requestOptions)
+    const response = await fetch(baseUrl, requestOptions)
     const responseData = response.json()
     return responseData
   } catch (error) {

@@ -45,11 +45,11 @@ export default function EditPlantForm({
       <Label>
         Special infos:
         <Input
-          name="info"
+          name="specialInfo"
           type="text"
           maxLength="28"
           onChange={handleInputChange}
-          value={formData?.info ?? ''}
+          value={formData?.specialInfo ?? ''}
         />
       </Label>
       <ButtonWrapper>

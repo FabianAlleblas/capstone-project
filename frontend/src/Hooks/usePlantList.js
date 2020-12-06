@@ -34,7 +34,7 @@ export default function usePlantList(userData) {
 
   function updatePlantData(formData, plantId) {
     const index = plantList.findIndex((plant) => plant.id === plantId)
-    updatePlant(formData, plantId).then((responseData) =>
+    updatePlant(formData, plantId, userData).then((responseData) =>
       responseData.error
         ? alert(responseData.error)
         : setPlantList([
@@ -46,7 +46,7 @@ export default function usePlantList(userData) {
   }
 
   function deletePlantData(plantId) {
-    deletePlant(plantId).then((responseData) =>
+    deletePlant(plantId, userData).then((responseData) =>
       responseData.error
         ? alert(responseData.error)
         : setPlantList([...plantList.filter((plant) => plant.id !== plantId)])
@@ -55,7 +55,7 @@ export default function usePlantList(userData) {
 
   function resetCareTimer(plantId, type) {
     const index = plantList.findIndex((plant) => plant.id === plantId)
-    resetTimer(plantId, type).then((responseData) =>
+    resetTimer(plantId, type, userData).then((responseData) =>
       responseData.error
         ? alert(responseData.error)
         : setPlantList([

@@ -14,7 +14,7 @@ export default function PlantDetailCard({ plant, resetTimer }) {
       <ImageFrame src={monsteraImage} />
       <TextContainer>
         <PlantName>{plant.species}</PlantName>
-        <PlantInfo>{plant.info}</PlantInfo>
+        <PlantInfo>{plant.specialInfo}</PlantInfo>
       </TextContainer>
       <PlantDetailBar daysLeft={plant.daysLeft} weeksLeft={plant.weeksLeft} />
       <ButtonWrapper>

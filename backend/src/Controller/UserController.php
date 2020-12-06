@@ -10,42 +10,35 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use App\Entity\User;
 use App\Repository\UserRepository;
-use App\Service\SetTimeLeftService;
-use App\Service\TokenValidationService;
+use App\Repository\TokenRepository;
+use App\Service\DeleteInvalidTokenService;
 
 class UserController extends BaseController {
 
     /**
-     * @Route("/user/{id}/plants", methods={"GET"})
+     * @Route("/user/login", methods={"POST"})
      */
-    public function userPlants(  
-        $id,
+    public function userLogin(
         Request $request,
         UserRepository $userRepository,
-        SetTimeLeftService $setTimeLeftService,
-        TokenValidationService $tokenValidationService
+        TokenRepository $tokenRepository,
+        DeleteInvalidTokenService $deleteInvalidTokenService
         ): JsonResponse {
-            $user = $userRepository->find($id);
-            $currentToken = json_decode($request->getContent(), true);
+        $post = json_decode($request->getContent(), true);
+        $user = $userRepository->findOneBy(['email' => $post['email'], 'password' => $post['password']]);
 
-            if ($user === null) {
-                return $this->notFoundResponse('User Not Found!');
-            }
-
-            $authorized = $tokenValidationService->validateToken($user, $currentToken);
-            if (!$authorized){
-                return $this->unauthorizedResponse('Whoops! You need to Login!!');
-            }
-
-            $plants = $user->getPlants();
-            
-            foreach ($plants as $plant){
-                $setTimeLeftService->setTimeLeft($plant);
-            }
-
-            $ignoredAttributes  = [];
-            return $this->jsonResponse($user, $ignoredAttributes);
+        if ($user === null){
+            return $this->unauthorizedResponse('error', 'Password Or E-Mail Wrong!');
         }
+
+        $token = $tokenRepository->createToken($user);
+        $user->setCurrentToken($token);
+
+        $deleteInvalidTokenService->deleteInvalidToken($user);
+
+        $ignoredAttributes = ['email', 'password', 'plants', 'tokens'];
+        return $this->jsonResponse($user, $ignoredAttributes);
+    }
 
     /**
      * @Route("/user", methods={"POST"})
@@ -93,7 +86,7 @@ class UserController extends BaseController {
 
             $autherized = $tokenValidationService->validateToken($user, $currentToken);
             if (!$autherized){
-                return $this->unauthorizedResponse('Whoops! You need to Login!!');
+                return $this->unauthorizedResponse('error', 'Whoops! You need to Login!!');
             }
             
             $userRepository->deleteUser($user);                

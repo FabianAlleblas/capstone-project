@@ -5,16 +5,16 @@ import {
   postPlant,
   updatePlant,
   resetTimer,
-} from '../services/handlePlantApi'
+} from '../services/handleApiPlants'
 
-export default function usePlantList() {
-  const [plantList, setPlantList] = useState(false)
+export default function usePlantList(userData) {
+  const [plantList, setPlantList] = useState()
 
   useEffect(() => {
-    getPlants().then((data) =>
-      data.error ? alert(data.error) : setPlantList(data)
+    getPlants(userData).then((data) =>
+      data?.error ? alert(data?.error) : setPlantList(data)
     )
-  }, [])
+  }, [userData])
 
   return {
     plantList,
@@ -25,7 +25,7 @@ export default function usePlantList() {
   }
 
   function savePlantData(formData) {
-    postPlant(formData).then((responseData) =>
+    postPlant(formData, userData).then((responseData) =>
       responseData.error
         ? alert(responseData.error)
         : setPlantList([...plantList, responseData])

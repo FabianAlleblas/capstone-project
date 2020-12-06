@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom'
 import usePlantList from './hooks/usePlantList'
-import useUser from './hooks/useUser'
+import useUserAccess from './hooks/useUserAccess'
 import AddPage from './Pages/Addpage/AddPage'
 import DetailPage from './Pages/DetailPage/DetailPage'
 import EditPage from './Pages/Editpage/EditPage'
@@ -8,7 +8,7 @@ import LoginPage from './Pages/Loginpage/LoginPage'
 import PlantListPage from './Pages/Plantlistpage/PlantListPage'
 
 function App() {
-  const { userData, userLogin, userRegistration, userLogout } = useUser()
+  const { userData, userLogin, userRegistration, userLogout } = useUserAccess()
 
   const {
     plantList,
@@ -16,15 +16,15 @@ function App() {
     updatePlantData,
     deletePlantData,
     resetCareTimer,
-  } = usePlantList()
+  } = usePlantList(userData)
 
-  if (!userData?.key) {
+  if (!userData?.authorized || plantList?.unauthorized) {
     return (
       <LoginPage userRegistration={userRegistration} userLogin={userLogin} />
     )
   }
 
-  if (!plantList) {
+  if (plantList === undefined) {
     return <div>loading...</div>
   }
 

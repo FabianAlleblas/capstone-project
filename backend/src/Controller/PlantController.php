@@ -6,158 +6,142 @@ use App\Controller\BaseController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
-use App\Entity\Plant;
+use App\Service\AuthenticationService;
+use App\Service\CreatePlantService;
+use App\Service\UpdatePlantService;
+use App\Service\PlantCareService;
 use App\Repository\PlantRepository;
-use App\Repository\UserRepository;
-use App\Service\SetTimeLeftService;
-use App\Service\TokenValidationService;
 
 class PlantController extends BaseController {
     
     /**
-     * @Route("/plant/{id}", methods={"GET"})
+     * @Route("/plant", methods={"GET"})
      */
     public function userPlants(  
-        $id,
-        Request $request,
-        UserRepository $userRepository,
-        SetTimeLeftService $setTimeLeftService,
-        TokenValidationService $tokenValidationService
-        ): JsonResponse {
-            $user = $userRepository->find($id);
-            $authHeader = $request->headers->get('Authorization');
-            $currentToken = substr($authHeader, strpos($authHeader, ' ')+1);
-
-            if ($user === null) {
-                return $this->notFoundResponse('User Not Found!');
-            }
-
-            $authorized = $tokenValidationService->validateToken($user, $currentToken);
-            if (!$authorized){
-                return $this->unauthorizedResponse('unauthorized', 'Not Authorized!');
-            }
-
-            $plants = $user->getPlants();
-            
-            foreach ($plants as $plant){
-                $setTimeLeftService->setTimeLeft($plant);
-            }
-
-            $ignoredAttributes  = ['user', 'lastWatered', 'lastFertilized'];
-            return $this->jsonResponse($plants, $ignoredAttributes);
+        Request $request, 
+        PlantCareService $plantCareService,
+        AuthenticationService $authenticationService): JsonResponse 
+    {
+        $user = $authenticationService->validateUser($request);
+        
+        if (!$user) {
+            return $this->unauthorizedResponse('unauthorized', 'Not Authorized!');
         }
+
+        $plants = $user->getPlants();
+
+        foreach ($plants as $plant){
+            $plantCareService->setIntervalLeft($plant);
+        }
+
+        return $this->plantResponse($plants);
+    }
 
     /**
-     * @Route("/plant/{id}", methods={"POST"})
+     * @Route("/plant", methods={"POST"})
      */
-    public function createPlant(
-        $id,
+    public function addPlant(
         Request $request,
-        PlantRepository $plantRepository,
-        UserRepository $userRepository,
-        SerializerInterface $serializer,
-        ValidatorInterface $validator,
-        SetTimeLeftService $setTimeLeftService
-        ): JsonResponse {
-            $user = $userRepository->findOneBy(['id' => $id]);
-            $plant = $serializer->deserialize($request->getContent(), Plant::class, 'json');
-            $currentToken = json_decode($request->getContent(), true);
-            
-            if ($user === null) {
-                return $this->notFoundResponse('User Not Found!');
-            }
-
-            $validationResult = $validator->validate($plant);
-            if ($validationResult->count() !== 0) {
-                return $this->badRequestResponse('Invalid Plant Data!');
-            }
-            
-            $plant->setUser($user);
-            $plant->setLastWatered(new \Datetime());
-            $plant->setLastFertilized(new \Datetime());
-            
-            $plantRepository->savePlant($plant);
-            $setTimeLeftService->setTimeLeft($plant);
-
-            $ignoredAttributes  = ['user', 'lastWatered', 'lastFertilized'];
-            return $this->jsonResponse($plant, $ignoredAttributes);
+        CreatePlantService $createPlantService,
+        AuthenticationService $authenticationService): JsonResponse 
+    {
+        $user = $authenticationService->validateUser($request);
+        
+        if (!$user) 
+        {
+            return $this->unauthorizedResponse('unauthorized', 'Not Authorized!');
         }
+
+        $plant = $createPlantService->createPlant($user, $request);
+
+        if (!$plant)
+        {
+            return $this->badRequestResponse('Invalid Plant Data!');
+        }
+
+        return $this->plantResponse($plant);
+    }
 
     /**
      * @Route("/plant/{id}", methods={"PUT"})
      */
     public function updatePlant(
-        $id,
-        Request $request,
-        SerializerInterface $serializer,
-        ValidatorInterface $validator,
-        PlantRepository $plantRepository,
-        SetTimeLeftService $setTimeLeftService
-        ): JsonResponse {
-            $plant = $plantRepository->findOneBy(['id' => $id]);
-            $newPlantData = $request->getContent();
-            $serializer->deserialize($newPlantData, Plant::class, 'json', [AbstractNormalizer::OBJECT_TO_POPULATE => $plant]);
-            
-            if ($plant === null) {
-                return $this->notFoundResponse('Plant Not Found!');
-            }
+        int $id, 
+        Request $request,  
+        UpdatePlantService $updatePlantService,
+        AuthenticationService $authenticationService): JsonResponse 
+    {
+        $user = $authenticationService->validateUser($request);
 
-            $validationResult = $validator->validate($plant);
-            if ($validationResult->count() !== 0) {
-                return $this->badRequestResponse('Invalid Plant Data!');
-            }
-            
-            $plantRepository->savePlant($plant);
-            $setTimeLeftService->setTimeLeft($plant);
-
-            $ignoredAttributes  = ['user', 'lastWatered', 'lastFertilized'];
-            return $this->jsonResponse($plant, $ignoredAttributes);
+        if (!$user) 
+        {
+            return $this->unauthorizedResponse('unauthorized', 'Not Authorized!');
         }
+
+        $plant = $updatePlantService->updatePlantData($user, $id, $request);
+        
+        if ($plant === 'Invalid')
+        {
+            return $this->badRequestResponse('Invalid Plant Data!');
+        }
+        
+        return $this->plantResponse($plant);
+    }
 
     /**
      * @Route("/plant/{id}", methods={"DELETE"})
      */
     public function removePlant(
-        $id,
-        PlantRepository $plantRepository){
-            $plant = $plantRepository->findOneBy(['id' => $id]);
+        int $id,
+        Request $request,
+        PlantRepository $plantRepository,
+        AuthenticationService $authenticationService): JsonResponse
+    {
+        $user = $authenticationService->validateUser($request);
 
-            if ($plant === null) {
-                return $this->notFoundResponse('Plant Not Found');
-            }
-            
-            $plantRepository->deletePlant($plant);
-                return new JsonResponse(
-                    ["Status" => "Item deleted"],
-                    JsonResponse::HTTP_OK
-            );
+        if (!$user) 
+        {
+            return $this->unauthorizedResponse('unauthorized', 'Not Authorized!');
         }
+
+        $plant = $plantRepository->findOneBy(['id' => $id]);
+        
+        if ($plant === null) {
+            return $this->notFoundResponse('Plant Not Found');
+        }
+        
+        $plantRepository->deletePlant($plant);
+        
+        return new JsonResponse(
+            ["Status" => "Item deleted"],
+            JsonResponse::HTTP_OK
+        );
+    }
 
     /**
      * @Route("/plant/{id}/{type}", methods={"PATCH"})
      */
     public function resetTimer(
-        $id,
-        $type,
-        PlantRepository $plantRepository,
-        SetTimeLeftService $setTimeLeftService
-        ): JsonResponse {
-            $plant = $plantRepository->findOneBy(['id' => $id]);
-            if ($plant === null) {
-                return $this->notFoundResponse('Plant Not Found');
-            }
+        int $id,
+        string $type,
+        Request $request,
+        PlantCareService $plantCareService,
+        AuthenticationService $authenticationService): JsonResponse 
+    {
+        $user = $authenticationService->validateUser($request);
 
-            $type === 'water' ? 
-            $plant->setLastWatered(new \Datetime()) : 
-            $plant->setLastFertilized(new \Datetime());
-
-            $plantRepository->savePlant($plant);
-            $setTimeLeftService->setTimeLeft($plant);
-
-            $ignoredAttributes  = ['user', 'lastWatered', 'lastFertilized'];
-            return $this->jsonResponse($plant, $ignoredAttributes);
+        if (!$user) 
+        {
+            return $this->unauthorizedResponse('unauthorized', 'Not Authorized!');
         }
+
+        $plant = $plantCareService->resetCareDate($id, $type);
+
+        if ($plant === 'Not found')
+        {
+            return $this->notFoundResponse('Plant Not Found');
+        }
+
+        return $this->plantResponse($plant);
+    }
 }

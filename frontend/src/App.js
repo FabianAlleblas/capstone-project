@@ -1,11 +1,11 @@
 import { Route, Switch } from 'react-router-dom'
-import usePlantList from './hooks/usePlantList'
-import useUserAccess from './hooks/useUserAccess'
-import AddPage from './Pages/Addpage/AddPage'
+import usePlantList from './Hooks/usePlantList'
+import useUserAccess from './Hooks/useUserAccess'
+import AddPage from './Pages/AddPage/AddPage'
 import DetailPage from './Pages/DetailPage/DetailPage'
-import EditPage from './Pages/Editpage/EditPage'
-import LoginPage from './Pages/Loginpage/LoginPage'
-import PlantListPage from './Pages/Plantlistpage/PlantListPage'
+import EditPage from './Pages/EditPage/EditPage'
+import LoginPage from './Pages/LoginPage/LoginPage'
+import PlantListPage from './Pages/PlantListPage/PlantListPage'
 
 function App() {
   const { userData, userLogin, userRegistration, userLogout } = useUserAccess()

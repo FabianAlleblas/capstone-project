@@ -1,5 +1,5 @@
 import LoginForm from '../../Components/Forms/LoginForm'
-import { ReactComponent as AppLogo } from '../../assets/icons/urbanplantslogo.svg'
+import { ReactComponent as AppLogo } from '../../Assets/icons/urbanplantslogo.svg'
 import styled from 'styled-components/macro'
 
 export default function LoginPage({ userRegistration, userLogin }) {

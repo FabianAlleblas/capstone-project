@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import plants from '../../data/plants.json'
+import plants from '../../Data/plants.json'
 import EditPlantForm from './EditPlantForm'
 
 const mockHistoryPush = jest.fn()

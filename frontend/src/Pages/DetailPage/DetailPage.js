@@ -1,7 +1,7 @@
 import { useHistory, useLocation } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import Header from '../../Components/Header/Header'
-import PlantDetailCard from '../../Components/Plantdetailcard/PlantDetailCard'
+import PlantDetailCard from '../../Components/PlantDetailCard/PlantDetailCard'
 
 export default function DetailPage({ plantList, resetTimer }) {
   const history = useHistory()

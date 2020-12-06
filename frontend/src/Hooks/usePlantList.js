@@ -5,7 +5,7 @@ import {
   postPlant,
   updatePlant,
   resetTimer,
-} from '../services/handleApiPlants'
+} from '../Services/handleApiPlants'
 
 export default function usePlantList(userData) {
   const [plantList, setPlantList] = useState()

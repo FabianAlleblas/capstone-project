@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
-import { ReactComponent as PlusIcon } from '../../assets/icons/plusicon.svg'
+import { ReactComponent as PlusIcon } from '../../Assets/icons/plusicon.svg'
 
 export default function PlusButton({ onClick, className }) {
   PlusButton.propTypes = {

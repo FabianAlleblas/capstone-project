@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
-import monsteraImage from '../../Assets/plant-images/3.jpg'
+import monsteraImage from '../../assets/plant-images/3.jpg'
 import PlantDetailBar from '../IndicatorBars/PlantDetailBar'
 import Button from '../Buttons/Button'
 

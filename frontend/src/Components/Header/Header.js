@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
-import { ReactComponent as ArrowIcon } from '../../Assets/icons/arrowicon.svg'
-import { ReactComponent as EditIcon } from '../../Assets/icons/editicon.svg'
-import { ReactComponent as LogoutIcon } from '../../Assets/icons/logouticon.svg'
+import { ReactComponent as ArrowIcon } from '../../assets/icons/arrowicon.svg'
+import { ReactComponent as EditIcon } from '../../assets/icons/editicon.svg'
+import { ReactComponent as LogoutIcon } from '../../assets/icons/logouticon.svg'
 
 export default function Header({
   className,

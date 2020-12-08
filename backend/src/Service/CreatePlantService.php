@@ -8,6 +8,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use App\Repository\PlantRepository;
 use App\Service\PlantCareService;
+use App\Service\Base64ConvertService;
 
 class CreatePlantService {
 
@@ -25,14 +26,25 @@ class CreatePlantService {
 
     public function createPlant(object $user, Request $request)
     {
-        $plant = $this->serializer->deserialize($request->getContent(), Plant::class, 'json');
-    
-        $validationResult = $this->validator->validate($plant);
+        $data = json_decode($request->getContent(), true);
+             if($data === null
+                || !is_array($data)
+                || count($data) !== 1
+                || !isset($data['image']['name'], $data['image']['value'])
+                || count($data['image']) !== 2
+             ) {
+                var_dump("lol"); die;
+             }
 
-        if ($validationResult->count() !== 0) {
-            return null;
-        }
+        $imageFile = new Base64ConvertService($data['image']['value'], $data['image']['name']);
         
+        $plant = $this->serializer->deserialize($request->getContent(), Plant::class, 'json');
+        //$validationResult = $this->validator->validate($plant);
+
+        //if ($validationResult->count() !== 0) {
+        //    return null;
+        //}
+        $plant->setImageFile($imageFile);
         $plant->setUser($user);
         $plant->setLastWatered(new \Datetime());
         $plant->setLastFertilized(new \Datetime());

@@ -44,21 +44,21 @@ class PlantController extends BaseController {
         Request $request,
         CreatePlantService $createPlantService,
         AuthenticationService $authenticationService): JsonResponse 
-    {
+    {   
         $user = $authenticationService->validateUser($request);
-        
+
         if (!$user) 
         {
             return $this->unauthorizedResponse('unauthorized', 'Not Authorized!');
         }
-
+        
         $plant = $createPlantService->createPlant($user, $request);
 
-        if (!$plant)
-        {
-            return $this->badRequestResponse('Invalid Plant Data!');
-        }
-
+        // if (!$plant)
+        // {
+        //     return $this->badRequestResponse('Invalid Plant Data!');
+        // }
+        
         return $this->plantResponse($plant);
     }
 

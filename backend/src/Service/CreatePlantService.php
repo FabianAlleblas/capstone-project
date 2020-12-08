@@ -9,7 +9,6 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use App\Repository\PlantRepository;
 use App\Service\PlantCareService;
 use App\Service\PathPrefixService;
-use App\Service\Base64ConvertService;
 
 class CreatePlantService {
 

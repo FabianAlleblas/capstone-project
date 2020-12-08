@@ -73,10 +73,10 @@ export default function AddPlantForm({ savePlantData }) {
   )
 
   function handleSubmit(event) {
-    const imgData = { name: picture?.name, value: imageBase64 }
+    const imageData = { name: picture?.name, value: imageBase64 }
 
     event.preventDefault()
-    savePlantData(formData, imgData)
+    savePlantData(formData, imageData)
     event.target.reset()
     history.push('/')
   }

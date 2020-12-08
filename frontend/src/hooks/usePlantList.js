@@ -33,9 +33,10 @@ export default function usePlantList(userData) {
     )
   }
 
-  function updatePlantData(formData, plantId) {
+  function updatePlantData(formData, imageData, plantId) {
+    const plantData = { ...formData, imageData }
     const index = plantList.findIndex((plant) => plant.id === plantId)
-    updatePlant(formData, plantId, userData).then((responseData) =>
+    updatePlant(plantData, plantId, userData).then((responseData) =>
       responseData.error
         ? alert(responseData.error)
         : setPlantList([

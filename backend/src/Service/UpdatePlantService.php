@@ -30,6 +30,14 @@ class UpdatePlantService {
     {
         $plant = $this->plantRepository->findOneBy(['id' => $id]);
         $newPlantData = $request->getContent();
+
+        $imageFile = new Base64ConvertService($request);
+        if (!$imageFile->getPathname()){
+            $imageFile = Null;
+        }
+
+        $plant->setImageFile($imageFile);
+
         $this->serializer->deserialize($newPlantData, Plant::class, 'json', [AbstractNormalizer::OBJECT_TO_POPULATE => $plant]);
 
         $validationResult = $this->validator->validate($plant);

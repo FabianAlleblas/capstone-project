@@ -1,19 +1,21 @@
-const { useState } = require('react')
+const { useState, useEffect } = require('react')
 
 export default function useImage() {
-  const [imageBase64, setImageBase64] = useState(null)
-  const [picture, setPicture] = useState(null)
+  const [imageBase64, setImageBase64] = useState()
+  const [picture, setPicture] = useState()
 
   return {
+    picture,
     imageBase64,
     onChangePicture,
     deleteImg,
   }
 
   function onChangePicture(event) {
+    const reader = new FileReader()
+
     if (event.target.files[0]) {
       setPicture(event.target.files[0])
-      const reader = new FileReader()
       reader.addEventListener('load', () => {
         setImageBase64(reader.result)
       })
@@ -23,7 +25,7 @@ export default function useImage() {
 
   function deleteImg(event) {
     event.preventDefault()
-    setImageBase64(null)
-    setPicture(null)
+    setImageBase64()
+    setPicture()
   }
 }

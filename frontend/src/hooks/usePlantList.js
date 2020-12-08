@@ -24,8 +24,8 @@ export default function usePlantList(userData) {
     resetCareTimer,
   }
 
-  function savePlantData(formData, imageBase64) {
-    const plantData = { ...formData, imageBase64 }
+  function savePlantData(formData, imageData) {
+    const plantData = { ...formData, imageData }
     postPlant(plantData, userData).then((responseData) =>
       responseData.error
         ? alert(responseData.error)

@@ -16,12 +16,14 @@ class UpdatePlantService {
         PlantRepository $plantRepository,
         SerializerInterface $serializer,
         ValidatorInterface $validator,
-        PlantCareService $plantCareService)
+        PlantCareService $plantCareService,
+        PathPrefixService $pathPrefixService)
     {
         $this->plantRepository = $plantRepository;
         $this->validator = $validator;
         $this->serializer = $serializer;
         $this->plantCareService = $plantCareService;
+        $this->pathPrefixService = $pathPrefixService;
     }
 
     public function updatePlantData(object $user, int $id, Request $request)
@@ -38,6 +40,7 @@ class UpdatePlantService {
         
         $this->plantRepository->savePlant($plant);
         $this->plantCareService->setIntervalLeft($plant);
+        $this->pathPrefixService->pathPrefix($plant);
 
         return $plant;
     }

@@ -11,6 +11,7 @@ use App\Service\CreatePlantService;
 use App\Service\UpdatePlantService;
 use App\Service\PlantCareService;
 use App\Repository\PlantRepository;
+use App\Service\PathPrefixService;
 
 class PlantController extends BaseController {
     
@@ -20,9 +21,10 @@ class PlantController extends BaseController {
     public function userPlants(  
         Request $request, 
         PlantCareService $plantCareService,
-        AuthenticationService $authenticationService): JsonResponse 
+        AuthenticationService $authenticationService,
+        PathPrefixService $pathPrefixService): JsonResponse 
     {
-        $user = $authenticationService->validateUser($request);
+        $user = $authenticationService->validateUser($request); 
         
         if (!$user) {
             return $this->unauthorizedResponse('unauthorized', 'Not Authorized!');
@@ -32,6 +34,7 @@ class PlantController extends BaseController {
 
         foreach ($plants as $plant){
             $plantCareService->setIntervalLeft($plant);
+            $pathPrefixService->pathPrefix($plant);
         }
 
         return $this->plantResponse($plants);
@@ -54,10 +57,10 @@ class PlantController extends BaseController {
         
         $plant = $createPlantService->createPlant($user, $request);
 
-        // if (!$plant)
-        // {
-        //     return $this->badRequestResponse('Invalid Plant Data!');
-        // }
+        if (!$plant)
+        {
+            return $this->badRequestResponse('Invalid Plant Data!');
+        }
         
         return $this->plantResponse($plant);
     }
@@ -126,7 +129,8 @@ class PlantController extends BaseController {
         string $type,
         Request $request,
         PlantCareService $plantCareService,
-        AuthenticationService $authenticationService): JsonResponse 
+        AuthenticationService $authenticationService,
+        PathPrefixService $pathPrefixService): JsonResponse 
     {
         $user = $authenticationService->validateUser($request);
 
@@ -142,6 +146,7 @@ class PlantController extends BaseController {
             return $this->notFoundResponse('Plant Not Found');
         }
 
+        $pathPrefixService->pathPrefix($plant);
         return $this->plantResponse($plant);
     }
 }

@@ -37,7 +37,11 @@ class CreatePlantService {
         }
 
         $imageFile = new Base64ConvertService($request);
-       
+
+        if (!$imageFile->getPathname()){
+            $imageFile = Null;
+        }
+
         $plant->setImageFile($imageFile);
         
         $plant->setUser($user);

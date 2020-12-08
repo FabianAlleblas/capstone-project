@@ -16,7 +16,7 @@ class Base64ConvertService extends UploadedFile
         {
             return null;
         }
-
+        
         $originalName = $data['imageData']['name'];
         $base64Content = $data['imageData']['value'];
 

@@ -14,7 +14,7 @@ export default function AddPlantForm({ savePlantData }) {
 
   const history = useHistory()
   const { handleInputChange, formData } = useForm()
-  const { picture, imgData, onChangePicture, deleteImg } = useImageUpload()
+  const { imgData, onChangePicture, deleteImg } = useImageUpload()
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -74,7 +74,7 @@ export default function AddPlantForm({ savePlantData }) {
 
   function handleSubmit(event) {
     event.preventDefault()
-    savePlantData(formData)
+    savePlantData(formData, imgData)
     event.target.reset()
     history.push('/')
   }

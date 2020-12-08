@@ -20,7 +20,7 @@ export default function EditPlantForm({
 
   const history = useHistory()
   const { handleInputChange, formData } = useForm(plant)
-  const { picture, imgData, onChangePicture, deleteImg } = useImageUpload()
+  const { imgData, onChangePicture, deleteImg } = useImageUpload()
 
   return (
     <Form onSubmit={handleSubmit}>

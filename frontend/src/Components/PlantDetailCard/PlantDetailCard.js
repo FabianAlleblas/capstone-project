@@ -11,7 +11,7 @@ export default function PlantDetailCard({ plant, resetTimer }) {
   }
   return (
     <CardWrapper>
-      <ImageFrame src={monsteraImage} />
+      <ImageFrame src={plant.image ?? monsteraImage} />
       <TextContainer>
         <PlantName>{plant.species}</PlantName>
         <PlantInfo>{plant.specialInfo}</PlantInfo>

@@ -11,7 +11,7 @@ export default function PlantListCard({ plant, onClick }) {
 
   return (
     <CardWrapper onClick={onClick}>
-      <ImgContainer src={monsteraImage} />
+      <ImgContainer src={plant.image ?? monsteraImage} />
       <PlantName>{plant.name}</PlantName>
       <PlantListBar daysLeft={plant.daysLeft} weeksLeft={plant.weeksLeft} />
     </CardWrapper>

@@ -1,24 +1,29 @@
 const { useState } = require('react')
 
 export default function useImage() {
-  const [imgData, setImgData] = useState(null)
-  console.log(imgData)
+  const [imageBase64, setImageBase64] = useState(null)
+  const [picture, setPicture] = useState(null)
+
   return {
-    imgData,
+    imageBase64,
     onChangePicture,
     deleteImg,
   }
 
   function onChangePicture(event) {
-    const reader = new FileReader()
-    reader.addEventListener('load', () => {
-      setImgData(reader.result)
-    })
-    reader.readAsDataURL(event.target.files[0])
+    if (event.target.files[0]) {
+      setPicture(event.target.files[0])
+      const reader = new FileReader()
+      reader.addEventListener('load', () => {
+        setImageBase64(reader.result)
+      })
+      reader.readAsDataURL(event.target.files[0])
+    }
   }
 
   function deleteImg(event) {
     event.preventDefault()
-    setImgData(null)
+    setImageBase64(null)
+    setPicture(null)
   }
 }

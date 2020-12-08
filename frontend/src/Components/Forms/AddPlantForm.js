@@ -14,18 +14,18 @@ export default function AddPlantForm({ savePlantData }) {
 
   const history = useHistory()
   const { handleInputChange, formData } = useForm()
-  const { imgData, onChangePicture, deleteImg } = useImageUpload()
+  const { imageBase64, onChangePicture, deleteImg } = useImageUpload()
 
   return (
     <Form onSubmit={handleSubmit}>
-      <ImgInputWrapper src={imgData}>
+      <ImgInputWrapper src={imageBase64}>
         <ImgInput
-          name="picture"
+          name="image"
           type="file"
           onChange={onChangePicture}
           accept="image/png, image/jpeg"
         />
-        {!imgData ? (
+        {!imageBase64 ? (
           <AddImgIcon />
         ) : (
           <ImgDeleteIconStyled onClick={(event) => deleteImg(event)} />
@@ -74,7 +74,7 @@ export default function AddPlantForm({ savePlantData }) {
 
   function handleSubmit(event) {
     event.preventDefault()
-    savePlantData(formData, imgData)
+    savePlantData(formData, imageBase64)
     event.target.reset()
     history.push('/')
   }

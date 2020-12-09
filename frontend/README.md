@@ -1,6 +1,6 @@
 # Getting Started with UrbanPlants
 
-## First run `npm install` in the project directory.
+## First run `npm install` in the project directory /frontend
 
 ## Available Scripts
 
@@ -17,8 +17,8 @@ You will also see any lint errors in the console.
 ### `npx styleguidist server`
 
 Runs a style guide dev server.<br>
-Open [http://localhost:6060/](http://localhost:6060/) to view in your browser.<br>
-[Styleguidist](https://react-styleguidist.js.org/)
+Open [http://localhost:6060](http://localhost:6060) to view in your browser.<br>
+[Styleguidist](https://react-styleguidist.js.org)
 
 ### `npm test`
 

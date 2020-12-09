@@ -12,9 +12,8 @@ export default function useImage() {
   }
 
   function onChangePicture(event) {
-    const reader = new FileReader()
-
     if (event.target.files[0]) {
+      const reader = new FileReader()
       setPicture(event.target.files[0])
       reader.addEventListener('load', () => {
         setImageBase64(reader.result)

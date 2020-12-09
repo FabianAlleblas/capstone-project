@@ -20,6 +20,7 @@ export default function AddPlantForm({ savePlantData }) {
     <Form onSubmit={handleSubmit}>
       <ImgInputWrapper src={imageBase64}>
         <ImgInput
+          data-testid="imgInput"
           name="image"
           type="file"
           onChange={onChangePicture}

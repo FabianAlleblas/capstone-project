@@ -1,19 +1,21 @@
-# UrbanPlants
-### 
+# UrbanPlants - Capstone-Project by Fabian Alleblas
+<br/>
 
-<br/><br/>
 ## Installation instructions are in the frontend and the backend folder
+<br/>
 
-<br/><br/>
-### Tech Stack (so far)
+## Tech Stack (so far)
 
 - JS
 - React
-- React Router
 - Styled-Components
 - Prop-Types
-- React Testing Library
+- Styleguidist
+- PHP
+- Symfony
 
 <br/><br/>
+
 ![UrbanPlants](readme_assets/urbanplants_design1.png)
+
 ![UrbanPlants](readme_assets/urbanplants_design2.png)

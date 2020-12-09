@@ -1,4 +1,4 @@
-const { useState, useEffect } = require('react')
+import { useState } from 'react'
 
 export default function useImage() {
   const [imageBase64, setImageBase64] = useState()

@@ -6,6 +6,7 @@ import { ReactComponent as ImgDeleteIcon } from '../../assets/icons/imgdeleteico
 import useForm from '../../hooks/useForm'
 import useImageUpload from '../../hooks/useImageUpload'
 import Button from '../Buttons/Button'
+import defaultPlantImage from '../../assets/plant-images/default_plant.jpg'
 
 export default function EditPlantForm({
   updatePlantData,
@@ -24,8 +25,9 @@ export default function EditPlantForm({
 
   return (
     <Form onSubmit={handleSubmit}>
-      <ImgInputWrapper src={imageBase64 ?? plant.image}>
+      <ImgInputWrapper src={imageBase64 ?? plant.image ?? defaultPlantImage}>
         <ImgInput
+          alt="image-input"
           name="image"
           type="file"
           onChange={onChangePicture}
@@ -34,7 +36,12 @@ export default function EditPlantForm({
         {!imageBase64 ? (
           <AddImgIcon />
         ) : (
-          <ImgDeleteIconStyled onClick={(event) => deleteImg(event)} />
+          <ImgDeleteButton
+            aria-label="image-delete-button"
+            onClick={(event) => deleteImg(event)}
+          >
+            <ImgDeleteIcon />
+          </ImgDeleteButton>
         )}
       </ImgInputWrapper>
       <Label>
@@ -127,7 +134,9 @@ const ImgInputWrapper = styled.label`
   }
 `
 
-const ImgDeleteIconStyled = styled(ImgDeleteIcon)`
+const ImgDeleteButton = styled.button`
+  background-color: transparent;
+  border: none;
   position: absolute;
   right: 0;
   top: 0;

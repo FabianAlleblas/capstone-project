@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
-import monsteraImage from '../../assets/plant-images/3.jpg'
+import defaultPlantImage from '../../assets/plant-images/default_plant.jpg'
 import PlantDetailBar from '../IndicatorBars/PlantDetailBar'
 import Button from '../Buttons/Button'
 
@@ -11,7 +11,7 @@ export default function PlantDetailCard({ plant, resetTimer }) {
   }
   return (
     <CardWrapper>
-      <ImageFrame src={plant.image ?? monsteraImage} />
+      <ImageFrame src={plant.image ?? defaultPlantImage} />
       <TextContainer>
         <PlantName>{plant.species}</PlantName>
         <PlantInfo>{plant.specialInfo}</PlantInfo>

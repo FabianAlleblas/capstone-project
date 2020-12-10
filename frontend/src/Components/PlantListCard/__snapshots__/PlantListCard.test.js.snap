@@ -42,7 +42,7 @@ exports[`PlantCard renders correctly 1`] = `
 }
 
 .c1 {
-  background-image: url(3.jpg);
+  background-image: url(default_plant.jpg);
   background-position: center;
   background-size: cover,contain;
   border-radius: 50%;
@@ -62,7 +62,7 @@ exports[`PlantCard renders correctly 1`] = `
 >
   <div
     class="c1"
-    src="3.jpg"
+    src="default_plant.jpg"
   />
   <h5
     class="c2"

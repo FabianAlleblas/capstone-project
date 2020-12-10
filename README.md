@@ -15,6 +15,4 @@
 - Symfony
 <br/><br/>
 
-![UrbanPlants](readme_assets/urbanplants_design1.png)
-
-![UrbanPlants](readme_assets/urbanplants_design2.png)
+![UrbanPlants](readme_assets/mock_urbanplants.jpg)

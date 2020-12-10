@@ -1,6 +1,8 @@
-import { render, fireEvent } from '@testing-library/react'
-import user from '@testing-library/user-event'
-import userEvent from '@testing-library/user-event'
+import { render } from '@testing-library/react'
+import {
+  default as user,
+  default as userEvent,
+} from '@testing-library/user-event'
 import AddPlantForm from './AddPlantForm'
 
 const mockHistoryPush = jest.fn()
@@ -17,7 +19,7 @@ const onSubmitMock = jest.fn()
 const file = new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' })
 
 describe('AddPlantForm', () => {
-  it('calls onSubmit with correct data, resets form and calls history.push', async () => {
+  it('calls onSubmit with correct data, resets form and calls history.push', () => {
     const { getByLabelText, getByText, getByTestId } = render(
       <AddPlantForm savePlantData={onSubmitMock} />
     )

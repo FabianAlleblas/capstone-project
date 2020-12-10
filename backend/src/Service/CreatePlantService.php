@@ -30,11 +30,6 @@ class CreatePlantService {
     {           
         $plant = $this->serializer->deserialize($request->getContent(), Plant::class, 'json');
         
-        $validationResult = $this->validator->validate($plant);
-        if ($validationResult->count() !== 0) {
-            return null;
-        }
-
         $imageFile = new Base64ConvertService($request);
 
         if (!$imageFile->getPathname()){
@@ -42,6 +37,11 @@ class CreatePlantService {
         }
 
         $plant->setImageFile($imageFile);
+
+        $validationResult = $this->validator->validate($plant);
+        if ($validationResult->count() !== 0) {
+            return null;
+        }
         
         $plant->setUser($user);
         $plant->setLastWatered(new \Datetime());

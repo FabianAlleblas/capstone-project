@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import {
   default as user,
   default as userEvent,
@@ -15,18 +15,19 @@ jest.mock('react-router-dom', () => ({
 }))
 
 const onSubmitMock = jest.fn()
-
 const file = new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' })
 
 describe('AddPlantForm', () => {
-  it('calls onSubmit with correct data, resets form and calls history.push', () => {
-    const { getByLabelText, getByText, getByTestId } = render(
+  it('calls onSubmit with correct data, resets form and calls history.push', async () => {
+    const { getByLabelText, getByText, getByAltText, getByRole } = render(
       <AddPlantForm savePlantData={onSubmitMock} />
     )
 
-    const imageInput = getByTestId('imgInput')
+    const imageInput = getByAltText('image-input')
 
     userEvent.upload(imageInput, file)
+
+    await waitFor(() => getByRole('button', { name: 'image-delete-button' }))
 
     user.type(getByLabelText('Your plants name*:'), 'Bob')
     user.type(getByLabelText('The species of your plant*:'), 'Monstera')
@@ -40,7 +41,10 @@ describe('AddPlantForm', () => {
         species: 'Monstera',
         specialInfo: 'variegated',
       },
-      { name: 'chucknorris.png', value: undefined }
+      {
+        name: 'chucknorris.png',
+        value: 'data:image/png;base64,KOKMkOKWoV/ilqEp',
+      }
     )
 
     expect(getByLabelText('Your plants name*:')).toHaveValue('')

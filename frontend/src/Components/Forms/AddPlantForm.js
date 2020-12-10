@@ -20,7 +20,7 @@ export default function AddPlantForm({ savePlantData }) {
     <Form onSubmit={handleSubmit}>
       <ImgInputWrapper src={imageBase64}>
         <ImgInput
-          data-testid="imgInput"
+          alt="image-input"
           name="image"
           type="file"
           onChange={onChangePicture}
@@ -29,7 +29,12 @@ export default function AddPlantForm({ savePlantData }) {
         {!imageBase64 ? (
           <AddImgIcon />
         ) : (
-          <ImgDeleteIconStyled onClick={(event) => deleteImg(event)} />
+          <ImgDeleteButton
+            aria-label="image-delete-button"
+            onClick={(event) => deleteImg(event)}
+          >
+            <ImgDeleteIcon />
+          </ImgDeleteButton>
         )}
       </ImgInputWrapper>
       <Label>
@@ -114,7 +119,9 @@ const ImgInputWrapper = styled.label`
   }
 `
 
-const ImgDeleteIconStyled = styled(ImgDeleteIcon)`
+const ImgDeleteButton = styled.button`
+  background-color: transparent;
+  border: none;
   position: absolute;
   right: 0;
   top: 0;

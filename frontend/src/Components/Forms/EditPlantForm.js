@@ -1,12 +1,11 @@
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import { ReactComponent as AddImgIcon } from '../../assets/icons/addimgicon.svg'
-import { ReactComponent as ImgDeleteIcon } from '../../assets/icons/imgdeleteicon.svg'
+import defaultPlantImage from '../../assets/plant-images/default_plant.jpg'
 import useForm from '../../hooks/useForm'
 import useImageUpload from '../../hooks/useImageUpload'
 import Button from '../Buttons/Button'
-import defaultPlantImage from '../../assets/plant-images/default_plant.jpg'
+import { AddImgIcon, ImgDeleteIcon } from '../Icons'
 
 export default function EditPlantForm({
   updatePlantData,

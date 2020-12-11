@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { ReactComponent as FertilizerIcon } from '../../assets/icons/fertilizericon.svg'
-import { ReactComponent as WaterIcon } from '../../assets/icons/watericon.svg'
+import { FertilizerIcon, WaterIcon } from '../Icons'
 
 export default function PlantListBar({ daysLeft, weeksLeft }) {
   PlantListBar.propTypes = {

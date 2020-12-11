@@ -30,7 +30,7 @@ class CreatePlantService {
     {           
         $plant = $this->serializer->deserialize($request->getContent(), Plant::class, 'json');
         
-        $imageFile = new Base64ConvertService($request);
+        $imageFile = new ConvertUploadFile($request);
 
         if (!$imageFile->getPathname()){
             $imageFile = Null;

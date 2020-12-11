@@ -5,7 +5,7 @@ namespace App\Service;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
-class Base64ConvertService extends UploadedFile
+class ConvertUploadFile extends UploadedFile
 {
 
     public function __construct(Request $request)

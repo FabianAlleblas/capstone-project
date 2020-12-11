@@ -31,7 +31,7 @@ class UpdatePlantService {
         $plant = $this->plantRepository->findOneBy(['id' => $id]);
         $newPlantData = $request->getContent();
 
-        $imageFile = new Base64ConvertService($request);
+        $imageFile = new ConvertUploadFile($request);
         if (!$imageFile->getPathname()){
             $imageFile = Null;
         }

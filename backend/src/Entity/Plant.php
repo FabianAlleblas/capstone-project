@@ -4,10 +4,13 @@ namespace App\Entity;
 
 use App\Repository\PlantRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PlantRepository::class)
+ * @Vich\Uploadable
  */
 class Plant
 {
@@ -57,14 +60,35 @@ class Plant
     private $user;
 
     /**
-     * Virtual Property(type="integer")
+     * VirtualProperty(type="integer")
      */
     private $daysLeft;
 
     /**
-     * Virtual Property(type="integer")
+     * VirtualProperty(type="integer")
      */
     private $weeksLeft;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @Assert\File(
+     *      maxSize = "2M",
+     *      mimeTypes = {"image/png", "image/jpg", "image/jpeg"})  
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var \DateTime
+     */
+    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -165,5 +189,30 @@ class Plant
         $this->weeksLeft = $weeksLeft;
 
         return $this;
+    }
+
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        if ($image)
+        {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
     }
 }

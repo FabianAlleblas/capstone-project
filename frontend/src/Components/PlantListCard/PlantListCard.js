@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
-import monsteraImage from '../../assets/plant-images/3.jpg'
+import defaultPlantImage from '../../assets/plant-images/default_plant.jpg'
 import PlantListBar from '../IndicatorBars/PlantListBar'
 
 export default function PlantListCard({ plant, onClick }) {
@@ -11,7 +11,7 @@ export default function PlantListCard({ plant, onClick }) {
 
   return (
     <CardWrapper onClick={onClick}>
-      <ImgContainer src={monsteraImage} />
+      <ImgContainer src={plant.image ?? defaultPlantImage} />
       <PlantName>{plant.name}</PlantName>
       <PlantListBar daysLeft={plant.daysLeft} weeksLeft={plant.weeksLeft} />
     </CardWrapper>

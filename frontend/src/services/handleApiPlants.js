@@ -21,13 +21,14 @@ export async function getPlants(userData) {
   }
 }
 
-export async function postPlant(formData, userData) {
+export async function postPlant(plantData, userData) {
   const myHeaders = new Headers()
   myHeaders.append('Content-Type', 'application/json')
   myHeaders.append('Authorization', `Bearer ${userData.currentToken}`)
-  const copy = Object.assign({}, formData)
 
+  const copy = Object.assign({}, plantData)
   const raw = JSON.stringify(copy)
+
   const requestOptions = {
     method: 'POST',
     headers: myHeaders,

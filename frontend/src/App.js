@@ -36,10 +36,10 @@ function App() {
       <Route path="/plant">
         <DetailPage plantList={plantList} resetTimer={resetCareTimer} />
       </Route>
-      <Route path="/addplant">
+      <Route path="/add-plant">
         <AddPage savePlantData={savePlantData} />
       </Route>
-      <Route path="/edit">
+      <Route path="/edit-plant">
         <EditPage
           updatePlantData={updatePlantData}
           deletePlantData={deletePlantData}

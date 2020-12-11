@@ -39,7 +39,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.1.2",
-    "@testing-library/user-event": "^12.2.2",
+    "@testing-library/user-event": "^12.5.0",
     "jest-styled-components": "^7.0.3",
     "react-styleguidist": "^11.1.3"
   }

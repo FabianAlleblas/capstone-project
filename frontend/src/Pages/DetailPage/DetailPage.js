@@ -37,7 +37,7 @@ export default function DetailPage({ plantList, resetTimer }) {
   }
 
   function openEditPage() {
-    history.push(`/edit?id=${plant.id}`)
+    history.push(`/edit-plant?id=${plant.id}`)
   }
 }
 

@@ -26,4 +26,9 @@ body {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 112.5%;
 }
+// Thanks to chrome for this part
+a:focus,
+button:focus {
+    outline: none;
+};
 `

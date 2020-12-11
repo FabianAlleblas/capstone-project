@@ -17,7 +17,7 @@ abstract class BaseController extends AbstractController {
 
     protected function plantResponse($plants): JsonResponse 
     {
-        $ignoredAttributes = ['user', 'lastWatered', 'lastFertilized'];
+        $ignoredAttributes = ['user', 'lastWatered', 'lastFertilized', 'imageFile'];
         return new JsonResponse($this->serializer->serialize($plants, 'json', 
                     [
                         AbstractObjectNormalizer::SKIP_NULL_VALUES => true,

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 import styled from 'styled-components'
-import { PreferenceIcon } from '../Icons'
+import { SettingsIcon } from '../Icons'
 import SettingCareIntervalModal from '../Modals/SettingCareIntervalModal'
 
 export default function PlantDetailBar({ daysLeft, weeksLeft }) {
@@ -21,7 +21,7 @@ export default function PlantDetailBar({ daysLeft, weeksLeft }) {
         <CareIntervalWrapper>
           <Text>Water {daysLeft}/10 days left</Text>
           <IconButton name="water" onClick={openCareSettings}>
-            <PreferenceIcon />
+            <SettingsIcon />
           </IconButton>
           {isCareSettingShown?.water && (
             <ModalStyled
@@ -38,7 +38,7 @@ export default function PlantDetailBar({ daysLeft, weeksLeft }) {
         <CareIntervalWrapper>
           <Text>Fertilizer {weeksLeft}/4 weeks left</Text>
           <IconButton name="fertilizer" onClick={openCareSettings}>
-            <PreferenceIcon />
+            <SettingsIcon />
           </IconButton>
           {isCareSettingShown?.fertilizer && (
             <ModalStyled

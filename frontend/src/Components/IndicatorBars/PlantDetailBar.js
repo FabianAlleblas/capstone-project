@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { PreferenceIcon } from '../Icons'
 
 export default function PlantDetailBar({ daysLeft, weeksLeft }) {
   PlantDetailBar.propTypes = {
@@ -13,13 +14,19 @@ export default function PlantDetailBar({ daysLeft, weeksLeft }) {
         <Bar>
           <WaterIndicator daysLeft={daysLeft} />
         </Bar>
-        <Text>Water {daysLeft}/10 days left</Text>
+        <TextWrapper>
+          <Text>Water {daysLeft}/10 days left</Text>
+          <PreferenceIcon />
+        </TextWrapper>
       </BarWrapper>
       <BarWrapper>
         <Bar>
           <FertilizerIndicator weeksLeft={weeksLeft} />
         </Bar>
-        <Text>Fertilizer {weeksLeft}/4 weeks left</Text>
+        <TextWrapper>
+          <Text>Fertilizer {weeksLeft}/4 weeks left</Text>
+          <PreferenceIcon />
+        </TextWrapper>
       </BarWrapper>
     </Container>
   )
@@ -65,6 +72,11 @@ const FertilizerIndicator = styled(Indicator)`
       ? 'var(--warning-color)'
       : 'var(--bar-fertilizer-color)'};
   width: ${(props) => (100 / 4) * props.weeksLeft}%;
+`
+
+const TextWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
 `
 
 const Text = styled.p`

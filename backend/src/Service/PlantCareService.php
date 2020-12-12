@@ -3,13 +3,17 @@
 namespace App\Service;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use App\Repository\PlantRepository;
 
 class PlantCareService {
 
-    public function __construct(PlantRepository $plantRepository)
+    public function __construct(
+        PlantRepository $plantRepository,
+        ValidatorInterface $validator)
     {
         $this->plantRepository = $plantRepository;
+        $this->validator = $validator;
     }
 
     public function setIntervalLeft(object $plant): object
@@ -17,7 +21,7 @@ class PlantCareService {
         $today = new \Datetime();
 
         $wateringInterval = $plant->getWaterInterval();
-        $fertilizingInterval = $plant->getFertilizerInterval();
+        $fertilizingInterval = $plant->getFertilizerInterval() * 7;
 
         $lastWatered = $plant->getLastWatered();
         $lastFertilized = $plant->getLastFertilized();
@@ -70,14 +74,19 @@ class PlantCareService {
             return 'Not found';
         }
 
-    
         $post = json_decode($request->getContent(), true);
-        $plant->setWaterInterval($post['waterInterval']);
-        $plant->setWaterInterval($post['fertilizerInterval']);
-        var_dump($plant); die;
-        //$this->plantRepository->savePlant($plant);
-        //$this->setIntervalLeft($plant);
-        //
-        //return $plant;
+
+        $plant->setWaterInterval($post['waterInterval'] ?? $plant->getWaterInterval());
+        $plant->setFertilizerInterval($post['fertilizerInterval'] ?? $plant->getFertilizerInterval());
+
+        $validationResult = $this->validator->validate($plant);
+        if ($validationResult->count() !== 0) {
+            return 'Invalid';
+        }
+        
+        $this->plantRepository->savePlant($plant);
+        $this->setIntervalLeft($plant);
+        
+        return $plant;
     }
 }

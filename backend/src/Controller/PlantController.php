@@ -169,6 +169,11 @@ class PlantController extends BaseController {
 
         $plant = $plantCareService->setCareInterval($id, $request);
 
+        if ($plant === 'Invalid')
+        {
+            return $this->badRequestResponse('Invalid Plant Data!');
+        }
+
         if ($plant === 'Not found' || $plant->getUser()->getId() !== $user->getId())
         {
             return $this->notFoundResponse('Plant Not Found');

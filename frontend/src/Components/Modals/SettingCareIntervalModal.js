@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Button from '../Buttons/Button'
 import { ImgDeleteIcon } from '../Icons'
+import PropTypes from 'prop-types'
 
 export default function SettingCareIntervalModal({
   className,
@@ -8,6 +9,13 @@ export default function SettingCareIntervalModal({
   onClick,
   onSubmit,
 }) {
+  SettingCareIntervalModal.propTypes = {
+    className: PropTypes.string,
+    isFertilizer: PropTypes.bool,
+    onClick: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+  }
+
   return (
     <Wrapper className={className}>
       <Modal>
@@ -16,9 +24,16 @@ export default function SettingCareIntervalModal({
         </ClosingButton>
         <Form onSubmit={onSubmit}>
           <Label>
-            Set your prefered {isFertilizer ? 'fertilizing' : 'watering'}{' '}
+            Set your preferred {isFertilizer ? 'fertilizing' : 'watering'}{' '}
             interval (default: {isFertilizer ? '4 weeks' : '10 days'}):
-            <Input type="number" placeholder="1-99" min="1" max="99" required />
+            <Input
+              name={isFertilizer ? 'fertilizerInterval' : 'waterIntervat'}
+              type="number"
+              placeholder="1-99"
+              min="1"
+              max="99"
+              required
+            />
           </Label>
           <ButtonStyled>Save</ButtonStyled>
         </Form>
@@ -29,7 +44,7 @@ export default function SettingCareIntervalModal({
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   z-index: 10;
   display: grid;
   place-items: center;

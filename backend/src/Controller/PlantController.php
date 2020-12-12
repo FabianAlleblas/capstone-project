@@ -150,7 +150,7 @@ class PlantController extends BaseController {
         return $this->plantResponse($plant);
     }
 
-        /**
+    /**
      * @Route("/plant/{id}", methods={"PATCH"})
      */
     public function updateCareTime(

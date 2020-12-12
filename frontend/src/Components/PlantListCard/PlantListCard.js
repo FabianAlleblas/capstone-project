@@ -13,7 +13,12 @@ export default function PlantListCard({ plant, onClick }) {
     <CardWrapper onClick={onClick}>
       <ImgContainer src={plant.image ?? defaultPlantImage} />
       <PlantName>{plant.name}</PlantName>
-      <PlantListBar daysLeft={plant.daysLeft} weeksLeft={plant.weeksLeft} />
+      <PlantListBar
+        daysLeft={plant.daysLeft}
+        weeksLeft={plant.weeksLeft}
+        waterInterval={plant.waterInterval}
+        fertilizerInterval={plant.fertilizerInterval}
+      />
     </CardWrapper>
   )
 }

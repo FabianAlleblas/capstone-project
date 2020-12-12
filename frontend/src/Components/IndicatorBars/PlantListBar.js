@@ -5,18 +5,28 @@ import { FertilizerIcon, WaterIcon } from '../Icons'
 PlantListBar.propTypes = {
   daysLeft: PropTypes.number.isRequired,
   weeksLeft: PropTypes.number.isRequired,
+  waterInterval: PropTypes.number.isRequired,
+  fertilizerInterval: PropTypes.number.isRequired,
 }
 
-export default function PlantListBar({ daysLeft, weeksLeft }) {
+export default function PlantListBar({
+  daysLeft,
+  weeksLeft,
+  waterInterval,
+  fertilizerInterval,
+}) {
   return (
     <Container>
       <WaterIcon />
       <Bar>
-        <WaterIndicator daysLeft={daysLeft} />
+        <WaterIndicator daysLeft={daysLeft} waterInterval={waterInterval} />
       </Bar>
       <FertilizerIcon />
       <Bar>
-        <FertilizerIndicator weeksLeft={weeksLeft} />
+        <FertilizerIndicator
+          weeksLeft={weeksLeft}
+          fertilizerInterval={fertilizerInterval}
+        />
       </Bar>
     </Container>
   )
@@ -50,7 +60,7 @@ const Indicator = styled.div`
 const WaterIndicator = styled(Indicator)`
   background-color: ${(props) =>
     props.daysLeft < 2 ? 'var(--warning-color)' : 'var(--bar-water-color)'};
-  width: ${(props) => (100 / 10) * props.daysLeft}%;
+  width: ${(props) => (100 / props.waterInterval) * props.daysLeft}%;
 `
 
 const FertilizerIndicator = styled(Indicator)`
@@ -58,5 +68,5 @@ const FertilizerIndicator = styled(Indicator)`
     props.weeksLeft < 2
       ? 'var(--warning-color)'
       : 'var(--bar-fertilizer-color)'};
-  width: ${(props) => (100 / 4) * props.weeksLeft}%;
+  width: ${(props) => (100 / props.fertilizerInterval) * props.weeksLeft}%;
 `

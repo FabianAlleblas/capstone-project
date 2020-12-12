@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
+import { useState } from 'react'
 import styled from 'styled-components'
 import { PreferenceIcon } from '../Icons'
+import SettingCareIntervalModal from '../Modals/SettingCareIntervalModal'
 
 export default function PlantDetailBar({ daysLeft, weeksLeft }) {
   PlantDetailBar.propTypes = {
@@ -8,28 +10,59 @@ export default function PlantDetailBar({ daysLeft, weeksLeft }) {
     weeksLeft: PropTypes.number.isRequired,
   }
 
+  const [isCareSettingShown, setIsCareSettingShown] = useState()
+
   return (
     <Container>
       <BarWrapper>
         <Bar>
           <WaterIndicator daysLeft={daysLeft} />
         </Bar>
-        <TextWrapper>
+        <CareIntervalWrapper>
           <Text>Water {daysLeft}/10 days left</Text>
-          <PreferenceIcon />
-        </TextWrapper>
+          <IconButton name="water" onClick={openCareSettings}>
+            <PreferenceIcon />
+          </IconButton>
+          {isCareSettingShown?.water && (
+            <ModalStyled
+              onClick={closeCareSetting}
+              onSubmit={saveCareInterval}
+            />
+          )}
+        </CareIntervalWrapper>
       </BarWrapper>
       <BarWrapper>
         <Bar>
           <FertilizerIndicator weeksLeft={weeksLeft} />
         </Bar>
-        <TextWrapper>
+        <CareIntervalWrapper>
           <Text>Fertilizer {weeksLeft}/4 weeks left</Text>
-          <PreferenceIcon />
-        </TextWrapper>
+          <IconButton name="fertilizer" onClick={openCareSettings}>
+            <PreferenceIcon />
+          </IconButton>
+          {isCareSettingShown?.fertilizer && (
+            <ModalStyled
+              isFertilizer
+              onClick={closeCareSetting}
+              onSubmit={saveCareInterval}
+            />
+          )}
+        </CareIntervalWrapper>
       </BarWrapper>
     </Container>
   )
+
+  function openCareSettings(event) {
+    setIsCareSettingShown({ [event.currentTarget.name]: true })
+  }
+
+  function saveCareInterval(event) {
+    event.preventDefault()
+  }
+
+  function closeCareSetting() {
+    setIsCareSettingShown()
+  }
 }
 
 const Container = styled.div`
@@ -74,7 +107,7 @@ const FertilizerIndicator = styled(Indicator)`
   width: ${(props) => (100 / 4) * props.weeksLeft}%;
 `
 
-const TextWrapper = styled.div`
+const CareIntervalWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `
@@ -82,4 +115,14 @@ const TextWrapper = styled.div`
 const Text = styled.p`
   color: var(--secondary-plant-font-color);
   font-size: 1rem;
+`
+
+const IconButton = styled.button`
+  background-color: transparent;
+  border: none;
+`
+const ModalStyled = styled(SettingCareIntervalModal)`
+  position: absolute;
+  top: 0;
+  left: 0;
 `

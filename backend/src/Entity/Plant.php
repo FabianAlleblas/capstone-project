@@ -90,6 +90,16 @@ class Plant
      */
     private $updatedAt;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $waterInterval;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $fertilizerInterval;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -214,5 +224,29 @@ class Plant
     public function getImage()
     {
         return $this->image;
+    }
+
+    public function getWaterInterval(): ?int
+    {
+        return $this->waterInterval;
+    }
+
+    public function setWaterInterval(int $waterInterval): self
+    {
+        $this->waterInterval = $waterInterval;
+
+        return $this;
+    }
+
+    public function getFertilizerInterval(): ?int
+    {
+        return $this->fertilizerInterval;
+    }
+
+    public function setFertilizerInterval(int $fertilizerInterval): self
+    {
+        $this->fertilizerInterval = $fertilizerInterval;
+
+        return $this;
     }
 }

@@ -14,8 +14,9 @@ class PlantCareService {
     public function setIntervalLeft(object $plant): object
     {
         $today = new \Datetime();
-        $wateringInterval = 10;
-        $fertilizingInterval = 28;
+
+        $wateringInterval = $plant->getWaterInterval();
+        $fertilizingInterval = $plant->getFertilizerInterval();
 
         $lastWatered = $plant->getLastWatered();
         $lastFertilized = $plant->getLastFertilized();

@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use Symfony\Component\HttpFoundation\Request;
 use App\Repository\PlantRepository;
 
 class PlantCareService {
@@ -58,5 +59,25 @@ class PlantCareService {
         $this->setIntervalLeft($plant);
 
         return $plant;
+    }
+
+    public function setCareInterval(int $id, Request $request)
+    {
+        $plant = $this->plantRepository->findOneBy(['id' => $id]);
+
+        if ($plant === null)
+        {
+            return 'Not found';
+        }
+
+    
+        $post = json_decode($request->getContent(), true);
+        $plant->setWaterInterval($post['waterInterval']);
+        $plant->setWaterInterval($post['fertilizerInterval']);
+        var_dump($plant); die;
+        //$this->plantRepository->savePlant($plant);
+        //$this->setIntervalLeft($plant);
+        //
+        //return $plant;
     }
 }

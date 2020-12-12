@@ -1,11 +1,22 @@
 Modal: Water Interval
 
 ```js
-<SettingCareIntervalModal onSubmit={() => {}} onClick={() => {}} />
+<SettingCareIntervalModal
+  onClick={() => {}}
+  setShowCareSetting={() => {}}
+  updateCareInterval={() => {}}
+  plantId={15}
+/>
 ```
 
 Modal: Fertilizer Interval
 
 ```js
-<SettingCareIntervalModal isFertilizer onSubmit={() => {}} onClick={() => {}} />
+<SettingCareIntervalModal
+  isFertilizer
+  onClick={() => {}}
+  setShowCareSetting={() => {}}
+  updateCareInterval={() => {}}
+  plantId={15}
+/>
 ```

@@ -1,7 +1,12 @@
 const path = require('path')
 
 module.exports = {
-  ignore: ['**/App.js', '**/*.test.js', '**/styles/GlobalStyle.js'],
+  ignore: [
+    '**/App.js',
+    '**/*.test.js',
+    '**/styles/GlobalStyle.js',
+    'src/Components/Icons.js',
+  ],
   defaultExample: false,
   exampleMode: 'expand',
   usageMode: 'expand',

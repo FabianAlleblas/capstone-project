@@ -2,12 +2,12 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { FertilizerIcon, WaterIcon } from '../Icons'
 
-export default function PlantListBar({ daysLeft, weeksLeft }) {
-  PlantListBar.propTypes = {
-    daysLeft: PropTypes.number.isRequired,
-    weeksLeft: PropTypes.number.isRequired,
-  }
+PlantListBar.propTypes = {
+  daysLeft: PropTypes.number.isRequired,
+  weeksLeft: PropTypes.number.isRequired,
+}
 
+export default function PlantListBar({ daysLeft, weeksLeft }) {
   return (
     <Container>
       <WaterIcon />

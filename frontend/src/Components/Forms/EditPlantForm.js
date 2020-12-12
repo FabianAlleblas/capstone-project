@@ -7,17 +7,17 @@ import useImageUpload from '../../hooks/useImageUpload'
 import Button from '../Buttons/Button'
 import { AddImgIcon, ImgDeleteIcon } from '../Icons'
 
+EditPlantForm.propTypes = {
+  updatePlantData: PropTypes.func.isRequired,
+  deletePlantData: PropTypes.func.isRequired,
+  plant: PropTypes.object.isRequired,
+}
+
 export default function EditPlantForm({
   updatePlantData,
   deletePlantData,
   plant,
 }) {
-  EditPlantForm.propTypes = {
-    updatePlantData: PropTypes.func.isRequired,
-    deletePlantData: PropTypes.func.isRequired,
-    plant: PropTypes.object.isRequired,
-  }
-
   const history = useHistory()
   const { handleInputChange, formData } = useForm(plant)
   const { picture, imageBase64, onChangePicture, deleteImg } = useImageUpload()

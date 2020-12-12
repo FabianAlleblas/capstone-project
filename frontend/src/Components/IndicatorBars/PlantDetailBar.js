@@ -4,12 +4,12 @@ import styled from 'styled-components'
 import { SettingsIcon } from '../Icons'
 import SettingCareIntervalModal from '../Modals/SettingCareIntervalModal'
 
-export default function PlantDetailBar({ daysLeft, weeksLeft }) {
-  PlantDetailBar.propTypes = {
-    daysLeft: PropTypes.number.isRequired,
-    weeksLeft: PropTypes.number.isRequired,
-  }
+PlantDetailBar.propTypes = {
+  daysLeft: PropTypes.number.isRequired,
+  weeksLeft: PropTypes.number.isRequired,
+}
 
+export default function PlantDetailBar({ daysLeft, weeksLeft }) {
   const [showCareSetting, setshowCareSetting] = useState({})
 
   return (
@@ -23,12 +23,7 @@ export default function PlantDetailBar({ daysLeft, weeksLeft }) {
           <IconButton name="water" onClick={openCareSettings}>
             <SettingsIcon />
           </IconButton>
-          {showCareSetting?.water && (
-            <ModalStyled
-              onClick={closeCareSetting}
-              onSubmit={saveCareInterval}
-            />
-          )}
+          {showCareSetting?.water && <ModalStyled onClick={closeCareSetting} />}
         </CareIntervalWrapper>
       </BarWrapper>
       <BarWrapper>
@@ -41,11 +36,7 @@ export default function PlantDetailBar({ daysLeft, weeksLeft }) {
             <SettingsIcon />
           </IconButton>
           {showCareSetting?.fertilizer && (
-            <ModalStyled
-              isFertilizer
-              onClick={closeCareSetting}
-              onSubmit={saveCareInterval}
-            />
+            <ModalStyled isFertilizer onClick={closeCareSetting} />
           )}
         </CareIntervalWrapper>
       </BarWrapper>
@@ -54,10 +45,6 @@ export default function PlantDetailBar({ daysLeft, weeksLeft }) {
 
   function openCareSettings(event) {
     setshowCareSetting({ [event.currentTarget.name]: true })
-  }
-
-  function saveCareInterval(event) {
-    event.preventDefault()
   }
 
   function closeCareSetting() {

@@ -3,12 +3,12 @@ import styled from 'styled-components/macro'
 import defaultPlantImage from '../../assets/plant-images/default_plant.jpg'
 import PlantListBar from '../IndicatorBars/PlantListBar'
 
-export default function PlantListCard({ plant, onClick }) {
-  PlantListCard.propTypes = {
-    plant: PropTypes.object.isRequired,
-    onClick: PropTypes.func.isRequired,
-  }
+PlantListCard.propTypes = {
+  plant: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
+}
 
+export default function PlantListCard({ plant, onClick }) {
   return (
     <CardWrapper onClick={onClick}>
       <ImgContainer src={plant.image ?? defaultPlantImage} />

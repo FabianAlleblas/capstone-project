@@ -4,11 +4,12 @@ import defaultPlantImage from '../../assets/plant-images/default_plant.jpg'
 import PlantDetailBar from '../IndicatorBars/PlantDetailBar'
 import Button from '../Buttons/Button'
 
+PlantDetailCard.propTypes = {
+  plant: PropTypes.object.isRequired,
+  resetTimer: PropTypes.func,
+}
+
 export default function PlantDetailCard({ plant, resetTimer }) {
-  PlantDetailCard.propTypes = {
-    plant: PropTypes.object.isRequired,
-    resetTimer: PropTypes.func,
-  }
   return (
     <CardWrapper>
       <ImageFrame src={plant.image ?? defaultPlantImage} />

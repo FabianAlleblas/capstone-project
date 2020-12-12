@@ -27,7 +27,7 @@ export default function SettingCareIntervalModal({
             Set your preferred {isFertilizer ? 'fertilizing' : 'watering'}{' '}
             interval (default: {isFertilizer ? '4 weeks' : '10 days'}):
             <Input
-              name={isFertilizer ? 'fertilizerInterval' : 'waterIntervat'}
+              name={isFertilizer ? 'fertilizerInterval' : 'waterInterval'}
               type="number"
               placeholder="1-99"
               min="1"

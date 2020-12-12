@@ -10,7 +10,7 @@ export default function PlantDetailBar({ daysLeft, weeksLeft }) {
     weeksLeft: PropTypes.number.isRequired,
   }
 
-  const [isCareSettingShown, setIsCareSettingShown] = useState()
+  const [showCareSetting, setshowCareSetting] = useState({})
 
   return (
     <Container>
@@ -23,7 +23,7 @@ export default function PlantDetailBar({ daysLeft, weeksLeft }) {
           <IconButton name="water" onClick={openCareSettings}>
             <SettingsIcon />
           </IconButton>
-          {isCareSettingShown?.water && (
+          {showCareSetting?.water && (
             <ModalStyled
               onClick={closeCareSetting}
               onSubmit={saveCareInterval}
@@ -40,7 +40,7 @@ export default function PlantDetailBar({ daysLeft, weeksLeft }) {
           <IconButton name="fertilizer" onClick={openCareSettings}>
             <SettingsIcon />
           </IconButton>
-          {isCareSettingShown?.fertilizer && (
+          {showCareSetting?.fertilizer && (
             <ModalStyled
               isFertilizer
               onClick={closeCareSetting}
@@ -53,7 +53,7 @@ export default function PlantDetailBar({ daysLeft, weeksLeft }) {
   )
 
   function openCareSettings(event) {
-    setIsCareSettingShown({ [event.currentTarget.name]: true })
+    setshowCareSetting({ [event.currentTarget.name]: true })
   }
 
   function saveCareInterval(event) {
@@ -61,7 +61,7 @@ export default function PlantDetailBar({ daysLeft, weeksLeft }) {
   }
 
   function closeCareSetting() {
-    setIsCareSettingShown()
+    setshowCareSetting({})
   }
 }
 

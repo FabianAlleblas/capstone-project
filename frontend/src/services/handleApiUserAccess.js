@@ -13,7 +13,7 @@ export async function signUpUser(data) {
     redirect: 'follow',
   }
   try {
-    const response = await fetch(baseUrl, requestOptions)
+    const response = await fetch(`${baseUrl}/user`, requestOptions)
     const responseData = response.json()
     return responseData
   } catch (error) {

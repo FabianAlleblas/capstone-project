@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Repository\UserRepository;
 use App\Repository\TokenRepository;
 use App\Service\AuthenticationService;
+use App\Service\LoginService;
 
 class AuthenticationController extends BaseController {
 
@@ -19,18 +20,19 @@ class AuthenticationController extends BaseController {
         Request $request,
         UserRepository $userRepository,
         TokenRepository $tokenRepository,
+        LoginService $loginService,
         AuthenticationService $authenticationService): JsonResponse 
     {
         $post = json_decode($request->getContent(), true);
-        $user = $userRepository->findOneBy(['email' => $post['email'], 'password' => $post['password']]);
-
-        if ($user === null){
+        $loginData = $loginService->login($post['email'], $post['password']);
+        
+        if (!$loginData['isValid']){
             return $this->unauthorizedResponse('error', 'Password Or E-Mail Wrong!');
         }
 
-        $token = $tokenRepository->createToken($user);
-        $authenticationService->deleteInvalidToken($user);
+        $token = $tokenRepository->createToken($loginData['user']);
+        $authenticationService->deleteInvalidToken($loginData['user']);
 
-        return $this->userResponse($user, $token);
+        return $this->userResponse($loginData['user'], $token);
     }
 }

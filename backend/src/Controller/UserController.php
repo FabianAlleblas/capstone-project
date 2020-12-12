@@ -10,6 +10,8 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use App\Entity\User;
 use App\Repository\UserRepository;
+use App\Repository\TokenRepository;
+use App\Service\PasswordEncoder;
 
 class UserController extends BaseController {
 
@@ -19,27 +21,31 @@ class UserController extends BaseController {
     public function createUser(
         Request $request,
         UserRepository $userRepository,
+        TokenRepository $tokenRepository,
+        PasswordEncoder $passwordEncoder,
         SerializerInterface $serializer,
         ValidatorInterface $validator
         ): JsonResponse 
     {
-        $user = $serializer->deserialize($request->getContent(), User::class, 'json');
-        $validationResult = $validator->validate($user);
-        
-        if ($validationResult->count() !== 0)
-        {
-            return $this->badRequestResponse('Invalid User Data!');
-        }
-
-        $checkedEmail = $userRepository->findBy(['email' => $user->getEmail()]);
+        $newUser = $serializer->deserialize($request->getContent(), User::class, 'json');
+        $checkedEmail = $userRepository->findBy(['email' => $newUser->getEmail()]);
         
         if ($checkedEmail)
         {
             return $this->badRequestResponse('E-Mail Already In Use!');
         }
 
-        $userRepository->saveUser($user);
+        $validationResult = $validator->validate($newUser);
         
-        return $this->userResponse($user,);
+        if ($validationResult->count() !== 0)
+        {
+            return $this->badRequestResponse('Invalid User Data!');
+        }
+
+        $passwordEncoder->encode($newUser->getPassword(), $newUser);
+        $userRepository->saveUser($newUser);
+        $token = $tokenRepository->createToken($newUser);
+        
+        return $this->userResponse($newUser, $token);
     }
 }

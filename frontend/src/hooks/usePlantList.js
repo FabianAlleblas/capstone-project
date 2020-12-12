@@ -5,6 +5,7 @@ import {
   postPlant,
   updatePlant,
   resetTimer,
+  setCareInterval,
 } from '../services/handleApiPlants'
 
 export default function usePlantList(userData) {
@@ -22,6 +23,7 @@ export default function usePlantList(userData) {
     updatePlantData,
     deletePlantData,
     resetCareTimer,
+    updateCareInterval,
   }
 
   function savePlantData(formData, imageData) {
@@ -58,6 +60,19 @@ export default function usePlantList(userData) {
   function resetCareTimer(plantId, type) {
     const index = plantList.findIndex((plant) => plant.id === plantId)
     resetTimer(plantId, type, userData).then((responseData) =>
+      responseData.error
+        ? alert(responseData.error)
+        : setPlantList([
+            ...plantList.slice(0, index),
+            responseData,
+            ...plantList.slice(index + 1),
+          ])
+    )
+  }
+
+  function updateCareInterval(plantId, formData) {
+    const index = plantList.findIndex((plant) => plant.id === plantId)
+    setCareInterval(plantId, formData, userData).then((responseData) =>
       responseData.error
         ? alert(responseData.error)
         : setPlantList([

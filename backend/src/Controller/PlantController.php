@@ -149,4 +149,37 @@ class PlantController extends BaseController {
         $pathPrefixService->pathPrefix($plant);
         return $this->plantResponse($plant);
     }
+
+    /**
+     * @Route("/plant/{id}", methods={"PATCH"})
+     */
+    public function updateCareTime(
+        int $id,
+        Request $request,
+        PlantCareService $plantCareService,
+        AuthenticationService $authenticationService,
+        PathPrefixService $pathPrefixService): JsonResponse 
+    {
+        $user = $authenticationService->validateUser($request);
+
+        if (!$user) 
+        {
+            return $this->unauthorizedResponse('unauthorized', 'Not Authorized!');
+        }
+
+        $plant = $plantCareService->setCareInterval($id, $request);
+
+        if ($plant === 'Invalid')
+        {
+            return $this->badRequestResponse('Invalid Plant Data!');
+        }
+
+        if ($plant === 'Not found' || $plant->getUser()->getId() !== $user->getId())
+        {
+            return $this->notFoundResponse('Plant Not Found');
+        }
+
+        $pathPrefixService->pathPrefix($plant);
+        return $this->plantResponse($plant);
+    }
 }

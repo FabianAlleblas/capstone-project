@@ -46,6 +46,8 @@ class CreatePlantService {
         $plant->setUser($user);
         $plant->setLastWatered(new \Datetime());
         $plant->setLastFertilized(new \Datetime());
+        $plant->setWaterInterval(10);
+        $plant->setFertilizerInterval(28);
         
         $this->plantRepository->savePlant($plant);
         $this->plantCareService->setIntervalLeft($plant);

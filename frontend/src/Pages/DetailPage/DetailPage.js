@@ -3,7 +3,11 @@ import styled from 'styled-components/macro'
 import Header from '../../Components/Header/Header'
 import PlantDetailCard from '../../Components/PlantDetailCard/PlantDetailCard'
 
-export default function DetailPage({ plantList, resetTimer }) {
+export default function DetailPage({
+  plantList,
+  resetTimer,
+  updateCareInterval,
+}) {
   const history = useHistory()
   const query = useQuery()
   const plantId = parseInt(query.get('id'))
@@ -23,7 +27,11 @@ export default function DetailPage({ plantList, resetTimer }) {
         {plant?.name}
       </FixedHeader>
       <CardContainer>
-        <PlantDetailCard plant={plant} resetTimer={resetTimer} />
+        <PlantDetailCard
+          plant={plant}
+          resetTimer={resetTimer}
+          updateCareInterval={updateCareInterval}
+        />
       </CardContainer>
     </>
   )

@@ -4,39 +4,51 @@ import styled from 'styled-components'
 import { SettingsIcon } from '../Icons'
 import SettingCareIntervalModal from '../Modals/SettingCareIntervalModal'
 
-export default function PlantDetailBar({ daysLeft, weeksLeft }) {
-  PlantDetailBar.propTypes = {
-    daysLeft: PropTypes.number.isRequired,
-    weeksLeft: PropTypes.number.isRequired,
-  }
+PlantDetailBar.propTypes = {
+  plant: PropTypes.object.isRequired,
+  updateCareInterval: PropTypes.func,
+}
 
-  const [showCareSetting, setshowCareSetting] = useState({})
+export default function PlantDetailBar({ plant, updateCareInterval }) {
+  const [showCareSetting, setShowCareSetting] = useState({})
 
   return (
     <Container>
       <BarWrapper>
         <Bar>
-          <WaterIndicator daysLeft={daysLeft} />
+          <WaterIndicator
+            daysLeft={plant.daysLeft}
+            waterInterval={plant.waterInterval}
+          />
         </Bar>
         <CareIntervalWrapper>
-          <Text>Water {daysLeft}/10 days left</Text>
+          <Text>
+            Water {plant.daysLeft}/{plant.waterInterval} days left
+          </Text>
           <IconButton name="water" onClick={openCareSettings}>
             <SettingsIcon />
           </IconButton>
           {showCareSetting?.water && (
             <ModalStyled
               onClick={closeCareSetting}
-              onSubmit={saveCareInterval}
+              setShowCareSetting={setShowCareSetting}
+              updateCareInterval={updateCareInterval}
+              plantId={plant.id}
             />
           )}
         </CareIntervalWrapper>
       </BarWrapper>
       <BarWrapper>
         <Bar>
-          <FertilizerIndicator weeksLeft={weeksLeft} />
+          <FertilizerIndicator
+            weeksLeft={plant.weeksLeft}
+            fertilizerInterval={plant.fertilizerInterval}
+          />
         </Bar>
         <CareIntervalWrapper>
-          <Text>Fertilizer {weeksLeft}/4 weeks left</Text>
+          <Text>
+            Fertilizer {plant.weeksLeft}/{plant.fertilizerInterval} weeks left
+          </Text>
           <IconButton name="fertilizer" onClick={openCareSettings}>
             <SettingsIcon />
           </IconButton>
@@ -44,7 +56,9 @@ export default function PlantDetailBar({ daysLeft, weeksLeft }) {
             <ModalStyled
               isFertilizer
               onClick={closeCareSetting}
-              onSubmit={saveCareInterval}
+              setShowCareSetting={setShowCareSetting}
+              updateCareInterval={updateCareInterval}
+              plantId={plant.id}
             />
           )}
         </CareIntervalWrapper>
@@ -53,15 +67,11 @@ export default function PlantDetailBar({ daysLeft, weeksLeft }) {
   )
 
   function openCareSettings(event) {
-    setshowCareSetting({ [event.currentTarget.name]: true })
-  }
-
-  function saveCareInterval(event) {
-    event.preventDefault()
+    setShowCareSetting({ [event.currentTarget.name]: true })
   }
 
   function closeCareSetting() {
-    setshowCareSetting({})
+    setShowCareSetting({})
   }
 }
 
@@ -96,7 +106,7 @@ const Indicator = styled.div`
 const WaterIndicator = styled(Indicator)`
   background-color: ${(props) =>
     props.daysLeft < 2 ? 'var(--warning-color)' : 'var(--bar-water-color)'};
-  width: ${(props) => (100 / 10) * props.daysLeft}%;
+  width: ${(props) => (100 / props.waterInterval) * props.daysLeft}%;
 `
 
 const FertilizerIndicator = styled(Indicator)`
@@ -104,7 +114,7 @@ const FertilizerIndicator = styled(Indicator)`
     props.weeksLeft < 2
       ? 'var(--warning-color)'
       : 'var(--bar-fertilizer-color)'};
-  width: ${(props) => (100 / 4) * props.weeksLeft}%;
+  width: ${(props) => (100 / props.fertilizerInterval) * props.weeksLeft}%;
 `
 
 const CareIntervalWrapper = styled.div`

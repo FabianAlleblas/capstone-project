@@ -103,3 +103,26 @@ export async function resetTimer(id, type, userData) {
     return { error: 'The server is down! :(' }
   }
 }
+
+export async function setCareInterval(id, formData, userData) {
+  const myHeaders = new Headers()
+  myHeaders.append('Content-Type', 'application/json')
+  myHeaders.append('Authorization', `Bearer ${userData.currentToken}`)
+
+  const copy = Object.assign({}, formData)
+  const raw = JSON.stringify(copy)
+
+  const requestOptions = {
+    method: 'PATCH',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow',
+  }
+  try {
+    const response = await fetch(`${baseUrl}/${id}`, requestOptions)
+    const responseData = response.json()
+    return responseData
+  } catch (error) {
+    return { error: 'The server is down! :(' }
+  }
+}

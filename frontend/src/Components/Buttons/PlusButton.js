@@ -2,12 +2,12 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import { PlusIcon } from '../Icons'
 
-export default function PlusButton({ onClick, className }) {
-  PlusButton.propTypes = {
-    onClick: PropTypes.func.isRequired,
-    className: PropTypes.string,
-  }
+PlusButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  className: PropTypes.string,
+}
 
+export default function PlusButton({ onClick, className }) {
   return (
     <Button onClick={onClick} className={className}>
       <PlusIcon />

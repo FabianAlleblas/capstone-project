@@ -3,12 +3,12 @@ import styled from 'styled-components/macro'
 import useForm from '../../hooks/useForm'
 import Button from '../Buttons/Button'
 
-export default function LoginForm({ userRegistration, userLogin }) {
-  LoginForm.propTypes = {
-    userRegistration: PropTypes.func.isRequired,
-    userLogin: PropTypes.func.isRequired,
-  }
+LoginForm.propTypes = {
+  userRegistration: PropTypes.func.isRequired,
+  userLogin: PropTypes.func.isRequired,
+}
 
+export default function LoginForm({ userRegistration, userLogin }) {
   const { handleInputChange, formData } = useForm()
 
   return (

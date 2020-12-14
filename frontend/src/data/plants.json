@@ -5,7 +5,9 @@
     "species": "Monstera deliciosa",
     "specialInfo": "variegated",
     "daysLeft": 4,
-    "weeksLeft": 3
+    "weeksLeft": 3,
+    "waterInterval": 10,
+    "fertilizerInterval": 4
   },
   {
     "id": 2,
@@ -13,7 +15,9 @@
     "species": "Monstera adansonii",
     "specialInfo": "variegated",
     "daysLeft": 4,
-    "weeksLeft": 3
+    "weeksLeft": 3,
+    "waterInterval": 10,
+    "fertilizerInterval": 4
   },
   {
     "id": 3,
@@ -21,7 +25,9 @@
     "species": "Philodendron gloriosum",
     "specialInfo": "variegated",
     "daysLeft": 4,
-    "weeksLeft": 3
+    "weeksLeft": 3,
+    "waterInterval": 10,
+    "fertilizerInterval": 4
   },
   {
     "id": 4,
@@ -29,7 +35,9 @@
     "species": "Rhaphidophora tetrasperma",
     "specialInfo": "variegated",
     "daysLeft": 4,
-    "weeksLeft": 3
+    "weeksLeft": 3,
+    "waterInterval": 10,
+    "fertilizerInterval": 4
   },
   {
     "id": 5,
@@ -37,7 +45,9 @@
     "species": "Alocasia zebrina",
     "specialInfo": "variegated",
     "daysLeft": 4,
-    "weeksLeft": 3
+    "weeksLeft": 3,
+    "waterInterval": 10,
+    "fertilizerInterval": 4
   },
   {
     "id": 6,
@@ -45,6 +55,8 @@
     "species": "Scindapsus pictus",
     "specialInfo": "variegated",
     "daysLeft": 4,
-    "weeksLeft": 3
+    "weeksLeft": 3,
+    "waterInterval": 10,
+    "fertilizerInterval": 4
   }
 ]

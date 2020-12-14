@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react'
-import 'jest-styled-components'
 import PlantListCard from './PlantListCard'
 
 const plant = {
@@ -12,7 +11,7 @@ const plant = {
 const onClickMock = jest.fn()
 
 describe('PlantCard', () => {
-  it('renders correctly', () => {
+  it('shows the correct name', () => {
     const { getByText } = render(
       <PlantListCard plant={plant} onClick={onClickMock} />
     )

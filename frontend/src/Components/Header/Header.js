@@ -6,8 +6,9 @@ Header.propTypes = {
   className: PropTypes.string,
   children: PropTypes.string.isRequired,
   secondaryStyle: PropTypes.bool,
-  isDetailPage: PropTypes.bool,
-  isPlantList: PropTypes.bool,
+  showBackButton: PropTypes.bool,
+  showEditButton: PropTypes.bool,
+  showLogoutButton: PropTypes.bool,
   onClickArrow: PropTypes.func,
   onClickEdit: PropTypes.func,
   onClickLogout: PropTypes.func,
@@ -17,28 +18,29 @@ export default function Header({
   className,
   children,
   secondaryStyle,
-  isDetailPage,
-  isPlantList,
+  showBackButton,
+  showLogoutButton,
   onClickArrow,
   onClickEdit,
   onClickLogout,
+  showEditButton,
 }) {
   return (
     <HeaderStyled className={className}>
       <HeadingContainer secondaryStyle={secondaryStyle}>
-        {isDetailPage && (
+        {showBackButton && (
           <IconButton onClick={onClickArrow}>
             <ArrowIconStyled data-testid="arrow-icon" />
           </IconButton>
         )}
         <Heading>{children}</Heading>
       </HeadingContainer>
-      {isDetailPage && (
+      {showEditButton && (
         <IconButton onClick={onClickEdit}>
           <EditIconStyled data-testid="edit-icon" />
         </IconButton>
       )}
-      {isPlantList && (
+      {showLogoutButton && (
         <IconButton onClick={onClickLogout}>
           <LogoutIconStyled onClick={onClickLogout} data-testid="logout-icon" />
         </IconButton>

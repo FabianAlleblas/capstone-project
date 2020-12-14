@@ -10,18 +10,23 @@ Header: Secondary
 <Header secondaryStyle>Add Plant</Header>
 ```
 
-Header: isDetailPage
+Header: showBackButton
 
 ```js
-<Header isDetailPage onClickArrow={() => {}} onClickEdit={() => {}}>
+<Header
+  showBackButton
+  showEditButton
+  onClickArrow={() => {}}
+  onClickEdit={() => {}}
+>
   Helga
 </Header>
 ```
 
-Header: isPlantList
+Header: showLogoutButton
 
 ```js
-<Header isPlantList onClickArrow={() => {}} onClickLogout={() => {}}>
+<Header showLogoutButton onClickArrow={() => {}} onClickLogout={() => {}}>
   Helga
 </Header>
 ```

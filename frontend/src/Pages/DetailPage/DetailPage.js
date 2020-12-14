@@ -20,7 +20,8 @@ export default function DetailPage({
   return (
     <>
       <FixedHeader
-        isDetailPage
+        showBackButton
+        showEditButton
         onClickArrow={openPlantList}
         onClickEdit={openEditPage}
       >

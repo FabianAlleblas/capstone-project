@@ -7,7 +7,6 @@ import { ImgDeleteIcon } from '../Icons'
 SettingCareIntervalModal.propTypes = {
   className: PropTypes.string,
   isFertilizer: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
   setShowCareSetting: PropTypes.func.isRequired,
   updateCareInterval: PropTypes.func.isRequired,
   plantId: PropTypes.number.isRequired,
@@ -16,7 +15,6 @@ SettingCareIntervalModal.propTypes = {
 export default function SettingCareIntervalModal({
   className,
   isFertilizer,
-  onClick,
   setShowCareSetting,
   updateCareInterval,
   plantId,
@@ -26,7 +24,7 @@ export default function SettingCareIntervalModal({
   return (
     <Wrapper className={className}>
       <Modal>
-        <ClosingButton onClick={onClick}>
+        <ClosingButton onClick={closeCareSetting}>
           <ClosingIcon />
         </ClosingButton>
         <Form onSubmit={saveCareInterval}>
@@ -52,7 +50,11 @@ export default function SettingCareIntervalModal({
   function saveCareInterval(event) {
     event.preventDefault()
     updateCareInterval(plantId, formData)
-    setShowCareSetting({})
+    setShowCareSetting()
+  }
+
+  function closeCareSetting() {
+    setShowCareSetting()
   }
 }
 

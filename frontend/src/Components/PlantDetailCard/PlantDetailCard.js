@@ -4,11 +4,17 @@ import defaultPlantImage from '../../assets/plant-images/default_plant.jpg'
 import PlantDetailBar from '../IndicatorBars/PlantDetailBar'
 import Button from '../Buttons/Button'
 
-export default function PlantDetailCard({ plant, resetTimer }) {
-  PlantDetailCard.propTypes = {
-    plant: PropTypes.object.isRequired,
-    resetTimer: PropTypes.func,
-  }
+PlantDetailCard.propTypes = {
+  plant: PropTypes.object.isRequired,
+  resetTimer: PropTypes.func,
+  updateCareInterval: PropTypes.func,
+}
+
+export default function PlantDetailCard({
+  plant,
+  resetTimer,
+  updateCareInterval,
+}) {
   return (
     <CardWrapper>
       <ImageFrame src={plant.image ?? defaultPlantImage} />
@@ -16,7 +22,7 @@ export default function PlantDetailCard({ plant, resetTimer }) {
         <PlantName>{plant.species}</PlantName>
         <PlantInfo>{plant.specialInfo}</PlantInfo>
       </TextContainer>
-      <PlantDetailBar daysLeft={plant.daysLeft} weeksLeft={plant.weeksLeft} />
+      <PlantDetailBar plant={plant} updateCareInterval={updateCareInterval} />
       <ButtonWrapper>
         <ResetButton onClick={() => resetTimer(plant.id, 'water')}>
           Watered

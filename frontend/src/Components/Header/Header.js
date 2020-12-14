@@ -2,6 +2,17 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import { ArrowIcon, EditIcon, LogoutIcon } from '../Icons'
 
+Header.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.string.isRequired,
+  secondaryStyle: PropTypes.bool,
+  isDetailPage: PropTypes.bool,
+  isPlantList: PropTypes.bool,
+  onClickArrow: PropTypes.func,
+  onClickEdit: PropTypes.func,
+  onClickLogout: PropTypes.func,
+}
+
 export default function Header({
   className,
   children,
@@ -12,17 +23,6 @@ export default function Header({
   onClickEdit,
   onClickLogout,
 }) {
-  Header.propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.string.isRequired,
-    secondaryStyle: PropTypes.bool,
-    isDetailPage: PropTypes.bool,
-    isPlantList: PropTypes.bool,
-    onClickArrow: PropTypes.func,
-    onClickEdit: PropTypes.func,
-    onClickLogout: PropTypes.func,
-  }
-
   return (
     <HeaderStyled className={className}>
       <HeadingContainer secondaryStyle={secondaryStyle}>

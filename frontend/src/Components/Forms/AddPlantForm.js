@@ -6,11 +6,11 @@ import useImageUpload from '../../hooks/useImageUpload'
 import Button from '../Buttons/Button'
 import { AddImgIcon, ImgDeleteIcon } from '../Icons'
 
-export default function AddPlantForm({ savePlantData }) {
-  AddPlantForm.propTypes = {
-    savePlantData: PropTypes.func.isRequired,
-  }
+AddPlantForm.propTypes = {
+  savePlantData: PropTypes.func.isRequired,
+}
 
+export default function AddPlantForm({ savePlantData }) {
   const history = useHistory()
   const { handleInputChange, formData } = useForm()
   const { picture, imageBase64, onChangePicture, deleteImg } = useImageUpload()

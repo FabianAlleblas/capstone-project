@@ -60,6 +60,24 @@ class Plant
     private $user;
 
     /**
+     * @ORM\Column(type="integer")
+     * @Assert\Positive
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 99,)
+     */
+    private $waterInterval;
+
+    /**
+     * @ORM\Column(type="integer")
+     * @Assert\Positive
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 99,)
+     */
+    private $fertilizerInterval;
+
+    /**
      * VirtualProperty(type="integer")
      */
     private $daysLeft;
@@ -163,6 +181,30 @@ class Plant
     public function setUser(User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getWaterInterval(): ?int
+    {
+        return $this->waterInterval;
+    }
+
+    public function setWaterInterval(int $waterInterval): self
+    {
+        $this->waterInterval = $waterInterval;
+
+        return $this;
+    }
+
+    public function getFertilizerInterval(): ?int
+    {
+        return $this->fertilizerInterval;
+    }
+
+    public function setFertilizerInterval(int $fertilizerInterval): self
+    {
+        $this->fertilizerInterval = $fertilizerInterval;
 
         return $this;
     }

@@ -16,6 +16,7 @@ function App() {
     updatePlantData,
     deletePlantData,
     resetCareTimer,
+    updateCareInterval,
   } = usePlantList(userData)
 
   if (!userData?.authorized || plantList?.unauthorized) {
@@ -34,7 +35,11 @@ function App() {
         <PlantListPage plantList={plantList} userLogout={userLogout} />
       </Route>
       <Route path="/plant">
-        <DetailPage plantList={plantList} resetTimer={resetCareTimer} />
+        <DetailPage
+          plantList={plantList}
+          resetTimer={resetCareTimer}
+          updateCareInterval={updateCareInterval}
+        />
       </Route>
       <Route path="/add-plant">
         <AddPage savePlantData={savePlantData} />

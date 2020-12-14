@@ -12,7 +12,7 @@ module.exports = {
   usageMode: 'expand',
   components: ['src/Components/**/[A-Z]*.js'],
   styleguideComponents: {
-    Wrapper: path.join(__dirname, 'src/styles/StyleWrapper'),
+    Wrapper: path.join(__dirname, 'src/styles/StyleguideWrapper'),
   },
   template: {
     head: {

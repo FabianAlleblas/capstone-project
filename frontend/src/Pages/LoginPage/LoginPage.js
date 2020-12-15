@@ -1,6 +1,6 @@
-import LoginForm from '../../Components/Forms/LoginForm'
-import { ReactComponent as AppLogo } from '../../assets/icons/urbanplantslogo.svg'
 import styled from 'styled-components/macro'
+import { ReactComponent as AppLogo } from '../../assets/icons/urbanplantslogo.svg'
+import LoginForm from '../../Components/Forms/LoginForm'
 import ErrorModal from '../../Components/Modals/ErrorModal'
 
 export default function LoginPage({
@@ -14,7 +14,7 @@ export default function LoginPage({
       <AppLogo />
       <LoginForm userRegistration={userRegistration} userLogin={userLogin} />
       {userData?.error && (
-        <ErrorModal setUserData={setUserData}>{userData.error}</ErrorModal>
+        <ErrorModal closeErrorModal={setUserData}>{userData.error}</ErrorModal>
       )}
     </PageWrapper>
   )

@@ -4,20 +4,21 @@ import Button from '../Buttons/Button'
 
 ErrorModal.propTypes = {
   children: PropTypes.string,
+  closeErrorModal: PropTypes.func.isRequired,
 }
 
-export default function ErrorModal({ children, setUserData }) {
+export default function ErrorModal({ children, closeErrorModal }) {
   return (
     <Wrapper>
       <Modal>
         <Text>{children}</Text>
-        <ModalButton onClick={closeErrorModal}>Okay</ModalButton>
+        <ModalButton onClick={closeModal}>Okay</ModalButton>
       </Modal>
     </Wrapper>
   )
 
-  function closeErrorModal() {
-    setUserData()
+  function closeModal() {
+    closeErrorModal()
   }
 }
 
@@ -40,6 +41,7 @@ const Modal = styled.div`
   display: grid;
   gap: 24px;
   padding: 20px;
+  width: 75%;
   place-items: center;
 `
 

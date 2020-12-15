@@ -32,7 +32,7 @@ class UserController extends BaseController {
         
         if ($checkedEmail)
         {
-            return $this->badRequestResponse('E-Mail Already In Use!');
+            return $this->badRequestResponse('E-Mail already in use!');
         }
 
         $validationResult = $validator->validate($newUser);

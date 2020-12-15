@@ -27,7 +27,7 @@ class AuthenticationController extends BaseController {
         $loginData = $loginService->login($post['email'], $post['password']);
         
         if (!$loginData['isValid']){
-            return $this->unauthorizedResponse('error', 'Password Or E-Mail Wrong!');
+            return $this->unauthorizedResponse('error', 'Password or Email wrong!');
         }
 
         $token = $tokenRepository->createToken($loginData['user']);

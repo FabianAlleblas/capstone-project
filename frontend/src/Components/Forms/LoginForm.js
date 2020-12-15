@@ -50,8 +50,7 @@ export default function LoginForm({ userRegistration, userLogin }) {
 const Form = styled.form`
   background-color: var(--primary-dark);
   display: grid;
-  gap: 30px;
-  padding: 0 40px;
+  gap: 20px;
   place-items: center;
   width: 100%;
 `
@@ -73,7 +72,7 @@ const Input = styled.input`
 
 const ButtonWrapper = styled.div`
   display: grid;
-  gap: 30px;
+  gap: 20px;
   padding: 20px 0 0;
   width: 60%;
 `

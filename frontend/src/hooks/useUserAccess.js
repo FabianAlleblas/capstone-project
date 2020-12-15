@@ -28,7 +28,9 @@ export default function useUser() {
 
   function userRegistration(formData) {
     signUpUser(formData).then((responseData) =>
-      responseData.error ? alert(responseData.error) : setUserData(responseData)
+      responseData.error
+        ? setUserData({ error: responseData.error })
+        : setUserData(responseData)
     )
   }
 

@@ -9,7 +9,7 @@ export default function PlantListPage({ plantList, userLogout }) {
 
   return (
     <>
-      <FixedHeader isPlantList onClickLogout={userLogout}>
+      <FixedHeader showLogoutButton onClickLogout={userLogout}>
         My Plants
       </FixedHeader>
       <ListContainer>

@@ -1,17 +1,13 @@
 import PropTypes from 'prop-types'
-import { useState } from 'react'
 import styled from 'styled-components'
 import { SettingsIcon } from '../Icons'
-import SettingCareIntervalModal from '../Modals/SettingCareIntervalModal'
 
 PlantDetailBar.propTypes = {
   plant: PropTypes.object.isRequired,
-  updateCareInterval: PropTypes.func,
+  setShowCareSetting: PropTypes.func.isRequired,
 }
 
-export default function PlantDetailBar({ plant, updateCareInterval }) {
-  const [showCareSetting, setShowCareSetting] = useState({})
-
+export default function PlantDetailBar({ plant, setShowCareSetting }) {
   return (
     <Container>
       <BarWrapper>
@@ -28,14 +24,6 @@ export default function PlantDetailBar({ plant, updateCareInterval }) {
           <IconButton name="water" onClick={openCareSettings}>
             <SettingsIcon />
           </IconButton>
-          {showCareSetting?.water && (
-            <ModalStyled
-              onClick={closeCareSetting}
-              setShowCareSetting={setShowCareSetting}
-              updateCareInterval={updateCareInterval}
-              plantId={plant.id}
-            />
-          )}
         </CareIntervalWrapper>
       </BarWrapper>
       <BarWrapper>
@@ -52,26 +40,13 @@ export default function PlantDetailBar({ plant, updateCareInterval }) {
           <IconButton name="fertilizer" onClick={openCareSettings}>
             <SettingsIcon />
           </IconButton>
-          {showCareSetting?.fertilizer && (
-            <ModalStyled
-              isFertilizer
-              onClick={closeCareSetting}
-              setShowCareSetting={setShowCareSetting}
-              updateCareInterval={updateCareInterval}
-              plantId={plant.id}
-            />
-          )}
         </CareIntervalWrapper>
       </BarWrapper>
     </Container>
   )
 
   function openCareSettings(event) {
-    setShowCareSetting({ [event.currentTarget.name]: true })
-  }
-
-  function closeCareSetting() {
-    setShowCareSetting({})
+    setShowCareSetting(event.currentTarget.name)
   }
 }
 
@@ -130,9 +105,4 @@ const Text = styled.p`
 const IconButton = styled.button`
   background-color: transparent;
   border: none;
-`
-const ModalStyled = styled(SettingCareIntervalModal)`
-  position: absolute;
-  top: 0;
-  left: 0;
 `

@@ -10,7 +10,9 @@ describe('Header', () => {
   })
   it('renders the correct SVGs', () => {
     const { getByText, getByTestId } = render(
-      <Header isDetailPage>Helga</Header>
+      <Header showBackButton showEditButton>
+        Helga
+      </Header>
     )
 
     expect(getByText(/Helga/i)).toBeInTheDocument()
@@ -19,7 +21,7 @@ describe('Header', () => {
   })
   it('renders the correct SVG', () => {
     const { getByText, getByTestId } = render(
-      <Header isPlantList>My Plants</Header>
+      <Header showLogoutButton>My Plants</Header>
     )
 
     expect(getByText(/My Plants/i)).toBeInTheDocument()

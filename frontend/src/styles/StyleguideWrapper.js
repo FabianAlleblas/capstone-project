@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import GlobalStyle from './GlobalStyle'
 
-export default function StyleWrapper({ children }) {
+export default function StyleguideWrapper({ children }) {
   return (
     <Wrapper>
       <GlobalStyle />

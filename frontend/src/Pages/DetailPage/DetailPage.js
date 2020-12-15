@@ -35,7 +35,7 @@ export default function DetailPage({
         <PlantDetails plant={plant} />
         <PlantDetailBar plant={plant} setShowCareSetting={setShowCareSetting} />
         {showCareSetting && (
-          <ModalStyled
+          <SettingCareIntervalModal
             isFertilizer={showCareSetting === 'fertilizer' ? true : false}
             setShowCareSetting={setShowCareSetting}
             updateCareInterval={updateCareInterval}
@@ -85,12 +85,6 @@ const CardWrapper = styled.section`
   gap: 30px;
   padding: 100px 30px 0;
   place-items: center;
-`
-
-const ModalStyled = styled(SettingCareIntervalModal)`
-  position: absolute;
-  top: 0;
-  left: 0;
 `
 
 const ButtonWrapper = styled.div`

@@ -5,7 +5,6 @@ import Button from '../Buttons/Button'
 import { ImgDeleteIcon } from '../Icons'
 
 SettingCareIntervalModal.propTypes = {
-  className: PropTypes.string,
   isFertilizer: PropTypes.bool,
   setShowCareSetting: PropTypes.func.isRequired,
   updateCareInterval: PropTypes.func.isRequired,
@@ -13,7 +12,6 @@ SettingCareIntervalModal.propTypes = {
 }
 
 export default function SettingCareIntervalModal({
-  className,
   isFertilizer,
   setShowCareSetting,
   updateCareInterval,
@@ -22,7 +20,7 @@ export default function SettingCareIntervalModal({
   const { handleInputChange, formData } = useForm()
 
   return (
-    <Wrapper className={className}>
+    <Wrapper>
       <Modal>
         <ClosingButton onClick={closeCareSetting}>
           <ClosingIcon />
@@ -59,12 +57,15 @@ export default function SettingCareIntervalModal({
 }
 
 const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  display: grid;
-  place-items: center;
   background-color: rgba(0, 0, 0, 0.4);
+  display: grid;
+  height: 100%;
+  left: 0;
+  place-items: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
 `
 
 const Modal = styled.div`

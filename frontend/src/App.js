@@ -6,6 +6,7 @@ import DetailPage from './Pages/DetailPage/DetailPage'
 import EditPage from './Pages/EditPage/EditPage'
 import LoginPage from './Pages/LoginPage/LoginPage'
 import PlantListPage from './Pages/PlantListPage/PlantListPage'
+import LoadingPage from './Pages/LoadingPage/LoadingPage'
 
 function App() {
   const { userData, userLogin, userRegistration, userLogout } = useUserAccess()
@@ -25,8 +26,8 @@ function App() {
     )
   }
 
-  if (plantList === undefined) {
-    return <div>loading...</div>
+  if (!plantList) {
+    return <LoadingPage />
   }
 
   return (

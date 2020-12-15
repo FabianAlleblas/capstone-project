@@ -12,8 +12,10 @@ export default function usePlantList(userData) {
   const [plantList, setPlantList] = useState()
 
   useEffect(() => {
-    getPlants(userData).then((data) =>
-      data?.error ? alert(data?.error) : setPlantList(data)
+    getPlants(userData).then((responseData) =>
+      responseData?.error
+        ? alert(responseData?.error)
+        : setPlantList(responseData)
     )
   }, [userData])
 

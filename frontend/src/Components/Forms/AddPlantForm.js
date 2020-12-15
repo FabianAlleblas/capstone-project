@@ -28,10 +28,7 @@ export default function AddPlantForm({ savePlantData }) {
         {!imageBase64 ? (
           <AddImgIcon />
         ) : (
-          <ImgDeleteButton
-            aria-label="image-delete-button"
-            onClick={(event) => deleteImg(event)}
-          >
+          <ImgDeleteButton onClick={(event) => deleteImg(event)}>
             <ImgDeleteIcon />
           </ImgDeleteButton>
         )}

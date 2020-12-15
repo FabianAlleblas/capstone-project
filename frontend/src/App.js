@@ -9,7 +9,13 @@ import PlantListPage from './Pages/PlantListPage/PlantListPage'
 import LoadingPage from './Pages/LoadingPage/LoadingPage'
 
 function App() {
-  const { userData, userLogin, userRegistration, userLogout } = useUserAccess()
+  const {
+    userData,
+    userLogin,
+    userRegistration,
+    userLogout,
+    setUserData,
+  } = useUserAccess()
 
   const {
     plantList,
@@ -22,7 +28,12 @@ function App() {
 
   if (!userData?.authorized || plantList?.unauthorized) {
     return (
-      <LoginPage userRegistration={userRegistration} userLogin={userLogin} />
+      <LoginPage
+        userRegistration={userRegistration}
+        userLogin={userLogin}
+        userData={userData}
+        setUserData={setUserData}
+      />
     )
   }
 

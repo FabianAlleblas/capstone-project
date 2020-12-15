@@ -16,19 +16,21 @@ export default function useUser() {
     saveToLocal('userData', userData)
   }, [userData])
 
-  return { userData, userLogin, userRegistration, userLogout }
+  return { userData, setUserData, userLogin, userRegistration, userLogout }
 
   function userLogin(formData) {
     loginUser(formData).then((responseData) =>
       responseData.error
-        ? alert(responseData.error)
+        ? setUserData({ error: responseData.error })
         : setUserData({ ...authorized, ...responseData })
     )
   }
 
   function userRegistration(formData) {
     signUpUser(formData).then((responseData) =>
-      responseData.error ? alert(responseData.error) : setUserData(responseData)
+      responseData.error
+        ? setUserData({ error: responseData.error })
+        : setUserData(responseData)
     )
   }
 

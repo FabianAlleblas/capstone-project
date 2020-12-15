@@ -27,7 +27,7 @@ describe('AddPlantForm', () => {
 
     userEvent.upload(imageInput, file)
 
-    await waitFor(() => getByRole('button', { name: 'image-delete-button' }))
+    await waitFor(() => getByRole('button', { name: /ImgDeleteIcon/i }))
 
     user.type(getByLabelText('Your plants name*:'), 'Bob')
     user.type(getByLabelText('The species of your plant*:'), 'Monstera')

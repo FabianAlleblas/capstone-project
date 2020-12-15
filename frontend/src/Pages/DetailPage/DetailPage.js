@@ -4,6 +4,7 @@ import styled from 'styled-components/macro'
 import Button from '../../Components/Buttons/Button'
 import Header from '../../Components/Header/Header'
 import PlantDetailBar from '../../Components/IndicatorBars/PlantDetailBar'
+import ErrorModal from '../../Components/Modals/ErrorModal'
 import SettingCareIntervalModal from '../../Components/Modals/SettingCareIntervalModal'
 import PlantDetails from '../../Components/PlantDetails/PlantDetails'
 
@@ -18,7 +19,11 @@ export default function DetailPage({
   const plant = plantById(useQuery)
 
   if (!plant) {
-    return <div>Plant not found!</div>
+    return (
+      <ErrorModal closeErrorModal={() => history.push('/')}>
+        Plant not found!
+      </ErrorModal>
+    )
   }
 
   return (

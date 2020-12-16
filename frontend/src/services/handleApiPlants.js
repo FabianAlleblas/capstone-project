@@ -1,4 +1,4 @@
-const baseUrl = 'http://urbanplants.local/plant'
+const baseUrl = process.env.REACT_APP_API_BASE_URL
 
 export async function getPlants(userData) {
   if (userData?.authorized) {
@@ -12,7 +12,7 @@ export async function getPlants(userData) {
       redirect: 'follow',
     }
     try {
-      const response = await fetch(baseUrl, requestOptions)
+      const response = await fetch(`${baseUrl}/plant`, requestOptions)
       const data = await response.json()
       return await data
     } catch (error) {
@@ -36,7 +36,7 @@ export async function postPlant(plantData, userData) {
     redirect: 'follow',
   }
   try {
-    const response = await fetch(baseUrl, requestOptions)
+    const response = await fetch(`${baseUrl}/plant`, requestOptions)
     const responseData = response.json()
     return responseData
   } catch (error) {
@@ -58,7 +58,7 @@ export async function updatePlant(formData, id, userData) {
     redirect: 'follow',
   }
   try {
-    const response = await fetch(`${baseUrl}/${id}`, requestOptions)
+    const response = await fetch(`${baseUrl}/plant/${id}`, requestOptions)
     const responseData = response.json()
     return responseData
   } catch (error) {
@@ -77,7 +77,7 @@ export async function deletePlant(id, userData) {
     redirect: 'follow',
   }
   try {
-    const response = await fetch(`${baseUrl}/${id}`, requestOptions)
+    const response = await fetch(`${baseUrl}/plant/${id}`, requestOptions)
     const responseData = response.json()
     return responseData
   } catch (error) {
@@ -96,7 +96,10 @@ export async function resetTimer(id, type, userData) {
     redirect: 'follow',
   }
   try {
-    const response = await fetch(`${baseUrl}/${id}/${type}`, requestOptions)
+    const response = await fetch(
+      `${baseUrl}/plant/${id}/${type}`,
+      requestOptions
+    )
     const responseData = response.json()
     return responseData
   } catch (error) {
@@ -119,7 +122,7 @@ export async function setCareInterval(id, formData, userData) {
     redirect: 'follow',
   }
   try {
-    const response = await fetch(`${baseUrl}/${id}`, requestOptions)
+    const response = await fetch(`${baseUrl}/plant/${id}`, requestOptions)
     const responseData = response.json()
     return responseData
   } catch (error) {

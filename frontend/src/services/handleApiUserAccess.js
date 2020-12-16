@@ -1,4 +1,4 @@
-const baseUrl = 'http://urbanplants.local'
+const baseUrl = process.env.REACT_APP_API_BASE_URL
 
 export async function signUpUser(data) {
   const myHeaders = new Headers()

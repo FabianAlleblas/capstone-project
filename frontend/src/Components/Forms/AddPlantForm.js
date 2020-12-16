@@ -132,6 +132,17 @@ const ImgDeleteButton = styled.button`
   top: 0;
 `
 
+const WarningText = styled.p`
+  background-color: var(--primary-light);
+  border-radius: 30px;
+  bottom: -10px;
+  color: var(--warning-color);
+  font-size: 1rem;
+  padding: 4px 12px;
+  position: absolute;
+  text-align: center;
+`
+
 const ImgInput = styled.input`
   height: 0.1px;
   opacity: 0;
@@ -174,15 +185,4 @@ const ButtonWrapper = styled.div`
 
 const SubmitButton = styled(Button)`
   opacity: ${(props) => (props.isImageValid ? '1' : '0.5')};
-`
-
-const WarningText = styled.p`
-  position: absolute;
-  color: var(--warning-color);
-  text-align: center;
-  font-size: 1rem;
-  background-color: var(--primary-light);
-  padding: 4px 12px;
-  border-radius: 30px;
-  bottom: -10px;
 `

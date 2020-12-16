@@ -39,7 +39,7 @@ export default function useImage() {
   }
 
   function imageValidation() {
-    if (!picture.name.match(/\.(jpg|jpeg|png|gif)$/)) {
+    if (!picture.name.match(/\.(jpg|jpeg|png)$/)) {
       return false
     }
     if (picture.size > 1500000) {

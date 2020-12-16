@@ -2,6 +2,8 @@
 
 ## First run `npm install` in the project directory /frontend
 
+_Rename .env.example to .env.local and paste your api url to it._
+
 ## Available Scripts
 
 In the project directory, you can run:

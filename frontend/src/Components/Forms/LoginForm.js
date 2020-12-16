@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import useForm from '../../hooks/useForm'
 import Button from '../Buttons/Button'
+import RegistrationModal from '../Modals/RegistrationModal'
 
 LoginForm.propTypes = {
   userRegistration: PropTypes.func.isRequired,
@@ -9,7 +10,12 @@ LoginForm.propTypes = {
 }
 
 export default function LoginForm({ userRegistration, userLogin }) {
-  const { handleInputChange, formData } = useForm()
+  const {
+    handleInputChange,
+    formData,
+    validatePassword,
+    isPasswordValid,
+  } = useForm()
 
   return (
     <Form onSubmit={handleLogin}>
@@ -22,17 +28,24 @@ export default function LoginForm({ userRegistration, userLogin }) {
       />
       <Input
         name="password"
-        type="password"
+        type="text"
         placeholder="Password"
         onChange={handleInputChange}
         required
       />
+      {!isPasswordValid && (
+        <WarningText>
+          Password must contain at least 1 digit, 1 capital letter, 1 special
+          character and to have a length of min. 8 characters
+        </WarningText>
+      )}
       <ButtonWrapper>
         <Button>Login</Button>
-        <Button onClick={handleRegistration} secondaryStyle>
+        <Button onClick={openRegistrationModal} secondaryStyle>
           Sign Up
         </Button>
       </ButtonWrapper>
+      {/* <RegistrationModalFixed /> */}
     </Form>
   )
 
@@ -42,8 +55,9 @@ export default function LoginForm({ userRegistration, userLogin }) {
     event.target.password.blur()
   }
 
-  function handleRegistration() {
-    userRegistration(formData)
+  function openRegistrationModal() {
+    if (validatePassword()) {
+    }
   }
 }
 
@@ -75,4 +89,16 @@ const ButtonWrapper = styled.div`
   gap: 20px;
   padding: 20px 0 0;
   width: 60%;
+`
+
+const WarningText = styled.p`
+  color: var(--warning-color);
+  font-size: 0.75rem;
+  text-align: center;
+`
+const RegistrationModalFixed = styled(RegistrationModal)`
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
 `

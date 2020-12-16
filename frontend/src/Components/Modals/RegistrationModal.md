@@ -1,3 +1,7 @@
 ```js
-<RegistrationModal />
+<RegistrationModal
+  userRegistration={() => {}}
+  setIsRegistration={() => {}}
+  formData={{}}
+/>
 ```

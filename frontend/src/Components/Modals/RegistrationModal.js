@@ -4,9 +4,17 @@ import Button from '../Buttons/Button'
 
 RegistrationModal.propTypes = {
   className: PropTypes.string,
+  userRegistration: PropTypes.func.isRequired,
+  setIsRegistration: PropTypes.func.isRequired,
+  formData: PropTypes.object.isRequired,
 }
 
-export default function RegistrationModal({ className }) {
+export default function RegistrationModal({
+  className,
+  userRegistration,
+  setIsRegistration,
+  formData,
+}) {
   return (
     <Wrapper className={className}>
       <Modal>
@@ -24,7 +32,7 @@ export default function RegistrationModal({ className }) {
           user!
         </Text>
         <ButtonWrapper>
-          <ModalButton onClick={closeModal}>Confirm</ModalButton>
+          <ModalButton onClick={handleRegistration}>Confirm</ModalButton>
           <ModalButton secondaryStyle onClick={closeModal}>
             Cancel
           </ModalButton>
@@ -33,7 +41,14 @@ export default function RegistrationModal({ className }) {
     </Wrapper>
   )
 
-  function closeModal() {}
+  function handleRegistration() {
+    userRegistration(formData)
+    setIsRegistration(false)
+  }
+
+  function closeModal() {
+    setIsRegistration(false)
+  }
 }
 
 const Wrapper = styled.div`

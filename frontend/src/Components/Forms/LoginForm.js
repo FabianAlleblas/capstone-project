@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { useState } from 'react'
 import styled from 'styled-components/macro'
 import useForm from '../../hooks/useForm'
 import Button from '../Buttons/Button'
@@ -10,6 +11,7 @@ LoginForm.propTypes = {
 }
 
 export default function LoginForm({ userRegistration, userLogin }) {
+  const [isRegistration, setIsRegistration] = useState(false)
   const {
     handleInputChange,
     formData,
@@ -45,7 +47,13 @@ export default function LoginForm({ userRegistration, userLogin }) {
           Sign Up
         </Button>
       </ButtonWrapper>
-      {/* <RegistrationModalFixed /> */}
+      {isRegistration && (
+        <RegistrationModalFixed
+          userRegistration={userRegistration}
+          setIsRegistration={setIsRegistration}
+          formData={formData}
+        />
+      )}
     </Form>
   )
 
@@ -57,6 +65,7 @@ export default function LoginForm({ userRegistration, userLogin }) {
 
   function openRegistrationModal() {
     if (validatePassword()) {
+      setIsRegistration(true)
     }
   }
 }

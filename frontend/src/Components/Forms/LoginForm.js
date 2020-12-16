@@ -30,7 +30,7 @@ export default function LoginForm({ userRegistration, userLogin }) {
       />
       <Input
         name="password"
-        type="text"
+        type="password"
         placeholder="Password"
         onChange={handleInputChange}
         required

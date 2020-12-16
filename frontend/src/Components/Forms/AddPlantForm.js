@@ -13,7 +13,13 @@ AddPlantForm.propTypes = {
 export default function AddPlantForm({ savePlantData }) {
   const history = useHistory()
   const { handleInputChange, formData } = useForm()
-  const { picture, imageBase64, onChangePicture, deleteImg } = useImageUpload()
+  const {
+    picture,
+    imageBase64,
+    onChangePicture,
+    deleteImg,
+    isImageValid,
+  } = useImageUpload()
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -32,6 +38,7 @@ export default function AddPlantForm({ savePlantData }) {
             <ImgDeleteIcon />
           </ImgDeleteButton>
         )}
+        {!isImageValid && <WarningText>max. size 1.5 MB</WarningText>}
       </ImgInputWrapper>
       <Label>
         Your plants name*:
@@ -66,7 +73,7 @@ export default function AddPlantForm({ savePlantData }) {
         />
       </Label>
       <ButtonWrapper>
-        <Button>Add Plant</Button>
+        <SubmitButton isImageValid={isImageValid}>Add Plant</SubmitButton>
         <Button onClick={handleCancel} secondaryStyle>
           Cancel
         </Button>
@@ -76,11 +83,13 @@ export default function AddPlantForm({ savePlantData }) {
 
   function handleSubmit(event) {
     const imageData = { name: picture?.name, value: imageBase64 }
-
     event.preventDefault()
-    savePlantData(formData, imageData)
-    event.target.reset()
-    history.push('/')
+
+    if (isImageValid) {
+      savePlantData(formData, imageData)
+      event.target.reset()
+      history.push('/')
+    }
   }
 
   function handleCancel() {
@@ -161,4 +170,19 @@ const ButtonWrapper = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   padding: 40px 0 0;
+`
+
+const SubmitButton = styled(Button)`
+  opacity: ${(props) => (props.isImageValid ? '1' : '0.5')};
+`
+
+const WarningText = styled.p`
+  position: absolute;
+  color: var(--warning-color);
+  text-align: center;
+  font-size: 1rem;
+  background-color: var(--primary-light);
+  padding: 4px 12px;
+  border-radius: 30px;
+  bottom: -10px;
 `

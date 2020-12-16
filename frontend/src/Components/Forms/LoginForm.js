@@ -39,6 +39,7 @@ export default function LoginForm({ userRegistration, userLogin }) {
   function handleLogin(event) {
     event.preventDefault()
     userLogin(formData)
+    event.target.password.blur()
   }
 
   function handleRegistration() {

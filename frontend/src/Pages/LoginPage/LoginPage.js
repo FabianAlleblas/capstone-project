@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { ReactComponent as AppLogo } from '../../assets/icons/urbanplantslogo.svg'
+import { ReactComponent as AppLogo } from '../../assets/logos/urbanplantslogo.svg'
 import LoginForm from '../../Components/Forms/LoginForm'
 import ErrorModal from '../../Components/Modals/ErrorModal'
 

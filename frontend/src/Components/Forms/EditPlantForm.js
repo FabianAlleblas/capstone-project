@@ -20,7 +20,13 @@ export default function EditPlantForm({
 }) {
   const history = useHistory()
   const { handleInputChange, formData } = useForm(plant)
-  const { picture, imageBase64, onChangePicture, deleteImg } = useImageUpload()
+  const {
+    picture,
+    imageBase64,
+    onChangePicture,
+    deleteImg,
+    isImageValid,
+  } = useImageUpload()
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -35,13 +41,11 @@ export default function EditPlantForm({
         {!imageBase64 ? (
           <AddImgIcon />
         ) : (
-          <ImgDeleteButton
-            aria-label="image-delete-button"
-            onClick={(event) => deleteImg(event)}
-          >
+          <ImgDeleteButton type="button" onClick={() => deleteImg()}>
             <ImgDeleteIcon />
           </ImgDeleteButton>
         )}
+        {!isImageValid && <WarningText>max. size 1.5 MB</WarningText>}
       </ImgInputWrapper>
       <Label>
         Your plants name*:
@@ -76,7 +80,7 @@ export default function EditPlantForm({
         />
       </Label>
       <ButtonWrapper>
-        <ButtonStyled>Update Plant</ButtonStyled>
+        <ButtonStyled isImageValid={isImageValid}>Update Plant</ButtonStyled>
         <Button onClick={handleCancel} secondaryStyle>
           Cancel
         </Button>
@@ -88,13 +92,16 @@ export default function EditPlantForm({
   )
 
   function handleSubmit(event) {
-    const ImageData = { name: picture?.name, value: imageBase64 }
-    delete formData?.image
-
     event.preventDefault()
-    updatePlantData(formData, ImageData, plant.id)
-    event.target.reset()
-    history.push(`/plant?id=${plant.id}`)
+
+    if (isImageValid) {
+      const ImageData = { name: picture?.name, value: imageBase64 }
+      delete formData?.image
+
+      updatePlantData(formData, ImageData, plant.id)
+      event.target.reset()
+      history.push(`/plant?id=${plant.id}`)
+    }
   }
 
   function handleCancel() {
@@ -141,6 +148,17 @@ const ImgDeleteButton = styled.button`
   top: 0;
 `
 
+const WarningText = styled.p`
+  background-color: var(--primary-light);
+  border-radius: 30px;
+  bottom: -10px;
+  color: var(--warning-color);
+  font-size: 1rem;
+  padding: 4px 12px;
+  position: absolute;
+  text-align: center;
+`
+
 const ImgInput = styled.input`
   height: 0.1px;
   opacity: 0;
@@ -183,4 +201,5 @@ const ButtonWrapper = styled.div`
 
 const ButtonStyled = styled(Button)`
   grid-column: 1/3;
+  opacity: ${(props) => (props.isImageValid ? '1' : '0.5')};
 `

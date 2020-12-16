@@ -3,13 +3,14 @@ import styled from 'styled-components'
 import Button from '../Buttons/Button'
 
 ErrorModal.propTypes = {
+  className: PropTypes.string,
   children: PropTypes.string,
   closeErrorModal: PropTypes.func.isRequired,
 }
 
-export default function ErrorModal({ children, closeErrorModal }) {
+export default function ErrorModal({ children, closeErrorModal, className }) {
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <Modal>
         <Text>{children}</Text>
         <ModalButton onClick={closeModal}>Okay</ModalButton>
@@ -25,11 +26,7 @@ export default function ErrorModal({ children, closeErrorModal }) {
 const Wrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
   display: grid;
-  height: 100vh;
-  left: 0;
   place-items: center;
-  position: absolute;
-  top: 0;
   width: 100%;
   z-index: 10;
 `

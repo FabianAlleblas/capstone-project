@@ -30,7 +30,7 @@ export default function useUser() {
     signUpUser(formData).then((responseData) =>
       responseData.error
         ? setUserData({ error: responseData.error })
-        : setUserData(responseData)
+        : setUserData({ ...authorized, ...responseData })
     )
   }
 

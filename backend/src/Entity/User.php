@@ -30,6 +30,10 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex( pattern="/\d/")
+     * @Assert\Regex( pattern="/[a-zA-Z]/")
+     * @Assert\Regex( pattern="/\W/")
+     * @Assert\Length( min=8)
      * @Assert\NotBlank
      */
     private $password;

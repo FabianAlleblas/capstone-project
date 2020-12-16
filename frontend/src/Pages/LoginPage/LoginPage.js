@@ -14,7 +14,9 @@ export default function LoginPage({
       <AppLogo />
       <LoginForm userRegistration={userRegistration} userLogin={userLogin} />
       {userData?.error && (
-        <ErrorModal closeErrorModal={setUserData}>{userData.error}</ErrorModal>
+        <ErrorModalFixed closeErrorModal={setUserData}>
+          {userData.error}
+        </ErrorModalFixed>
       )}
     </PageWrapper>
   )
@@ -26,4 +28,11 @@ const PageWrapper = styled.section`
   height: 100vh;
   padding: 30px;
   place-items: center;
+`
+
+const ErrorModalFixed = styled(ErrorModal)`
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
 `

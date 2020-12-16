@@ -20,9 +20,9 @@ export default function DetailPage({
 
   if (!plant) {
     return (
-      <ErrorModal closeErrorModal={() => history.push('/')}>
+      <ErrorModalFixed closeErrorModal={() => history.push('/')}>
         Plant not found!
-      </ErrorModal>
+      </ErrorModalFixed>
     )
   }
 
@@ -40,7 +40,7 @@ export default function DetailPage({
         <PlantDetails plant={plant} />
         <PlantDetailBar plant={plant} setShowCareSetting={setShowCareSetting} />
         {showCareSetting && (
-          <SettingCareIntervalModal
+          <SettingCareIntervalModalFixed
             isFertilizer={showCareSetting === 'fertilizer' ? true : false}
             setShowCareSetting={setShowCareSetting}
             updateCareInterval={updateCareInterval}
@@ -103,4 +103,18 @@ const ButtonWrapper = styled.div`
 const ResetButton = styled(Button)`
   background-color: var(--primary-dark);
   color: var(--primary-light);
+`
+
+const SettingCareIntervalModalFixed = styled(SettingCareIntervalModal)`
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
+`
+
+const ErrorModalFixed = styled(ErrorModal)`
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
 `

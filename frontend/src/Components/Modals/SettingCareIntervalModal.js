@@ -9,6 +9,7 @@ SettingCareIntervalModal.propTypes = {
   setShowCareSetting: PropTypes.func.isRequired,
   updateCareInterval: PropTypes.func.isRequired,
   plantId: PropTypes.number.isRequired,
+  className: PropTypes.string,
 }
 
 export default function SettingCareIntervalModal({
@@ -16,11 +17,12 @@ export default function SettingCareIntervalModal({
   setShowCareSetting,
   updateCareInterval,
   plantId,
+  className,
 }) {
   const { handleInputChange, formData } = useForm()
 
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <Modal>
         <ClosingButton onClick={closeCareSetting}>
           <ClosingIcon />
@@ -59,11 +61,7 @@ export default function SettingCareIntervalModal({
 const Wrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
   display: grid;
-  height: 100vh;
-  left: 0;
   place-items: center;
-  position: absolute;
-  top: 0;
   width: 100%;
   z-index: 10;
 `

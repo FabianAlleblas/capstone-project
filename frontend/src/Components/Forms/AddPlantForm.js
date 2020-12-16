@@ -34,7 +34,7 @@ export default function AddPlantForm({ savePlantData }) {
         {!imageBase64 ? (
           <AddImgIcon />
         ) : (
-          <ImgDeleteButton type="button" onClick={(event) => deleteImg()}>
+          <ImgDeleteButton type="button" onClick={() => deleteImg()}>
             <ImgDeleteIcon />
           </ImgDeleteButton>
         )}

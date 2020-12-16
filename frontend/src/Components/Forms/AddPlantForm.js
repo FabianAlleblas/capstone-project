@@ -34,7 +34,7 @@ export default function AddPlantForm({ savePlantData }) {
         {!imageBase64 ? (
           <AddImgIcon />
         ) : (
-          <ImgDeleteButton onClick={(event) => deleteImg(event)}>
+          <ImgDeleteButton type="button" onClick={(event) => deleteImg()}>
             <ImgDeleteIcon />
           </ImgDeleteButton>
         )}
@@ -82,10 +82,10 @@ export default function AddPlantForm({ savePlantData }) {
   )
 
   function handleSubmit(event) {
-    const imageData = { name: picture?.name, value: imageBase64 }
     event.preventDefault()
 
     if (isImageValid) {
+      const imageData = { name: picture?.name, value: imageBase64 }
       savePlantData(formData, imageData)
       event.target.reset()
       history.push('/')

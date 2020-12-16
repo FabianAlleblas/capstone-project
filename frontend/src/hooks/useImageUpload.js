@@ -31,8 +31,7 @@ export default function useImage() {
     }
   }
 
-  function deleteImg(event) {
-    event.preventDefault()
+  function deleteImg() {
     setImageBase64()
     setPicture()
     setIsImageValid(true)

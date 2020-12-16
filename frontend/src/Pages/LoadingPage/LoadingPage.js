@@ -1,5 +1,5 @@
 import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner'
-import { ReactComponent as AppLogo } from '../../assets/icons/urbanplantslogo.svg'
+import { ReactComponent as AppLogo } from '../../assets/logos/urbanplantslogo.svg'
 import styled from 'styled-components/macro'
 
 export default function LoginPage() {

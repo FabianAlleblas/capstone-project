@@ -83,19 +83,19 @@ const Heading = styled.h1`
 `
 
 const ArrowIconStyled = styled(ArrowIcon)`
-  margin-right: 14px;
-`
-
-const EditIconStyled = styled(EditIcon)`
-  margin-right: 14px;
-`
-
-const LogoutIconStyled = styled(LogoutIcon)`
   margin-right: 12px;
 `
 
+const EditIconStyled = styled(EditIcon)`
+  margin-right: 12px;
+`
+
+const LogoutIconStyled = styled(LogoutIcon)`
+  margin-right: 8px;
+`
+
 const DeleteIconStyled = styled(DeleteIcon)`
-  margin-right: 14px;
+  margin-right: 12px;
 `
 
 const IconButton = styled.button`

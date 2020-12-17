@@ -1,5 +1,7 @@
 import { ReactComponent as AddImgIcon } from '../assets/icons/addimgicon.svg'
 import { ReactComponent as ArrowIcon } from '../assets/icons/arrowicon.svg'
+import { ReactComponent as CloseIcon } from '../assets/icons/closeicon.svg'
+import { ReactComponent as DeleteIcon } from '../assets/icons/deleteicon.svg'
 import { ReactComponent as EditIcon } from '../assets/icons/editicon.svg'
 import { ReactComponent as FertilizerIcon } from '../assets/icons/fertilizericon.svg'
 import { ReactComponent as ImgDeleteIcon } from '../assets/icons/imgdeleteicon.svg'
@@ -18,4 +20,6 @@ export {
   FertilizerIcon,
   WaterIcon,
   SettingsIcon,
+  CloseIcon,
+  DeleteIcon,
 }

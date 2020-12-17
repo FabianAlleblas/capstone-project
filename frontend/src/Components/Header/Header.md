@@ -26,7 +26,15 @@ Header: showBackButton
 Header: showLogoutButton
 
 ```js
-<Header showLogoutButton onClickArrow={() => {}} onClickLogout={() => {}}>
+<Header showLogoutButton onClickLogout={() => {}}>
+  Helga
+</Header>
+```
+
+Header: showDeleteButton
+
+```js
+<Header showDeleteButton onClickDelete={() => {}}>
   Helga
 </Header>
 ```

@@ -4,9 +4,9 @@ import useUserAccess from './hooks/useUserAccess'
 import AddPage from './Pages/AddPage/AddPage'
 import DetailPage from './Pages/DetailPage/DetailPage'
 import EditPage from './Pages/EditPage/EditPage'
+import LoadingPage from './Pages/LoadingPage/LoadingPage'
 import LoginPage from './Pages/LoginPage/LoginPage'
 import PlantListPage from './Pages/PlantListPage/PlantListPage'
-import LoadingPage from './Pages/LoadingPage/LoadingPage'
 
 function App() {
   const {

@@ -38,8 +38,8 @@ const Modal = styled.div`
   display: grid;
   gap: 24px;
   padding: 20px;
-  width: 75%;
   place-items: center;
+  width: 75%;
 `
 
 const Text = styled.p`

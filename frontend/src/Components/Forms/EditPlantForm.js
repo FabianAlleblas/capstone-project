@@ -9,15 +9,10 @@ import { AddImgIcon, ImgDeleteIcon } from '../Icons'
 
 EditPlantForm.propTypes = {
   updatePlantData: PropTypes.func.isRequired,
-  deletePlantData: PropTypes.func.isRequired,
   plant: PropTypes.object.isRequired,
 }
 
-export default function EditPlantForm({
-  updatePlantData,
-  deletePlantData,
-  plant,
-}) {
+export default function EditPlantForm({ updatePlantData, plant }) {
   const history = useHistory()
   const { handleInputChange, formData } = useForm(plant)
   const {
@@ -45,7 +40,7 @@ export default function EditPlantForm({
             <ImgDeleteIcon />
           </ImgDeleteButton>
         )}
-        {!isImageValid && <WarningText>max. size 1.5 MB</WarningText>}
+        {!isImageValid && <WarningText>max. size 4 MB</WarningText>}
       </ImgInputWrapper>
       <Label>
         Your plants name*:
@@ -80,12 +75,9 @@ export default function EditPlantForm({
         />
       </Label>
       <ButtonWrapper>
-        <ButtonStyled isImageValid={isImageValid}>Update Plant</ButtonStyled>
+        <ButtonStyled isImageValid={isImageValid}>Update</ButtonStyled>
         <Button onClick={handleCancel} secondaryStyle>
           Cancel
-        </Button>
-        <Button onClick={handleDelete} secondaryStyle>
-          Delete
         </Button>
       </ButtonWrapper>
     </Form>
@@ -107,18 +99,12 @@ export default function EditPlantForm({
   function handleCancel() {
     history.push(`/plant?id=${plant.id}`)
   }
-
-  function handleDelete() {
-    deletePlantData(plant.id)
-    history.push('/')
-  }
 }
 
 const Form = styled.form`
   background-color: var(--primary-dark);
   display: grid;
   gap: 20px;
-  padding: 0 40px;
 `
 
 const ImgInputWrapper = styled.label`
@@ -131,7 +117,7 @@ const ImgInputWrapper = styled.label`
   display: flex;
   height: 148px;
   justify-content: center;
-  margin: 0 auto;
+  margin: 0 auto 10px;
   position: relative;
   width: 148px;
 
@@ -172,7 +158,7 @@ const Label = styled.label`
   color: var(--form-font-color);
   display: flex;
   flex-wrap: wrap;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
 `
 
 const Input = styled.input`
@@ -194,12 +180,11 @@ const Input = styled.input`
 
 const ButtonWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 20px;
-  padding: 20px 0 0;
+  grid-template-columns: 1fr 1fr;
+  padding: 30px 0 0;
 `
 
 const ButtonStyled = styled(Button)`
-  grid-column: 1/3;
   opacity: ${(props) => (props.isImageValid ? '1' : '0.5')};
 `

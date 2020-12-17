@@ -1,8 +1,14 @@
+import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import PlusButton from '../../Components/Buttons/PlusButton'
 import Header from '../../Components/Header/Header'
 import PlantListCard from '../../Components/PlantListCard/PlantListCard'
+
+PlantListPage.propTypes = {
+  plantList: PropTypes.array.isRequired,
+  userLogout: PropTypes.func.isRequired,
+}
 
 export default function PlantListPage({ plantList, userLogout }) {
   const history = useHistory()
@@ -21,12 +27,14 @@ export default function PlantListPage({ plantList, userLogout }) {
           />
         ))}
       </ListContainer>
-      <FixedPlusButton onClick={openAddForm} />
+      <FixedPlusButton onClick={openAddForm} plantList={plantList} />
     </>
   )
 
   function openAddForm() {
-    history.push('/add-plant')
+    if (plantList.length < 6) {
+      history.push('/add-plant')
+    }
   }
   function openDetailPage(id) {
     history.push(`/plant?id=${id}`)
@@ -49,4 +57,5 @@ const FixedPlusButton = styled(PlusButton)`
   bottom: 20px;
   position: fixed;
   right: 20px;
+  opacity: ${(props) => props.plantList.length >= 6 && '0.5'};
 `

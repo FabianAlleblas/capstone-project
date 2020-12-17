@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import styled from 'styled-components/macro'
@@ -7,6 +8,12 @@ import PlantDetailBar from '../../Components/IndicatorBars/PlantDetailBar'
 import ErrorModal from '../../Components/Modals/ErrorModal'
 import SettingCareIntervalModal from '../../Components/Modals/SettingCareIntervalModal'
 import PlantDetails from '../../Components/PlantDetails/PlantDetails'
+
+DetailPage.propTypes = {
+  plantList: PropTypes.array.isRequired,
+  resetTimer: PropTypes.func.isRequired,
+  updateCareInterval: PropTypes.func.isRequired,
+}
 
 export default function DetailPage({
   plantList,
@@ -88,7 +95,7 @@ const FixedHeader = styled(Header)`
 const CardWrapper = styled.section`
   display: grid;
   gap: 30px;
-  padding: 100px 30px 0;
+  padding: 100px 30px 30px;
   place-items: center;
 `
 

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import useForm from '../../hooks/useForm'
 import Button from '../Buttons/Button'
-import { ImgDeleteIcon } from '../Icons'
+import { CloseIcon } from '../Icons'
 
 SettingCareIntervalModal.propTypes = {
   isFertilizer: PropTypes.bool,
@@ -25,7 +25,7 @@ export default function SettingCareIntervalModal({
     <Wrapper className={className}>
       <Modal>
         <ClosingButton onClick={closeCareSetting}>
-          <ClosingIcon />
+          <CloseIcon />
         </ClosingButton>
         <Form onSubmit={saveCareInterval}>
           <Label>
@@ -71,7 +71,7 @@ const Modal = styled.div`
   border-radius: 20px;
   box-shadow: 4px 4px 10px var(--shadow);
   padding: 10px;
-  width: 75%;
+  width: 80%;
 `
 
 const ClosingButton = styled.button`
@@ -80,15 +80,10 @@ const ClosingButton = styled.button`
   width: 18px;
 `
 
-const ClosingIcon = styled(ImgDeleteIcon)`
-  width: 18px;
-  height: 18px;
-`
-
 const Form = styled.form`
-  padding: 10px;
+  padding: 14px 10px 10px;
   display: grid;
-  gap: 10px;
+  gap: 20px;
   justify-items: center;
 `
 const Label = styled.label`
@@ -97,7 +92,7 @@ const Label = styled.label`
   color: var(--form-font-color);
   justify-content: center;
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.2rem;
 `
 
 const Input = styled.input`
@@ -105,10 +100,10 @@ const Input = styled.input`
   border: none;
   color: var(--form-font-color);
   font-family: 'Josefin sans', sans-serif;
-  font-size: 0.75rem;
-  margin-top: 10px;
-  padding: 10px 10px;
-  width: 30%;
+  font-size: 1rem;
+  margin-top: 20px;
+  padding: 8px 14px;
+  width: 40%;
 
   &:focus {
     box-shadow: 0 0 4px var(--shadow) inset;
@@ -117,6 +112,6 @@ const Input = styled.input`
 `
 
 const ButtonStyled = styled(Button)`
-  scale: 0.75;
+  scale: 0.8;
   width: 75%;
 `

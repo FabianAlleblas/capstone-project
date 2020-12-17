@@ -7,6 +7,7 @@ import { ReactComponent as LogoutIcon } from '../assets/icons/logouticon.svg'
 import { ReactComponent as PlusIcon } from '../assets/icons/plusicon.svg'
 import { ReactComponent as SettingsIcon } from '../assets/icons/settingsicon.svg'
 import { ReactComponent as WaterIcon } from '../assets/icons/watericon.svg'
+import { ReactComponent as CloseIcon } from '../assets/icons/closeicon.svg'
 
 export {
   PlusIcon,
@@ -18,4 +19,5 @@ export {
   FertilizerIcon,
   WaterIcon,
   SettingsIcon,
+  CloseIcon,
 }

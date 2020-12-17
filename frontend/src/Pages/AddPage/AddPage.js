@@ -20,9 +20,10 @@ const FixedHeader = styled(Header)`
 `
 
 const FormContainer = styled.main`
+  align-items: center;
   background-color: var(--primary-dark);
   display: flex;
   height: 100vh;
+  padding: 40px 40px 0;
   place-content: center;
-  align-items: center;
 `

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
-import { ArrowIcon, EditIcon, LogoutIcon } from '../Icons'
+import { ArrowIcon, DeleteIcon, EditIcon, LogoutIcon } from '../Icons'
 
 Header.propTypes = {
   className: PropTypes.string,
@@ -9,9 +9,11 @@ Header.propTypes = {
   showBackButton: PropTypes.bool,
   showEditButton: PropTypes.bool,
   showLogoutButton: PropTypes.bool,
+  showDeleteButton: PropTypes.bool,
   onClickArrow: PropTypes.func,
   onClickEdit: PropTypes.func,
   onClickLogout: PropTypes.func,
+  onClickDelete: PropTypes.func,
 }
 
 export default function Header({
@@ -23,7 +25,9 @@ export default function Header({
   onClickArrow,
   onClickEdit,
   onClickLogout,
+  onClickDelete,
   showEditButton,
+  showDeleteButton,
 }) {
   return (
     <HeaderStyled className={className}>
@@ -43,6 +47,11 @@ export default function Header({
       {showLogoutButton && (
         <IconButton onClick={onClickLogout}>
           <LogoutIconStyled onClick={onClickLogout} data-testid="logout-icon" />
+        </IconButton>
+      )}
+      {showDeleteButton && (
+        <IconButton onClick={onClickDelete}>
+          <DeleteIconStyled onClick={onClickLogout} data-testid="delete-icon" />
         </IconButton>
       )}
     </HeaderStyled>
@@ -83,6 +92,10 @@ const EditIconStyled = styled(EditIcon)`
 
 const LogoutIconStyled = styled(LogoutIcon)`
   margin-right: 12px;
+`
+
+const DeleteIconStyled = styled(DeleteIcon)`
+  margin-right: 14px;
 `
 
 const IconButton = styled.button`

@@ -88,7 +88,7 @@ const FixedHeader = styled(Header)`
 const CardWrapper = styled.section`
   display: grid;
   gap: 30px;
-  padding: 100px 30px 0;
+  padding: 100px 30px 30px;
   place-items: center;
 `
 

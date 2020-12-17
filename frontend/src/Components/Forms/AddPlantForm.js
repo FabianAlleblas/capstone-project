@@ -100,9 +100,7 @@ export default function AddPlantForm({ savePlantData }) {
 const Form = styled.form`
   background-color: var(--primary-dark);
   display: grid;
-  place-content: center;
   gap: 20px;
-  padding: 0 40px;
 `
 
 const ImgInputWrapper = styled.label`
@@ -115,7 +113,7 @@ const ImgInputWrapper = styled.label`
   display: flex;
   height: 148px;
   justify-content: center;
-  margin: 0 auto;
+  margin: 0 auto 10px;
   position: relative;
   width: 148px;
 
@@ -156,7 +154,7 @@ const Label = styled.label`
   color: var(--form-font-color);
   display: flex;
   flex-wrap: wrap;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
 `
 
 const Input = styled.input`
@@ -180,7 +178,7 @@ const ButtonWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  padding: 40px 0 0;
+  padding: 30px 0 0;
 `
 
 const SubmitButton = styled(Button)`

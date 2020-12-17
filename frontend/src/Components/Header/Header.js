@@ -60,8 +60,8 @@ export default function Header({
 
 const HeaderStyled = styled.header`
   display: flex;
-  width: 100%;
   justify-content: space-between;
+  width: 100%;
   z-index: 10;
 `
 

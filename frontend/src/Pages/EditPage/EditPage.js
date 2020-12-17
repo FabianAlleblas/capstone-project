@@ -1,8 +1,15 @@
+import PropTypes from 'prop-types'
 import { useHistory, useLocation } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import EditPlantForm from '../../Components/Forms/EditPlantForm'
 import Header from '../../Components/Header/Header'
 import ErrorModal from '../../Components/Modals/ErrorModal'
+
+EditPage.propTypes = {
+  updatePlantData: PropTypes.func.isRequired,
+  plantList: PropTypes.array.isRequired,
+  deletePlantData: PropTypes.func.isRequired,
+}
 
 export default function EditPage({
   updatePlantData,

@@ -8,6 +8,7 @@ PlantDetailBar: normal
     waterInterval: 10,
     fertilizerInterval: 4,
   }}
+  setShowCareSetting={() => {}}
 />
 ```
 
@@ -21,5 +22,6 @@ PlantDetailBar: low
     waterInterval: 10,
     fertilizerInterval: 4,
   }}
+  setShowCareSetting={() => {}}
 />
 ```

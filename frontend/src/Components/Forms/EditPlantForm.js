@@ -180,8 +180,8 @@ const Input = styled.input`
 
 const ButtonWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 20px;
+  grid-template-columns: 1fr 1fr;
   padding: 30px 0 0;
 `
 

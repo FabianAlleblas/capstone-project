@@ -1,8 +1,14 @@
+import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import PlusButton from '../../Components/Buttons/PlusButton'
 import Header from '../../Components/Header/Header'
 import PlantListCard from '../../Components/PlantListCard/PlantListCard'
+
+PlantListPage.propTypes = {
+  plantList: PropTypes.array.isRequired,
+  userLogout: PropTypes.func.isRequired,
+}
 
 export default function PlantListPage({ plantList, userLogout }) {
   const history = useHistory()

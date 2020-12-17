@@ -1,7 +1,15 @@
+import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import { ReactComponent as AppLogo } from '../../assets/logos/urbanplantslogo.svg'
 import LoginForm from '../../Components/Forms/LoginForm'
 import ErrorModal from '../../Components/Modals/ErrorModal'
+
+LoginPage.propTypes = {
+  userRegistration: PropTypes.func.isRequired,
+  userLogin: PropTypes.func.isRequired,
+  userData: PropTypes.object.isRequired,
+  setUserData: PropTypes.func.isRequired,
+}
 
 export default function LoginPage({
   userRegistration,

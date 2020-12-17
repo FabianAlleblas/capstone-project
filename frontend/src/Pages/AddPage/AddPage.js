@@ -1,6 +1,11 @@
+import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import AddPlantForm from '../../Components/Forms/AddPlantForm'
 import Header from '../../Components/Header/Header'
+
+AddPage.propTypes = {
+  savePlantData: PropTypes.func.isRequired,
+}
 
 export default function AddPage({ savePlantData }) {
   return (

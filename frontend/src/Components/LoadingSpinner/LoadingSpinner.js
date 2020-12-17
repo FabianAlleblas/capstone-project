@@ -23,13 +23,13 @@ const Wrapper = styled.div`
 
 const StyledSpinner = styled.svg`
   animation: rotate 2s linear infinite;
-  width: 100px;
   height: 100px;
+  width: 100px;
 
   & .path {
-    stroke: var(--primary-light);
-    stroke-linecap: round;
     animation: dash 1.5s ease-in-out infinite;
+    stroke-linecap: round;
+    stroke: var(--primary-light);
   }
 
   @keyframes rotate {

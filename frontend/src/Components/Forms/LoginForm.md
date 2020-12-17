@@ -1,3 +1,3 @@
 ```js
-<LoginForm />
+<LoginForm userRegistration={() => {}} userLogin={() => {}} />
 ```

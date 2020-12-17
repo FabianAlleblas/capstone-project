@@ -66,8 +66,8 @@ const Modal = styled.div`
   display: grid;
   gap: 24px;
   padding: 20px;
-  width: 90%;
   place-items: center;
+  width: 90%;
 `
 
 const Heading = styled.h2`

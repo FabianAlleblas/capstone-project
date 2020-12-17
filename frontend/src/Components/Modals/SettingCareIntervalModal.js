@@ -81,18 +81,18 @@ const ClosingButton = styled.button`
 `
 
 const Form = styled.form`
-  padding: 14px 10px 10px;
   display: grid;
   gap: 20px;
   justify-items: center;
+  padding: 14px 10px 10px;
 `
 const Label = styled.label`
+  color: var(--form-font-color);
   display: flex;
   flex-wrap: wrap;
-  color: var(--form-font-color);
+  font-size: 1.2rem;
   justify-content: center;
   text-align: center;
-  font-size: 1.2rem;
 `
 
 const Input = styled.input`

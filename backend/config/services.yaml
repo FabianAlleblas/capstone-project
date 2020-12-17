@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     app.path.plant_images: /images/plants
+    api_img_url_prefix: '%env(resolve:API_IMG_URL_PREFIX)%'
 
 services:
     # default configuration for services in *this* file

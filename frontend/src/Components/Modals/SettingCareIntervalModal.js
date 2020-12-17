@@ -77,7 +77,7 @@ const Modal = styled.div`
 const ClosingButton = styled.button`
   border: none;
   background-color: transparent;
-  width: 20px;
+  width: 24px;
 `
 
 const Form = styled.form`

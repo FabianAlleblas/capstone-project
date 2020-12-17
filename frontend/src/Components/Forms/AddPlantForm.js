@@ -38,7 +38,7 @@ export default function AddPlantForm({ savePlantData }) {
             <ImgDeleteIcon />
           </ImgDeleteButton>
         )}
-        {!isImageValid && <WarningText>max. size 1.5 MB</WarningText>}
+        {!isImageValid && <WarningText>max. size 4 MB</WarningText>}
       </ImgInputWrapper>
       <Label>
         Your plants name*:

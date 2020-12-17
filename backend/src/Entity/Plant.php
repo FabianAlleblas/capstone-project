@@ -95,7 +95,7 @@ class Plant
 
     /**
      * @Assert\File(
-     *      maxSize = "2M",
+     *      maxSize = "5M",
      *      mimeTypes = {"image/png", "image/jpg", "image/jpeg"})  
      * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
      * @var File

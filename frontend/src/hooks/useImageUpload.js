@@ -41,7 +41,7 @@ export default function useImage() {
     if (!picture.name.match(/\.(jpg|jpeg|png)$/)) {
       return false
     }
-    if (picture.size > 1500000) {
+    if (picture.size > 4000000) {
       return false
     }
     return true

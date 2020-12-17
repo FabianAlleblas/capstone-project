@@ -46,12 +46,12 @@ export default function Header({
       )}
       {showLogoutButton && (
         <IconButton onClick={onClickLogout}>
-          <LogoutIconStyled onClick={onClickLogout} data-testid="logout-icon" />
+          <LogoutIconStyled data-testid="logout-icon" />
         </IconButton>
       )}
       {showDeleteButton && (
         <IconButton onClick={onClickDelete}>
-          <DeleteIconStyled onClick={onClickLogout} data-testid="delete-icon" />
+          <DeleteIconStyled data-testid="delete-icon" />
         </IconButton>
       )}
     </HeaderStyled>

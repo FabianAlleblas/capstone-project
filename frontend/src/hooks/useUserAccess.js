@@ -3,7 +3,7 @@ import { loadFromLocal, saveToLocal } from '../lib/localStorage'
 import { loginUser, signUpUser } from '../services/handleApiUserAccess'
 
 export default function useUser() {
-  const [userData, setUserData] = useState()
+  const [userData, setUserData] = useState({})
   const notAuthorized = { authorized: false }
   const authorized = { authorized: true }
 

@@ -4,7 +4,13 @@ export default function useForm(initialData) {
   const [formData, setFormData] = useState(initialData ?? {})
   const [isPasswordValid, setIsPasswordValid] = useState(true)
 
-  return { handleInputChange, validatePassword, formData, isPasswordValid }
+  return {
+    handleInputChange,
+    validatePassword,
+    formData,
+    isPasswordValid,
+    setIsPasswordValid,
+  }
 
   function handleInputChange(event) {
     const fieldName = event.target.name

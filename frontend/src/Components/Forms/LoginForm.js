@@ -64,8 +64,10 @@ export default function LoginForm({ userRegistration, userLogin }) {
   }
 
   function openRegistrationModal() {
-    if (validatePassword()) {
-      setIsRegistration(true)
+    if (formData.email && formData.password) {
+      validatePassword() && setIsRegistration(true)
+    } else {
+      alert('Choose a email and a password')
     }
   }
 }

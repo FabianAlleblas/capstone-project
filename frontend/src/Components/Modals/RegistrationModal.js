@@ -27,6 +27,10 @@ export default function RegistrationModal({
           This app is not responsible for under or overwatering your plant.
           <br />
           <br />
+          Optimized for mobile view
+          <br />
+          (iPhone 6/7/8)
+          <br />
           <br />
           For demonstration purpose the max amount of plants is limited to 6 per
           user!

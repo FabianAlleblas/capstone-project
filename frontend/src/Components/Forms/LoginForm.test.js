@@ -1,5 +1,5 @@
-import { render, waitFor } from '@testing-library/react'
-import { default as user } from '@testing-library/user-event'
+import { render } from '@testing-library/react'
+import user from '@testing-library/user-event'
 import LoginForm from './LoginForm'
 
 const registrationMock = jest.fn()
@@ -37,7 +37,7 @@ describe('LoginForm', () => {
 
     expect(window.alert).toHaveBeenCalled()
   })
-  it('shows a warning text because of invalid password', async () => {
+  it('shows a warning text because of invalid password', () => {
     const { getByPlaceholderText, getByText } = render(
       <LoginForm userRegistration={registrationMock} userLogin={loginMock} />
     )
@@ -46,12 +46,6 @@ describe('LoginForm', () => {
     user.type(getByPlaceholderText('Password'), 'admin')
 
     user.click(getByText('Sign Up'))
-
-    await waitFor(() =>
-      getByText(
-        'Password must contain at least 1 digit, 1 capital letter, 1 special character and to have a length of min. 8 characters'
-      )
-    )
 
     const warningText = getByText(
       'Password must contain at least 1 digit, 1 capital letter, 1 special character and to have a length of min. 8 characters'

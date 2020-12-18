@@ -1,5 +1,6 @@
-import PlantDetails from './PlantDetails'
 import { render } from '@testing-library/react'
+import 'jest-styled-components'
+import PlantDetails from './PlantDetails'
 
 describe('PlantDetailCard', () => {
   it('renders correctly', () => {

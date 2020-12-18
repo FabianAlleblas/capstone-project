@@ -55,7 +55,7 @@ export default function RegistrationModal({
   }
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   background-color: rgba(0, 0, 0, 0.4);
   display: grid;
   place-items: center;

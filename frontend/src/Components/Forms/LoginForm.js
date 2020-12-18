@@ -58,9 +58,11 @@ export default function LoginForm({ userRegistration, userLogin }) {
   )
 
   function handleLogin(event) {
+    const passwordInput = document.querySelector('Input', { name: /password/i })
+
     event.preventDefault()
     userLogin(formData)
-    event.target.password.blur()
+    passwordInput.blur()
   }
 
   function openRegistrationModal() {

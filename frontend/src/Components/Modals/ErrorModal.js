@@ -19,7 +19,7 @@ export default function ErrorModal({ children, closeErrorModal, className }) {
   )
 
   function closeModal() {
-    closeErrorModal()
+    closeErrorModal({})
   }
 }
 

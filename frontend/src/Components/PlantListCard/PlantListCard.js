@@ -11,7 +11,10 @@ PlantListCard.propTypes = {
 export default function PlantListCard({ plant, onClick }) {
   return (
     <CardWrapper onClick={onClick}>
-      <ImgContainer src={plant.image ?? defaultPlantImage} />
+      <ImgContainer
+        data-testid="img-container"
+        src={plant.image ?? defaultPlantImage}
+      />
       <PlantName>{plant.name}</PlantName>
       <PlantListBar
         daysLeft={plant.daysLeft}

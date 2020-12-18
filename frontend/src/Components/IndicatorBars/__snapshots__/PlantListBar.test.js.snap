@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlantDetailBar renders correctly 1`] = `
+.c0 {
+  display: grid;
+  gap: 6px 6px;
+  grid-template-columns: 15px auto;
+  padding: 10px 0 0;
+  place-items: center;
+  width: 100%;
+}
+
+.c1 {
+  background-color: var(--bar-bg-color);
+  border-radius: 1px;
+  height: 2px;
+  position: relative;
+  width: 100%;
+}
+
+.c2 {
+  border-radius: 3px;
+  height: 6px;
+  min-width: 5px;
+  position: absolute;
+  top: -2px;
+}
+
+.c3 {
+  background-color: var(--bar-water-color);
+  width: 100%;
+}
+
+.c4 {
+  background-color: var(--bar-fertilizer-color);
+  width: 100%;
+}
+
+<div
+  class="c0"
+>
+  <svg>
+    watericon.svg
+  </svg>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 c3"
+      data-testid="water-indicator"
+    />
+  </div>
+  <svg>
+    fertilizericon.svg
+  </svg>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 c4"
+      data-testid="fertilizer-indicator"
+    />
+  </div>
+</div>
+`;

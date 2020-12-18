@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
-import 'jest-styled-components'
 import user from '@testing-library/user-event'
+import 'jest-styled-components'
 import PlantDetailBar from './PlantDetailBar'
 
 const plant = {

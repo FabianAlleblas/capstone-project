@@ -1,8 +1,5 @@
 import { render, waitFor } from '@testing-library/react'
-import {
-  default as user,
-  default as userEvent,
-} from '@testing-library/user-event'
+import user from '@testing-library/user-event'
 import EditPlantForm from './EditPlantForm'
 
 const mockHistoryPush = jest.fn()
@@ -54,7 +51,7 @@ describe('EditPlantForm', () => {
     const imageInput = getByAltText('image-input')
     const ImgInputWrapper = getByTestId('img-input-wrapper')
 
-    userEvent.upload(imageInput, file)
+    user.upload(imageInput, file)
 
     await waitFor(() => getByRole('button', { name: /ImgDeleteIcon/i }))
 
@@ -70,7 +67,7 @@ describe('EditPlantForm', () => {
 
     const imageInput = getByAltText('image-input')
 
-    userEvent.upload(imageInput, file)
+    user.upload(imageInput, file)
 
     await waitFor(() => getByRole('button', { name: /ImgDeleteIcon/i }))
 

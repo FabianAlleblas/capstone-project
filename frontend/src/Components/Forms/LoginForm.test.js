@@ -69,10 +69,10 @@ describe('LoginForm', () => {
 
     user.click(getByText('Sign Up'))
 
-    const ErrorModal = getByRole('heading', {
+    const RegistrationModal = getByRole('heading', {
       name: /Please confirm your registration!/i,
     })
 
-    expect(ErrorModal).toBeInTheDocument()
+    expect(RegistrationModal).toBeInTheDocument()
   })
 })

@@ -25,6 +25,12 @@ const plant = {
 }
 
 describe('EditPlantForm', () => {
+  it('renders correctly', () => {
+    const { container } = render(
+      <EditPlantForm updatePlantData={onSubmitMock} plant={plant} />
+    )
+    expect(container.firstChild).toMatchSnapshot()
+  })
   it('renders with the correct input values', () => {
     const { getByLabelText, getByTestId } = render(
       <EditPlantForm updatePlantData={onSubmitMock} plant={plant} />

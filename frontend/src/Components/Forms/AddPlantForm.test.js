@@ -15,6 +15,10 @@ const onSubmitMock = jest.fn()
 const file = new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' })
 
 describe('AddPlantForm', () => {
+  it('renders correctly', () => {
+    const { container } = render(<AddPlantForm savePlantData={onSubmitMock} />)
+    expect(container.firstChild).toMatchSnapshot()
+  })
   it('shows a preview when a image is added to file input', async () => {
     const { getByAltText, getByTestId, getByRole } = render(
       <AddPlantForm savePlantData={onSubmitMock} />

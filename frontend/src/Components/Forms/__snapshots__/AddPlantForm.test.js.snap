@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddPlantForm renders correctly 1`] = `
+<form
+  class="AddPlantForm__Form-sc-11dolld-0 kguMIx"
+>
+  <label
+    class="AddPlantForm__ImgInputWrapper-sc-11dolld-1 iBiABv"
+    data-testid="img-input-wrapper"
+  >
+    <input
+      accept="image/png, image/jpeg"
+      alt="image-input"
+      class="AddPlantForm__ImgInput-sc-11dolld-4 dBfjYL"
+      name="image"
+      type="file"
+    />
+    <svg>
+      addimgicon.svg
+    </svg>
+  </label>
+  <label
+    class="AddPlantForm__Label-sc-11dolld-5 gBBlYq"
+  >
+    Your plants name*:
+    <input
+      class="AddPlantForm__Input-sc-11dolld-6 dgePWP"
+      maxlength="28"
+      name="name"
+      placeholder="Bob"
+      required=""
+      type="text"
+    />
+  </label>
+  <label
+    class="AddPlantForm__Label-sc-11dolld-5 gBBlYq"
+  >
+    The species of your plant*:
+    <input
+      class="AddPlantForm__Input-sc-11dolld-6 dgePWP"
+      maxlength="28"
+      name="species"
+      placeholder="Monstera deliciosa"
+      required=""
+      type="text"
+    />
+  </label>
+  <label
+    class="AddPlantForm__Label-sc-11dolld-5 gBBlYq"
+  >
+    Special infos:
+    <input
+      class="AddPlantForm__Input-sc-11dolld-6 dgePWP"
+      maxlength="28"
+      name="specialInfo"
+      placeholder="variegated"
+      type="text"
+    />
+  </label>
+  <div
+    class="AddPlantForm__ButtonWrapper-sc-11dolld-7 fQVlqk"
+  >
+    <button
+      class="Button__PrimaryButton-sc-6pjoi6-0 pAbUY AddPlantForm__SubmitButton-sc-11dolld-8 LtjFv"
+    >
+      Add Plant
+    </button>
+    <button
+      class="Button__SecondaryButton-sc-6pjoi6-1 cSPa-Dk"
+      type="button"
+    >
+      Cancel
+    </button>
+  </div>
+</form>
+`;

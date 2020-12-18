@@ -1,0 +1,275 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header reders with the back and edit button 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 10;
+}
+
+.c1 {
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  background: var(--primary-dark);
+  border-radius: 0 0 50px 0;
+  box-shadow: 0 0 4px var(--shadow);
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: 20px 30px 13px 20px;
+}
+
+.c4 {
+  color: var(--primary-light);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.c3 {
+  margin-right: 12px;
+}
+
+.c5 {
+  margin-right: 12px;
+}
+
+.c2 {
+  background-color: transparent;
+  border: none;
+}
+
+<header
+  class="c0"
+>
+  <div
+    class="c1"
+    data-testid="heading-container"
+  >
+    <button
+      class="c2"
+    >
+      <svg
+        class="c3"
+      >
+        arrowicon.svg
+      </svg>
+    </button>
+    <h1
+      class="c4"
+    >
+      Helga
+    </h1>
+  </div>
+  <button
+    class="c2"
+  >
+    <svg
+      class="c5"
+    >
+      editicon.svg
+    </svg>
+  </button>
+</header>
+`;
+
+exports[`Header reders with the correct text and logout button 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 10;
+}
+
+.c1 {
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  background: var(--primary-dark);
+  border-radius: 0 0 50px 0;
+  box-shadow: 0 0 4px var(--shadow);
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: 20px 30px 13px 20px;
+}
+
+.c2 {
+  color: var(--primary-light);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.c4 {
+  margin-right: 8px;
+}
+
+.c3 {
+  background-color: transparent;
+  border: none;
+}
+
+<header
+  class="c0"
+>
+  <div
+    class="c1"
+    data-testid="heading-container"
+  >
+    <h1
+      class="c2"
+    >
+      My Plants
+    </h1>
+  </div>
+  <button
+    class="c3"
+  >
+    <svg
+      class="c4"
+    >
+      logouticon.svg
+    </svg>
+  </button>
+</header>
+`;
+
+exports[`Header reders with the delete button 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 10;
+}
+
+.c1 {
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  background: var(--primary-dark);
+  border-radius: 0 0 50px 0;
+  box-shadow: 0 0 4px var(--shadow);
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: 20px 30px 13px 20px;
+}
+
+.c2 {
+  color: var(--primary-light);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.c4 {
+  margin-right: 12px;
+}
+
+.c3 {
+  background-color: transparent;
+  border: none;
+}
+
+<header
+  class="c0"
+>
+  <div
+    class="c1"
+    data-testid="heading-container"
+  >
+    <h1
+      class="c2"
+    >
+      Edit your Plant
+    </h1>
+  </div>
+  <button
+    class="c3"
+  >
+    <svg
+      class="c4"
+    >
+      deleteicon.svg
+    </svg>
+  </button>
+</header>
+`;
+
+exports[`Header renders the header without a box-shadow 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 10;
+}
+
+.c1 {
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  background: var(--primary-dark);
+  border-radius: 0 0 50px 0;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: 20px 30px 13px 20px;
+}
+
+.c2 {
+  color: var(--primary-light);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+<header
+  class="c0"
+>
+  <div
+    class="c1"
+    data-testid="heading-container"
+  >
+    <h1
+      class="c2"
+    >
+      Add plant
+    </h1>
+  </div>
+</header>
+`;

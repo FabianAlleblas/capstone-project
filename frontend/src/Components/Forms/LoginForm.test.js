@@ -7,6 +7,12 @@ const loginMock = jest.fn()
 window.alert = jest.fn()
 
 describe('LoginForm', () => {
+  it('renders correctly', () => {
+    const { container } = render(
+      <LoginForm userRegistration={registrationMock} userLogin={loginMock} />
+    )
+    expect(container.firstChild).toMatchSnapshot()
+  })
   it('calls loginMock with the correct data', () => {
     const { getByPlaceholderText, getByText } = render(
       <LoginForm userRegistration={registrationMock} userLogin={loginMock} />

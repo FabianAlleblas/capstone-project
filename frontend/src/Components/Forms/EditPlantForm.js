@@ -25,7 +25,10 @@ export default function EditPlantForm({ updatePlantData, plant }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <ImgInputWrapper src={imageBase64 ?? plant.image ?? defaultPlantImage}>
+      <ImgInputWrapper
+        src={imageBase64 ?? plant.image ?? defaultPlantImage}
+        data-testid="img-input-wrapper"
+      >
         <ImgInput
           alt="image-input"
           name="image"

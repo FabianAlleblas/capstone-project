@@ -18,7 +18,23 @@ const onSubmitMock = jest.fn()
 const file = new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' })
 
 describe('AddPlantForm', () => {
-  it('calls onSubmit with correct data, resets form and calls history.push', async () => {
+  it('shows a preview when a image is added to file input', async () => {
+    const { getByAltText, getByTestId, getByRole } = render(
+      <AddPlantForm savePlantData={onSubmitMock} />
+    )
+
+    const imageInput = getByAltText('image-input')
+    const ImgInputWrapper = getByTestId('img-input-wrapper')
+
+    userEvent.upload(imageInput, file)
+
+    await waitFor(() => getByRole('button', { name: /ImgDeleteIcon/i }))
+
+    expect(ImgInputWrapper).toHaveStyle(
+      'background-image: url(data:image/png;base64,KOKMkOKWoV/ilqEp)'
+    )
+  })
+  it('calls on submit with the correct data, resets the form and calls history push', async () => {
     const { getByLabelText, getByText, getByAltText, getByRole } = render(
       <AddPlantForm savePlantData={onSubmitMock} />
     )
@@ -53,7 +69,7 @@ describe('AddPlantForm', () => {
 
     expect(mockHistoryPush).toHaveBeenCalled()
   })
-  it('calls history.push by clicking the cancel button', () => {
+  it('calls history push by clicking cancel', () => {
     const { getByText } = render(<AddPlantForm savePlantData={onSubmitMock} />)
 
     user.click(getByText('Cancel'))

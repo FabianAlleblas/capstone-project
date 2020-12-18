@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlantDetailCard renders correctly 1`] = `
+<div
+  class="PlantDetails__ImageFrame-sc-1w5am5u-0 jBdLKf"
+  src="default_plant.jpg"
+/>
+`;

@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlantDetailBar renders correctly 1`] = `
+.c0 {
+  display: grid;
+  gap: 20px;
+  padding: 10px 0 0;
+  width: 100%;
+}
+
+.c1 {
+  display: grid;
+  gap: 10px;
+}
+
+.c2 {
+  background-color: var(--bar-bg-color);
+  border-radius: 2px;
+  height: 4px;
+  position: relative;
+  width: 100%;
+}
+
+.c3 {
+  border-radius: 4px;
+  height: 8px;
+  min-width: 10px;
+  position: absolute;
+  top: -2px;
+}
+
+.c4 {
+  background-color: var(--bar-water-color);
+  width: 100%;
+}
+
+.c8 {
+  background-color: var(--bar-fertilizer-color);
+  width: 100%;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c6 {
+  color: var(--secondary-plant-font-color);
+  font-size: 1rem;
+}
+
+.c7 {
+  background-color: transparent;
+  border: none;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2"
+    >
+      <div
+        class="c3 c4"
+        data-testid="water-indicator"
+      />
+    </div>
+    <div
+      class="c5"
+    >
+      <p
+        class="c6"
+      >
+        Water 
+        10
+        /
+        10
+         days left
+      </p>
+      <button
+        class="c7"
+        data-testid="water-button"
+        name="water"
+      >
+        <svg>
+          settingsicon.svg
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2"
+    >
+      <div
+        class="c3 c8"
+        data-testid="fertilizer-indicator"
+      />
+    </div>
+    <div
+      class="c5"
+    >
+      <p
+        class="c6"
+      >
+        Fertilizer 
+        4
+        /
+        4
+         weeks left
+      </p>
+      <button
+        class="c7"
+        data-testid="fertilizer-button"
+        name="fertilizer"
+      >
+        <svg>
+          settingsicon.svg
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+`;

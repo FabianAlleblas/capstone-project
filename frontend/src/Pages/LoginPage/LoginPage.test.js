@@ -26,6 +26,7 @@ describe('LoginPage', () => {
     )
     expect(container).toMatchSnapshot()
   })
+
   it('renders the error modal when userData received error response', () => {
     const { getByText } = render(
       <LoginPage

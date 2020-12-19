@@ -1,14 +1,6 @@
 import { render } from '@testing-library/react'
-import user from '@testing-library/user-event'
 import 'jest-styled-components'
 import LoginPage from './LoginPage'
-
-// LoginPage.propTypes = {
-//     userRegistration: PropTypes.func.isRequired,
-//     userLogin: PropTypes.func.isRequired,
-//     userData: PropTypes.object.isRequired,
-//     setUserData: PropTypes.func.isRequired,
-//   }
 
 const userRegistrationMock = jest.fn()
 const userLoginMock = jest.fn()

@@ -48,7 +48,7 @@ export default function DetailPage({
         <PlantDetailBar plant={plant} setShowCareSetting={setShowCareSetting} />
         {showCareSetting && (
           <SettingCareIntervalModalFixed
-            isFertilizer={showCareSetting === 'fertilizer' ? true : false}
+            isFertilizer={showCareSetting === 'fertilizer'}
             setShowCareSetting={setShowCareSetting}
             updateCareInterval={updateCareInterval}
             plantId={plant.id}

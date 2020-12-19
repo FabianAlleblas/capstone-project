@@ -1,16 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PlantListPage renders correctly 1`] = `
+.c15 {
+  background-color: var(--primary-dark);
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 0 4px var(--shadow);
+  padding: 13px 14px;
+}
+
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  width: 100%;
   z-index: 10;
 }
 
@@ -37,12 +45,68 @@ exports[`PlantListPage renders correctly 1`] = `
 }
 
 .c5 {
-  margin-right: 12px;
+  margin-right: 8px;
 }
 
 .c4 {
   background-color: transparent;
   border: none;
+}
+
+.c10 {
+  display: grid;
+  gap: 6px 6px;
+  grid-template-columns: 15px auto;
+  padding: 10px 0 0;
+  place-items: center;
+  width: 100%;
+}
+
+.c11 {
+  background-color: var(--bar-bg-color);
+  border-radius: 1px;
+  height: 2px;
+  position: relative;
+  width: 100%;
+}
+
+.c12 {
+  border-radius: 3px;
+  height: 6px;
+  min-width: 5px;
+  position: absolute;
+  top: -2px;
+}
+
+.c13 {
+  background-color: var(--bar-water-color);
+  width: 40%;
+}
+
+.c14 {
+  background-color: var(--bar-fertilizer-color);
+  width: 75%;
+}
+
+.c7 {
+  display: grid;
+  place-items: center;
+}
+
+.c8 {
+  background-image: url(default_plant.jpg);
+  background-position: center;
+  background-size: cover,contain;
+  border-radius: 50%;
+  height: 100px;
+  margin-bottom: 10px;
+  width: 100px;
+}
+
+.c9 {
+  color: var(--primary-plant-font-color);
+  font-size: 1.25rem;
+  font-weight: 400;
 }
 
 .c1 {
@@ -51,27 +115,294 @@ exports[`PlantListPage renders correctly 1`] = `
   top: 0;
 }
 
-<header
-  class="c0 c1"
->
-  <div
-    class="c2"
+.c6 {
+  display: grid;
+  gap: 40px 30px;
+  grid-template-columns: 1fr 1fr;
+  padding: 100px 30px 90px;
+}
+
+.c16 {
+  bottom: 20px;
+  position: fixed;
+  right: 20px;
+  opacity: 0.5;
+}
+
+<div>
+  <header
+    class="c0 c1"
   >
-    <h1
-      class="c3"
+    <div
+      class="c2"
+      data-testid="heading-container"
     >
-      My Plants
-    </h1>
-  </div>
+      <h1
+        class="c3"
+      >
+        My Plants
+      </h1>
+    </div>
+    <button
+      class="c4"
+    >
+      <svg
+        class="c5"
+      >
+        logouticon.svg
+      </svg>
+    </button>
+  </header>
+  <main
+    class="c6"
+  >
+    <div
+      class="c7"
+    >
+      <div
+        class="c8"
+        data-testid="img-container"
+        src="default_plant.jpg"
+      />
+      <h5
+        class="c9"
+      >
+        Carl
+      </h5>
+      <div
+        class="c10"
+      >
+        <svg>
+          watericon.svg
+        </svg>
+        <div
+          class="c11"
+        >
+          <div
+            class="c12 c13"
+            data-testid="water-indicator"
+          />
+        </div>
+        <svg>
+          fertilizericon.svg
+        </svg>
+        <div
+          class="c11"
+        >
+          <div
+            class="c12 c14"
+            data-testid="fertilizer-indicator"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="c7"
+    >
+      <div
+        class="c8"
+        data-testid="img-container"
+        src="default_plant.jpg"
+      />
+      <h5
+        class="c9"
+      >
+        Birgitt
+      </h5>
+      <div
+        class="c10"
+      >
+        <svg>
+          watericon.svg
+        </svg>
+        <div
+          class="c11"
+        >
+          <div
+            class="c12 c13"
+            data-testid="water-indicator"
+          />
+        </div>
+        <svg>
+          fertilizericon.svg
+        </svg>
+        <div
+          class="c11"
+        >
+          <div
+            class="c12 c14"
+            data-testid="fertilizer-indicator"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="c7"
+    >
+      <div
+        class="c8"
+        data-testid="img-container"
+        src="default_plant.jpg"
+      />
+      <h5
+        class="c9"
+      >
+        Karen
+      </h5>
+      <div
+        class="c10"
+      >
+        <svg>
+          watericon.svg
+        </svg>
+        <div
+          class="c11"
+        >
+          <div
+            class="c12 c13"
+            data-testid="water-indicator"
+          />
+        </div>
+        <svg>
+          fertilizericon.svg
+        </svg>
+        <div
+          class="c11"
+        >
+          <div
+            class="c12 c14"
+            data-testid="fertilizer-indicator"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="c7"
+    >
+      <div
+        class="c8"
+        data-testid="img-container"
+        src="default_plant.jpg"
+      />
+      <h5
+        class="c9"
+      >
+        Jim Jones
+      </h5>
+      <div
+        class="c10"
+      >
+        <svg>
+          watericon.svg
+        </svg>
+        <div
+          class="c11"
+        >
+          <div
+            class="c12 c13"
+            data-testid="water-indicator"
+          />
+        </div>
+        <svg>
+          fertilizericon.svg
+        </svg>
+        <div
+          class="c11"
+        >
+          <div
+            class="c12 c14"
+            data-testid="fertilizer-indicator"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="c7"
+    >
+      <div
+        class="c8"
+        data-testid="img-container"
+        src="default_plant.jpg"
+      />
+      <h5
+        class="c9"
+      >
+        Samuel
+      </h5>
+      <div
+        class="c10"
+      >
+        <svg>
+          watericon.svg
+        </svg>
+        <div
+          class="c11"
+        >
+          <div
+            class="c12 c13"
+            data-testid="water-indicator"
+          />
+        </div>
+        <svg>
+          fertilizericon.svg
+        </svg>
+        <div
+          class="c11"
+        >
+          <div
+            class="c12 c14"
+            data-testid="fertilizer-indicator"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="c7"
+    >
+      <div
+        class="c8"
+        data-testid="img-container"
+        src="default_plant.jpg"
+      />
+      <h5
+        class="c9"
+      >
+        Greg
+      </h5>
+      <div
+        class="c10"
+      >
+        <svg>
+          watericon.svg
+        </svg>
+        <div
+          class="c11"
+        >
+          <div
+            class="c12 c13"
+            data-testid="water-indicator"
+          />
+        </div>
+        <svg>
+          fertilizericon.svg
+        </svg>
+        <div
+          class="c11"
+        >
+          <div
+            class="c12 c14"
+            data-testid="fertilizer-indicator"
+          />
+        </div>
+      </div>
+    </div>
+  </main>
   <button
-    class="c4"
+    class="c15 c16"
   >
-    <svg
-      class="c5"
-      data-testid="logout-icon"
-    >
-      logouticon.svg
+    <svg>
+      plusicon.svg
     </svg>
   </button>
-</header>
+</div>
 `;

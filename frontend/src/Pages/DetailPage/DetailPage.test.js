@@ -98,7 +98,7 @@ describe('DetailPage', () => {
     expect(mockHistoryPush).toHaveBeenCalledWith('/edit-plant?id=2')
   })
 
-  it('renders the error modal without a correct id', () => {
+  it('renders the error modal when not finding the plant id', () => {
     const { getByText } = render(
       <MemoryRouter initialEntries={['/plant?id=3']}>
         <DetailPage

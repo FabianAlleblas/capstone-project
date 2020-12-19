@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditPlantForm renders correctly 1`] = `
+<form
+  class="EditPlantForm__Form-bmqh96-0 jbfpuj"
+>
+  <label
+    class="EditPlantForm__ImgInputWrapper-bmqh96-1 ipPaJs"
+    data-testid="img-input-wrapper"
+    src="http://example.com/example.jpg"
+  >
+    <input
+      accept="image/png, image/jpeg"
+      alt="image-input"
+      class="EditPlantForm__ImgInput-bmqh96-4 giAAhF"
+      name="image"
+      type="file"
+    />
+    <svg>
+      addimgicon.svg
+    </svg>
+  </label>
+  <label
+    class="EditPlantForm__Label-bmqh96-5 cfWzow"
+  >
+    Your plants name*:
+    <input
+      class="EditPlantForm__Input-bmqh96-6 lanFep"
+      maxlength="28"
+      name="name"
+      required=""
+      type="text"
+      value="Bob"
+    />
+  </label>
+  <label
+    class="EditPlantForm__Label-bmqh96-5 cfWzow"
+  >
+    The species of your plant*:
+    <input
+      class="EditPlantForm__Input-bmqh96-6 lanFep"
+      maxlength="28"
+      name="species"
+      required=""
+      type="text"
+      value="Monstera"
+    />
+  </label>
+  <label
+    class="EditPlantForm__Label-bmqh96-5 cfWzow"
+  >
+    Special infos:
+    <input
+      class="EditPlantForm__Input-bmqh96-6 lanFep"
+      maxlength="28"
+      name="specialInfo"
+      type="text"
+      value="variegated"
+    />
+  </label>
+  <div
+    class="EditPlantForm__ButtonWrapper-bmqh96-7 gChuOS"
+  >
+    <button
+      class="Button__PrimaryButton-sc-6pjoi6-0 pAbUY EditPlantForm__ButtonStyled-bmqh96-8 bNGiMO"
+    >
+      Update
+    </button>
+    <button
+      class="Button__SecondaryButton-sc-6pjoi6-1 cSPa-Dk"
+      type="button"
+    >
+      Cancel
+    </button>
+  </div>
+</form>
+`;

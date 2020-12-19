@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginForm renders correctly 1`] = `
+<form
+  class="LoginForm__Form-sc-5lwuot-0 kNnjuC"
+>
+  <input
+    class="LoginForm__Input-sc-5lwuot-1 LMXKV"
+    name="email"
+    placeholder="E-Mail"
+    required=""
+    type="email"
+  />
+  <input
+    class="LoginForm__Input-sc-5lwuot-1 LMXKV"
+    name="password"
+    placeholder="Password"
+    required=""
+    type="password"
+  />
+  <div
+    class="LoginForm__ButtonWrapper-sc-5lwuot-2 fqactG"
+  >
+    <button
+      class="Button__PrimaryButton-sc-6pjoi6-0 pAbUY"
+    >
+      Login
+    </button>
+    <button
+      class="Button__SecondaryButton-sc-6pjoi6-1 cSPa-Dk"
+      type="button"
+    >
+      Sign Up
+    </button>
+  </div>
+</form>
+`;

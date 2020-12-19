@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegistrationModal renders correctly 1`] = `
+.c5 {
+  background-color: var(--primary-light);
+  border-radius: 22px;
+  border: none;
+  box-shadow: 0 0 4px var(--shadow);
+  color: var(--primary-dark);
+  font-family: 'Josefin sans';
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 12px 16px 8px;
+  width: 100%;
+}
+
+.c7 {
+  background-color: var(--primary-dark);
+  border-radius: 22px;
+  border: 4px solid var(--primary-light);
+  box-shadow: 0 0 4px var(--shadow);
+  color: var(--primary-light);
+  font-family: 'Josefin sans';
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 8px 12px 4px;
+  width: 100%;
+}
+
+.c0 {
+  background-color: rgba(0,0,0,0.4);
+  display: grid;
+  place-items: center;
+  width: 100%;
+  z-index: 10;
+}
+
+.c1 {
+  background-color: var(--primary-dark);
+  border-radius: 20px;
+  box-shadow: 4px 4px 10px var(--shadow);
+  display: grid;
+  gap: 24px;
+  padding: 20px;
+  place-items: center;
+  width: 90%;
+}
+
+.c2 {
+  color: var(--form-font-color);
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.c3 {
+  color: var(--form-font-color);
+  font-size: 1.1rem;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.c6 {
+  width: 50%;
+  margin: 4px;
+}
+
+<section
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <h2
+      class="c2"
+    >
+      Please confirm your registration!
+    </h2>
+    <p
+      class="c3"
+    >
+      Keep in mind, this app is just a reminding tool. Check your plant and your soil frequently and adjust the intervals.
+      <br />
+      <br />
+      This app is not responsible for under or overwatering your plant.
+      <br />
+      <br />
+      Optimized for mobile view
+      <br />
+      (iPhone 6/7/8)
+      <br />
+      <br />
+      For demonstration purpose the max amount of plants is limited to 6 per user!
+    </p>
+    <div
+      class="c4"
+    >
+      <button
+        class="c5 c6"
+      >
+        Confirm
+      </button>
+      <button
+        class="c7 c6"
+        type="button"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</section>
+`;

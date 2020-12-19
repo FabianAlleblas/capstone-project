@@ -31,27 +31,30 @@ export default function Header({
 }) {
   return (
     <HeaderStyled className={className}>
-      <HeadingContainer secondaryStyle={secondaryStyle}>
+      <HeadingContainer
+        secondaryStyle={secondaryStyle}
+        data-testid="heading-container"
+      >
         {showBackButton && (
           <IconButton onClick={onClickArrow}>
-            <ArrowIconStyled data-testid="arrow-icon" />
+            <ArrowIconStyled />
           </IconButton>
         )}
         <Heading>{children}</Heading>
       </HeadingContainer>
       {showEditButton && (
         <IconButton onClick={onClickEdit}>
-          <EditIconStyled data-testid="edit-icon" />
+          <EditIconStyled />
         </IconButton>
       )}
       {showLogoutButton && (
         <IconButton onClick={onClickLogout}>
-          <LogoutIconStyled data-testid="logout-icon" />
+          <LogoutIconStyled />
         </IconButton>
       )}
       {showDeleteButton && (
         <IconButton onClick={onClickDelete}>
-          <DeleteIconStyled data-testid="delete-icon" />
+          <DeleteIconStyled />
         </IconButton>
       )}
     </HeaderStyled>

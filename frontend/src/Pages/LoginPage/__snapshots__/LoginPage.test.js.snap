@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginPage renders correctly 1`] = `
+.c4 {
+  background-color: var(--primary-light);
+  border-radius: 22px;
+  border: none;
+  box-shadow: 0 0 4px var(--shadow);
+  color: var(--primary-dark);
+  font-family: 'Josefin sans';
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 12px 16px 8px;
+  width: 100%;
+}
+
+.c5 {
+  background-color: var(--primary-dark);
+  border-radius: 22px;
+  border: 4px solid var(--primary-light);
+  box-shadow: 0 0 4px var(--shadow);
+  color: var(--primary-light);
+  font-family: 'Josefin sans';
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 8px 12px 4px;
+  width: 100%;
+}
+
+.c1 {
+  background-color: var(--primary-dark);
+  display: grid;
+  gap: 20px;
+  place-items: center;
+  width: 100%;
+}
+
+.c2 {
+  border-radius: 22px;
+  border: none;
+  color: var(--form-font-color);
+  font-family: 'Josefin sans',sans-serif;
+  font-size: 1rem;
+  padding: 14px 20px 10px;
+  width: 100%;
+}
+
+.c2:focus {
+  box-shadow: 0 0 4px var(--shadow) inset;
+  outline: none;
+}
+
+.c3 {
+  display: grid;
+  gap: 20px;
+  padding: 20px 0 0;
+  width: 60%;
+}
+
+.c0 {
+  background-color: var(--primary-dark);
+  display: grid;
+  height: 100vh;
+  padding: 30px;
+  place-items: center;
+}
+
+<div>
+  <section
+    class="c0"
+  >
+    <svg>
+      urbanplantslogo.svg
+    </svg>
+    <form
+      class="c1"
+    >
+      <input
+        class="c2"
+        name="email"
+        placeholder="E-Mail"
+        required=""
+        type="email"
+      />
+      <input
+        class="c2"
+        name="password"
+        placeholder="Password"
+        required=""
+        type="password"
+      />
+      <div
+        class="c3"
+      >
+        <button
+          class="c4"
+        >
+          Login
+        </button>
+        <button
+          class="c5"
+          type="button"
+        >
+          Sign Up
+        </button>
+      </div>
+    </form>
+  </section>
+</div>
+`;

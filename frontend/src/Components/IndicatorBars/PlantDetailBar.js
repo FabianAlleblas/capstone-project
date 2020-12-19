@@ -13,6 +13,7 @@ export default function PlantDetailBar({ plant, setShowCareSetting }) {
       <BarWrapper>
         <Bar>
           <WaterIndicator
+            data-testid="water-indicator"
             daysLeft={plant.daysLeft}
             waterInterval={plant.waterInterval}
           />
@@ -21,7 +22,11 @@ export default function PlantDetailBar({ plant, setShowCareSetting }) {
           <Text>
             Water {plant.daysLeft}/{plant.waterInterval} days left
           </Text>
-          <IconButton name="water" onClick={openCareSettings}>
+          <IconButton
+            data-testid="water-button"
+            name="water"
+            onClick={openCareSettings}
+          >
             <SettingsIcon />
           </IconButton>
         </CareIntervalWrapper>
@@ -29,6 +34,7 @@ export default function PlantDetailBar({ plant, setShowCareSetting }) {
       <BarWrapper>
         <Bar>
           <FertilizerIndicator
+            data-testid="fertilizer-indicator"
             weeksLeft={plant.weeksLeft}
             fertilizerInterval={plant.fertilizerInterval}
           />
@@ -37,7 +43,11 @@ export default function PlantDetailBar({ plant, setShowCareSetting }) {
           <Text>
             Fertilizer {plant.weeksLeft}/{plant.fertilizerInterval} weeks left
           </Text>
-          <IconButton name="fertilizer" onClick={openCareSettings}>
+          <IconButton
+            data-testid="fertilizer-button"
+            name="fertilizer"
+            onClick={openCareSettings}
+          >
             <SettingsIcon />
           </IconButton>
         </CareIntervalWrapper>

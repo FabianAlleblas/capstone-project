@@ -9,7 +9,10 @@ PlantDetails.propTypes = {
 export default function PlantDetails({ plant }) {
   return (
     <>
-      <ImageFrame src={plant.image ?? defaultPlantImage} />
+      <ImageFrame
+        data-testid="image-frame"
+        src={plant.image ?? defaultPlantImage}
+      />
       <TextContainer>
         <PlantName>{plant.species}</PlantName>
         <PlantInfo>{plant.specialInfo}</PlantInfo>

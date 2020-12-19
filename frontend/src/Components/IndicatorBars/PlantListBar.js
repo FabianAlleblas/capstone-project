@@ -19,11 +19,16 @@ export default function PlantListBar({
     <Container>
       <WaterIcon />
       <Bar>
-        <WaterIndicator daysLeft={daysLeft} waterInterval={waterInterval} />
+        <WaterIndicator
+          data-testid="water-indicator"
+          daysLeft={daysLeft}
+          waterInterval={waterInterval}
+        />
       </Bar>
       <FertilizerIcon />
       <Bar>
         <FertilizerIndicator
+          data-testid="fertilizer-indicator"
           weeksLeft={weeksLeft}
           fertilizerInterval={fertilizerInterval}
         />

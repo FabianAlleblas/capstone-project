@@ -23,7 +23,7 @@ export default function AddPlantForm({ savePlantData }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <ImgInputWrapper src={imageBase64}>
+      <ImgInputWrapper data-testid="img-input-wrapper" src={imageBase64}>
         <ImgInput
           alt="image-input"
           name="image"

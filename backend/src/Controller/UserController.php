@@ -12,6 +12,7 @@ use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Repository\TokenRepository;
 use App\Service\PasswordEncoder;
+use App\Service\AuthenticationService;
 
 class UserController extends BaseController {
 
@@ -24,8 +25,7 @@ class UserController extends BaseController {
         TokenRepository $tokenRepository,
         PasswordEncoder $passwordEncoder,
         SerializerInterface $serializer,
-        ValidatorInterface $validator
-        ): JsonResponse 
+        ValidatorInterface $validator): JsonResponse 
     {
         $newUser = $serializer->deserialize($request->getContent(), User::class, 'json');
         $checkedEmail = $userRepository->findBy(['email' => $newUser->getEmail()]);
@@ -47,5 +47,29 @@ class UserController extends BaseController {
         $token = $tokenRepository->createToken($newUser);
         
         return $this->userResponse($newUser, $token);
+    }
+
+    /**
+     * @Route("/user/{id}", methods={"DELETE"})
+     */
+    public function removeUser(
+        int $id,
+        Request $request,
+        UserRepository $userRepository,
+        AuthenticationService $authenticationService): JsonResponse
+    {
+        $user = $authenticationService->validateUser($request);
+
+        if (!$user || $user->getId() !== $id) 
+        {
+            return $this->unauthorizedResponse('unauthorized', 'Not Authorized!');
+        }
+
+        $userRepository->deleteUser($user);
+
+        return new JsonResponse(
+            ["Status" => "Item deleted"],
+            JsonResponse::HTTP_OK
+        );
     }
 }
